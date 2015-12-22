@@ -1,0 +1,279 @@
+<?php
+
+namespace Map2u\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * UserUploadShapefileGeom
+ */
+class UserUploadShapefileGeom
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var integer
+     */
+    private $ogcFid;
+
+    /**
+     * @var string
+     */
+    private $keyname;
+
+    /**
+     * @var string
+     */
+    private $description;
+
+    /**
+     * @var string
+     */
+    private $geometry_type;
+
+    /**
+     * @var string
+     */
+    private $style;
+
+    /**
+     * @var float
+     */
+    private $radius;
+
+    /**
+     * @var \DateTime
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    /**
+     * @var \Map2u\CoreBundle\Entity\UserUploadShapefile
+     */
+    private $useruploadshapefile;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set ogcFid
+     *
+     * @param integer $ogcFid
+     * @return UserUploadShapefileGeom
+     */
+    public function setOgcFid($ogcFid)
+    {
+        $this->ogcFid = $ogcFid;
+
+        return $this;
+    }
+
+    /**
+     * Get ogcFid
+     *
+     * @return integer 
+     */
+    public function getOgcFid()
+    {
+        return $this->ogcFid;
+    }
+
+    /**
+     * Set keyname
+     *
+     * @param string $keyname
+     * @return UserUploadShapefileGeom
+     */
+    public function setKeyname($keyname)
+    {
+        $this->keyname = $keyname;
+
+        return $this;
+    }
+
+    /**
+     * Get keyname
+     *
+     * @return string 
+     */
+    public function getKeyname()
+    {
+        return $this->keyname;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return UserUploadShapefileGeom
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set geometry_type
+     *
+     * @param string $geometryType
+     * @return UserUploadShapefileGeom
+     */
+    public function setGeometryType($geometryType)
+    {
+        $this->geometry_type = $geometryType;
+
+        return $this;
+    }
+
+    /**
+     * Get geometry_type
+     *
+     * @return string 
+     */
+    public function getGeometryType()
+    {
+        return $this->geometry_type;
+    }
+
+    /**
+     * Set style
+     *
+     * @param string $style
+     * @return UserUploadShapefileGeom
+     */
+    public function setStyle($style)
+    {
+        $this->style = $style;
+
+        return $this;
+    }
+
+    /**
+     * Get style
+     *
+     * @return string 
+     */
+    public function getStyle()
+    {
+        return $this->style;
+    }
+
+    /**
+     * Set radius
+     *
+     * @param float $radius
+     * @return UserUploadShapefileGeom
+     */
+    public function setRadius($radius)
+    {
+        $this->radius = $radius;
+
+        return $this;
+    }
+
+    /**
+     * Get radius
+     *
+     * @return float 
+     */
+    public function getRadius()
+    {
+        return $this->radius;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return UserUploadShapefileGeom
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return UserUploadShapefileGeom
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set useruploadshapefile
+     *
+     * @param \Map2u\CoreBundle\Entity\UserUploadShapefile $useruploadshapefile
+     * @return UserUploadShapefileGeom
+     */
+    public function setUseruploadshapefile(\Map2u\CoreBundle\Entity\UserUploadShapefile $useruploadshapefile = null)
+    {
+        $this->useruploadshapefile = $useruploadshapefile;
+
+        return $this;
+    }
+
+    /**
+     * Get useruploadshapefile
+     *
+     * @return \Map2u\CoreBundle\Entity\UserUploadShapefile 
+     */
+    public function getUseruploadshapefile()
+    {
+        return $this->useruploadshapefile;
+    }
+}

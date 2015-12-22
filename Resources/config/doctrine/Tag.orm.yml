@@ -1,0 +1,20 @@
+Map2u\CoreBundle\Entity\Tag:
+    type: entity
+    table: map2u_core__tag
+    fields:
+        id:
+            id: true
+            type: guid
+            unsigned: false
+            nullable: false
+            columnDefinition: uuid NOT NULL DEFAULT uuid_generate_v4()
+            generator: 
+                strategy: UUID  
+          
+    manyToOne:    
+        user:
+            targetEntity: Application\Sonata\UserBundle\Entity\User
+            inversedBy: {}
+            joinColumns:
+                user_id:
+                    referencedColumnName: id          

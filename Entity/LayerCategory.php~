@@ -1,0 +1,560 @@
+<?php
+
+namespace Map2u\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * LayerCategory
+ */
+class LayerCategory
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var integer
+     */
+    private $seq;
+
+    /**
+     * @var string
+     */
+    private $categoryTitle;
+
+    /**
+     * @var string
+     */
+    private $categoryName;
+
+    /**
+     * @var integer
+     */
+    private $parentId;
+
+    /**
+     * @var \DateTime
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    /**
+     * @var string
+     */
+    private $description;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $geoserverlayers;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $leafletclusterlayers;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $leafletheatmaplayers;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $thematicmaplayers;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $userdrawlayers;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $uploadfileLayers;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->geoserverlayers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->leafletclusterlayers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->leafletheatmaplayers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->thematicmaplayers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->userdrawlayers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->uploadfileLayers = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set seq
+     *
+     * @param integer $seq
+     * @return LayerCategory
+     */
+    public function setSeq($seq)
+    {
+        $this->seq = $seq;
+
+        return $this;
+    }
+
+    /**
+     * Get seq
+     *
+     * @return integer 
+     */
+    public function getSeq()
+    {
+        return $this->seq;
+    }
+
+    /**
+     * Set categoryTitle
+     *
+     * @param string $categoryTitle
+     * @return LayerCategory
+     */
+    public function setCategoryTitle($categoryTitle)
+    {
+        $this->categoryTitle = $categoryTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get categoryTitle
+     *
+     * @return string 
+     */
+    public function getCategoryTitle()
+    {
+        return $this->categoryTitle;
+    }
+
+    /**
+     * Set categoryName
+     *
+     * @param string $categoryName
+     * @return LayerCategory
+     */
+    public function setCategoryName($categoryName)
+    {
+        $this->categoryName = $categoryName;
+
+        return $this;
+    }
+
+    /**
+     * Get categoryName
+     *
+     * @return string 
+     */
+    public function getCategoryName()
+    {
+        return $this->categoryName;
+    }
+
+    /**
+     * Set parentId
+     *
+     * @param integer $parentId
+     * @return LayerCategory
+     */
+    public function setParentId($parentId)
+    {
+        $this->parentId = $parentId;
+
+        return $this;
+    }
+
+    /**
+     * Get parentId
+     *
+     * @return integer 
+     */
+    public function getParentId()
+    {
+        return $this->parentId;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return LayerCategory
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return LayerCategory
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return LayerCategory
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Add geoserverlayers
+     *
+     * @param \Map2u\CoreBundle\Entity\GeoServerLayer $geoserverlayers
+     * @return LayerCategory
+     */
+    public function addGeoserverlayer(\Map2u\CoreBundle\Entity\GeoServerLayer $geoserverlayers)
+    {
+        $this->geoserverlayers[] = $geoserverlayers;
+
+        return $this;
+    }
+
+    /**
+     * Remove geoserverlayers
+     *
+     * @param \Map2u\CoreBundle\Entity\GeoServerLayer $geoserverlayers
+     */
+    public function removeGeoserverlayer(\Map2u\CoreBundle\Entity\GeoServerLayer $geoserverlayers)
+    {
+        $this->geoserverlayers->removeElement($geoserverlayers);
+    }
+
+    /**
+     * Get geoserverlayers
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getGeoserverlayers()
+    {
+        return $this->geoserverlayers;
+    }
+
+    /**
+     * Add leafletclusterlayers
+     *
+     * @param \Map2u\CoreBundle\Entity\LeafletClusterLayer $leafletclusterlayers
+     * @return LayerCategory
+     */
+    public function addLeafletclusterlayer(\Map2u\CoreBundle\Entity\LeafletClusterLayer $leafletclusterlayers)
+    {
+        $this->leafletclusterlayers[] = $leafletclusterlayers;
+
+        return $this;
+    }
+
+    /**
+     * Remove leafletclusterlayers
+     *
+     * @param \Map2u\CoreBundle\Entity\LeafletClusterLayer $leafletclusterlayers
+     */
+    public function removeLeafletclusterlayer(\Map2u\CoreBundle\Entity\LeafletClusterLayer $leafletclusterlayers)
+    {
+        $this->leafletclusterlayers->removeElement($leafletclusterlayers);
+    }
+
+    /**
+     * Get leafletclusterlayers
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getLeafletclusterlayers()
+    {
+        return $this->leafletclusterlayers;
+    }
+
+    /**
+     * Add leafletheatmaplayers
+     *
+     * @param \Map2u\CoreBundle\Entity\LeafletHeatmapLayer $leafletheatmaplayers
+     * @return LayerCategory
+     */
+    public function addLeafletheatmaplayer(\Map2u\CoreBundle\Entity\LeafletHeatmapLayer $leafletheatmaplayers)
+    {
+        $this->leafletheatmaplayers[] = $leafletheatmaplayers;
+
+        return $this;
+    }
+
+    /**
+     * Remove leafletheatmaplayers
+     *
+     * @param \Map2u\CoreBundle\Entity\LeafletHeatmapLayer $leafletheatmaplayers
+     */
+    public function removeLeafletheatmaplayer(\Map2u\CoreBundle\Entity\LeafletHeatmapLayer $leafletheatmaplayers)
+    {
+        $this->leafletheatmaplayers->removeElement($leafletheatmaplayers);
+    }
+
+    /**
+     * Get leafletheatmaplayers
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getLeafletheatmaplayers()
+    {
+        return $this->leafletheatmaplayers;
+    }
+
+    /**
+     * Add thematicmaplayers
+     *
+     * @param \Map2u\CoreBundle\Entity\ThematicMap $thematicmaplayers
+     * @return LayerCategory
+     */
+    public function addThematicmaplayer(\Map2u\CoreBundle\Entity\ThematicMap $thematicmaplayers)
+    {
+        $this->thematicmaplayers[] = $thematicmaplayers;
+
+        return $this;
+    }
+
+    /**
+     * Remove thematicmaplayers
+     *
+     * @param \Map2u\CoreBundle\Entity\ThematicMap $thematicmaplayers
+     */
+    public function removeThematicmaplayer(\Map2u\CoreBundle\Entity\ThematicMap $thematicmaplayers)
+    {
+        $this->thematicmaplayers->removeElement($thematicmaplayers);
+    }
+
+    /**
+     * Get thematicmaplayers
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getThematicmaplayers()
+    {
+        return $this->thematicmaplayers;
+    }
+
+    /**
+     * Add userdrawlayers
+     *
+     * @param \Application\Map2u\CoreBundle\Entity\UserDrawGeometries $userdrawlayers
+     * @return LayerCategory
+     */
+    public function addUserdrawlayer(\Application\Map2u\CoreBundle\Entity\UserDrawGeometries $userdrawlayers)
+    {
+        $this->userdrawlayers[] = $userdrawlayers;
+
+        return $this;
+    }
+
+    /**
+     * Remove userdrawlayers
+     *
+     * @param \Application\Map2u\CoreBundle\Entity\UserDrawGeometries $userdrawlayers
+     */
+    public function removeUserdrawlayer(\Application\Map2u\CoreBundle\Entity\UserDrawGeometries $userdrawlayers)
+    {
+        $this->userdrawlayers->removeElement($userdrawlayers);
+    }
+
+    /**
+     * Get userdrawlayers
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUserdrawlayers()
+    {
+        return $this->userdrawlayers;
+    }
+
+    /**
+     * Add uploadfileLayers
+     *
+     * @param \Map2u\CoreBundle\Entity\UploadfileLayer $uploadfileLayers
+     * @return LayerCategory
+     */
+    public function addUploadfileLayer(\Map2u\CoreBundle\Entity\UploadfileLayer $uploadfileLayers)
+    {
+        $this->uploadfileLayers[] = $uploadfileLayers;
+
+        return $this;
+    }
+
+    /**
+     * Remove uploadfileLayers
+     *
+     * @param \Map2u\CoreBundle\Entity\UploadfileLayer $uploadfileLayers
+     */
+    public function removeUploadfileLayer(\Map2u\CoreBundle\Entity\UploadfileLayer $uploadfileLayers)
+    {
+        $this->uploadfileLayers->removeElement($uploadfileLayers);
+    }
+
+    /**
+     * Get uploadfileLayers
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUploadfileLayers()
+    {
+        return $this->uploadfileLayers;
+    }
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $subcategories;
+
+    /**
+     * @var \Map2u\CoreBundle\Entity\LayerCategory
+     */
+    private $parentCategory;
+
+
+    /**
+     * Add subcategories
+     *
+     * @param \Map2u\CoreBundle\Entity\LayerCategory $subcategories
+     * @return LayerCategory
+     */
+    public function addSubcategory(\Map2u\CoreBundle\Entity\LayerCategory $subcategories)
+    {
+        $this->subcategories[] = $subcategories;
+
+        return $this;
+    }
+
+    /**
+     * Remove subcategories
+     *
+     * @param \Map2u\CoreBundle\Entity\LayerCategory $subcategories
+     */
+    public function removeSubcategory(\Map2u\CoreBundle\Entity\LayerCategory $subcategories)
+    {
+        $this->subcategories->removeElement($subcategories);
+    }
+
+    /**
+     * Get subcategories
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSubcategories()
+    {
+        return $this->subcategories;
+    }
+
+    /**
+     * Set parentCategory
+     *
+     * @param \Map2u\CoreBundle\Entity\LayerCategory $parentCategory
+     * @return LayerCategory
+     */
+    public function setParentCategory(\Map2u\CoreBundle\Entity\LayerCategory $parentCategory = null)
+    {
+        $this->parentCategory = $parentCategory;
+
+        return $this;
+    }
+
+    /**
+     * Get parentCategory
+     *
+     * @return \Map2u\CoreBundle\Entity\LayerCategory 
+     */
+    public function getParentCategory()
+    {
+        return $this->parentCategory;
+    }
+    public function __toString() {
+        return $this->categoryTitle;
+    }
+    /**
+     * @var boolean
+     */
+    private $multiple;
+
+
+    /**
+     * Set multiple
+     *
+     * @param boolean $multiple
+     * @return LayerCategory
+     */
+    public function setMultiple($multiple)
+    {
+        $this->multiple = $multiple;
+
+        return $this;
+    }
+
+    /**
+     * Get multiple
+     *
+     * @return boolean 
+     */
+    public function getMultiple()
+    {
+        return $this->multiple;
+    }
+}

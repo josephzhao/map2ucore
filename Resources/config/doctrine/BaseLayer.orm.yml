@@ -1,0 +1,120 @@
+Map2u\CoreBundle\Entity\BaseLayer:
+    type: mappedSuperclass
+    fields:
+        userId:	        
+            type: guid
+            unsigned: false
+            nullable: true
+            column: user_id
+        enabled:	        
+            type: boolean
+            nullable: true
+            column: enabled
+            options:
+                default: true
+        public:	        
+            type: boolean
+            nullable: true
+            column: public
+            options:
+                default: false
+        position:	        
+            type: integer
+            unsigned: false
+            nullable: true
+            column: position               
+        shared:	        
+            type: boolean
+            nullable: true
+            column: shared
+            options:
+                default: false
+        topojson:	        
+            type: boolean
+            nullable: true
+            column: topojson
+            options:
+                default: false
+        showLabel:	        
+            type: boolean
+            nullable: true
+            column: show_label
+            options:
+                default: false  
+                
+        defaultShowOnMap:	        
+            type: boolean
+            nullable: true
+            column: default_show_on_map
+            options:
+                default: true  
+        layerShowInSwitcher:	        
+            type: boolean
+            nullable: true
+            column: layer_show_in_switcher
+            options:
+                default: true  
+                
+                
+        projectId:	        
+            type: guid
+            unsigned: false
+            nullable: true
+            column: project_id
+        name:     
+            type: string
+            length: 50
+            fixed: false
+            nullable: true
+            column: name   
+#        type:     
+#            type: string
+#            length: 50
+#            fixed: false
+#            nullable: true
+#            column: type     
+        sldFileName:	        
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: sld_filename
+            options:
+                default: false
+            
+        sql:     
+            type: string
+            length: 1255
+            fixed: false
+            nullable: true
+            column: sql            
+        sessionId:     
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: session_id
+        createdAt:
+            type: datetime
+            nullable: true
+            column: created_at
+            gedmo:
+              timestampable:
+                on: create
+        updatedAt:
+            type: datetime
+            nullable: true
+            column: updated_at
+            gedmo:
+              timestampable:
+                on: update
+        description:
+            type: text
+            nullable: true
+            column: description
+    lifecycleCallbacks: 
+        prePersist: [prePersist ]
+        preUpdate: [preUpdate]
+        
+
+

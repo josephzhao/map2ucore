@@ -1,0 +1,31 @@
+{
+  "name" : "map2u/core-bundle",
+    "description" : "Map2u CoreBundle",
+    "version": "1.0.0",
+    "type" : "symfony-bundle",
+    "authors" : [{
+        "name" : "Joseph Zhao",
+        "email" : "zhaoshuilin2004@yahoo.ca"
+    }],
+    "keywords" : [
+        "Map2u CoreBundle,Symfony 2"
+    ],
+    "license" : [
+        "MIT"
+    ],
+    "require" : {
+    },
+    "autoload" : {
+        "psr-0" : {
+            "Map2u\\CoreBundle" : ""
+        }
+    },
+    "target-dir" : "Map2u/CoreBundle",
+    "repositories" : [{}
+    ],
+    "extra" : {
+    "branch-alias" : {
+            "dev-master" : "2.4-dev"
+        }
+    }
+}

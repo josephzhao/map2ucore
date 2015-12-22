@@ -1,0 +1,38 @@
+Map2u\CoreBundle\Entity\UserGroup:
+    type: entity
+    table: map2u_core__usergroup
+    fields:
+        id:
+            id: true
+            type: guid
+            unsigned: false
+            nullable: false
+            columnDefinition: uuid NOT NULL DEFAULT uuid_generate_v4()
+            generator:
+                strategy: UUID
+#        groupAdmin:
+#            type: entity
+#            targetEntity: Application\Sonata\UserBundle\Entity\User
+#    
+#    manyToOne:    
+#        user:
+#            targetEntity: Application\Sonata\UserBundle\Entity\User
+#            inversedBy: categories
+#            joinColumns:
+#                user_id:
+#                    referencedColumnName: id 
+#        parent:
+#            targetEntity: Map2u\CoreBundle\Entity\Category
+#            inversedBy: children
+#            joinColumns:
+#                parent_id:
+#                    referencedColumnName: id 
+#    oneToMany:
+#         children:
+#            targetEntity: Map2u\CoreBundle\Entity\Category
+#            mappedBy: parent
+#            cascade: ["persist","remove"]
+#         maplayers:
+#            targetEntity: MapLayer
+#            cascade: ["persist","remove"]
+#            mappedBy: category                 

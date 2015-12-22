@@ -1,0 +1,279 @@
+<?php
+
+namespace Map2u\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * UploadShapefileLayer
+ */
+class UploadShapefileLayer
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var string
+     */
+    private $layerTitle;
+
+    /**
+     * @var string
+     */
+    private $layerName;
+
+    /**
+     * @var string
+     */
+    private $defaultSldName;
+
+    /**
+     * @var boolean
+     */
+    private $published;
+
+    /**
+     * @var boolean
+     */
+    private $layerShowInSwitcher;
+
+    /**
+     * @var \DateTime
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    /**
+     * @var string
+     */
+    private $description;
+
+    /**
+     * @var \Map2u\CoreBundle\Entity\UserUploadShapefile
+     */
+    private $useruploadshapefile;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set layerTitle
+     *
+     * @param string $layerTitle
+     * @return UploadShapefileLayer
+     */
+    public function setLayerTitle($layerTitle)
+    {
+        $this->layerTitle = $layerTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get layerTitle
+     *
+     * @return string 
+     */
+    public function getLayerTitle()
+    {
+        return $this->layerTitle;
+    }
+
+    /**
+     * Set layerName
+     *
+     * @param string $layerName
+     * @return UploadShapefileLayer
+     */
+    public function setLayerName($layerName)
+    {
+        $this->layerName = $layerName;
+
+        return $this;
+    }
+
+    /**
+     * Get layerName
+     *
+     * @return string 
+     */
+    public function getLayerName()
+    {
+        return $this->layerName;
+    }
+
+    /**
+     * Set defaultSldName
+     *
+     * @param string $defaultSldName
+     * @return UploadShapefileLayer
+     */
+    public function setDefaultSldName($defaultSldName)
+    {
+        $this->defaultSldName = $defaultSldName;
+
+        return $this;
+    }
+
+    /**
+     * Get defaultSldName
+     *
+     * @return string 
+     */
+    public function getDefaultSldName()
+    {
+        return $this->defaultSldName;
+    }
+
+    /**
+     * Set published
+     *
+     * @param boolean $published
+     * @return UploadShapefileLayer
+     */
+    public function setPublished($published)
+    {
+        $this->published = $published;
+
+        return $this;
+    }
+
+    /**
+     * Get published
+     *
+     * @return boolean 
+     */
+    public function getPublished()
+    {
+        return $this->published;
+    }
+
+    /**
+     * Set layerShowInSwitcher
+     *
+     * @param boolean $layerShowInSwitcher
+     * @return UploadShapefileLayer
+     */
+    public function setLayerShowInSwitcher($layerShowInSwitcher)
+    {
+        $this->layerShowInSwitcher = $layerShowInSwitcher;
+
+        return $this;
+    }
+
+    /**
+     * Get layerShowInSwitcher
+     *
+     * @return boolean 
+     */
+    public function getLayerShowInSwitcher()
+    {
+        return $this->layerShowInSwitcher;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return UploadShapefileLayer
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return UploadShapefileLayer
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return UploadShapefileLayer
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set useruploadshapefile
+     *
+     * @param \Map2u\CoreBundle\Entity\UserUploadShapefile $useruploadshapefile
+     * @return UploadShapefileLayer
+     */
+    public function setUseruploadshapefile(\Map2u\CoreBundle\Entity\UserUploadShapefile $useruploadshapefile = null)
+    {
+        $this->useruploadshapefile = $useruploadshapefile;
+
+        return $this;
+    }
+
+    /**
+     * Get useruploadshapefile
+     *
+     * @return \Map2u\CoreBundle\Entity\UserUploadShapefile 
+     */
+    public function getUseruploadshapefile()
+    {
+        return $this->useruploadshapefile;
+    }
+}

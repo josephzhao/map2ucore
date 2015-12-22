@@ -1,0 +1,88 @@
+/*
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+*/
+/* 
+    Created on : 20-Aug-2014, 11:29:24 AM
+    Author     : josephzhao
+*/
+
+/*!
+ * Slider for Bootstrap
+ *
+ * Copyright 2012 Stefan Petre
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ */
+
+#thematicmap {
+    width:100%;
+}
+#thematicmap_table {
+    display: table;
+    width:100%;
+   
+}
+.thematicmap_div{
+    width:100%;
+    height: 35px;
+    display: table-row;
+   
+}
+.thematicmap .thematicmap_label{
+    display: table-cell;
+    width:105px;
+}
+
+.thematicmap_div select#thematicmap_datasource{
+    width:240px;
+}
+
+.thematicmap_div input.radius-size-slider
+,.thematicmap_div input.opacity-slider
+,.thematicmap_div select#thematicmap_categories
+,.thematicmap_div select#thematicmap_datafieldname {
+    width:165px;
+}
+.thematicmap_div .heatmap_legend
+{
+    display: inline-block;
+    width:225px;
+    margin-bottom: 10px;
+}
+#my_thematicmap_list select
+,#thematicmap_legends select
+{
+    width:285px;
+}
+#thematicmap_legends select > option
+{
+    width:100%;
+    margin: 2px;
+    
+}
+.thematicmap_legend .thematicmap_legend_img
+
+{
+    width:100%;
+    padding: 0px;
+    margin: 0px;
+}
+.thematicmap_legend input{
+    margin-right:10px;
+    
+}
+
+#thematicmap .thematicmap_button input {
+    margin: 5px;
+}
+
+/*.color-box {
+	float:right;
+	width:30px;
+	height:30px;
+	margin:-50px;
+	border: 1px solid white;
+}*/

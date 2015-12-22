@@ -1,0 +1,37 @@
+Map2u\CoreBundle\Entity\Map:
+    type: entity
+    table: map2u_core__map   
+    fields:
+        id:
+            id: true
+            type: guid
+            unsigned: false
+            columnDefinition: uuid NOT NULL DEFAULT uuid_generate_v4()
+            nullable: false
+            generator:
+                strategy: UUID
+    manyToMany:    
+        groups:
+            targetEntity: Map2u\CoreBundle\Entity\UserGroup
+            joinTable:
+                   name: map2u_core__maps_groups
+                   joinColumns:
+                     group_id:
+                       referencedColumnName: id
+                   inverseJoinColumns:
+                     map_id:
+                       referencedColumnName: id           
+            
+    manyToOne:    
+        user:
+            targetEntity: Application\Sonata\UserBundle\Entity\User
+            inversedBy: {}
+            joinColumns:
+                user_id:
+                    referencedColumnName: id          
+        category:
+            targetEntity: Map2u\CoreBundle\Entity\Category
+            inversedBy: {}
+            joinColumns:
+                category_id:
+                    referencedColumnName: id               

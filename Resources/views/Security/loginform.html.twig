@@ -1,0 +1,32 @@
+<div style="padding:5px 10px;height:310px;">
+    <form id="login-form" class="form-vertical validation"  method="post" action="{{path('fos_user_security_check')}}">
+        <h4>{{ 'Registered User'|trans }}</h4>
+        <div class="message"></div>  
+        <input type="hidden" name="_csrf_token" value="{{ csrf_token }}" />
+        <div class="form-group">
+            <label for="username">{{'Email or User ID'|trans}}</label>
+            <input type="text" class="form-control validate[required]" id="username" name="_username" placeholder="{{'Email or User ID'|trans}}" tabindex="1" value="{{ last_username }}" required="required">
+        </div>
+        <div class="form-group">
+            <label for="password" style="width:100%">{{'Password'|trans}}<div class="pull-right"><a   href="{{path('fos_user_resetting_request')}}">{{ 'Forgot Password?'|trans }}</a></div></label>
+            <input type="password" class="form-control validate[required,minSize[6]]" tabindex="2" required="required" id="password" name="_password" placeholder="{{'Password'|trans}}">
+        </div>
+        <div class="form-group">
+            <div class="checkbox">
+                <label for="remember_me"><input type="checkbox" id="remember_me" name="_remember_me" value="on">{{'Keep me logged in'|trans}}</label><div class="pull-right"><button type="submit" class="btn btn-primary">{{'Login'|trans}}</button></div>
+            </div>
+        </div>
+    </form>
+
+    <div id="register-form"  style="border-top: 2px solid darkgray;position: relative;background-color: #ada69a">
+        <div class="pull-left" >
+            <h4>{{'New User'|trans}}</h4>
+
+            <p>{{"Don't have an account"|trans}}?</p>
+
+        </div>
+        <div  style="top:32px;right:-15px;position: absolute;">
+            <a href="{{path('fos_user_registration_register')}}"><button class="btn btn-default">{{'Register'|trans}}</button></a>
+        </div>
+    </div>
+</div>

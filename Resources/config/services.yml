@@ -1,0 +1,44 @@
+parameters:
+services:
+    map2u_core.block.fixed_topmenu:
+                class: Map2u\CoreBundle\Block\FixedTopmenuBlockService
+                arguments:
+                    - "map2u_core.block.fixed_topmenu"
+                    - "@templating"
+                    - @doctrine.orm.entity_manager
+                tags:
+                    -  { name: sonata.block, alias: map2u_core.block.fixed_topmenu}   
+     
+    map2u_core.block.uploadspatialfile:
+                    class: Map2u\CoreBundle\Block\UploadSpatialFileBlockService
+                    arguments:
+                        - "map2u_core.block.uploadspatialfile"
+                        - "@templating"
+                        - @service_container
+                        - @doctrine.orm.entity_manager
+                    tags:
+                        - {name: "sonata.block"}   
+                        
+    map2u_core.authentication.success_handler:
+        class: Map2u\CoreBundle\Listener\AuthenticationSuccessHandler
+        arguments:  [@security.http_utils, [], @router]
+        
+#        parent: security.authentication.success_handler
+        
+
+    map2u_core.authentication.failure_handler:
+        class: Map2u\CoreBundle\Listener\AuthenticationFailureHandler
+        parent: security.authentication.failure_handler  
+        
+ 
+            
+    map2u_core.twig_core.map2u_extension:
+        class: Map2u\CoreBundle\Twig\Map2uExtension
+        tags:
+            - { name: twig.extension }
+    map2u_core.registration.form.type:
+        class: Map2u\CoreBundle\Form\Type\RegistrationFormType
+        arguments: [%fos_user.model.user.class%]
+        tags:
+            - { name: form.type, alias: map2u_user_registration }
+                        

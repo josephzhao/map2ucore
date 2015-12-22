@@ -1,0 +1,307 @@
+<?php
+
+namespace Map2u\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * UserDrawGeometries
+ */
+class UserDrawGeometries
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var integer
+     */
+    private $userId;
+
+    /**
+     * @var string
+     */
+    private $name;
+
+    /**
+     * @var string
+     */
+    private $geomType;
+
+    /**
+     * @var float
+     */
+    private $buffer;
+
+    /**
+     * @var boolean
+     */
+    private $bPublic;
+
+    /**
+     * @var string
+     */
+    private $description;
+
+    /**
+     * @var \DateTime
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    /**
+     * @var \Map2u\CoreBundle\Entity\UserDrawGeometriesGeom
+     */
+    private $userdrawgeometries_geoms;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set userId
+     *
+     * @param integer $userId
+     * @return UserDrawGeometries
+     */
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+
+        return $this;
+    }
+
+    /**
+     * Get userId
+     *
+     * @return integer 
+     */
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return UserDrawGeometries
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set geomType
+     *
+     * @param string $geomType
+     * @return UserDrawGeometries
+     */
+    public function setGeomType($geomType)
+    {
+        $this->geomType = $geomType;
+
+        return $this;
+    }
+
+    /**
+     * Get geomType
+     *
+     * @return string 
+     */
+    public function getGeomType()
+    {
+        return $this->geomType;
+    }
+
+    /**
+     * Set buffer
+     *
+     * @param float $buffer
+     * @return UserDrawGeometries
+     */
+    public function setBuffer($buffer)
+    {
+        $this->buffer = $buffer;
+
+        return $this;
+    }
+
+    /**
+     * Get buffer
+     *
+     * @return float 
+     */
+    public function getBuffer()
+    {
+        return $this->buffer;
+    }
+
+    /**
+     * Set bPublic
+     *
+     * @param boolean $bPublic
+     * @return UserDrawGeometries
+     */
+    public function setBPublic($bPublic)
+    {
+        $this->bPublic = $bPublic;
+
+        return $this;
+    }
+
+    /**
+     * Get bPublic
+     *
+     * @return boolean 
+     */
+    public function getBPublic()
+    {
+        return $this->bPublic;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return UserDrawGeometries
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return UserDrawGeometries
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return UserDrawGeometries
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set userdrawgeometries_geoms
+     *
+     * @param \Map2u\CoreBundle\Entity\UserDrawGeometriesGeom $userdrawgeometriesGeoms
+     * @return UserDrawGeometries
+     */
+    public function setUserdrawgeometriesGeoms(\Map2u\CoreBundle\Entity\UserDrawGeometriesGeom $userdrawgeometriesGeoms = null)
+    {
+        $this->userdrawgeometries_geoms = $userdrawgeometriesGeoms;
+
+        return $this;
+    }
+
+    /**
+     * Get userdrawgeometries_geoms
+     *
+     * @return \Map2u\CoreBundle\Entity\UserDrawGeometriesGeom 
+     */
+    public function getUserdrawgeometriesGeoms()
+    {
+        return $this->userdrawgeometries_geoms;
+    }
+    /**
+     * @var float
+     */
+    private $radius;
+
+
+    /**
+     * Set radius
+     *
+     * @param float $radius
+     * @return UserDrawGeometries
+     */
+    public function setRadius($radius)
+    {
+        $this->radius = $radius;
+
+        return $this;
+    }
+
+    /**
+     * Get radius
+     *
+     * @return float 
+     */
+    public function getRadius()
+    {
+        return $this->radius;
+    }
+}

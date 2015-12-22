@@ -1,0 +1,22 @@
+Map2u\CoreBundle\Entity\LayerGeom:
+    type: entity
+    table: map2u_core__layer_geom
+    fields:
+        id:
+            id: true
+            type: guid
+            unsigned: false
+            nullable: false
+            columnDefinition: uuid NOT NULL DEFAULT uuid_generate_v4()
+            generator:
+                strategy: UUID
+    manyToOne:
+        layer:
+            targetEntity: Layer
+            inversedBy: layergeoms
+            joinColumns:
+                layer_id:
+                    referencedColumnName: id
+            orphanRemoval: true              
+          
+    lifecycleCallbacks: {  }

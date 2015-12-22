@@ -1,0 +1,195 @@
+<?php
+
+namespace Map2u\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * BaseLayerGeom
+ */
+class BaseLayerGeom
+{
+    /**
+     * @var guid
+     */
+    private $id;
+
+    /**
+     * @var guid
+     */
+    private $uuid;
+
+    /**
+     * @var string
+     */
+    private $name;
+
+    /**
+     * @var mixed
+     */
+    private $value;
+
+    /**
+     * @var string
+     */
+    private $type;
+
+    /**
+     * @var geometry
+     */
+    private $theGeom;
+
+    /**
+     * @var string
+     */
+    private $description;
+
+
+    /**
+     * Get id
+     *
+     * @return guid 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set uuid
+     *
+     * @param guid $uuid
+     * @return BaseLayerGeom
+     */
+    public function setUuid($uuid)
+    {
+        $this->uuid = $uuid;
+
+        return $this;
+    }
+
+    /**
+     * Get uuid
+     *
+     * @return guid 
+     */
+    public function getUuid()
+    {
+        return $this->uuid;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return BaseLayerGeom
+     */
+    public function setName($name)
+    {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName()
+    {
+        return $this->name;
+    }
+
+    /**
+     * Set value
+     *
+     * @param \mixed $value
+     * @return BaseLayerGeom
+     */
+    public function setValue(\mixed $value)
+    {
+        $this->value = $value;
+
+        return $this;
+    }
+
+    /**
+     * Get value
+     *
+     * @return \mixed 
+     */
+    public function getValue()
+    {
+        return $this->value;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return BaseLayerGeom
+     */
+    public function setType($type)
+    {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string 
+     */
+    public function getType()
+    {
+        return $this->type;
+    }
+
+    /**
+     * Set theGeom
+     *
+     * @param geometry $theGeom
+     * @return BaseLayerGeom
+     */
+    public function setTheGeom($theGeom)
+    {
+        $this->theGeom = $theGeom;
+
+        return $this;
+    }
+
+    /**
+     * Get theGeom
+     *
+     * @return geometry 
+     */
+    public function getTheGeom()
+    {
+        return $this->theGeom;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return BaseLayerGeom
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+}

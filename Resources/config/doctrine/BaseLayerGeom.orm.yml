@@ -1,0 +1,32 @@
+Map2u\CoreBundle\Entity\BaseLayerGeom:
+    type: mappedSuperclass
+    fields:
+        tableId:	        
+            type: guid
+            unsigned: false
+            nullable: true
+            column: table_id
+         
+        rowId:	        
+            type: guid
+            unsigned: false
+            nullable: true
+            column: row_id
+        name:     
+            type: string
+            length: 50
+            fixed: false
+            nullable: true
+            column: name
+        value:     
+            type: string
+            length: 250
+            fixed: false
+            nullable: true
+            column: value
+        theGeom:
+            type: geometry
+            nullable: true
+            requireSQLConversion: true
+            column: the_geom
+    lifecycleCallbacks: {  }

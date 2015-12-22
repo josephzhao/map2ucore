@@ -1,0 +1,96 @@
+Map2u\CoreBundle\Entity\BaseMap:
+    type: mappedSuperclass
+    fields:
+        userId:     
+            type: guid
+            unsigned: false
+            nullable: true
+            column: user_id            
+        zoomLevel:     
+            type: integer
+            unsigned: false
+            nullable: true
+            column: zoom_level            
+        mapTitle:
+            type: string
+            length: 250
+            fixed: false
+            nullable: false
+            column: map_title
+        name:
+            type: string
+            length: 250
+            fixed: false
+            nullable: false
+            column: name
+        layerSeq:    
+            type: json
+            fixed: false
+            nullable: true
+            column: layer_seq
+        titlePosition:     
+            type: geometry
+            length: 250
+            fixed: false
+            nullable: true
+            column: title_position
+        mapCenter:     
+            type: geometry
+            length: 250
+            fixed: false
+            nullable: true
+            column: map_center            
+        titleStyle:     
+            type: string
+            length: 250
+            fixed: false
+            nullable: true
+            column: title_style            
+        type:     
+            type: integer
+            length: 250
+            fixed: false
+            nullable: true
+            column: type        
+        showScale:
+            type: boolean
+            nullable: true
+            column: show_scale
+        shared:
+            type: boolean
+            nullable: true
+            column: shared            
+        enabled:
+            type: boolean
+            nullable: true
+            column: enabled
+        public:
+            type: boolean
+            nullable: true
+            column: public    
+    
+        createdAt:
+            type: datetime
+            nullable: true
+            comment: ''
+            column: created_at
+            gedmo:
+              timestampable:
+                on: create
+        updatedAt:
+            type: datetime
+            nullable: true
+            comment: ''
+            column: updated_at
+            gedmo:
+                timestampable:
+                    on: update
+        description:
+            type: text
+            nullable: true
+  
+    lifecycleCallbacks: 
+        prePersist: [prePersist ]
+        preUpdate: [preUpdate]
+        
+

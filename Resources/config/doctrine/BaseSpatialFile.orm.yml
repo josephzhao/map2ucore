@@ -1,0 +1,119 @@
+Map2u\CoreBundle\Entity\BaseSpatialFile:
+    type: mappedSuperclass
+    fields:
+        userId:     
+            type: guid
+            unsigned: false
+            nullable: false
+            column: user_id
+        sessionId:     
+            type: string
+            length: 50
+            fixed: false
+            nullable: true
+            column: session_id
+        fileName:     
+            type: string
+            length: 250
+            fixed: false
+            nullable: true
+            column: file_name
+        sheetName:     
+            type: string
+            length: 250
+            fixed: false
+            nullable: true
+            column: sheet_name            
+#        labelField:     
+#            type: string
+#            length: 250
+#            fixed: false
+#            nullable: true
+#            column: label_field
+#        tipField:     
+#            type: string
+#            length: 250
+#            fixed: false
+#            nullable: true
+#            column: tip_field            
+#        tipPercentage:     
+#            type: boolean
+#            nullable: true
+#            column: tip_percentage
+#            options:
+#                default: false
+#        tipTimes100:     
+#            type: boolean
+#            nullable: true
+#            column: tip_times100
+#            options:
+#                default: false
+#        tipNumber:     
+#            type: integer
+#            unsigned: false
+#            nullable: true
+#            column: tip_number
+#            options:
+#                default: 3
+#        geomFieldName:     
+#            type: string
+#            length: 250
+#            fixed: false
+#            nullable: true
+#            column: geomfield_name
+#        sldFileName:     
+#            type: string
+#            length: 250
+#            fixed: false
+#            nullable: true
+#            column: sldfile_name
+#        Style:     
+#            type: text
+#            nullable: true
+#            column: style            
+        public:     
+            type: boolean
+            nullable: true
+            column: b_public
+            options:
+                default: false
+        fileType:
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: file_type
+        supportType:
+            type: json
+            nullable: true
+            column: support_type
+        fieldList:
+            type: text
+            nullable: true
+            column: field_list
+        selectedFields:
+            type: text
+            nullable: true
+            column: selected_fields            
+        description:     
+            type: text
+            nullable: true
+            column: description
+        createdAt:
+            type: datetime
+            nullable: true
+            column: created_at
+            gedmo:
+              timestampable:
+                on: create
+        updatedAt:
+            type: datetime
+            nullable: true
+            column: updated_at
+            gedmo:
+              timestampable:
+                on: update
+    lifecycleCallbacks: 
+        prePersist: [prePersist ]
+        preUpdate: [preUpdate]
+        

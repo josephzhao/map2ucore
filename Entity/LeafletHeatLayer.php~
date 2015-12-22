@@ -1,0 +1,531 @@
+<?php
+
+namespace Map2u\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * LeafletHeatLayer
+ */
+class LeafletHeatLayer
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var integer
+     */
+    private $userId;
+
+    /**
+     * @var integer
+     */
+    private $seq;
+
+    /**
+     * @var integer
+     */
+    private $minZoom;
+
+    /**
+     * @var integer
+     */
+    private $maxZoom;
+
+    /**
+     * @var string
+     */
+    private $layerTitle;
+
+    /**
+     * @var string
+     */
+    private $layerName;
+
+    /**
+     * @var string
+     */
+    private $defaultSldName;
+
+    /**
+     * @var string
+     */
+    private $labelField;
+
+    /**
+     * @var string
+     */
+    private $tipField;
+
+    /**
+     * @var boolean
+     */
+    private $defaultShowOnMap;
+
+    /**
+     * @var boolean
+     */
+    private $published;
+
+    /**
+     * @var boolean
+     */
+    private $public;
+
+    /**
+     * @var boolean
+     */
+    private $topojsonOnly;
+
+    /**
+     * @var boolean
+     */
+    private $layerShowInSwitcher;
+
+    /**
+     * @var \DateTime
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    /**
+     * @var string
+     */
+    private $description;
+
+    /**
+     * @var \Map2u\CoreBundle\Entity\UserUploadShapefile
+     */
+    private $userUploadshapefile;
+
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set userId
+     *
+     * @param integer $userId
+     * @return LeafletHeatLayer
+     */
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+
+        return $this;
+    }
+
+    /**
+     * Get userId
+     *
+     * @return integer 
+     */
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    /**
+     * Set seq
+     *
+     * @param integer $seq
+     * @return LeafletHeatLayer
+     */
+    public function setSeq($seq)
+    {
+        $this->seq = $seq;
+
+        return $this;
+    }
+
+    /**
+     * Get seq
+     *
+     * @return integer 
+     */
+    public function getSeq()
+    {
+        return $this->seq;
+    }
+
+    /**
+     * Set minZoom
+     *
+     * @param integer $minZoom
+     * @return LeafletHeatLayer
+     */
+    public function setMinZoom($minZoom)
+    {
+        $this->minZoom = $minZoom;
+
+        return $this;
+    }
+
+    /**
+     * Get minZoom
+     *
+     * @return integer 
+     */
+    public function getMinZoom()
+    {
+        return $this->minZoom;
+    }
+
+    /**
+     * Set maxZoom
+     *
+     * @param integer $maxZoom
+     * @return LeafletHeatLayer
+     */
+    public function setMaxZoom($maxZoom)
+    {
+        $this->maxZoom = $maxZoom;
+
+        return $this;
+    }
+
+    /**
+     * Get maxZoom
+     *
+     * @return integer 
+     */
+    public function getMaxZoom()
+    {
+        return $this->maxZoom;
+    }
+
+    /**
+     * Set layerTitle
+     *
+     * @param string $layerTitle
+     * @return LeafletHeatLayer
+     */
+    public function setLayerTitle($layerTitle)
+    {
+        $this->layerTitle = $layerTitle;
+
+        return $this;
+    }
+
+    /**
+     * Get layerTitle
+     *
+     * @return string 
+     */
+    public function getLayerTitle()
+    {
+        return $this->layerTitle;
+    }
+
+    /**
+     * Set layerName
+     *
+     * @param string $layerName
+     * @return LeafletHeatLayer
+     */
+    public function setLayerName($layerName)
+    {
+        $this->layerName = $layerName;
+
+        return $this;
+    }
+
+    /**
+     * Get layerName
+     *
+     * @return string 
+     */
+    public function getLayerName()
+    {
+        return $this->layerName;
+    }
+
+    /**
+     * Set defaultSldName
+     *
+     * @param string $defaultSldName
+     * @return LeafletHeatLayer
+     */
+    public function setDefaultSldName($defaultSldName)
+    {
+        $this->defaultSldName = $defaultSldName;
+
+        return $this;
+    }
+
+    /**
+     * Get defaultSldName
+     *
+     * @return string 
+     */
+    public function getDefaultSldName()
+    {
+        return $this->defaultSldName;
+    }
+
+    /**
+     * Set labelField
+     *
+     * @param string $labelField
+     * @return LeafletHeatLayer
+     */
+    public function setLabelField($labelField)
+    {
+        $this->labelField = $labelField;
+
+        return $this;
+    }
+
+    /**
+     * Get labelField
+     *
+     * @return string 
+     */
+    public function getLabelField()
+    {
+        return $this->labelField;
+    }
+
+    /**
+     * Set tipField
+     *
+     * @param string $tipField
+     * @return LeafletHeatLayer
+     */
+    public function setTipField($tipField)
+    {
+        $this->tipField = $tipField;
+
+        return $this;
+    }
+
+    /**
+     * Get tipField
+     *
+     * @return string 
+     */
+    public function getTipField()
+    {
+        return $this->tipField;
+    }
+
+    /**
+     * Set defaultShowOnMap
+     *
+     * @param boolean $defaultShowOnMap
+     * @return LeafletHeatLayer
+     */
+    public function setDefaultShowOnMap($defaultShowOnMap)
+    {
+        $this->defaultShowOnMap = $defaultShowOnMap;
+
+        return $this;
+    }
+
+    /**
+     * Get defaultShowOnMap
+     *
+     * @return boolean 
+     */
+    public function getDefaultShowOnMap()
+    {
+        return $this->defaultShowOnMap;
+    }
+
+    /**
+     * Set published
+     *
+     * @param boolean $published
+     * @return LeafletHeatLayer
+     */
+    public function setPublished($published)
+    {
+        $this->published = $published;
+
+        return $this;
+    }
+
+    /**
+     * Get published
+     *
+     * @return boolean 
+     */
+    public function getPublished()
+    {
+        return $this->published;
+    }
+
+    /**
+     * Set public
+     *
+     * @param boolean $public
+     * @return LeafletHeatLayer
+     */
+    public function setPublic($public)
+    {
+        $this->public = $public;
+
+        return $this;
+    }
+
+    /**
+     * Get public
+     *
+     * @return boolean 
+     */
+    public function getPublic()
+    {
+        return $this->public;
+    }
+
+    /**
+     * Set topojsonOnly
+     *
+     * @param boolean $topojsonOnly
+     * @return LeafletHeatLayer
+     */
+    public function setTopojsonOnly($topojsonOnly)
+    {
+        $this->topojsonOnly = $topojsonOnly;
+
+        return $this;
+    }
+
+    /**
+     * Get topojsonOnly
+     *
+     * @return boolean 
+     */
+    public function getTopojsonOnly()
+    {
+        return $this->topojsonOnly;
+    }
+
+    /**
+     * Set layerShowInSwitcher
+     *
+     * @param boolean $layerShowInSwitcher
+     * @return LeafletHeatLayer
+     */
+    public function setLayerShowInSwitcher($layerShowInSwitcher)
+    {
+        $this->layerShowInSwitcher = $layerShowInSwitcher;
+
+        return $this;
+    }
+
+    /**
+     * Get layerShowInSwitcher
+     *
+     * @return boolean 
+     */
+    public function getLayerShowInSwitcher()
+    {
+        return $this->layerShowInSwitcher;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return LeafletHeatLayer
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return LeafletHeatLayer
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return LeafletHeatLayer
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set userUploadshapefile
+     *
+     * @param \Map2u\CoreBundle\Entity\UserUploadShapefile $userUploadshapefile
+     * @return LeafletHeatLayer
+     */
+    public function setUserUploadshapefile(\Map2u\CoreBundle\Entity\UserUploadShapefile $userUploadshapefile = null)
+    {
+        $this->userUploadshapefile = $userUploadshapefile;
+
+        return $this;
+    }
+
+    /**
+     * Get userUploadshapefile
+     *
+     * @return \Map2u\CoreBundle\Entity\UserUploadShapefile 
+     */
+    public function getUserUploadshapefile()
+    {
+        return $this->userUploadshapefile;
+    }
+}

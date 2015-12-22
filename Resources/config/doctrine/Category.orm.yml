@@ -1,0 +1,34 @@
+Map2u\CoreBundle\Entity\Category:
+    type: entity
+    table: map2u_core__category
+
+    fields:
+        id:
+            id: true
+            type: guid
+            nullable: false
+            generator:
+                strategy: UUID
+
+    manyToOne:    
+        user:
+            targetEntity: Application\Sonata\UserBundle\Entity\User
+            inversedBy: {}
+            joinColumns:
+                user_id:
+                    referencedColumnName: id 
+        parent:
+            targetEntity: Map2u\CoreBundle\Entity\Category
+            inversedBy: children
+            joinColumns:
+                parent_id:
+                    referencedColumnName: id 
+    oneToMany:
+         children:
+            targetEntity: Map2u\CoreBundle\Entity\Category
+            mappedBy: parent
+            cascade: ["persist","remove"]
+#         maplayers:
+#            targetEntity: MapLayer
+#            cascade: ["persist","remove"]
+#            mappedBy: category                 

@@ -1,0 +1,107 @@
+Map2u\CoreBundle\Entity\BaseProject:
+    type: mappedSuperclass
+    fields:
+        id:
+            id: true
+            type: guid
+            unsigned: false
+            nullable: false
+            column: id
+            generator:
+                strategy: UUID
+        userId:	        
+            type: guid
+            unsigned: false
+            nullable: true
+            column: user_id
+        name:     
+            type: string
+            length: 50
+            fixed: false
+            nullable: false
+            column: project_name
+        contacts:     
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: contacts
+        sessionid:     
+            type: string
+            length: 255
+            fixed: false
+            nullable: true
+            column: session_id
+        deleted:
+            type: boolean
+            nullable: true
+            column: deleted
+        createdAt:
+            type: datetime
+            nullable: true
+            column: created_at
+            gedmo:
+              timestampable:
+                on: create
+        updatedAt:
+            type: datetime
+            nullable: true
+            column: updated_at
+            gedmo:
+              timestampable:
+                on: update
+        description:
+            type: text
+            nullable: true
+            column: description
+ 
+#    manyToMany:
+#        tags:
+#          targetEntity: Map2u\CoreBundle\Entity\Tag
+#          inversedBy: {}
+#          joinTable:
+#                name: manifold_projects_tags
+#                joinColumns:
+#                  project_id:
+#                    referencedColumnName: id
+#                inverseJoinColumns:
+#                  tag_id:
+#                    referencedColumnName: id
+#          orphanRemoval: false    
+#        tradeAreas:
+#          targetEntity: TradeArea
+#          inversedBy: {}
+#          joinTable:
+#                name: manifold_projects_tradeareas
+#                joinColumns:
+#                  project_id:
+#                    referencedColumnName: id
+#                inverseJoinColumns:
+#                  tradearea_id:
+#                    referencedColumnName: id
+#          orphanRemoval: false         
+#        customers:
+#          targetEntity: Customer
+#          inversedBy: projects
+#          joinTable:
+#                name: manifold_projects_customers
+#                joinColumns:
+#                  project_id:
+#                    referencedColumnName: id
+#                inverseJoinColumns:
+#                  customer_id:
+#                    referencedColumnName: id
+#          orphanRemoval: false                   
+#        categories:
+#          targetEntity: Map2u\CoreBundle\Entity\Category
+#          inversedBy: {}
+#          joinTable:
+#                name: manifold_projects_categories
+#                joinColumns:
+#                  project_id:
+#                    referencedColumnName: id
+#                inverseJoinColumns:
+#                  category_id:
+#                    referencedColumnName: id
+#          orphanRemoval: false               
+    lifecycleCallbacks: {  }

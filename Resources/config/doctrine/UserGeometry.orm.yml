@@ -1,0 +1,22 @@
+Map2u\CoreBundle\Entity\UserGeometry:
+    type: entity
+    table: map2u_core__usergeometry
+    fields:
+        id:
+            id: true
+            type: guid
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: UUID
+    manyToOne:
+        user:
+            targetEntity: Application\Sonata\UserBundle\Entity\User
+            cascade: {  }
+            mappedBy: null
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+            orphanRemoval: true      
+
+    lifecycleCallbacks: {  }

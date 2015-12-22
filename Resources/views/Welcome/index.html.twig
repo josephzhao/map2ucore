@@ -1,0 +1,19 @@
+{% extends '::base.html.twig' %}
+{% block body %}
+    {% block navbar %}
+        {{ parent() }}
+    {% endblock %}
+    {% block page_wrapper %}
+        {{ parent() }}
+    {% endblock %}
+    {# {{ sonata_block_render({ 'type': 'map2u_core.block.uploadspatialfile' }, {
+                 'title': 'Upload Spatial Files', 'mode': 'public'
+             }) }}
+ #}
+
+{% endblock %}
+
+{% block javascripts %}
+    {{ parent() }}
+
+{% endblock %}

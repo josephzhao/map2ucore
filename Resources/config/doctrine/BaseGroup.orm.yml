@@ -1,0 +1,142 @@
+Map2u\CoreBundle\Entity\BaseGroup:
+    type: mappedSuperclass
+    fields:
+        name:
+            type: string
+            length: 250
+            fixed: false
+            nullable: true
+            column: name
+        address:
+            type: string
+            length: 250
+            fixed: false
+            nullable: true
+            column: address
+        phoneNumber:
+            type: string
+            length: 250
+            fixed: false
+            nullable: true
+            column: phone_number
+        faxNumber:
+            type: string
+            length: 250
+            fixed: false
+            nullable: true
+            column: fax_number
+        email:
+            type: string
+            length: 250
+            fixed: false
+            nullable: true
+            column: email
+        loginName:
+            type: string
+            length: 250
+            fixed: false
+            nullable: false
+            column: login_name
+        wrongLoginTimes:
+            type: integer
+            length: 5
+            fixed: false
+            nullable: true
+            column: wrong_login_times
+        enabled:
+            type: boolean
+            nullable: false
+            column: enabled
+            options: 
+                default: true
+        locked:
+            type: boolean
+            nullable: false
+            column: locked
+            options: 
+                default: false
+        lockedAt:
+            type: datetime
+            nullable: true
+            comment: ''
+            column: locked_at
+        lockedIP:
+            type: string
+            length: 250
+            fixed: false
+            nullable: false
+            column: locked_ip
+        lastLoginIP:
+            type: string
+            length: 250
+            fixed: false
+            nullable: false
+            column: last_login_ip
+        allowedLoginIP:
+            type: json
+            fixed: false
+            nullable: false
+            column: allowed_login_ip
+        groupPassword:
+            type: string
+            length: 250
+            fixed: false
+            nullable: false
+            column: group_password
+        groupPasswordSalt:
+            type: string
+            length: 250
+            fixed: false
+            nullable: false
+            column: group_password_salt
+        lastLoginAt:
+            type: datetime
+            nullable: true
+            comment: ''
+            column: last_login_at
+        groupPassword:
+            type: string
+            length: 250
+            fixed: false
+            nullable: false
+            column: group_password
+        allowedGroupLogin:
+            type: boolean
+            nullable: false
+            column: allowed_group_login
+            options: 
+                default: false
+        sendLoginNotice:
+            type: boolean
+            nullable: false
+            column: send_login_notice
+            options: 
+                default: false    
+        createdAt:
+            type: datetime
+            nullable: true
+            comment: ''
+            column: created_at
+            gedmo:
+              timestampable:
+                on: create
+        updatedAt:
+            type: datetime
+            nullable: true
+            comment: ''
+            column: updated_at
+            gedmo:
+                timestampable:
+                    on: update
+        expiredAt:   
+            type: datetime
+            nullable: true
+            comment: ''
+            column: expired_at
+        description:
+            type: text
+            nullable: true
+    lifecycleCallbacks: 
+        prePersist: [prePersist ]
+        preUpdate: [preUpdate]
+        

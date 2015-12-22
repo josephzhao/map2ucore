@@ -1,0 +1,65 @@
+Map2u\CoreBundle\Entity\UserMapShare:
+    type: entity
+    table: user_map_share
+#    gedmo:
+#        translation:
+#            locale: locale
+#            # using specific personal translation class:
+#            entity: Map2u\CoreBundle\Entity\UserDrawLayerTranslation     
+    fields:
+        id:
+            id: true
+            type: guid
+            unsigned: false
+            nullable: false
+            generator:
+                strategy: UUID
+        name:
+            type: string
+            length: 2500
+            fixed: false
+            nullable: true
+            column: name 
+        extent:
+            type: string
+            length: 2500
+            fixed: false
+            nullable: true
+            column: extent 
+        layersOn:
+            type: string
+            length: 2500
+            fixed: false
+            nullable: true
+            column: layers_on 
+        link:
+            type: string
+            length: 2500
+            fixed: false
+            nullable: true
+            column: link 
+        description:     
+            type: string
+            length: 2500
+            fixed: false
+            nullable: true
+            column: description       
+        shareEmails:     
+            type: text
+            nullable: true
+            column: share_emails                   
+        defaultShowOnMap:
+            type: boolean
+        #    columnDefinition: ENUM('OFF','ON','AUTO')
+            column: default_show_on_map
+
+    manyToOne:
+        user:
+            targetEntity: Application\Sonata\UserBundle\Entity\User
+            cascade: {  }
+            mappedBy: null
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+            orphanRemoval: true            
+    lifecycleCallbacks: {  }     

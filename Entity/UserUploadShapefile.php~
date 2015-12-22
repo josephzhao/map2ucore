@@ -1,0 +1,464 @@
+<?php
+
+namespace Map2u\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * UserUploadShapefile
+ */
+class UserUploadShapefile
+{
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var integer
+     */
+    private $userId;
+
+    /**
+     * @var string
+     */
+    private $uploadName;
+
+    /**
+     * @var string
+     */
+    private $shpTableName;
+
+    /**
+     * @var string
+     */
+    private $shapefileName;
+
+    /**
+     * @var string
+     */
+    private $topojsonfileName;
+
+    /**
+     * @var boolean
+     */
+    private $bPublic;
+
+    /**
+     * @var string
+     */
+    private $projection;
+
+    /**
+     * @var string
+     */
+    private $description;
+
+    /**
+     * @var \DateTime
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $useruploadshapefile_geoms;
+
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->useruploadshapefile_geoms = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set userId
+     *
+     * @param integer $userId
+     * @return UserUploadShapefile
+     */
+    public function setUserId($userId)
+    {
+        $this->userId = $userId;
+
+        return $this;
+    }
+
+    /**
+     * Get userId
+     *
+     * @return integer 
+     */
+    public function getUserId()
+    {
+        return $this->userId;
+    }
+
+    /**
+     * Set uploadName
+     *
+     * @param string $uploadName
+     * @return UserUploadShapefile
+     */
+    public function setUploadName($uploadName)
+    {
+        $this->uploadName = $uploadName;
+
+        return $this;
+    }
+
+    /**
+     * Get uploadName
+     *
+     * @return string 
+     */
+    public function getUploadName()
+    {
+        return $this->uploadName;
+    }
+
+    /**
+     * Set shpTableName
+     *
+     * @param string $shpTableName
+     * @return UserUploadShapefile
+     */
+    public function setShpTableName($shpTableName)
+    {
+        $this->shpTableName = $shpTableName;
+
+        return $this;
+    }
+
+    /**
+     * Get shpTableName
+     *
+     * @return string 
+     */
+    public function getShpTableName()
+    {
+        return $this->shpTableName;
+    }
+
+    /**
+     * Set shapefileName
+     *
+     * @param string $shapefileName
+     * @return UserUploadShapefile
+     */
+    public function setShapefileName($shapefileName)
+    {
+        $this->shapefileName = $shapefileName;
+
+        return $this;
+    }
+
+    /**
+     * Get shapefileName
+     *
+     * @return string 
+     */
+    public function getShapefileName()
+    {
+        return $this->shapefileName;
+    }
+
+    /**
+     * Set topojsonfileName
+     *
+     * @param string $topojsonfileName
+     * @return UserUploadShapefile
+     */
+    public function setTopojsonfileName($topojsonfileName)
+    {
+        $this->topojsonfileName = $topojsonfileName;
+
+        return $this;
+    }
+
+    /**
+     * Get topojsonfileName
+     *
+     * @return string 
+     */
+    public function getTopojsonfileName()
+    {
+        return $this->topojsonfileName;
+    }
+
+    /**
+     * Set bPublic
+     *
+     * @param boolean $bPublic
+     * @return UserUploadShapefile
+     */
+    public function setBPublic($bPublic)
+    {
+        $this->bPublic = $bPublic;
+
+        return $this;
+    }
+
+    /**
+     * Get bPublic
+     *
+     * @return boolean 
+     */
+    public function getBPublic()
+    {
+        return $this->bPublic;
+    }
+
+    /**
+     * Set projection
+     *
+     * @param string $projection
+     * @return UserUploadShapefile
+     */
+    public function setProjection($projection)
+    {
+        $this->projection = $projection;
+
+        return $this;
+    }
+
+    /**
+     * Get projection
+     *
+     * @return string 
+     */
+    public function getProjection()
+    {
+        return $this->projection;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return UserUploadShapefile
+     */
+    public function setDescription($description)
+    {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription()
+    {
+        return $this->description;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return UserUploadShapefile
+     */
+    public function setCreatedAt($createdAt)
+    {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt()
+    {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return UserUploadShapefile
+     */
+    public function setUpdatedAt($updatedAt)
+    {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt()
+    {
+        return $this->updatedAt;
+    }
+
+    /**
+     * Add useruploadshapefile_geoms
+     *
+     * @param \Map2u\CoreBundle\Entity\UserUploadShapefileGeom $useruploadshapefileGeoms
+     * @return UserUploadShapefile
+     */
+    public function addUseruploadshapefileGeom(\Map2u\CoreBundle\Entity\UserUploadShapefileGeom $useruploadshapefileGeoms)
+    {
+        $this->useruploadshapefile_geoms[] = $useruploadshapefileGeoms;
+
+        return $this;
+    }
+
+    /**
+     * Remove useruploadshapefile_geoms
+     *
+     * @param \Map2u\CoreBundle\Entity\UserUploadShapefileGeom $useruploadshapefileGeoms
+     */
+    public function removeUseruploadshapefileGeom(\Map2u\CoreBundle\Entity\UserUploadShapefileGeom $useruploadshapefileGeoms)
+    {
+        $this->useruploadshapefile_geoms->removeElement($useruploadshapefileGeoms);
+    }
+
+    /**
+     * Get useruploadshapefile_geoms
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUseruploadshapefileGeoms()
+    {
+        return $this->useruploadshapefile_geoms;
+    }
+    /**
+     * @var string
+     */
+    private $sessionId;
+
+
+    /**
+     * Set sessionId
+     *
+     * @param string $sessionId
+     * @return UserUploadShapefile
+     */
+    public function setSessionId($sessionId)
+    {
+        $this->sessionId = $sessionId;
+
+        return $this;
+    }
+
+    /**
+     * Get sessionId
+     *
+     * @return string 
+     */
+    public function getSessionId()
+    {
+        return $this->sessionId;
+    }
+    /**
+     * @var string
+     */
+    private $keyName;
+
+
+    /**
+     * Set keyName
+     *
+     * @param string $keyName
+     * @return UserUploadShapefile
+     */
+    public function setKeyName($keyName)
+    {
+        $this->keyName = $keyName;
+
+        return $this;
+    }
+
+    /**
+     * Get keyName
+     *
+     * @return string 
+     */
+    public function getKeyName()
+    {
+        return $this->keyName;
+    }
+    /**
+     * @var string
+     */
+    private $geomTableName;
+
+
+    /**
+     * Set geomTableName
+     *
+     * @param string $geomTableName
+     * @return UserUploadShapefile
+     */
+    public function setGeomTableName($geomTableName)
+    {
+        $this->geomTableName = $geomTableName;
+
+        return $this;
+    }
+
+    /**
+     * Get geomTableName
+     *
+     * @return string 
+     */
+    public function getGeomTableName()
+    {
+        return $this->geomTableName;
+    }
+    /**
+     * @var string
+     */
+    private $geomFieldName;
+
+
+    /**
+     * Set geomFieldName
+     *
+     * @param string $geomFieldName
+     * @return UserUploadShapefile
+     */
+    public function setGeomFieldName($geomFieldName)
+    {
+        $this->geomFieldName = $geomFieldName;
+
+        return $this;
+    }
+
+    /**
+     * Get geomFieldName
+     *
+     * @return string 
+     */
+    public function getGeomFieldName()
+    {
+        return $this->geomFieldName;
+    }
+}

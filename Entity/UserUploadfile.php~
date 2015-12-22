@@ -1,0 +1,663 @@
+<?php
+
+namespace Map2u\CoreBundle\Entity;
+
+/**
+ * UserUploadfile
+ */
+class UserUploadfile {
+
+    /**
+     * @var integer
+     */
+    private $id;
+
+    /**
+     * @var integer
+     */
+    private $userId;
+
+    /**
+     * @var string
+     */
+    private $type;
+
+    /**
+     * @var string
+     */
+    private $fileName;
+
+    /**
+     * @var string
+     */
+    private $topojsonfileName;
+
+    /**
+     * @var string
+     */
+    private $sldfileName;
+
+    /**
+     * @var string
+     */
+    private $labelField;
+
+    /**
+     * @var string
+     */
+    private $tipField;
+
+    /**
+     * @var boolean
+     */
+    private $public;
+
+    /**
+     * @var string
+     */
+    private $projection;
+
+    /**
+     * @var string
+     */
+    private $description;
+
+    /**
+     * @var \DateTime
+     */
+    private $createdAt;
+
+    /**
+     * @var \DateTime
+     */
+    private $updatedAt;
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $userUploadfileGeoms;
+
+    /**
+     * Constructor
+     */
+    public function __construct() {
+        $this->userUploadfileGeoms = new \Doctrine\Common\Collections\ArrayCollection();
+    }
+
+    /**
+     * Get id
+     *
+     * @return integer 
+     */
+    public function getId() {
+        return $this->id;
+    }
+
+    /**
+     * Set id
+     * @param integer $id
+     * @return UserUploadfile 
+     */
+    public function setId($id) {
+        $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * Set userId
+     *
+     * @param integer $userId
+     * @return UserUploadfile
+     */
+    public function setUserId($userId) {
+        $this->userId = $userId;
+
+        return $this;
+    }
+
+    /**
+     * Get userId
+     *
+     * @return integer 
+     */
+    public function getUserId() {
+        return $this->userId;
+    }
+
+    /**
+     * Set shpTableName
+     *
+     * @param string $shpTableName
+     * @return UserUploadfile
+     */
+    public function setShpTableName($shpTableName) {
+        $this->shpTableName = $shpTableName;
+
+        return $this;
+    }
+
+    /**
+     * Get shpTableName
+     *
+     * @return string 
+     */
+    public function getShpTableName() {
+        return $this->shpTableName;
+    }
+
+    /**
+     * Set fileName
+     *
+     * @param string $fileName
+     * @return UserUploadfile
+     */
+    public function setFileName($fileName) {
+        $this->fileName = $fileName;
+
+        return $this;
+    }
+
+    /**
+     * Get fileName
+     *
+     * @return string 
+     */
+    public function getFileName() {
+        return $this->fileName;
+    }
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return UserUploadfile
+     */
+    public function setType($type) {
+        $this->type = $type;
+
+        return $this;
+    }
+
+    /**
+     * Get type
+     *
+     * @return string 
+     */
+    public function getType() {
+        return $this->type;
+    }
+
+    /**
+     * Set labelField
+     *
+     * @param string $labelField
+     * @return UserUploadfile
+     */
+    public function setLabelField($labelField) {
+        $this->labelField = $labelField;
+
+        return $this;
+    }
+
+    /**
+     * Get labelField
+     *
+     * @return string 
+     */
+    public function getLabelField() {
+        return $this->labelField;
+    }
+
+    /**
+     * Set tipField
+     *
+     * @param string $tipField
+     * @return UserUploadfile
+     */
+    public function setTipField($tipField) {
+        $this->tipField = $tipField;
+
+        return $this;
+    }
+
+    /**
+     * Get tipField
+     *
+     * @return string 
+     */
+    public function getTipField() {
+        return $this->tipField;
+    }
+
+    /**
+     * Set sldfileName
+     *
+     * @param string $sldfileName
+     * @return UserUploadfile
+     */
+    public function setSldfileName($sldfileName) {
+        $this->sldfileName = $sldfileName;
+
+        return $this;
+    }
+
+    /**
+     * Get sldfileName
+     *
+     * @return string 
+     */
+    public function getSldfileName() {
+        return $this->sldfileName;
+    }
+
+    /**
+     * Set topojsonfileName
+     *
+     * @param string $topojsonfileName
+     * @return UserUploadfile
+     */
+    public function setTopojsonfileName($topojsonfileName) {
+        $this->topojsonfileName = $topojsonfileName;
+
+        return $this;
+    }
+
+    /**
+     * Get topojsonfileName
+     *
+     * @return string 
+     */
+    public function getTopojsonfileName() {
+        return $this->topojsonfileName;
+    }
+
+    /**
+     * Set public
+     *
+     * @param boolean $public
+     * @return UserUploadfile
+     */
+    public function setPublic($public) {
+        $this->public = $public;
+
+        return $this;
+    }
+
+    /**
+     * Get public
+     *
+     * @return boolean 
+     */
+    public function isPublic() {
+        return $this->public;
+    }
+
+    /**
+     * Set projection
+     *
+     * @param string $projection
+     * @return UserUploadfile
+     */
+    public function setProjection($projection) {
+        $this->projection = $projection;
+
+        return $this;
+    }
+
+    /**
+     * Get projection
+     *
+     * @return string 
+     */
+    public function getProjection() {
+        return $this->projection;
+    }
+
+    /**
+     * Set description
+     *
+     * @param string $description
+     * @return UserUploadfile
+     */
+    public function setDescription($description) {
+        $this->description = $description;
+
+        return $this;
+    }
+
+    /**
+     * Get description
+     *
+     * @return string 
+     */
+    public function getDescription() {
+        return $this->description;
+    }
+
+    /**
+     * Set createdAt
+     *
+     * @param \DateTime $createdAt
+     * @return UserUploadfile
+     */
+    public function setCreatedAt($createdAt) {
+        $this->createdAt = $createdAt;
+
+        return $this;
+    }
+
+    /**
+     * Get createdAt
+     *
+     * @return \DateTime 
+     */
+    public function getCreatedAt() {
+        return $this->createdAt;
+    }
+
+    /**
+     * Set updatedAt
+     *
+     * @param \DateTime $updatedAt
+     * @return UserUploadfile
+     */
+    public function setUpdatedAt($updatedAt) {
+        $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get updatedAt
+     *
+     * @return \DateTime 
+     */
+    public function getUpdatedAt() {
+        return $this->updatedAt;
+    }
+
+    /**
+     * @var string
+     */
+    private $sessionId;
+
+    /**
+     * Set sessionId
+     *
+     * @param string $sessionId
+     * @return UserUploadfile
+     */
+    public function setSessionId($sessionId) {
+        $this->sessionId = $sessionId;
+
+        return $this;
+    }
+
+    /**
+     * Get sessionId
+     *
+     * @return string 
+     */
+    public function getSessionId() {
+        return $this->sessionId;
+    }
+
+    /**
+     * @var string
+     */
+    private $geomTableName;
+
+    /**
+     * Set geomTableName
+     *
+     * @param string $geomTableName
+     * @return UserUploadfile
+     */
+    public function setGeomTableName($geomTableName) {
+        $this->geomTableName = $geomTableName;
+
+        return $this;
+    }
+
+    /**
+     * Get geomTableName
+     *
+     * @return string 
+     */
+    public function getGeomTableName() {
+        return $this->geomTableName;
+    }
+
+    /**
+     * @var string
+     */
+    private $geomFieldName;
+
+    /**
+     * Set geomFieldName
+     *
+     * @param string $geomFieldName
+     * @return UserUploadfile
+     */
+    public function setGeomFieldName($geomFieldName) {
+        $this->geomFieldName = $geomFieldName;
+
+        return $this;
+    }
+
+    /**
+     * Get geomFieldName
+     *
+     * @return string 
+     */
+    public function getGeomFieldName() {
+        return $this->geomFieldName;
+    }
+
+    /**
+     * @var \Doctrine\Common\Collections\Collection
+     */
+    private $uploadfileLayers;
+
+    /**
+     * Add uploadfileLayers
+     *
+     * @param \Map2u\CoreBundle\Entity\UploadfileLayer $uploadfileLayers
+     * @return UserUploadfile
+     */
+    public function addUploadfileLayer(\Map2u\CoreBundle\Entity\UploadfileLayer $uploadfileLayers) {
+        $this->uploadfileLayers[] = $uploadfileLayers;
+
+        return $this;
+    }
+
+    /**
+     * Remove uploadfileLayers
+     *
+     * @param \Map2u\CoreBundle\Entity\UploadfileLayer $uploadfileLayers
+     */
+    public function removeUploadfileLayer(\Map2u\CoreBundle\Entity\UploadfileLayer $uploadfileLayers) {
+        $this->uploadfileLayers->removeElement($uploadfileLayers);
+    }
+
+    /**
+     * Get uploadfileLayers
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUploadfileLayers() {
+        return $this->uploadfileLayers;
+    }
+
+    /**
+     * @var string
+     */
+    private $fieldList;
+
+    /**
+     * Get public
+     *
+     * @return boolean 
+     */
+    public function getPublic() {
+        return $this->public;
+    }
+
+    /**
+     * Set fieldList
+     *
+     * @param string $fieldList
+     * @return UserUploadfile
+     */
+    public function setFieldList($fieldList) {
+        $this->fieldList = $fieldList;
+
+        return $this;
+    }
+
+    /**
+     * Get fieldList
+     *
+     * @return string 
+     */
+    public function getFieldList() {
+        return $this->fieldList;
+    }
+
+    /**
+     * Add userUploadfileGeoms
+     *
+     * @param \Map2u\CoreBundle\Entity\UserUploadfileGeom $userUploadfileGeoms
+     * @return UserUploadfile
+     */
+    public function addUserUploadfileGeom(\Map2u\CoreBundle\Entity\UserUploadfileGeom $userUploadfileGeoms) {
+        $this->userUploadfileGeoms[] = $userUploadfileGeoms;
+
+        return $this;
+    }
+
+    /**
+     * Remove userUploadfileGeoms
+     *
+     * @param \Map2u\CoreBundle\Entity\UserUploadfileGeom $userUploadfileGeoms
+     */
+    public function removeUserUploadfileGeom(\Map2u\CoreBundle\Entity\UserUploadfileGeom $userUploadfileGeoms) {
+        $this->userUploadfileGeoms->removeElement($userUploadfileGeoms);
+    }
+
+    /**
+     * @var string
+     */
+    private $thematicStyle;
+
+    /**
+     * Set thematicStyle
+     *
+     * @param string $thematicStyle
+     * @return UserUploadfile
+     */
+    public function setThematicStyle($thematicStyle) {
+        $this->thematicStyle = $thematicStyle;
+
+        return $this;
+    }
+
+    /**
+     * Get thematicStyle
+     *
+     * @return string 
+     */
+    public function getThematicStyle() {
+        return $this->thematicStyle;
+    }
+
+    /**
+     * Get userUploadfileGeoms
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getUserUploadfileGeoms() {
+        return $this->userUploadfileGeoms;
+    }
+
+    /**
+     * @var string
+     */
+    private $thematicmapStyle;
+
+    /**
+     * Set thematicmapStyle
+     *
+     * @param string $thematicmapStyle
+     * @return UserUploadfile
+     */
+    public function setThematicmapStyle($thematicmapStyle) {
+        $this->thematicmapStyle = $thematicmapStyle;
+
+        return $this;
+    }
+
+    /**
+     * Get thematicmapStyle
+     *
+     * @return string 
+     */
+    public function getThematicmapStyle() {
+        return $this->thematicmapStyle;
+    }
+
+    /**
+     * @var \Map2u\CoreBundle\Entity\User
+     */
+    private $user;
+
+    /**
+     * Set user
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $user
+     * @return UserUploadfile
+     */
+    public function setUser(\Application\Sonata\UserBundle\Entity\User $user = null) {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * Get user
+     *
+     * @return \Map2u\CoreBundle\Entity\User 
+     */
+    public function getUser() {
+        return $this->user;
+    }
+
+    /**
+     * @var integer
+     */
+    private $typeId;
+
+
+    /**
+     * Set typeId
+     *
+     * @param integer $typeId
+     * @return UserUploadfile
+     */
+    public function setTypeId($typeId)
+    {
+        $this->typeId = $typeId;
+
+        return $this;
+    }
+
+    /**
+     * Get typeId
+     *
+     * @return integer 
+     */
+    public function getTypeId()
+    {
+        return $this->typeId;
+    }
+}

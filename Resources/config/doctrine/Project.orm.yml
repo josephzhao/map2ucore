@@ -1,0 +1,67 @@
+Map2u\CoreBundle\Entity\Project:
+    type: entity
+    table: map2u_projects
+
+    oneToMany:
+        reports:
+            targetEntity: Report
+            mappedBy: project            
+    manyToOne:
+        user:
+            targetEntity: Application\Sonata\UserBundle\Entity\User
+            cascade: {  }
+            inversedBy: {}
+            joinColumns:
+                user_id:
+                    referencedColumnName: id
+            orphanRemoval: false
+#    manyToMany:
+#        tags:
+#          targetEntity: Map2u\CoreBundle\Entity\Tag
+#          inversedBy: {}
+#          joinTable:
+#                name: manifold_projects_tags
+#                joinColumns:
+#                  project_id:
+#                    referencedColumnName: id
+#                inverseJoinColumns:
+#                  tag_id:
+#                    referencedColumnName: id
+#          orphanRemoval: false    
+#        tradeAreas:
+#          targetEntity: TradeArea
+#          inversedBy: {}
+#          joinTable:
+#                name: manifold_projects_tradeareas
+#                joinColumns:
+#                  project_id:
+#                    referencedColumnName: id
+#                inverseJoinColumns:
+#                  tradearea_id:
+#                    referencedColumnName: id
+#          orphanRemoval: false         
+#        customers:
+#          targetEntity: Customer
+#          inversedBy: projects
+#          joinTable:
+#                name: manifold_projects_customers
+#                joinColumns:
+#                  project_id:
+#                    referencedColumnName: id
+#                inverseJoinColumns:
+#                  customer_id:
+#                    referencedColumnName: id
+#          orphanRemoval: false                   
+#        categories:
+#          targetEntity: Map2u\CoreBundle\Entity\Category
+#          inversedBy: {}
+#          joinTable:
+#                name: manifold_projects_categories
+#                joinColumns:
+#                  project_id:
+#                    referencedColumnName: id
+#                inverseJoinColumns:
+#                  category_id:
+#                    referencedColumnName: id
+#          orphanRemoval: false               
+    lifecycleCallbacks: {  }

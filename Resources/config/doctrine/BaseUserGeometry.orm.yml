@@ -1,0 +1,70 @@
+Map2u\CoreBundle\Entity\BaseUserGeometry:
+    type: mappedSuperclass
+    fields:
+
+        userId:     
+            type: guid
+            unsigned: false
+            nullable: false
+            column: user_id
+        name:     
+            type: string
+            length: 250
+            fixed: false
+            nullable: true
+            column: name
+        geomType:     
+            type: string
+            length: 250
+            fixed: false
+            nullable: true
+            column: geom_type
+        radius:
+            type: string
+            length: 250
+            fixed: false
+            nullable: true
+            column: radius
+        buffer:
+            type: string
+            length: 250
+            fixed: false
+            nullable: true
+            column: buffer
+        markerIcon:
+            type: string
+            length: 250
+            fixed: false
+            nullable: true
+            column: marker_icon
+        public:     
+            type: boolean
+            nullable: true
+            column: b_public
+            options:
+                default: false
+        theGeom:
+            type: geometry
+            nullable: true
+            requireSQLConversion: true
+            column: the_geom
+        description:     
+            type: text
+            nullable: true
+            column: description
+        createdAt:
+            type: datetime
+            nullable: true
+            column: created_at
+            gedmo:
+              timestampable:
+                on: create
+        updatedAt:
+            type: datetime
+            nullable: true
+            column: updated_at
+            gedmo:
+              timestampable:
+                on: update
+            
+    lifecycleCallbacks: {  }

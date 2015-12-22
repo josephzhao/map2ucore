@@ -1,0 +1,48 @@
+key:
+  table:
+    entry:
+      motorway: "Motorway"
+      main_road: "Main road"
+      trunk: "Trunk road"
+      primary: "Primary road"
+      secondary: "Secondary road"
+      unclassified: "Unclassified road"
+      track: "Track"
+      bridleway: "Bridleway"
+      cycleway: "Cycleway"
+      footway: "Footway"
+      rail: "Railway"
+      subway: "Subway"
+      tram: Light rail, tram
+      cable: Cable car, chair lift
+      runway: Airport Runway, taxiway
+      apron: Airport apron, terminal
+      admin: "Administrative boundary"
+      forest: "Forest"
+      wood: "Wood"
+      golf: "Golf course"
+      park: "Park"
+      resident: "Residential area"
+      common: Common, meadow
+      retail: "Retail area"
+      industrial: "Industrial area"
+      commercial: "Commercial area"
+      heathland: "Heathland"
+      lake: Lake, reservoir
+      farm: "Farm"
+      brownfield: "Brownfield site"
+      cemetery: "Cemetery"
+      allotments: "Allotments"
+      pitch: "Sports pitch"
+      centre: "Sports centre"
+      reserve: "Nature reserve"
+      military: "Military area"
+      school: School, university
+      building: "Significant building"
+      station: "Railway station"
+      summit: Summit, peak
+      tunnel: "Dashed casing = tunnel"
+      bridge: "Black casing = bridge"
+      private: "Private access"
+      destination: "Destination access"
+      construction: "Roads under construction"

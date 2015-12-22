@@ -1,0 +1,954 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <link href="/css/bower_components/bootstrap/dist/css/bootstrap.css" rel="stylesheet">
+        <link href="/css/slider.css" rel="stylesheet"> 
+
+    </head>
+    <body>
+        <div class="title"> <h3>Stylize</h3></div>
+        <div>
+            <div class="layer-to-select" style="display: inline-block;">Layer: <select><option value="" disabled selected>Select a Layer to Style</option></select></div>
+            <div class="symbol-to-select" style="display: inline-block;"><select><option value=""  selected>Single Symbol</option><option value=""  selected>Categorized</option><option value=""  selected>Color Ramp</option><option value=""  selected>Load SLD</option></select></div>
+        </div>
+        <div>Symbol Type:<select><option value="point"  selected>Point</option><option value="line">Line</option><option value="polygon"  selected>Polygon</option></select></div>
+        <div class="sld-properties-setting">
+            <div class="single_symbol">
+                <table>
+                    <tbody>
+                        <tr>
+                            <td><h4>Fill</h4>
+                                <div class="pull-left">
+                                    <div>Size<select><option>0.5</option><option selected>1</option><option>2</option><option>5</option><option>10</option></select></div>
+                                    <div>Opacity</div>
+                                    <div>Rotation</div>
+                                    <div>Color:</div>
+                                    <div><input type="text"></div>
+                                    <div>R:<input type="text" class="span2" value="" data-slider-min="-20" data-slider-max="20" data-slider-step="1" data-slider-value="-14" data-slider-orientation="vertical" data-slider-selection="after" data-slider-tooltip="hide">
+                                    </div>
+                                    <div>G:<input type="text" class="span2" value="" data-slider-min="-20" data-slider-max="20" data-slider-step="1" data-slider-value="-14" data-slider-orientation="vertical" data-slider-selection="after" data-slider-tooltip="hide">
+                                    </div>
+                                    <div>B:</div>
+
+                                    <div class="well2">
+                                        <p>
+                                            <b>R</b> <div class="slider slider-horizontal" id="RC" style="display:inline-block;width: 114px;"><input type="text" class="span2" value="" data-slider-min="0" data-slider-max="255" data-slider-step="1" data-slider-value="128" data-slider-id="RC" id="R" data-slider-tooltip="hide" data-slider-handle="round"></div>
+                                        </p>
+                                        <p>
+                                            <b>G</b> <div class="slider slider-horizontal" id="GC" style="display:inline-block;width: 114px;"><input type="text" class="span2" value="" data-slider-min="0" data-slider-max="255" data-slider-step="1" data-slider-value="128" data-slider-id="GC" id="G" data-slider-tooltip="hide" data-slider-handle="round"></div>
+                                        </p>
+                                        <p>
+                                            <b>B</b> <div class="slider slider-horizontal" id="BC" style="display:inline-block;width: 114px;"><input type="text" class="span2" value="" data-slider-min="0" data-slider-max="255" data-slider-step="1" data-slider-value="128" data-slider-id="BC" id="B" data-slider-tooltip="hide" data-slider-handle="round"></div>
+                                        </p>
+                                        <div id="RGB" style="background: rgb(88, 98, 89);"></div>
+                                    </div>
+                                    <div>Symbol<select><option>Circle</option><option>Square</option><option>Triangle</option><option>Star</option></select></div>
+                                </div>
+                                <div class="pull-right"><img src="/images/colorbox.jpg"  style="height: 150px;"><img src="/images/shadebox.jpg"  style="height: 150px;"></div>
+                            </td>
+                            <td>
+                                <h4>Stroke</h4>
+                                <div class="pull-left">
+                                    <div>Thickness<select><option>0.5</option><option selected>1</option><option>2</option><option>5</option><option>10</option></select></div>
+                                    <div>Opacity</div>
+                                    <div>Line Join<select><option>mitre</option><option selected>round</option><option>bevel</option></select></div>
+                                    <div>Line Cap<select><option>butt</option><option selected>round</option><option>square</option></select></div>
+                                    <div>Dash Pattern<select><option>1</option><option selected>1 1</option><option>1 2</option></select></div>
+                                    <div><input type="text"></div>
+                                    <div>R:</div>
+                                    <div>G:</div>
+                                    <div>B:</div>
+                                    <div class="well2">
+                                        <p>
+                                            <b>R</b> <div  id="RC" style="display:inline-block;width: 114px;"><input type="text" class="slider slider-horizontal" value="" data-slider-min="0" data-slider-max="255" data-slider-step="1" data-slider-value="128" data-slider-id="RC" id="R" data-slider-tooltip="hide" data-slider-handle="round"></div>
+                                        </p>
+                                        <p>
+                                            <b>G</b> <div class="slider slider-horizontal" id="GC" style="display:inline-block;width: 114px;"><input type="text" class="span2" value="" data-slider-min="0" data-slider-max="255" data-slider-step="1" data-slider-value="128" data-slider-id="GC" id="G" data-slider-tooltip="hide" data-slider-handle="round"></div>
+                                        </p>
+                                        <p>
+                                            <b>B</b> <div class="slider slider-horizontal" id="BC" style="display:inline-block;width: 114px;"><input type="text" class="span2" value="" data-slider-min="0" data-slider-max="255" data-slider-step="1" data-slider-value="128" data-slider-id="BC" id="B" data-slider-tooltip="hide" data-slider-handle="round"></div>
+                                        </p>
+                                        <div id="RGB" style="background: rgb(88, 98, 89);"></div>
+                                    </div>
+                                </div>
+                                <div class="pull-right"><img src="/images/colorbox.jpg" style="height: 150px;"><img src="/images/shadebox.jpg"  style="height: 150px;"></div>
+
+                            </td>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <script src="/css/bower_components/jquery/dist/jquery.min.js"></script>
+        <script src="/js/bootstrap-slider.js"></script>
+        <script>
+            $(".slider").slider()
+                    .on("slide", function () {
+                        alert($(this).data("slider-id") + "  " + $(this).val());
+                    });
+            {# .on(&#039;slide&#039;, function(ev){
+               ....
+             });#}
+        </script>
+    </body>
+</html>
+
+{#
+<div class="x-layer x-window-default x-closable x-window-closable x-window-default-closable x-border-box x-resizable x-window-resizable x-window-default-resizable" style="width: 650px; height: 530px; right: auto; left: 33px; top: 0.0666667px; z-index: 19010;" id="window-1282" tabindex="-1">
+    <div style="right: auto; left: -5px; top: -5px; width: 650px;" class="x-window-header x-header x-header-draggable x-docked x-unselectable x-window-header-default x-horizontal x-window-header-horizontal x-window-header-default-horizontal x-top x-window-header-top x-window-header-default-top x-box-layout-ct" id="window-1282_header">
+
+        <div style="width: 630px; height: 16px;" id="window-1282_header-innerCt" data-ref="innerCt" role="presentation" class="x-box-inner">
+            <div style="width: 630px;" id="window-1282_header-targetEl" data-ref="targetEl" class="x-box-target" role="presentation">
+                <div style="right: auto; left: 0px; top: 0px; margin: 0px; width: 608px;" class="x-title x-window-header-title x-window-header-title-default x-box-item x-title-default x-title-rotate-none x-title-align-left" unselectable="on" id="title-1455">
+                    <div id="title-1455-textEl" data-ref="textEl" class="x-title-text x-title-text-default x-title-item" unselectable="on">Stylize</div>
+                </div>
+                <div style="right: auto; left: 614px; top: 0px; margin: 0px;" componentid="tool-1454" tabindex="undefined" class="x-tool x-box-item x-tool-default x-tool-after-title" id="tool-1454"><img id="tool-1454-toolEl" data-ref="toolEl" src="data:image/gif;base64,R0lGODlhAQABAID/AMDAwAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw==" class="x-tool-img x-tool-close" role="presentation">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="right: auto; left: 0px; top: 31px; width: 640px;" tabindex="0" class="x-toolbar x-docked x-toolbar-default x-docked-top x-toolbar-docked-top x-toolbar-default-docked-top x-box-layout-ct" id="toolbar-1283">
+        <div style="width: 630px; height: 24px;" id="toolbar-1283-innerCt" data-ref="innerCt" role="presentation" class="x-box-inner">
+            <div style="width: 630px;" id="toolbar-1283-targetEl" data-ref="targetEl" class="x-box-target" role="presentation">
+                <div style="right: auto; left: 0px; top: 0px; margin: 0px;" class="x-field x-form-item x-form-item-default x-form-type-text x-box-item x-toolbar-item x-field-default x-hbox-form-item" id="combobox-1281">
+                    <label id="combobox-1281-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="combobox-1281-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px">Layer:</span>
+                    </label>
+                    <div id="combobox-1281-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-form-text-field-body x-form-text-field-body-default  ">
+                        <div id="combobox-1281-triggerWrap" data-ref="triggerWrap" class="x-form-trigger-wrap x-form-trigger-wrap-default">
+                            <div id="combobox-1281-inputWrap" data-ref="inputWrap" class="x-form-text-wrap x-form-text-wrap-default">
+                                <input componentid="combobox-1281" id="combobox-1281-inputEl" data-ref="inputEl" role="combobox" size="1" name="combobox-1281-inputEl" placeholder="Select a Layer to Style" readonly="readonly" tabindex="-1" class="x-form-field x-form-empty-field x-form-empty-field-default x-form-text x-form-text-default  " autocomplete="off" type="text">
+                            </div>
+                            <div id="combobox-1281-trigger-picker" class="x-form-trigger x-form-trigger-default x-form-arrow-trigger x-form-arrow-trigger-default "></div>
+                        </div>
+                    </div>
+                </div>
+                <div style="right: auto; left: 283px; top: 0px; margin: 0px;" class="x-field x-form-item x-form-item-default x-form-type-text x-box-item x-toolbar-item x-field-default x-hbox-form-item x-form-item-no-label" id="combobox-1278">
+                    <label id="combobox-1278-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="combobox-1278-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px"></span>
+                    </label>
+                    <div id="combobox-1278-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-form-text-field-body x-form-text-field-body-default  ">
+                        <div id="combobox-1278-triggerWrap" data-ref="triggerWrap" class="x-form-trigger-wrap x-form-trigger-wrap-default">
+                            <div id="combobox-1278-inputWrap" data-ref="inputWrap" class="x-form-text-wrap x-form-text-wrap-default">
+                                <input componentid="combobox-1278" id="combobox-1278-inputEl" data-ref="inputEl" role="combobox" size="1" name="combobox-1278-inputEl" value="Single Symbol" readonly="readonly" tabindex="-1" class="x-form-field x-form-text x-form-text-default  " autocomplete="off" type="text">
+                            </div>
+                            <div id="combobox-1278-trigger-picker" class="x-form-trigger x-form-trigger-default x-form-arrow-trigger x-form-arrow-trigger-default  "></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="width: 640px; height: 415px; left: 0px; top: 68px;" id="window-1282-body" data-ref="body" class="x-window-body x-window-body-default x-closable x-window-body-closable x-window-body-default-closable x-window-body-default x-window-body-default-closable x-resizable x-window-body-resizable x-window-body-default-resizable" role="presentation">
+        <div style="margin: 0px; width: 638px; height: 413px;" class="x-panel x-fit-item x-window-item x-panel-default" id="panel-1256">
+            <div style="overflow: auto; width: 638px; height: 413px; left: 0px; top: 0px;" id="panel-1256-body" data-ref="body" class="x-panel-body x-panel-body-default x-panel-body-default" role="presentation">
+                <div style="width: 100%; height: 100%;" id="panel-1256-outerCt" data-ref="outerCt" class="x-autocontainer-outerCt" role="presentation">
+                    <div id="panel-1256-innerCt" data-ref="innerCt" style="" class="x-autocontainer-innerCt" role="presentation">
+                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-field-default x-autocontainer-form-item" id="combobox-1121">
+                            <label id="combobox-1121-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="combobox-1121-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px">Symbol Type:</span>
+                            </label>
+                            <div id="combobox-1121-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-form-text-field-body x-form-text-field-body-default  ">
+                                <div id="combobox-1121-triggerWrap" data-ref="triggerWrap" class="x-form-trigger-wrap x-form-trigger-wrap-default">
+                                    <div id="combobox-1121-inputWrap" data-ref="inputWrap" class="x-form-text-wrap x-form-text-wrap-default">
+                                        <input componentid="combobox-1121" id="combobox-1121-inputEl" data-ref="inputEl" role="combobox" size="1" name="combobox-1121-inputEl" value="Point" readonly="readonly" class="x-form-field x-form-text x-form-text-default  " autocomplete="off" type="text">
+                                    </div>
+                                    <div id="combobox-1121-trigger-picker" class="x-form-trigger x-form-trigger-default x-form-arrow-trigger x-form-arrow-trigger-default  "></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="height: 19px;" class="x-panel x-panel-default" id="panel-1252">
+                            <div style="left: 0px; top: 0px; width: 636px; height: 19px;" id="panel-1252-body" data-ref="body" class="x-panel-body x-panel-body-default x-box-layout-ct x-panel-body-default" role="presentation">
+                                <div style="width: 634px; height: 17px;" id="panel-1252-innerCt" data-ref="innerCt" role="presentation" class="x-box-inner">
+                                    <div style="width: 634px;" id="panel-1252-targetEl" data-ref="targetEl" class="x-box-target" role="presentation">
+                                        <label class="x-component x-box-item x-component-default" style="width: 317px; margin: 0px; right: auto; left: 0px; top: 0px;" id="label-1253" for=""><b>Fill:</b>
+                                        </label>
+                                        <label class="x-component x-box-item x-component-default" style="width: 317px; right: auto; left: 317px; margin: 0px; top: 0px;" id="label-1254" for=""><b>Stroke:</b>
+                                        </label>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="height: 321px;" class="x-panel x-panel-default" id="panel-1255">
+                            <div style="left: 0px; top: 0px; width: 636px; height: 321px;" id="panel-1255-body" data-ref="body" class="x-panel-body x-panel-body-default x-box-layout-ct x-panel-body-default" role="presentation">
+                                <div style="width: 634px; height: 319px;" id="panel-1255-innerCt" data-ref="innerCt" role="presentation" class="x-box-inner">
+                                    <div style="width: 634px;" id="panel-1255-targetEl" data-ref="targetEl" class="x-box-target" role="presentation">
+                                        <div class="x-panel x-box-item x-panel-default" style="width: 317px; margin: 0px; right: auto; left: 0px; top: 0px; height: 292px;" id="panel-1142">
+                                            <div style="left: 0px; top: 0px; width: 317px; height: 292px;" id="panel-1142-body" data-ref="body" class="x-panel-body x-panel-body-default x-column-layout-ct x-panel-body-default" role="presentation">
+                                                <div style="width: 100%; table-layout: fixed;" id="panel-1142-outerCt" data-ref="outerCt" class="x-autocontainer-outerCt" role="presentation">
+                                                    <div id="panel-1142-innerCt" data-ref="innerCt" style="" class="x-autocontainer-innerCt" role="presentation">
+                                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-column x-field-default x-column-form-item" id="combobox-1126">
+                                                            <label id="combobox-1126-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="combobox-1126-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px">Size:</span>
+                                                            </label>
+                                                            <div id="combobox-1126-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-form-text-field-body x-form-text-field-body-default  ">
+                                                                <div id="combobox-1126-triggerWrap" data-ref="triggerWrap" class="x-form-trigger-wrap x-form-trigger-wrap-default">
+                                                                    <div id="combobox-1126-inputWrap" data-ref="inputWrap" class="x-form-text-wrap x-form-text-wrap-default">
+                                                                        <input componentid="combobox-1126" id="combobox-1126-inputEl" data-ref="inputEl" role="combobox" size="1" name="combobox-1126-inputEl" value="1" class="x-form-field x-form-text x-form-text-default  " autocomplete="off" type="text">
+                                                                    </div>
+                                                                    <div id="combobox-1126-trigger-picker" class="x-form-trigger x-form-trigger-default x-form-arrow-trigger x-form-arrow-trigger-default "></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-column x-field-default x-column-form-item" style="width:300px;" id="slider-1122">
+                                                            <label id="slider-1122-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="slider-1122-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px">Opacity:</span>
+                                                            </label>
+                                                            <div id="slider-1122-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-field-body x-field-body-default  x-slider-ct-horz">
+                                                                <div componentid="slider-1122" id="slider-1122-inputEl" role="slider" class="x-slider x-form-field x-slider-horz" tabindex="0" aria-orientation="horizontal">
+                                                                    <div id="slider-1122-endEl" data-ref="endEl" class="x-slider-end" role="presentation">
+                                                                        <div id="slider-1122-innerEl" data-ref="innerEl" class="x-slider-inner" role="presentation">
+                                                                            <div style="left:100%;" id="slider-1122-thumb-0" class="x-slider-thumb" role="presentation"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-column x-field-default x-column-form-item" style="width:300px;" id="slider-1124">
+                                                            <label id="slider-1124-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="slider-1124-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px">Rotation:</span>
+                                                            </label>
+                                                            <div id="slider-1124-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-field-body x-field-body-default  x-slider-ct-horz">
+                                                                <div componentid="slider-1124" id="slider-1124-inputEl" role="slider" class="x-slider x-form-field x-slider-horz" tabindex="0" aria-orientation="horizontal">
+                                                                    <div id="slider-1124-endEl" data-ref="endEl" class="x-slider-end" role="presentation">
+                                                                        <div id="slider-1124-innerEl" data-ref="innerEl" class="x-slider-inner" role="presentation">
+                                                                            <div style="left:0%;" id="slider-1124-thumb-0" class="x-slider-thumb" role="presentation"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="x-panel x-column x-panel-default" style="height: 200px; width: 314px;" id="ext-comp-1127">
+                                                            <div style="height: 200px; left: 0px; top: 0px; width: 314px;" id="ext-comp-1127-body" data-ref="body" class="x-panel-body x-panel-body-default x-panel-body-default x-docked-noborder-top x-docked-noborder-right x-docked-noborder-bottom x-docked-noborder-left" role="presentation">
+                                                                <div style="height: 100%;" id="ext-comp-1127-outerCt" data-ref="outerCt" class="x-autocontainer-outerCt" role="presentation">
+                                                                    <div id="ext-comp-1127-innerCt" data-ref="innerCt" style="" class="x-autocontainer-innerCt" role="presentation">
+                                                                        <div style="width: 314px; height: 162px;" class="x-panel x-panel-default" id="panel-1140">
+                                                                            <div style="width: 314px; height: 162px; left: 0px; top: 0px;" id="panel-1140-body" data-ref="body" class="x-panel-body x-panel-body-default x-box-layout-ct x-panel-body-default x-docked-noborder-top x-docked-noborder-right x-docked-noborder-bottom x-docked-noborder-left" role="presentation">
+                                                                                <div style="width: 314px; height: 162px;" id="panel-1140-innerCt" data-ref="innerCt" role="presentation" class="x-box-inner">
+                                                                                    <div style="width: 314px;" id="panel-1140-targetEl" data-ref="targetEl" class="x-box-target" role="presentation">
+                                                                                        <div class="x-panel x-box-item x-panel-default" style="width: 120px; right: auto; left: 0px; top: 0px; margin: 0px; height: 139px;" id="panel-1139">
+                                                                                            <div style="width: 120px; height: 139px; left: 0px; top: 0px;" id="panel-1139-body" data-ref="body" class="x-panel-body x-panel-body-default x-box-layout-ct x-panel-body-default x-docked-noborder-top x-docked-noborder-right x-docked-noborder-bottom x-docked-noborder-left" role="presentation">
+                                                                                                <div style="height: 139px; width: 120px;" id="panel-1139-innerCt" data-ref="innerCt" role="presentation" class="x-box-inner">
+                                                                                                    <div style="width: 120px;" id="panel-1139-targetEl" data-ref="targetEl" class="x-box-target" role="presentation">
+                                                                                                        <div class="x-panel x-box-item x-panel-default" style="width: 120px; height: 50px; right: auto; left: 0px; top: 0px; margin: 0px;" id="panel-1130">
+                                                                                                            <div style="height: 50px; width: 120px; left: 0px; top: 0px;" id="panel-1130-body" data-ref="body" class="x-panel-body x-panel-body-default x-panel-body-default" role="presentation">
+                                                                                                                <div style="width: 100%; table-layout: fixed; height: 100%;" id="panel-1130-outerCt" data-ref="outerCt" class="x-autocontainer-outerCt" role="presentation">
+                                                                                                                    <div id="panel-1130-innerCt" data-ref="innerCt" style="" class="x-autocontainer-innerCt" role="presentation"></div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-box-item x-field-default x-vbox-form-item x-form-item-no-label" style="width: 120px; right: auto; left: 0px; top: 50px; margin: 0px;" id="textfield-1138">
+                                                                                                            <label id="textfield-1138-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="textfield-1138-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px"></span>
+                                                                                                            </label>
+                                                                                                            <div id="textfield-1138-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-form-text-field-body x-form-text-field-body-default  ">
+                                                                                                                <div id="textfield-1138-triggerWrap" data-ref="triggerWrap" class="x-form-trigger-wrap x-form-trigger-wrap-default">
+                                                                                                                    <div id="textfield-1138-inputWrap" data-ref="inputWrap" class="x-form-text-wrap x-form-text-wrap-default">
+                                                                                                                        <input componentid="textfield-1138" id="textfield-1138-inputEl" data-ref="inputEl" role="textbox" size="1" name="textfield-1138-inputEl" value="ffffff" readonly="readonly" class="x-form-field x-form-text x-form-text-default  " autocomplete="off" type="text">
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-box-item x-field-default x-vbox-form-item x-form-item-no-label" style="width: 120px; right: auto; left: 0px; top: 79px; margin: 0px;" id="slider-1132">
+                                                                                                            <label id="slider-1132-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="slider-1132-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px"></span>
+                                                                                                            </label>
+                                                                                                            <div id="slider-1132-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-field-body x-field-body-default  x-slider-ct-horz">
+                                                                                                                <div componentid="slider-1132" id="slider-1132-inputEl" role="slider" class="x-slider x-form-field x-slider-horz" tabindex="0" aria-orientation="horizontal">
+                                                                                                                    <div id="slider-1132-endEl" data-ref="endEl" class="x-slider-end" role="presentation">
+                                                                                                                        <div id="slider-1132-innerEl" data-ref="innerEl" class="x-slider-inner" role="presentation">
+                                                                                                                            <div style="left:100%;" id="slider-1132-thumb-0" class="x-slider-thumb" role="presentation"></div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-box-item x-field-default x-vbox-form-item x-form-item-no-label" style="width: 120px; right: auto; left: 0px; top: 99px; margin: 0px;" id="slider-1136">
+                                                                                                            <label id="slider-1136-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="slider-1136-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px"></span>
+                                                                                                            </label>
+                                                                                                            <div id="slider-1136-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-field-body x-field-body-default  x-slider-ct-horz">
+                                                                                                                <div componentid="slider-1136" id="slider-1136-inputEl" role="slider" class="x-slider x-form-field x-slider-horz" tabindex="0" aria-orientation="horizontal">
+                                                                                                                    <div id="slider-1136-endEl" data-ref="endEl" class="x-slider-end" role="presentation">
+                                                                                                                        <div id="slider-1136-innerEl" data-ref="innerEl" class="x-slider-inner" role="presentation">
+                                                                                                                            <div style="left:100%;" id="slider-1136-thumb-0" class="x-slider-thumb" role="presentation"></div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-box-item x-field-default x-vbox-form-item x-form-item-no-label" style="width: 120px; right: auto; left: 0px; top: 119px; margin: 0px;" id="slider-1134">
+                                                                                                            <label id="slider-1134-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="slider-1134-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px"></span>
+                                                                                                            </label>
+                                                                                                            <div id="slider-1134-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-field-body x-field-body-default  x-slider-ct-horz">
+                                                                                                                <div componentid="slider-1134" id="slider-1134-inputEl" role="slider" class="x-slider x-form-field x-slider-horz" tabindex="0" aria-orientation="horizontal">
+                                                                                                                    <div id="slider-1134-endEl" data-ref="endEl" class="x-slider-end" role="presentation">
+                                                                                                                        <div id="slider-1134-innerEl" data-ref="innerEl" class="x-slider-inner" role="presentation">
+                                                                                                                            <div style="left:100%;" id="slider-1134-thumb-0" class="x-slider-thumb" role="presentation"></div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div style="right: auto; left: 120px; top: 0px; margin: 0px; width: 194px; height: 162px;" class="x-panel x-box-item x-panel-default" id="panel-1131">
+                                                                                            <div style="width: 194px; height: 162px; left: 0px; top: 0px;" id="panel-1131-body" data-ref="body" class="x-panel-body x-panel-body-default x-box-layout-ct x-panel-body-default" role="presentation">
+                                                                                                <div style="width: 192px; height: 160px;" id="panel-1131-innerCt" data-ref="innerCt" role="presentation" class="x-box-inner">
+                                                                                                    <div style="width: 192px;" id="panel-1131-targetEl" data-ref="targetEl" class="x-box-target" role="presentation">
+                                                                                                        <div class="x-panel x-box-item x-panel-default" style="width: 160px; height: 160px; right: auto; left: 0px; top: 0px; margin: 0px;" id="panel-1128">
+                                                                                                            <div style="width: 160px; height: 160px; left: 0px; top: 0px;" id="panel-1128-body" data-ref="body" class="x-panel-body x-panel-body-default x-panel-body-default" role="presentation">
+                                                                                                                <div style="width: 100%; table-layout: fixed; height: 100%;" id="panel-1128-outerCt" data-ref="outerCt" class="x-autocontainer-outerCt" role="presentation">
+                                                                                                                    <div id="panel-1128-innerCt" data-ref="innerCt" style="" class="x-autocontainer-innerCt" role="presentation"><img id="coloreditorbox0" src="/images/colorbox.jpg" alt="failed to load color editor" draggable="false" style="-khtml-user-select:none;-o-user-select:none;-moz-user-select:none;-webkit-user-select:none;user-select:none;" width="100%">
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="x-panel x-box-item x-panel-default" style="width: 32px; height: 160px; right: auto; left: 160px; top: 0px; margin: 0px;" id="panel-1129">
+                                                                                                            <div style="width: 32px; height: 160px; left: 0px; top: 0px;" id="panel-1129-body" data-ref="body" class="x-panel-body x-panel-body-default x-panel-body-default" role="presentation">
+                                                                                                                <div style="width: 100%; table-layout: fixed; height: 100%;" id="panel-1129-outerCt" data-ref="outerCt" class="x-autocontainer-outerCt" role="presentation">
+                                                                                                                    <div id="panel-1129-innerCt" data-ref="innerCt" style="" class="x-autocontainer-innerCt" role="presentation"><img id="coloreditorslider0" src="/images/shadebox.jpg" alt="failed to load color editor" draggable="false" style="-khtml-user-select:none;-o-user-select:none;-moz-user-select:none;-webkit-user-select:none;user-select:none;" height="160" width="100%">
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-column x-field-default x-column-form-item" id="combobox-1141">
+                                                            <label id="combobox-1141-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="combobox-1141-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px">Symbol:</span>
+                                                            </label>
+                                                            <div id="combobox-1141-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-form-text-field-body x-form-text-field-body-default  ">
+                                                                <div id="combobox-1141-triggerWrap" data-ref="triggerWrap" class="x-form-trigger-wrap x-form-trigger-wrap-default">
+                                                                    <div id="combobox-1141-inputWrap" data-ref="inputWrap" class="x-form-text-wrap x-form-text-wrap-default">
+                                                                        <input componentid="combobox-1141" id="combobox-1141-inputEl" data-ref="inputEl" role="combobox" size="1" name="combobox-1141-inputEl" value="circle" class="x-form-field x-form-text x-form-text-default  " autocomplete="off" type="text">
+                                                                    </div>
+                                                                    <div id="combobox-1141-trigger-picker" class="x-form-trigger x-form-trigger-default x-form-arrow-trigger x-form-arrow-trigger-default  "></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="x-panel x-box-item x-panel-default" style="width: 317px; right: auto; left: 317px; margin: 0px; top: 0px; height: 319px;" id="panel-1163">
+                                            <div style="left: 0px; top: 0px; width: 317px; height: 319px;" id="panel-1163-body" data-ref="body" class="x-panel-body x-panel-body-default x-column-layout-ct x-panel-body-default" role="presentation">
+                                                <div style="width: 100%; table-layout: fixed;" id="panel-1163-outerCt" data-ref="outerCt" class="x-autocontainer-outerCt" role="presentation">
+                                                    <div id="panel-1163-innerCt" data-ref="innerCt" style="" class="x-autocontainer-innerCt" role="presentation">
+                                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-column x-field-default x-column-form-item" id="combobox-1143">
+                                                            <label id="combobox-1143-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="combobox-1143-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px">Thickness:</span>
+                                                            </label>
+                                                            <div id="combobox-1143-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-form-text-field-body x-form-text-field-body-default  ">
+                                                                <div id="combobox-1143-triggerWrap" data-ref="triggerWrap" class="x-form-trigger-wrap x-form-trigger-wrap-default">
+                                                                    <div id="combobox-1143-inputWrap" data-ref="inputWrap" class="x-form-text-wrap x-form-text-wrap-default">
+                                                                        <input componentid="combobox-1143" id="combobox-1143-inputEl" data-ref="inputEl" role="combobox" size="1" name="combobox-1143-inputEl" value="1" class="x-form-field x-form-text x-form-text-default  " autocomplete="off" type="text">
+                                                                    </div>
+                                                                    <div id="combobox-1143-trigger-picker" class="x-form-trigger x-form-trigger-default x-form-arrow-trigger x-form-arrow-trigger-default  "></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-column x-field-default x-column-form-item" style="width:300px;" id="slider-1144">
+                                                            <label id="slider-1144-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="slider-1144-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px">Opacity:</span>
+                                                            </label>
+                                                            <div id="slider-1144-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-field-body x-field-body-default  x-slider-ct-horz">
+                                                                <div componentid="slider-1144" id="slider-1144-inputEl" role="slider" class="x-slider x-form-field x-slider-horz" tabindex="0" aria-orientation="horizontal">
+                                                                    <div id="slider-1144-endEl" data-ref="endEl" class="x-slider-end" role="presentation">
+                                                                        <div id="slider-1144-innerEl" data-ref="innerEl" class="x-slider-inner" role="presentation">
+                                                                            <div style="left:100%;" id="slider-1144-thumb-0" class="x-slider-thumb" role="presentation"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-column x-field-default x-column-form-item" id="combobox-1146">
+                                                            <label id="combobox-1146-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="combobox-1146-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px">Line Join:</span>
+                                                            </label>
+                                                            <div id="combobox-1146-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-form-text-field-body x-form-text-field-body-default  ">
+                                                                <div id="combobox-1146-triggerWrap" data-ref="triggerWrap" class="x-form-trigger-wrap x-form-trigger-wrap-default">
+                                                                    <div id="combobox-1146-inputWrap" data-ref="inputWrap" class="x-form-text-wrap x-form-text-wrap-default">
+                                                                        <input componentid="combobox-1146" id="combobox-1146-inputEl" data-ref="inputEl" role="combobox" size="1" name="combobox-1146-inputEl" value="mitre" readonly="readonly" class="x-form-field x-form-text x-form-text-default  " autocomplete="off" type="text">
+                                                                    </div>
+                                                                    <div id="combobox-1146-trigger-picker" class="x-form-trigger x-form-trigger-default x-form-arrow-trigger x-form-arrow-trigger-default  "></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-column x-field-default x-column-form-item" id="combobox-1147">
+                                                            <label id="combobox-1147-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="combobox-1147-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px">Line Cap:</span>
+                                                            </label>
+                                                            <div id="combobox-1147-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-form-text-field-body x-form-text-field-body-default  ">
+                                                                <div id="combobox-1147-triggerWrap" data-ref="triggerWrap" class="x-form-trigger-wrap x-form-trigger-wrap-default">
+                                                                    <div id="combobox-1147-inputWrap" data-ref="inputWrap" class="x-form-text-wrap x-form-text-wrap-default">
+                                                                        <input componentid="combobox-1147" id="combobox-1147-inputEl" data-ref="inputEl" role="combobox" size="1" name="combobox-1147-inputEl" value="butt" readonly="readonly" class="x-form-field x-form-text x-form-text-default  " autocomplete="off" type="text">
+                                                                    </div>
+                                                                    <div id="combobox-1147-trigger-picker" class="x-form-trigger x-form-trigger-default x-form-arrow-trigger x-form-arrow-trigger-default "></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-column x-field-default x-column-form-item" id="combobox-1148">
+                                                            <label id="combobox-1148-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="combobox-1148-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px">Dash Pattern:</span>
+                                                            </label>
+                                                            <div id="combobox-1148-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-form-text-field-body x-form-text-field-body-default  ">
+                                                                <div id="combobox-1148-triggerWrap" data-ref="triggerWrap" class="x-form-trigger-wrap x-form-trigger-wrap-default">
+                                                                    <div id="combobox-1148-inputWrap" data-ref="inputWrap" class="x-form-text-wrap x-form-text-wrap-default">
+                                                                        <input componentid="combobox-1148" id="combobox-1148-inputEl" data-ref="inputEl" role="combobox" size="1" name="combobox-1148-inputEl" value="1" class="x-form-field x-form-text x-form-text-default  " autocomplete="off" type="text">
+                                                                    </div>
+                                                                    <div id="combobox-1148-trigger-picker" class="x-form-trigger x-form-trigger-default x-form-arrow-trigger x-form-arrow-trigger-default  "></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="x-panel x-column x-panel-default" style="height: 200px; width: 314px;" id="ext-comp-1149">
+                                                            <div style="height: 200px; left: 0px; top: 0px; width: 314px;" id="ext-comp-1149-body" data-ref="body" class="x-panel-body x-panel-body-default x-panel-body-default x-docked-noborder-top x-docked-noborder-right x-docked-noborder-bottom x-docked-noborder-left" role="presentation">
+                                                                <div style="height: 100%;" id="ext-comp-1149-outerCt" data-ref="outerCt" class="x-autocontainer-outerCt" role="presentation">
+                                                                    <div id="ext-comp-1149-innerCt" data-ref="innerCt" style="" class="x-autocontainer-innerCt" role="presentation">
+                                                                        <div style="width: 314px; height: 162px;" class="x-panel x-panel-default" id="panel-1162">
+                                                                            <div style="width: 314px; height: 162px; left: 0px; top: 0px;" id="panel-1162-body" data-ref="body" class="x-panel-body x-panel-body-default x-box-layout-ct x-panel-body-default x-docked-noborder-top x-docked-noborder-right x-docked-noborder-bottom x-docked-noborder-left" role="presentation">
+                                                                                <div style="width: 314px; height: 162px;" id="panel-1162-innerCt" data-ref="innerCt" role="presentation" class="x-box-inner">
+                                                                                    <div style="width: 314px;" id="panel-1162-targetEl" data-ref="targetEl" class="x-box-target" role="presentation">
+                                                                                        <div class="x-panel x-box-item x-panel-default" style="width: 120px; right: auto; left: 0px; top: 0px; margin: 0px; height: 139px;" id="panel-1161">
+                                                                                            <div style="width: 120px; height: 139px; left: 0px; top: 0px;" id="panel-1161-body" data-ref="body" class="x-panel-body x-panel-body-default x-box-layout-ct x-panel-body-default x-docked-noborder-top x-docked-noborder-right x-docked-noborder-bottom x-docked-noborder-left" role="presentation">
+                                                                                                <div style="height: 139px; width: 120px;" id="panel-1161-innerCt" data-ref="innerCt" role="presentation" class="x-box-inner">
+                                                                                                    <div style="width: 120px;" id="panel-1161-targetEl" data-ref="targetEl" class="x-box-target" role="presentation">
+                                                                                                        <div class="x-panel x-box-item x-panel-default" style="width: 120px; height: 50px; right: auto; left: 0px; top: 0px; margin: 0px;" id="panel-1152">
+                                                                                                            <div style="height: 50px; width: 120px; left: 0px; top: 0px;" id="panel-1152-body" data-ref="body" class="x-panel-body x-panel-body-default x-panel-body-default" role="presentation">
+                                                                                                                <div style="width: 100%; table-layout: fixed; height: 100%;" id="panel-1152-outerCt" data-ref="outerCt" class="x-autocontainer-outerCt" role="presentation">
+                                                                                                                    <div id="panel-1152-innerCt" data-ref="innerCt" style="" class="x-autocontainer-innerCt" role="presentation"></div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-box-item x-field-default x-vbox-form-item x-form-item-no-label" style="width: 120px; right: auto; left: 0px; top: 50px; margin: 0px;" id="textfield-1160">
+                                                                                                            <label id="textfield-1160-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="textfield-1160-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px"></span>
+                                                                                                            </label>
+                                                                                                            <div id="textfield-1160-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-form-text-field-body x-form-text-field-body-default  ">
+                                                                                                                <div id="textfield-1160-triggerWrap" data-ref="triggerWrap" class="x-form-trigger-wrap x-form-trigger-wrap-default">
+                                                                                                                    <div id="textfield-1160-inputWrap" data-ref="inputWrap" class="x-form-text-wrap x-form-text-wrap-default">
+                                                                                                                        <input componentid="textfield-1160" id="textfield-1160-inputEl" data-ref="inputEl" role="textbox" size="1" name="textfield-1160-inputEl" value="ffffff" readonly="readonly" class="x-form-field x-form-text x-form-text-default  " autocomplete="off" type="text">
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-box-item x-field-default x-vbox-form-item x-form-item-no-label" style="width: 120px; right: auto; left: 0px; top: 79px; margin: 0px;" id="slider-1154">
+                                                                                                            <label id="slider-1154-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="slider-1154-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px"></span>
+                                                                                                            </label>
+                                                                                                            <div id="slider-1154-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-field-body x-field-body-default  x-slider-ct-horz">
+                                                                                                                <div componentid="slider-1154" id="slider-1154-inputEl" role="slider" class="x-slider x-form-field x-slider-horz" tabindex="0" aria-orientation="horizontal">
+                                                                                                                    <div id="slider-1154-endEl" data-ref="endEl" class="x-slider-end" role="presentation">
+                                                                                                                        <div id="slider-1154-innerEl" data-ref="innerEl" class="x-slider-inner" role="presentation">
+                                                                                                                            <div style="left:100%;" id="slider-1154-thumb-0" class="x-slider-thumb" role="presentation"></div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-box-item x-field-default x-vbox-form-item x-form-item-no-label" style="width: 120px; right: auto; left: 0px; top: 99px; margin: 0px;" id="slider-1158">
+                                                                                                            <label id="slider-1158-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="slider-1158-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px"></span>
+                                                                                                            </label>
+                                                                                                            <div id="slider-1158-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-field-body x-field-body-default  x-slider-ct-horz">
+                                                                                                                <div componentid="slider-1158" id="slider-1158-inputEl" role="slider" class="x-slider x-form-field x-slider-horz" tabindex="0" aria-orientation="horizontal">
+                                                                                                                    <div id="slider-1158-endEl" data-ref="endEl" class="x-slider-end" role="presentation">
+                                                                                                                        <div id="slider-1158-innerEl" data-ref="innerEl" class="x-slider-inner" role="presentation">
+                                                                                                                            <div style="left:100%;" id="slider-1158-thumb-0" class="x-slider-thumb" role="presentation"></div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-box-item x-field-default x-vbox-form-item x-form-item-no-label" style="width: 120px; right: auto; left: 0px; top: 119px; margin: 0px;" id="slider-1156">
+                                                                                                            <label id="slider-1156-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="slider-1156-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px"></span>
+                                                                                                            </label>
+                                                                                                            <div id="slider-1156-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-field-body x-field-body-default  x-slider-ct-horz">
+                                                                                                                <div componentid="slider-1156" id="slider-1156-inputEl" role="slider" class="x-slider x-form-field x-slider-horz" tabindex="0" aria-orientation="horizontal">
+                                                                                                                    <div id="slider-1156-endEl" data-ref="endEl" class="x-slider-end" role="presentation">
+                                                                                                                        <div id="slider-1156-innerEl" data-ref="innerEl" class="x-slider-inner" role="presentation">
+                                                                                                                            <div style="left:100%;" id="slider-1156-thumb-0" class="x-slider-thumb" role="presentation"></div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div style="right: auto; left: 120px; top: 0px; margin: 0px; width: 194px; height: 162px;" class="x-panel x-box-item x-panel-default" id="panel-1153">
+                                                                                            <div style="width: 194px; height: 162px; left: 0px; top: 0px;" id="panel-1153-body" data-ref="body" class="x-panel-body x-panel-body-default x-box-layout-ct x-panel-body-default" role="presentation">
+                                                                                                <div style="width: 192px; height: 160px;" id="panel-1153-innerCt" data-ref="innerCt" role="presentation" class="x-box-inner">
+                                                                                                    <div style="width: 192px;" id="panel-1153-targetEl" data-ref="targetEl" class="x-box-target" role="presentation">
+                                                                                                        <div class="x-panel x-box-item x-panel-default" style="width: 160px; height: 160px; right: auto; left: 0px; top: 0px; margin: 0px;" id="panel-1150">
+                                                                                                            <div style="width: 160px; height: 160px; left: 0px; top: 0px;" id="panel-1150-body" data-ref="body" class="x-panel-body x-panel-body-default x-panel-body-default" role="presentation">
+                                                                                                                <div style="width: 100%; table-layout: fixed; height: 100%;" id="panel-1150-outerCt" data-ref="outerCt" class="x-autocontainer-outerCt" role="presentation">
+                                                                                                                    <div id="panel-1150-innerCt" data-ref="innerCt" style="" class="x-autocontainer-innerCt" role="presentation"><img id="coloreditorbox1" src="/images/colorbox.jpg" alt="failed to load color editor" draggable="false" style="-khtml-user-select:none;-o-user-select:none;-moz-user-select:none;-webkit-user-select:none;user-select:none;" width="100%">
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="x-panel x-box-item x-panel-default" style="width: 32px; height: 160px; right: auto; left: 160px; top: 0px; margin: 0px;" id="panel-1151">
+                                                                                                            <div style="width: 32px; height: 160px; left: 0px; top: 0px;" id="panel-1151-body" data-ref="body" class="x-panel-body x-panel-body-default x-panel-body-default" role="presentation">
+                                                                                                                <div style="width: 100%; table-layout: fixed; height: 100%;" id="panel-1151-outerCt" data-ref="outerCt" class="x-autocontainer-outerCt" role="presentation">
+                                                                                                                    <div id="panel-1151-innerCt" data-ref="innerCt" style="" class="x-autocontainer-innerCt" role="presentation"><img id="coloreditorslider1" src="/images/shadebox.jpg" alt="failed to load color editor" draggable="false" style="-khtml-user-select:none;-o-user-select:none;-moz-user-select:none;-webkit-user-select:none;user-select:none;" height="160" width="100%">
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="x-panel x-fit-item x-window-item x-panel-default" style="height: 100%; display: none;" id="panel-1269">
+            <div style="overflow: auto;" id="panel-1269-body" data-ref="body" class="x-panel-body x-panel-body-default x-panel-body-default" role="presentation">
+                <div id="panel-1269-outerCt" data-ref="outerCt" class="x-autocontainer-outerCt" role="presentation">
+                    <div id="panel-1269-innerCt" data-ref="innerCt" style="" class="x-autocontainer-innerCt" role="presentation">
+                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-field-default x-autocontainer-form-item" id="combobox-1164">
+                            <label id="combobox-1164-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="combobox-1164-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px">Symbol Type:</span>
+                            </label>
+                            <div id="combobox-1164-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-form-text-field-body x-form-text-field-body-default  ">
+                                <div id="combobox-1164-triggerWrap" data-ref="triggerWrap" class="x-form-trigger-wrap x-form-trigger-wrap-default">
+                                    <div id="combobox-1164-inputWrap" data-ref="inputWrap" class="x-form-text-wrap x-form-text-wrap-default">
+                                        <input componentid="combobox-1164" id="combobox-1164-inputEl" data-ref="inputEl" role="combobox" size="1" name="combobox-1164-inputEl" value="Point" readonly="readonly" class="x-form-field x-form-text x-form-text-default  " autocomplete="off" type="text">
+                                    </div>
+                                    <div id="combobox-1164-trigger-picker" class="x-form-trigger x-form-trigger-default x-form-arrow-trigger x-form-arrow-trigger-default  "></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="x-panel x-panel-default x-grid" style="width:100%;height:350px;" id="grid-1257">
+                            <div tabindex="0" class="x-grid-header-ct x-docked x-grid-header-ct-default x-docked-top x-grid-header-ct-docked-top x-grid-header-ct-default-docked-top x-box-layout-ct" style="border-width:1px;" id="headercontainer-1258">
+                                <div id="headercontainer-1258-innerCt" data-ref="innerCt" role="presentation" class="x-box-inner">
+                                    <div id="headercontainer-1258-targetEl" data-ref="targetEl" class="x-box-target" role="presentation">
+                                        <div componentid="gridcolumn-1259" tabindex="-1" class="x-column-header x-column-header-align-left x-box-item x-column-header-default x-unselectable" style="border-width:1px;width:30%;" id="gridcolumn-1259">
+                                            <div id="gridcolumn-1259-titleEl" data-ref="titleEl" class="x-column-header-inner x-leaf-column-header"><span id="gridcolumn-1259-textContainerEl" data-ref="textContainerEl" class="x-column-header-text-container"><span class="x-column-header-text-wrapper"><span id="gridcolumn-1259-textEl" data-ref="textEl" class="x-column-header-text">Attribute</span></span>
+                                                </span>
+                                                <div id="gridcolumn-1259-triggerEl" data-ref="triggerEl" role="presentation" class="x-column-header-trigger" style=""></div>
+                                            </div>
+                                        </div>
+                                        <div componentid="gridcolumn-1260" tabindex="-1" class="x-column-header x-column-header-align-left x-box-item x-column-header-default x-unselectable" style="border-width:1px;width:40%;" id="gridcolumn-1260">
+                                            <div id="gridcolumn-1260-titleEl" data-ref="titleEl" class="x-column-header-inner x-leaf-column-header"><span id="gridcolumn-1260-textContainerEl" data-ref="textContainerEl" class="x-column-header-text-container"><span class="x-column-header-text-wrapper"><span id="gridcolumn-1260-textEl" data-ref="textEl" class="x-column-header-text">Condition</span></span>
+                                                </span>
+                                                <div id="gridcolumn-1260-triggerEl" data-ref="triggerEl" role="presentation" class="x-column-header-trigger" style=""></div>
+                                            </div>
+                                        </div>
+                                        <div componentid="gridcolumn-1261" tabindex="-1" class="x-column-header x-column-header-align-left x-box-item x-column-header-default x-unselectable" style="border-width:1px;width:30%;" id="gridcolumn-1261">
+                                            <div id="gridcolumn-1261-titleEl" data-ref="titleEl" class="x-column-header-inner x-leaf-column-header"><span id="gridcolumn-1261-textContainerEl" data-ref="textContainerEl" class="x-column-header-text-container"><span class="x-column-header-text-wrapper"><span id="gridcolumn-1261-textEl" data-ref="textEl" class="x-column-header-text">Value</span></span>
+                                                </span>
+                                                <div id="gridcolumn-1261-triggerEl" data-ref="triggerEl" role="presentation" class="x-column-header-trigger" style=""></div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div id="grid-1257-body" data-ref="body" class="x-panel-body x-grid-with-row-lines x-grid-body x-panel-body-default x-panel-body-default" role="presentation">
+                                <div componentid="gridview-1262" style="overflow: auto;" class="x-grid-view x-grid-with-row-lines x-fit-item x-grid-view-default x-unselectable" id="gridview-1262" tabindex="0"></div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div tabindex="0" class="x-toolbar x-docked x-toolbar-default x-docked-bottom x-toolbar-docked-bottom x-toolbar-default-docked-bottom x-box-layout-ct" id="toolbar-1270">
+                <div id="toolbar-1270-innerCt" data-ref="innerCt" role="presentation" class="x-box-inner">
+                    <div id="toolbar-1270-targetEl" data-ref="targetEl" class="x-box-target" role="presentation"><a componentid="button-1264" class="x-btn x-unselectable x-box-item x-toolbar-item x-btn-default-toolbar-small" hidefocus="on" unselectable="on" id="button-1264" tabindex="-1"><span id="button-1264-btnWrap" data-ref="btnWrap" role="presentation" unselectable="on" style="" class="x-btn-wrap x-btn-wrap-default-toolbar-small "><span id="button-1264-btnEl" data-ref="btnEl" role="presentation" unselectable="on" style="" class="x-btn-button x-btn-button-default-toolbar-small x-btn-text    x-btn-button-center "><span id="button-1264-btnIconEl" data-ref="btnIconEl" role="presentation" unselectable="on" class="x-btn-icon-el x-btn-icon-el-default-toolbar-small  " style=""></span><span id="button-1264-btnInnerEl" data-ref="btnInnerEl" unselectable="on" class="x-btn-inner x-btn-inner-default-toolbar-small">Add Class</span></span></span></a><a componentid="button-1265" class="x-btn x-unselectable x-box-item x-toolbar-item x-btn-default-toolbar-small" hidefocus="on" unselectable="on" id="button-1265" tabindex="-1"><span id="button-1265-btnWrap" data-ref="btnWrap" role="presentation" unselectable="on" style="" class="x-btn-wrap x-btn-wrap-default-toolbar-small "><span id="button-1265-btnEl" data-ref="btnEl" role="presentation" unselectable="on" style="" class="x-btn-button x-btn-button-default-toolbar-small x-btn-text    x-btn-button-center "><span id="button-1265-btnIconEl" data-ref="btnIconEl" role="presentation" unselectable="on" class="x-btn-icon-el x-btn-icon-el-default-toolbar-small  " style=""></span><span id="button-1265-btnInnerEl" data-ref="btnInnerEl" unselectable="on" class="x-btn-inner x-btn-inner-default-toolbar-small">Remove Class</span></span></span></a><a componentid="button-1263" class="x-btn x-unselectable x-box-item x-toolbar-item x-btn-default-toolbar-small" hidefocus="on" unselectable="on" id="button-1263" tabindex="-1"><span id="button-1263-btnWrap" data-ref="btnWrap" role="presentation" unselectable="on" style="" class="x-btn-wrap x-btn-wrap-default-toolbar-small "><span id="button-1263-btnEl" data-ref="btnEl" role="presentation" unselectable="on" style="" class="x-btn-button x-btn-button-default-toolbar-small x-btn-text    x-btn-button-center "><span id="button-1263-btnIconEl" data-ref="btnIconEl" role="presentation" unselectable="on" class="x-btn-icon-el x-btn-icon-el-default-toolbar-small  " style=""></span><span id="button-1263-btnInnerEl" data-ref="btnInnerEl" unselectable="on" class="x-btn-inner x-btn-inner-default-toolbar-small">Change Style of Class</span></span></span></a>
+                        <div class="x-component x-box-item x-toolbar-item x-component-default" style="height:0px;" id="tbfill-1271"></div><a componentid="button-1268" class="x-btn x-unselectable x-box-item x-toolbar-item x-btn-default-toolbar-small" hidefocus="on" unselectable="on" id="button-1268" tabindex="-1"><span id="button-1268-btnWrap" data-ref="btnWrap" role="presentation" unselectable="on" style="" class="x-btn-wrap x-btn-wrap-default-toolbar-small "><span id="button-1268-btnEl" data-ref="btnEl" role="presentation" unselectable="on" style="" class="x-btn-button x-btn-button-default-toolbar-small x-btn-text    x-btn-button-center "><span id="button-1268-btnIconEl" data-ref="btnIconEl" role="presentation" unselectable="on" class="x-btn-icon-el x-btn-icon-el-default-toolbar-small  " style=""></span><span id="button-1268-btnInnerEl" data-ref="btnInnerEl" unselectable="on" class="x-btn-inner x-btn-inner-default-toolbar-small">Add all Unique Values</span></span></span></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="display: none;" class="x-panel x-fit-item x-window-item x-panel-default" id="panel-1248">
+            <div id="panel-1248-body" data-ref="body" class="x-panel-body x-panel-body-default x-panel-body-default" role="presentation">
+                <div id="panel-1248-outerCt" data-ref="outerCt" class="x-autocontainer-outerCt" role="presentation">
+                    <div id="panel-1248-innerCt" data-ref="innerCt" style="" class="x-autocontainer-innerCt" role="presentation">
+                        <div class="x-panel x-panel-default" style="width:100px;" id="panel-1244">
+                            <div id="panel-1244-body" data-ref="body" class="x-panel-body x-panel-body-default x-box-layout-ct x-panel-body-default" role="presentation">
+                                <div id="panel-1244-innerCt" data-ref="innerCt" role="presentation" class="x-box-inner">
+                                    <div id="panel-1244-targetEl" data-ref="targetEl" class="x-box-target" role="presentation">
+                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-box-item x-field-default x-hbox-form-item" style="margin:0px 10px 0px 0px;" id="combobox-1207">
+                                            <label id="combobox-1207-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="combobox-1207-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px">Symbol Type:</span>
+                                            </label>
+                                            <div id="combobox-1207-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-form-text-field-body x-form-text-field-body-default  ">
+                                                <div id="combobox-1207-triggerWrap" data-ref="triggerWrap" class="x-form-trigger-wrap x-form-trigger-wrap-default">
+                                                    <div id="combobox-1207-inputWrap" data-ref="inputWrap" class="x-form-text-wrap x-form-text-wrap-default">
+                                                        <input componentid="combobox-1207" id="combobox-1207-inputEl" data-ref="inputEl" role="combobox" size="1" name="combobox-1207-inputEl" value="Polygon" readonly="readonly" class="x-form-field x-form-text x-form-text-default  " autocomplete="off" type="text">
+                                                    </div>
+                                                    <div id="combobox-1207-trigger-picker" class="x-form-trigger x-form-trigger-default x-form-arrow-trigger x-form-arrow-trigger-default  "></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-box-item x-field-default x-hbox-form-item" id="combobox-1208">
+                                            <label id="combobox-1208-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="combobox-1208-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px">Attribute:</span>
+                                            </label>
+                                            <div id="combobox-1208-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-form-text-field-body x-form-text-field-body-default  ">
+                                                <div id="combobox-1208-triggerWrap" data-ref="triggerWrap" class="x-form-trigger-wrap x-form-trigger-wrap-default">
+                                                    <div id="combobox-1208-inputWrap" data-ref="inputWrap" class="x-form-text-wrap x-form-text-wrap-default">
+                                                        <input componentid="combobox-1208" id="combobox-1208-inputEl" data-ref="inputEl" role="combobox" size="1" name="combobox-1208-inputEl" placeholder="attribute" readonly="readonly" class="x-form-field x-form-empty-field x-form-empty-field-default x-form-text x-form-text-default  " autocomplete="off" type="text">
+                                                    </div>
+                                                    <div id="combobox-1208-trigger-picker" class="x-form-trigger x-form-trigger-default x-form-arrow-trigger x-form-arrow-trigger-default  "></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="x-panel x-panel-default" style="width:100%;" id="panel-1245">
+                            <div id="panel-1245-body" data-ref="body" class="x-panel-body x-panel-body-default x-box-layout-ct x-panel-body-default" role="presentation">
+                                <div id="panel-1245-innerCt" data-ref="innerCt" role="presentation" class="x-box-inner">
+                                    <div id="panel-1245-targetEl" data-ref="targetEl" class="x-box-target" role="presentation">
+                                        <div class="x-panel x-box-item x-panel-default" style="width:50%;" id="panel-1246">
+                                            <div id="panel-1246-body" data-ref="body" class="x-panel-body x-panel-body-default x-box-layout-ct x-panel-body-default" role="presentation">
+                                                <div id="panel-1246-innerCt" data-ref="innerCt" role="presentation" class="x-box-inner">
+                                                    <div id="panel-1246-targetEl" data-ref="targetEl" class="x-box-target" role="presentation">
+                                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-box-item x-field-default x-vbox-form-item" id="combobox-1237">
+                                                            <label id="combobox-1237-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="combobox-1237-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px">Low Value:</span>
+                                                            </label>
+                                                            <div id="combobox-1237-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-form-text-field-body x-form-text-field-body-default  ">
+                                                                <div id="combobox-1237-triggerWrap" data-ref="triggerWrap" class="x-form-trigger-wrap x-form-trigger-wrap-default">
+                                                                    <div id="combobox-1237-inputWrap" data-ref="inputWrap" class="x-form-text-wrap x-form-text-wrap-default">
+                                                                        <input componentid="combobox-1237" id="combobox-1237-inputEl" data-ref="inputEl" role="combobox" size="1" name="combobox-1237-inputEl" placeholder="0" readonly="readonly" class="x-form-field x-form-empty-field x-form-empty-field-default x-form-text x-form-text-default  " autocomplete="off" type="text">
+                                                                    </div>
+                                                                    <div id="combobox-1237-trigger-picker" class="x-form-trigger x-form-trigger-default x-form-arrow-trigger x-form-arrow-trigger-default  "></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-box-item x-field-default x-vbox-form-item" style="width:300px;" id="slider-1239">
+                                                            <label id="slider-1239-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="slider-1239-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px">Opacity:</span>
+                                                            </label>
+                                                            <div id="slider-1239-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-field-body x-field-body-default  x-slider-ct-horz">
+                                                                <div componentid="slider-1239" id="slider-1239-inputEl" role="slider" class="x-slider x-form-field x-slider-horz" tabindex="0" aria-orientation="horizontal">
+                                                                    <div id="slider-1239-endEl" data-ref="endEl" class="x-slider-end" role="presentation">
+                                                                        <div id="slider-1239-innerEl" data-ref="innerEl" class="x-slider-inner" role="presentation">
+                                                                            <div style="left:100%;" id="slider-1239-thumb-0" class="x-slider-thumb" role="presentation"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="x-panel x-box-item x-panel-default" style="width:100%;height:200px;" id="ext-comp-1209">
+                                                            <div id="ext-comp-1209-body" data-ref="body" class="x-panel-body x-panel-body-default x-panel-body-default" role="presentation">
+                                                                <div id="ext-comp-1209-outerCt" data-ref="outerCt" class="x-autocontainer-outerCt" role="presentation">
+                                                                    <div id="ext-comp-1209-innerCt" data-ref="innerCt" style="" class="x-autocontainer-innerCt" role="presentation">
+                                                                        <div class="x-panel x-panel-default" id="panel-1222">
+                                                                            <div id="panel-1222-body" data-ref="body" class="x-panel-body x-panel-body-default x-box-layout-ct x-panel-body-default" role="presentation">
+                                                                                <div id="panel-1222-innerCt" data-ref="innerCt" role="presentation" class="x-box-inner">
+                                                                                    <div id="panel-1222-targetEl" data-ref="targetEl" class="x-box-target" role="presentation">
+                                                                                        <div class="x-panel x-box-item x-panel-default" style="width:120px;" id="panel-1221">
+                                                                                            <div id="panel-1221-body" data-ref="body" class="x-panel-body x-panel-body-default x-box-layout-ct x-panel-body-default" role="presentation">
+                                                                                                <div id="panel-1221-innerCt" data-ref="innerCt" role="presentation" class="x-box-inner">
+                                                                                                    <div id="panel-1221-targetEl" data-ref="targetEl" class="x-box-target" role="presentation">
+                                                                                                        <div class="x-panel x-box-item x-panel-default" style="width:100%;height:50px;" id="panel-1212">
+                                                                                                            <div id="panel-1212-body" data-ref="body" class="x-panel-body x-panel-body-default x-panel-body-default" role="presentation">
+                                                                                                                <div id="panel-1212-outerCt" data-ref="outerCt" class="x-autocontainer-outerCt" role="presentation">
+                                                                                                                    <div id="panel-1212-innerCt" data-ref="innerCt" style="" class="x-autocontainer-innerCt" role="presentation"></div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-box-item x-field-default x-vbox-form-item x-form-item-no-label" style="width:100%;" id="textfield-1220">
+                                                                                                            <label id="textfield-1220-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="textfield-1220-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px"></span>
+                                                                                                            </label>
+                                                                                                            <div id="textfield-1220-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-form-text-field-body x-form-text-field-body-default  ">
+                                                                                                                <div id="textfield-1220-triggerWrap" data-ref="triggerWrap" class="x-form-trigger-wrap x-form-trigger-wrap-default">
+                                                                                                                    <div id="textfield-1220-inputWrap" data-ref="inputWrap" class="x-form-text-wrap x-form-text-wrap-default">
+                                                                                                                        <input componentid="textfield-1220" id="textfield-1220-inputEl" data-ref="inputEl" role="textbox" size="1" name="textfield-1220-inputEl" value="ffffff" readonly="readonly" class="x-form-field x-form-text x-form-text-default  " autocomplete="off" type="text">
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-box-item x-field-default x-vbox-form-item x-form-item-no-label" style="width:100%;" id="slider-1214">
+                                                                                                            <label id="slider-1214-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="slider-1214-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px"></span>
+                                                                                                            </label>
+                                                                                                            <div id="slider-1214-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-field-body x-field-body-default  x-slider-ct-horz">
+                                                                                                                <div componentid="slider-1214" id="slider-1214-inputEl" role="slider" class="x-slider x-form-field x-slider-horz" tabindex="0" aria-orientation="horizontal">
+                                                                                                                    <div id="slider-1214-endEl" data-ref="endEl" class="x-slider-end" role="presentation">
+                                                                                                                        <div id="slider-1214-innerEl" data-ref="innerEl" class="x-slider-inner" role="presentation">
+                                                                                                                            <div style="left:100%;" id="slider-1214-thumb-0" class="x-slider-thumb" role="presentation"></div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-box-item x-field-default x-vbox-form-item x-form-item-no-label" style="width:100%;" id="slider-1218">
+                                                                                                            <label id="slider-1218-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="slider-1218-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px"></span>
+                                                                                                            </label>
+                                                                                                            <div id="slider-1218-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-field-body x-field-body-default  x-slider-ct-horz">
+                                                                                                                <div componentid="slider-1218" id="slider-1218-inputEl" role="slider" class="x-slider x-form-field x-slider-horz" tabindex="0" aria-orientation="horizontal">
+                                                                                                                    <div id="slider-1218-endEl" data-ref="endEl" class="x-slider-end" role="presentation">
+                                                                                                                        <div id="slider-1218-innerEl" data-ref="innerEl" class="x-slider-inner" role="presentation">
+                                                                                                                            <div style="left:100%;" id="slider-1218-thumb-0" class="x-slider-thumb" role="presentation"></div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-box-item x-field-default x-vbox-form-item x-form-item-no-label" style="width:100%;" id="slider-1216">
+                                                                                                            <label id="slider-1216-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="slider-1216-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px"></span>
+                                                                                                            </label>
+                                                                                                            <div id="slider-1216-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-field-body x-field-body-default  x-slider-ct-horz">
+                                                                                                                <div componentid="slider-1216" id="slider-1216-inputEl" role="slider" class="x-slider x-form-field x-slider-horz" tabindex="0" aria-orientation="horizontal">
+                                                                                                                    <div id="slider-1216-endEl" data-ref="endEl" class="x-slider-end" role="presentation">
+                                                                                                                        <div id="slider-1216-innerEl" data-ref="innerEl" class="x-slider-inner" role="presentation">
+                                                                                                                            <div style="left:100%;" id="slider-1216-thumb-0" class="x-slider-thumb" role="presentation"></div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="x-panel x-box-item x-panel-default" id="panel-1213">
+                                                                                            <div id="panel-1213-body" data-ref="body" class="x-panel-body x-panel-body-default x-box-layout-ct x-panel-body-default" role="presentation">
+                                                                                                <div id="panel-1213-innerCt" data-ref="innerCt" role="presentation" class="x-box-inner">
+                                                                                                    <div id="panel-1213-targetEl" data-ref="targetEl" class="x-box-target" role="presentation">
+                                                                                                        <div class="x-panel x-box-item x-panel-default" style="width:160px;height:160px;" id="panel-1210">
+                                                                                                            <div id="panel-1210-body" data-ref="body" class="x-panel-body x-panel-body-default x-panel-body-default" role="presentation">
+                                                                                                                <div id="panel-1210-outerCt" data-ref="outerCt" class="x-autocontainer-outerCt" role="presentation">
+                                                                                                                    <div id="panel-1210-innerCt" data-ref="innerCt" style="" class="x-autocontainer-innerCt" role="presentation"><img id="coloreditorbox4" src="/images/colorbox.jpg" alt="failed to load color editor" draggable="false" style="-khtml-user-select:none;-o-user-select:none;-moz-user-select:none;-webkit-user-select:none;user-select:none;" width="100%">
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="x-panel x-box-item x-panel-default" style="width:32px;height:160px;" id="panel-1211">
+                                                                                                            <div id="panel-1211-body" data-ref="body" class="x-panel-body x-panel-body-default x-panel-body-default" role="presentation">
+                                                                                                                <div id="panel-1211-outerCt" data-ref="outerCt" class="x-autocontainer-outerCt" role="presentation">
+                                                                                                                    <div id="panel-1211-innerCt" data-ref="innerCt" style="" class="x-autocontainer-innerCt" role="presentation"><img id="coloreditorslider4" src="/images/shadebox.jpg" alt="failed to load color editor" draggable="false" style="-khtml-user-select:none;-o-user-select:none;-moz-user-select:none;-webkit-user-select:none;user-select:none;" height="160" width="100%">
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="x-panel x-box-item x-panel-default" style="width:50%;" id="panel-1247">
+                                            <div id="panel-1247-body" data-ref="body" class="x-panel-body x-panel-body-default x-box-layout-ct x-panel-body-default" role="presentation">
+                                                <div id="panel-1247-innerCt" data-ref="innerCt" role="presentation" class="x-box-inner">
+                                                    <div id="panel-1247-targetEl" data-ref="targetEl" class="x-box-target" role="presentation">
+                                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-box-item x-field-default x-vbox-form-item" id="combobox-1238">
+                                                            <label id="combobox-1238-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="combobox-1238-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px">High Value:</span>
+                                                            </label>
+                                                            <div id="combobox-1238-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-form-text-field-body x-form-text-field-body-default  ">
+                                                                <div id="combobox-1238-triggerWrap" data-ref="triggerWrap" class="x-form-trigger-wrap x-form-trigger-wrap-default">
+                                                                    <div id="combobox-1238-inputWrap" data-ref="inputWrap" class="x-form-text-wrap x-form-text-wrap-default">
+                                                                        <input componentid="combobox-1238" id="combobox-1238-inputEl" data-ref="inputEl" role="combobox" size="1" name="combobox-1238-inputEl" placeholder="0" readonly="readonly" class="x-form-field x-form-empty-field x-form-empty-field-default x-form-text x-form-text-default  " autocomplete="off" type="text">
+                                                                    </div>
+                                                                    <div id="combobox-1238-trigger-picker" class="x-form-trigger x-form-trigger-default x-form-arrow-trigger x-form-arrow-trigger-default  "></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-box-item x-field-default x-vbox-form-item" style="width:300px;" id="slider-1241">
+                                                            <label id="slider-1241-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="slider-1241-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px">Opacity:</span>
+                                                            </label>
+                                                            <div id="slider-1241-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-field-body x-field-body-default  x-slider-ct-horz">
+                                                                <div componentid="slider-1241" id="slider-1241-inputEl" role="slider" class="x-slider x-form-field x-slider-horz" tabindex="0" aria-orientation="horizontal">
+                                                                    <div id="slider-1241-endEl" data-ref="endEl" class="x-slider-end" role="presentation">
+                                                                        <div id="slider-1241-innerEl" data-ref="innerEl" class="x-slider-inner" role="presentation">
+                                                                            <div style="left:100%;" id="slider-1241-thumb-0" class="x-slider-thumb" role="presentation"></div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                        <div class="x-panel x-box-item x-panel-default" style="width:100%;height:200px;" id="ext-comp-1223">
+                                                            <div id="ext-comp-1223-body" data-ref="body" class="x-panel-body x-panel-body-default x-panel-body-default" role="presentation">
+                                                                <div id="ext-comp-1223-outerCt" data-ref="outerCt" class="x-autocontainer-outerCt" role="presentation">
+                                                                    <div id="ext-comp-1223-innerCt" data-ref="innerCt" style="" class="x-autocontainer-innerCt" role="presentation">
+                                                                        <div class="x-panel x-panel-default" id="panel-1236">
+                                                                            <div id="panel-1236-body" data-ref="body" class="x-panel-body x-panel-body-default x-box-layout-ct x-panel-body-default" role="presentation">
+                                                                                <div id="panel-1236-innerCt" data-ref="innerCt" role="presentation" class="x-box-inner">
+                                                                                    <div id="panel-1236-targetEl" data-ref="targetEl" class="x-box-target" role="presentation">
+                                                                                        <div class="x-panel x-box-item x-panel-default" style="width:120px;" id="panel-1235">
+                                                                                            <div id="panel-1235-body" data-ref="body" class="x-panel-body x-panel-body-default x-box-layout-ct x-panel-body-default" role="presentation">
+                                                                                                <div id="panel-1235-innerCt" data-ref="innerCt" role="presentation" class="x-box-inner">
+                                                                                                    <div id="panel-1235-targetEl" data-ref="targetEl" class="x-box-target" role="presentation">
+                                                                                                        <div class="x-panel x-box-item x-panel-default" style="width:100%;height:50px;" id="panel-1226">
+                                                                                                            <div id="panel-1226-body" data-ref="body" class="x-panel-body x-panel-body-default x-panel-body-default" role="presentation">
+                                                                                                                <div id="panel-1226-outerCt" data-ref="outerCt" class="x-autocontainer-outerCt" role="presentation">
+                                                                                                                    <div id="panel-1226-innerCt" data-ref="innerCt" style="" class="x-autocontainer-innerCt" role="presentation"></div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-box-item x-field-default x-vbox-form-item x-form-item-no-label" style="width:100%;" id="textfield-1234">
+                                                                                                            <label id="textfield-1234-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="textfield-1234-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px"></span>
+                                                                                                            </label>
+                                                                                                            <div id="textfield-1234-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-form-text-field-body x-form-text-field-body-default  ">
+                                                                                                                <div id="textfield-1234-triggerWrap" data-ref="triggerWrap" class="x-form-trigger-wrap x-form-trigger-wrap-default">
+                                                                                                                    <div id="textfield-1234-inputWrap" data-ref="inputWrap" class="x-form-text-wrap x-form-text-wrap-default">
+                                                                                                                        <input componentid="textfield-1234" id="textfield-1234-inputEl" data-ref="inputEl" role="textbox" size="1" name="textfield-1234-inputEl" value="ffffff" readonly="readonly" class="x-form-field x-form-text x-form-text-default  " autocomplete="off" type="text">
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-box-item x-field-default x-vbox-form-item x-form-item-no-label" style="width:100%;" id="slider-1228">
+                                                                                                            <label id="slider-1228-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="slider-1228-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px"></span>
+                                                                                                            </label>
+                                                                                                            <div id="slider-1228-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-field-body x-field-body-default  x-slider-ct-horz">
+                                                                                                                <div componentid="slider-1228" id="slider-1228-inputEl" role="slider" class="x-slider x-form-field x-slider-horz" tabindex="0" aria-orientation="horizontal">
+                                                                                                                    <div id="slider-1228-endEl" data-ref="endEl" class="x-slider-end" role="presentation">
+                                                                                                                        <div id="slider-1228-innerEl" data-ref="innerEl" class="x-slider-inner" role="presentation">
+                                                                                                                            <div style="left:100%;" id="slider-1228-thumb-0" class="x-slider-thumb" role="presentation"></div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-box-item x-field-default x-vbox-form-item x-form-item-no-label" style="width:100%;" id="slider-1232">
+                                                                                                            <label id="slider-1232-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="slider-1232-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px"></span>
+                                                                                                            </label>
+                                                                                                            <div id="slider-1232-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-field-body x-field-body-default  x-slider-ct-horz">
+                                                                                                                <div componentid="slider-1232" id="slider-1232-inputEl" role="slider" class="x-slider x-form-field x-slider-horz" tabindex="0" aria-orientation="horizontal">
+                                                                                                                    <div id="slider-1232-endEl" data-ref="endEl" class="x-slider-end" role="presentation">
+                                                                                                                        <div id="slider-1232-innerEl" data-ref="innerEl" class="x-slider-inner" role="presentation">
+                                                                                                                            <div style="left:100%;" id="slider-1232-thumb-0" class="x-slider-thumb" role="presentation"></div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-box-item x-field-default x-vbox-form-item x-form-item-no-label" style="width:100%;" id="slider-1230">
+                                                                                                            <label id="slider-1230-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="slider-1230-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px"></span>
+                                                                                                            </label>
+                                                                                                            <div id="slider-1230-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-field-body x-field-body-default  x-slider-ct-horz">
+                                                                                                                <div componentid="slider-1230" id="slider-1230-inputEl" role="slider" class="x-slider x-form-field x-slider-horz" tabindex="0" aria-orientation="horizontal">
+                                                                                                                    <div id="slider-1230-endEl" data-ref="endEl" class="x-slider-end" role="presentation">
+                                                                                                                        <div id="slider-1230-innerEl" data-ref="innerEl" class="x-slider-inner" role="presentation">
+                                                                                                                            <div style="left:100%;" id="slider-1230-thumb-0" class="x-slider-thumb" role="presentation"></div>
+                                                                                                                        </div>
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                        <div class="x-panel x-box-item x-panel-default" id="panel-1227">
+                                                                                            <div id="panel-1227-body" data-ref="body" class="x-panel-body x-panel-body-default x-box-layout-ct x-panel-body-default" role="presentation">
+                                                                                                <div id="panel-1227-innerCt" data-ref="innerCt" role="presentation" class="x-box-inner">
+                                                                                                    <div id="panel-1227-targetEl" data-ref="targetEl" class="x-box-target" role="presentation">
+                                                                                                        <div class="x-panel x-box-item x-panel-default" style="width:160px;height:160px;" id="panel-1224">
+                                                                                                            <div id="panel-1224-body" data-ref="body" class="x-panel-body x-panel-body-default x-panel-body-default" role="presentation">
+                                                                                                                <div id="panel-1224-outerCt" data-ref="outerCt" class="x-autocontainer-outerCt" role="presentation">
+                                                                                                                    <div id="panel-1224-innerCt" data-ref="innerCt" style="" class="x-autocontainer-innerCt" role="presentation"><img id="coloreditorbox5" src="/images/colorbox.jpg" alt="failed to load color editor" draggable="false" style="-khtml-user-select:none;-o-user-select:none;-moz-user-select:none;-webkit-user-select:none;user-select:none;" width="100%">
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                        <div class="x-panel x-box-item x-panel-default" style="width:32px;height:160px;" id="panel-1225">
+                                                                                                            <div id="panel-1225-body" data-ref="body" class="x-panel-body x-panel-body-default x-panel-body-default" role="presentation">
+                                                                                                                <div id="panel-1225-outerCt" data-ref="outerCt" class="x-autocontainer-outerCt" role="presentation">
+                                                                                                                    <div id="panel-1225-innerCt" data-ref="innerCt" style="" class="x-autocontainer-innerCt" role="presentation"><img id="coloreditorslider5" src="/images/shadebox.jpg" alt="failed to load color editor" draggable="false" style="-khtml-user-select:none;-o-user-select:none;-moz-user-select:none;-webkit-user-select:none;user-select:none;" height="160" width="100%">
+                                                                                                                    </div>
+                                                                                                                </div>
+                                                                                                            </div>
+                                                                                                        </div>
+                                                                                                    </div>
+                                                                                                </div>
+                                                                                            </div>
+                                                                                        </div>
+                                                                                    </div>
+                                                                                </div>
+                                                                            </div>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="x-panel x-panel-default" style="width:100%;height:80px;" id="ColorRampPrevPanelParent">
+                            <div id="ColorRampPrevPanelParent-body" data-ref="body" class="x-panel-body x-panel-body-default x-panel-body-default" role="presentation">
+                                <div id="ColorRampPrevPanelParent-outerCt" data-ref="outerCt" class="x-autocontainer-outerCt" role="presentation">
+                                    <div id="ColorRampPrevPanelParent-innerCt" data-ref="innerCt" style="" class="x-autocontainer-innerCt" role="presentation">
+                                        <div id="ColorRampPrevPanel" style="background: -webkit-linear-gradient(90deg, #ffffff, #ffffff); /* For Safari 5.1 to 6.0 */ background: -o-linear-gradient(90deg, #ffffff, #ffffff); /* For Opera 11.1 to 12.0 */ background: -moz-linear-gradient(90deg, #ffffff, #ffffff); /* For Firefox 3.6 to 15 */ background: linear-gradient(90deg, #ffffff, #ffffff); /* Standard syntax */ width:100%;height:100px;"></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-field-default x-autocontainer-form-item" id="combobox-1243">
+                            <label id="combobox-1243-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="combobox-1243-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px">Number of Classifications:</span>
+                            </label>
+                            <div id="combobox-1243-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-form-text-field-body x-form-text-field-body-default  ">
+                                <div id="combobox-1243-triggerWrap" data-ref="triggerWrap" class="x-form-trigger-wrap x-form-trigger-wrap-default">
+                                    <div id="combobox-1243-inputWrap" data-ref="inputWrap" class="x-form-text-wrap x-form-text-wrap-default">
+                                        <input componentid="combobox-1243" id="combobox-1243-inputEl" data-ref="inputEl" role="combobox" size="1" name="combobox-1243-inputEl" value="5" class="x-form-field x-form-text x-form-text-default  " autocomplete="off" type="text">
+                                    </div>
+                                    <div id="combobox-1243-trigger-picker" class="x-form-trigger x-form-trigger-default x-form-arrow-trigger x-form-arrow-trigger-default  "></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div style="display: none;" class="x-panel x-fit-item x-window-item x-panel-default" id="panel-1250">
+            <div id="panel-1250-body" data-ref="body" class="x-panel-body x-panel-body-default x-panel-body-default" role="presentation">
+                <div id="panel-1250-outerCt" data-ref="outerCt" class="x-autocontainer-outerCt" role="presentation">
+                    <div id="panel-1250-innerCt" data-ref="innerCt" style="" class="x-autocontainer-innerCt" role="presentation">
+                        <label class="x-component x-component-default" id="label-1251" for="">Paste SLD file contents here</label>
+                        <div class="x-field x-form-item x-form-item-default x-form-type-text x-field-default x-autocontainer-form-item x-form-item-no-label" style="width:100%;height:100%;" id="textarea-1249">
+                            <label id="textarea-1249-labelEl" data-ref="labelEl" class="x-form-item-label x-form-item-label-default   x-unselectable" style="padding-right:5px;width:105px;" for="textarea-1249-inputEl"><span class="x-form-item-label-inner x-form-item-label-inner-default" style="width:100px"></span>
+                            </label>
+                            <div id="textarea-1249-bodyEl" data-ref="bodyEl" class="x-form-item-body x-form-item-body-default x-form-text-field-body x-form-text-field-body-default  x-form-textarea-body">
+                                <div id="textarea-1249-triggerWrap" data-ref="triggerWrap" class="x-form-trigger-wrap x-form-trigger-wrap-default">
+                                    <div id="textarea-1249-inputWrap" data-ref="inputWrap" class="x-form-text-wrap x-form-text-wrap-default">
+                                        <textarea componentid="textarea-1249" id="textarea-1249-inputEl" role="textbox" name="textarea-1249-inputEl" class="x-form-field x-form-text x-form-text-default x-form-textarea" autocomplete="off"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div style="right: auto; left: 0px; top: 483px; width: 640px;" tabindex="0" class="x-toolbar x-docked x-toolbar-default x-docked-bottom x-toolbar-docked-bottom x-toolbar-default-docked-bottom x-box-layout-ct" id="toolbar-1284">
+        <div style="width: 630px; height: 24px;" id="toolbar-1284-innerCt" data-ref="innerCt" role="presentation" class="x-box-inner">
+            <div style="width: 630px;" id="toolbar-1284-targetEl" data-ref="targetEl" class="x-box-target" role="presentation"><a style="right: auto; left: 0px; top: 0px; margin: 0px;" componentid="button-1280" class="x-btn x-unselectable x-box-item x-toolbar-item x-btn-default-toolbar-small" hidefocus="on" unselectable="on" id="button-1280" tabindex="-1"><span id="button-1280-btnWrap" data-ref="btnWrap" role="presentation" unselectable="on" style="" class="x-btn-wrap x-btn-wrap-default-toolbar-small "><span id="button-1280-btnEl" data-ref="btnEl" role="presentation" unselectable="on" style="" class="x-btn-button x-btn-button-default-toolbar-small x-btn-text    x-btn-button-center "><span id="button-1280-btnIconEl" data-ref="btnIconEl" role="presentation" unselectable="on" class="x-btn-icon-el x-btn-icon-el-default-toolbar-small  " style=""></span><span id="button-1280-btnInnerEl" data-ref="btnInnerEl" unselectable="on" class="x-btn-inner x-btn-inner-default-toolbar-small">Preview</span></span></span></a><a style="right: auto; left: 72px; top: 0px; margin: 0px;" componentid="button-1279" class="x-btn x-unselectable x-box-item x-toolbar-item x-btn-default-toolbar-small" hidefocus="on" unselectable="on" id="button-1279" tabindex="-1"><span id="button-1279-btnWrap" data-ref="btnWrap" role="presentation" unselectable="on" style="" class="x-btn-wrap x-btn-wrap-default-toolbar-small "><span id="button-1279-btnEl" data-ref="btnEl" role="presentation" unselectable="on" style="" class="x-btn-button x-btn-button-default-toolbar-small x-btn-text    x-btn-button-center "><span id="button-1279-btnIconEl" data-ref="btnIconEl" role="presentation" unselectable="on" class="x-btn-icon-el x-btn-icon-el-default-toolbar-small  " style=""></span><span id="button-1279-btnInnerEl" data-ref="btnInnerEl" unselectable="on" class="x-btn-inner x-btn-inner-default-toolbar-small">Accept</span></span></span></a>
+            </div>
+        </div>
+    </div>
+    <div id="window-1282-north-handle" class="x-resizable-handle x-resizable-handle-north x-window-handle x-window-handle-north x-window-handle-north-br x-unselectable" unselectable="on" role="presentation"></div>
+    <div id="window-1282-south-handle" class="x-resizable-handle x-resizable-handle-south x-window-handle x-window-handle-south x-window-handle-south-br x-unselectable" unselectable="on" role="presentation"></div>
+    <div id="window-1282-east-handle" class="x-resizable-handle x-resizable-handle-east x-window-handle x-window-handle-east x-window-handle-east-br x-unselectable" unselectable="on" role="presentation"></div>
+    <div id="window-1282-west-handle" class="x-resizable-handle x-resizable-handle-west x-window-handle x-window-handle-west x-window-handle-west-br x-unselectable" unselectable="on" role="presentation"></div>
+    <div id="window-1282-northeast-handle" class="x-resizable-handle x-resizable-handle-northeast x-window-handle x-window-handle-northeast x-window-handle-northeast-br x-unselectable" unselectable="on" role="presentation"></div>
+    <div id="window-1282-northwest-handle" class="x-resizable-handle x-resizable-handle-northwest x-window-handle x-window-handle-northwest x-window-handle-northwest-br x-unselectable" unselectable="on" role="presentation"></div>
+    <div id="window-1282-southeast-handle" class="x-resizable-handle x-resizable-handle-southeast x-window-handle x-window-handle-southeast x-window-handle-southeast-br x-unselectable" unselectable="on" role="presentation"></div>
+    <div id="window-1282-southwest-handle" class="x-resizable-handle x-resizable-handle-southwest x-window-handle x-window-handle-southwest x-window-handle-southwest-br x-unselectable" unselectable="on" role="presentation"></div>
+</div>#}

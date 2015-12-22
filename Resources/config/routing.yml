@@ -1,0 +1,12 @@
+
+map2u_core_controller:
+ #   resource: "../../Controller/"
+    resource: "@Map2uCoreBundle/Controller/"
+    type: annotation
+    prefix: /{_locale}
+    
+    
+#    # app/config/routing.yml:
+#some_parent:
+#    resource: "../../src/Application/ParentBundle/Controller"
+#    type: annotation
