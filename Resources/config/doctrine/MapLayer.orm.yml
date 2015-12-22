@@ -1,6 +1,6 @@
 Map2u\CoreBundle\Entity\MapLayer:
     type: entity
-    table: map2u_core__map_layer    
+    table: map2u_core__maps_layers    
 
     manyToOne:    
         user:
@@ -15,3 +15,16 @@ Map2u\CoreBundle\Entity\MapLayer:
             joinColumns:
                 category_id:
                     referencedColumnName: id               
+        map:
+            targetEntity: Map2u\CoreBundle\Entity\Map
+            inversedBy: {}
+            joinColumns:
+                map_id:
+                    referencedColumnName: id          
+        layer:
+            targetEntity: Map2u\CoreBundle\Entity\Layer
+            inversedBy: {}
+            joinColumns:
+                layer_id:
+                    referencedColumnName: id          
+ 
