@@ -6,6 +6,16 @@ Map2u\CoreBundle\Entity\BaseLayer:
             unsigned: false
             nullable: true
             column: user_id
+        tableId:
+            type: guid
+            unsigned: false
+            nullable: true
+            column: table_id
+        rowId:
+            type: guid
+            unsigned: false
+            nullable: true
+            column: row_id            
         enabled:	        
             type: boolean
             nullable: true

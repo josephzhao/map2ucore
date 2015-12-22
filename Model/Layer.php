@@ -17,10 +17,10 @@ use Map2u\CoreBundle\Model\LayerInterface;
 abstract class Layer implements LayerInterface {
 
     protected $id;
-  
     protected $userId;
-  
     protected $user;
+    protected $tableId;
+    protected $rowId;
     protected $category;
     protected $projectId;
     protected $name;
@@ -45,7 +45,7 @@ abstract class Layer implements LayerInterface {
     protected $sessionId;
 
     public function __construct() {
-       
+
         $this->layergeoms = new ArrayCollection();
         $this->maps = new ArrayCollection();
         $this->groups = new ArrayCollection();
@@ -66,7 +66,40 @@ abstract class Layer implements LayerInterface {
         $this->id = $id;
         return $this;
     }
-   /**
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTableId($tableId) {
+        $this->tableId = $tableId;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTableId() {
+        return $this->tableId;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setRowId($rowId) {
+        $this->rowId = $rowId;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getRowId() {
+        return $this->rowId;
+    }
+
+    /**
      * {@inheritdoc}
      */
     public function getPosition() {
@@ -80,7 +113,6 @@ abstract class Layer implements LayerInterface {
         $this->position = $position;
         return $this;
     }
-   
 
     /**
      * {@inheritdoc}
@@ -142,7 +174,6 @@ abstract class Layer implements LayerInterface {
         $this->userId;
     }
 
-   
     /**
      * {@inheritdoc}
      */
@@ -408,8 +439,6 @@ abstract class Layer implements LayerInterface {
     public function getMaps() {
         return $this->maps;
     }
-
-  
 
     public function __toString() {
         return $this->name;

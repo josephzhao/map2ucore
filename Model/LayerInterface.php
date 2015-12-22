@@ -29,6 +29,36 @@ interface LayerInterface {
     public function setId($id);
 
     /**
+     * Set tableId
+     *
+     * @param guid $tableId
+     * @return mixed
+     */
+    public function setTableId($tableId);
+
+    /**
+     * Get tableId
+     *
+     * @return guid 
+     */
+    public function getTableId();
+
+    /**
+     * Set rowId
+     *
+     * @param guid $rowId
+     * @return mixed
+     */
+    public function setRowId($rowId);
+
+    /**
+     * Get rowId
+     *
+     * @return guid 
+     */
+    public function getRowId();
+
+    /**
      * Get position
      *
      * @return integer 
@@ -42,8 +72,6 @@ interface LayerInterface {
      * @return mixed
      */
     public function setPosition($position);
-
-  
 
     /**
      * Get type
@@ -74,8 +102,6 @@ interface LayerInterface {
      * @return guid 
      */
     public function getUserId();
-
-   
 
     /**
      * Set name
