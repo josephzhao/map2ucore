@@ -28,6 +28,7 @@ abstract class Layer implements LayerInterface {
     protected $enabled;
     protected $type; // 1 thematic map, 2 heatmap, 3
     protected $shared;
+    protected $properties;
     protected $valueField;
     protected $public;
     protected $position;
@@ -145,7 +146,21 @@ abstract class Layer implements LayerInterface {
 
         return $this->valueField;
     }
+   /**
+     * {@inheritdoc}
+     */
+    public function setProperties($properties) {
+        $this->properties = $properties;
+        return $this;
+    }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function getProperties() {
+
+        return $this->properties;
+    }
     /**
      * {@inheritdoc}
      */

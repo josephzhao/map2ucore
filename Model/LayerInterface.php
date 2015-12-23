@@ -164,6 +164,21 @@ interface LayerInterface {
     public function getSld();
 
     /**
+     * Set properties
+     *
+     * @param string $properties
+     * @return mixed
+     */
+    public function setProperties($properties);
+
+    /**
+     * Get properties
+     *
+     * @return string 
+     */
+    public function getProperties();
+
+    /**
      * Set valueField
      *
      * @param string $valueField

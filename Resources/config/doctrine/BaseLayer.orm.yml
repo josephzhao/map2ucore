@@ -39,12 +39,6 @@ Map2u\CoreBundle\Entity\BaseLayer:
             column: shared
             options:
                 default: false
-        topojson:	        
-            type: boolean
-            nullable: true
-            column: topojson
-            options:
-                default: false
         showLabel:	        
             type: boolean
             nullable: true
@@ -73,10 +67,14 @@ Map2u\CoreBundle\Entity\BaseLayer:
             column: project_id
         name:     
             type: string
-            length: 50
+            length: 250
             fixed: false
             nullable: true
             column: name   
+        properties:     
+            type: text
+            nullable: true
+            column: properties   
         type:     
             type: string
             length: 50
