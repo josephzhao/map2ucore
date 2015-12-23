@@ -164,6 +164,21 @@ interface LayerInterface {
     public function getSld();
 
     /**
+     * Set valueField
+     *
+     * @param string $valueField
+     * @return mixed
+     */
+    public function setValueField($valueField);
+
+    /**
+     * Get valueField
+     *
+     * @return string 
+     */
+    public function getValueField();
+
+    /**
      * Set sql
      *
      * @param string $sql

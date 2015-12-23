@@ -83,6 +83,12 @@ Map2u\CoreBundle\Entity\BaseLayer:
             fixed: false
             nullable: true
             column: type     
+        valueField:     
+            type: string
+            length: 150
+            fixed: false
+            nullable: true
+            column: value_field     
         sld:	        
             type: text
             length: 255

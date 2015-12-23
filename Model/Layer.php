@@ -28,6 +28,7 @@ abstract class Layer implements LayerInterface {
     protected $enabled;
     protected $type; // 1 thematic map, 2 heatmap, 3
     protected $shared;
+    protected $valueField;
     protected $public;
     protected $position;
     protected $topojson;
@@ -127,6 +128,22 @@ abstract class Layer implements LayerInterface {
     public function setSql($sql) {
         $this->sql = $sql;
         return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setValueField($valueField) {
+        $this->valueField = $valueField;
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getValueField() {
+
+        return $this->valueField;
     }
 
     /**
