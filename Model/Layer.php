@@ -24,7 +24,7 @@ abstract class Layer implements LayerInterface {
     protected $category;
     protected $projectId;
     protected $name;
-    protected $sldFileName;
+    protected $sld;
     protected $enabled;
     protected $type; // 1 thematic map, 2 heatmap, 3
     protected $shared;
@@ -207,16 +207,16 @@ abstract class Layer implements LayerInterface {
     /**
      * {@inheritdoc}
      */
-    public function setSldFileName($sldFileName) {
-        $this->sldFileName = $sldFileName;
+    public function setSld($sld) {
+        $this->sld = $sld;
         return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getSldFileName() {
-        return $this->sldFileName;
+    public function getSld() {
+        return $this->sld;
     }
 
     /**

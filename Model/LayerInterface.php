@@ -149,19 +149,19 @@ interface LayerInterface {
 //    public function getGroup();
 
     /**
-     * Set sldFileName
+     * Set sld
      *
-     * @param string $sldFileName
+     * @param string $sld
      * @return mixed
      */
-    public function setSldFileName($sldFileName);
+    public function setSld($sld);
 
     /**
-     * Get sldFileName
+     * Get sld
      *
      * @return string 
      */
-    public function getSldFileName();
+    public function getSld();
 
     /**
      * Set sql

@@ -77,21 +77,19 @@ Map2u\CoreBundle\Entity\BaseLayer:
             fixed: false
             nullable: true
             column: name   
-#        type:     
-#            type: string
-#            length: 50
-#            fixed: false
-#            nullable: true
-#            column: type     
-        sldFileName:	        
+        type:     
             type: string
+            length: 50
+            fixed: false
+            nullable: true
+            column: type     
+        sld:	        
+            type: text
             length: 255
             fixed: false
             nullable: true
-            column: sld_filename
-            options:
-                default: false
-            
+            column: sld
+           
         sql:     
             type: string
             length: 1255
