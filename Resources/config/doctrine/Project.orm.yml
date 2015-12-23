@@ -1,7 +1,16 @@
 Map2u\CoreBundle\Entity\Project:
     type: entity
     table: map2u_projects
-
+    fields:
+        id:
+            id: true
+            type: guid
+            unsigned: false
+            nullable: false
+            column: id
+            generator:
+                strategy: UUID
+        
     oneToMany:
         reports:
             targetEntity: Report
