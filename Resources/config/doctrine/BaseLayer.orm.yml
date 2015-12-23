@@ -58,8 +58,19 @@ Map2u\CoreBundle\Entity\BaseLayer:
             column: layer_show_in_switcher
             options:
                 default: true  
-                
-                
+        zoomLevel:     
+            type: integer
+            unsigned: false
+            nullable: false
+            column: zoom_level
+        lat:     
+            type: float
+            nullable: false
+            column: lat
+        lng:     
+            type: float
+            nullable: false
+            column: lng
         projectId:	        
             type: guid
             unsigned: false

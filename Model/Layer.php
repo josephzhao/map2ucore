@@ -42,6 +42,9 @@ abstract class Layer implements LayerInterface {
     protected $layergeoms;
     protected $maps;
     protected $groups;
+    protected $zoomLevel;
+    protected $lat;
+    protected $lng;
     protected $projects;
     protected $sql;
     protected $sessionId;
@@ -114,6 +117,71 @@ abstract class Layer implements LayerInterface {
     public function setPosition($position) {
         $this->position = $position;
         return $this;
+    }
+
+    
+    
+      /**
+     * Set zoomLevel
+     *
+     * @param integer $zoomLevel
+     * @return mixed
+     */
+    public function setZoomLevel($zoomLevel) {
+        $this->zoomLevel = $zoomLevel;
+
+        return $this;
+    }
+
+    /**
+     * Get zoomLevel
+     *
+     * @return integer 
+     */
+    public function getZoomLevel() {
+        return $this->zoomLevel;
+    }
+
+    /**
+     * Set lat
+     *
+     * @param float $lat
+     * @return mixed
+     */
+    public function setLat($lat) {
+        $this->lat = $lat;
+
+        return $this;
+    }
+
+    /**
+     * Get lat
+     *
+     * @return float 
+     */
+    public function getLat() {
+        return $this->lat;
+    }
+
+    /**
+     * Set lng
+     *
+     * @param float $lng
+     * @return mixed
+     */
+    public function setLng($lng) {
+        $this->lng = $lng;
+
+        return $this;
+    }
+
+    /**
+     * Get lng
+     *
+     * @return float 
+     */
+    public function getLng() {
+        return $this->lng;
     }
 
     /**

@@ -133,6 +133,51 @@ interface LayerInterface {
      */
     public function getShared();
 
+    /**
+     * Set zoomLevel
+     *
+     * @param integer $zoomLevel
+     * @return mixed
+     */
+    public function setZoomLevel($zoomLevel);
+
+    /**
+     * Get zoomLevel
+     *
+     * @return integer 
+     */
+    public function getZoomLevel();
+
+    /**
+     * Set lat
+     *
+     * @param float $lat
+     * @return mixed
+     */
+    public function setLat($lat);
+
+    /**
+     * Get lat
+     *
+     * @return float 
+     */
+    public function getLat();
+
+    /**
+     * Set lng
+     *
+     * @param float $lng
+     * @return mixed
+     */
+    public function setLng($lng);
+
+    /**
+     * Get lng
+     *
+     * @return float 
+     */
+    public function getLng();
+
 //    /**
 //     * Set group
 //     *
