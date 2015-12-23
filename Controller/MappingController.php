@@ -49,7 +49,8 @@ class MappingController extends Controller {
     public function mapAction(Request $request) {
         return array();
     }
- /**
+
+    /**
      * show mapping list page.
      *
      * @Route("/spatialfile_upload", name="mapping_spatialfile_upload", options={"expose"=true})
@@ -59,6 +60,7 @@ class MappingController extends Controller {
     public function spatialfile_uploadAction(Request $request) {
         return array();
     }
+
     /**
      * show mapping list page.
      *
@@ -77,6 +79,22 @@ class MappingController extends Controller {
      */
     public function osm_legendAction() {
         return $this->render('Map2uCoreBundle:Mapping:osm_legend.html.twig');
+    }
+
+    /**
+     * Welcome controller.
+     *
+     * @Route("/uploadspatialfile" , name="mapping_uploadspatialfile", options={"expose"=true})
+     * @Method({"GET"})
+     * @Template()
+     */
+    public function uploadspatialfileAction() {
+
+        $user = $this->getUser();
+        if (!isset($user) || empty($user)) {
+            return new Response(\json_encode(array('success' => false, 'type' => '', 'message' => 'Only logged in user can show shapefiles list')));
+        }
+        return array();
     }
 
 }
