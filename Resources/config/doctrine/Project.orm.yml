@@ -1,6 +1,6 @@
 Map2u\CoreBundle\Entity\Project:
     type: entity
-    table: map2u_projects
+    table: map2u_core__project
     fields:
         id:
             id: true
