@@ -61,15 +61,15 @@ Map2u\CoreBundle\Entity\BaseLayer:
         zoomLevel:     
             type: integer
             unsigned: false
-            nullable: false
+            nullable: true
             column: zoom_level
         lat:     
             type: float
-            nullable: false
+            nullable: true
             column: lat
         lng:     
             type: float
-            nullable: false
+            nullable: true
             column: lng
         projectId:	        
             type: guid

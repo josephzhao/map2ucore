@@ -229,7 +229,7 @@
             <a class="dropdown-toggle" data-toggle="dropdown" href="#">
                 <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
             </a>
-            <ul class="dropdown-menu dropdown-login-user">
+            <ul class="dropdown-menu dropdown-loggedin-user">
 
                 <li><a href="{{ path('useraccount_index') }}"><i class="fa fa-user fa-fw"></i>{{ 'User Profile'|trans}}</a>
                 </li>
@@ -248,9 +248,9 @@
     {% else %}
         <li class="dropdown login">
             <a class="dropdown-toggle" data-toggle="dropdown" href="{{path('fos_user_security_login')}}">
-                <i class="fa fa-user fa-fw"></i>  <i class="fa fa-caret-down"></i>
+                <i class="fa fa-user fa-fw"></i> <i class="fa fa-caret-down"></i>
             </a>
-            <ul class="dropdown-menu dropdown-login-user">
+            <ul class="dropdown-menu  dropdown-login-user">
                 <div class="login-dropdown">
                     {{ render(controller('Map2uCoreBundle:Security:loginform', {'ajax':true})) }}
                 </div> 
