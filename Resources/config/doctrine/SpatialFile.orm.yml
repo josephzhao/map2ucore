@@ -1,6 +1,6 @@
 Map2u\CoreBundle\Entity\SpatialFile:
     type: entity
-    table: map2u_core__spatial_file
+    table: map2u_core__spatialfile
     fields:
         id:
             id: true
