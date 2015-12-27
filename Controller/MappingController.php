@@ -28,6 +28,16 @@ use Symfony\Component\HttpFoundation\Response;
  */
 class MappingController extends Controller {
 
+    protected $map_class;
+    protected $layer_class;
+    protected $maplayer_class;
+
+    public function __construct() {
+        $this->map_class = "Map2uCoreBundle:Map";
+        $this->layer_class = "Map2uCoreBundle:Layer";
+        $this->maplayer_class = "Map2uCoreBundle:MapLayer";
+    }
+
     //put your code here
     /**
      * show mapping list page.
@@ -37,6 +47,9 @@ class MappingController extends Controller {
      * @Template()
      */
     public function indexAction(Request $request) {
+        var_dump($this->map_class);
+        $mc = $this->container->hasParameter('map2u.core.map.class');
+        var_dump($mc);
         return array();
     }
 
@@ -48,6 +61,29 @@ class MappingController extends Controller {
      * @Template()
      */
     public function mapAction(Request $request) {
+        return array();
+    }
+
+    /**
+     * show mapping list page.
+     *
+     * @Route("/userdraw", name="mapping_userdraw", options={"expose"=true})
+     * @Method("GET|POST")
+     * @Template()
+     */
+    public function userdrawAction(Request $request) {
+        $marker_image_types = array_diff(scandir($this->get('kernel')->getRootDir() . '/../web/images/markers'), array('..', '.'));
+        return array("marker_image_types" => $marker_image_types);
+    }
+
+    /**
+     * show mapping list page.
+     *
+     * @Route("/settings", name="mapping_settings", options={"expose"=true})
+     * @Method("GET|POST")
+     * @Template()
+     */
+    public function settingsAction(Request $request) {
         return array();
     }
 

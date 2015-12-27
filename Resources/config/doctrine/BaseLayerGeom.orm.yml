@@ -18,6 +18,10 @@ Map2u\CoreBundle\Entity\BaseLayerGeom:
             fixed: false
             nullable: true
             column: name
+        style:     
+            type: text
+            nullable: true
+            column: style            
         value:     
             type: string
             length: 250

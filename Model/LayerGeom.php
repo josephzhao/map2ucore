@@ -10,11 +10,11 @@ use Map2u\CoreBundle\Model\LayerGeomInterface;
 abstract class LayerGeom implements LayerGeomInterface {
 
     protected $id;
- 
     protected $tableId;
     protected $rowId;
     protected $name;
     protected $value;
+    protected $style;
     protected $theGeom;
 
     /**
@@ -35,6 +35,21 @@ abstract class LayerGeom implements LayerGeomInterface {
     /**
      * {@inheritdoc}
      */
+    public function getStyle() {
+        return $this->style;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setStyle($style) {
+        $this->style = $style;
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function setTableId($tableId) {
         $this->tableId = $tableId;
 
@@ -47,7 +62,7 @@ abstract class LayerGeom implements LayerGeomInterface {
     public function getTableId() {
         return $this->tableId;
     }
-  
+
     /**
      * {@inheritdoc}
      */

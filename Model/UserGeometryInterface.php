@@ -27,6 +27,21 @@ interface UserGeometryInterface {
     public function getUserId();
 
     /**
+     * Get style
+     *
+     * @return string
+     */
+    public function getStyle();
+
+    /**
+     * Set style
+     *
+     * @param string $style
+     * @return mixed
+     */
+    public function setStyle($style);
+
+    /**
      * Set name
      *
      * @param string $name

@@ -15,6 +15,8 @@ abstract class UserGeometry implements UserGeometryInterface {
     protected $description;
     protected $createdAt;
     protected $updatedAt;
+    protected $style;
+    protected $center;
     protected $radius;
     protected $theGeom;
 
@@ -30,6 +32,36 @@ abstract class UserGeometry implements UserGeometryInterface {
      */
     public function setId($id) {
         $this->id = $id;
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getStyle() {
+        return $this->style;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setStyle($style) {
+        $this->style = $style;
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCenter() {
+        return $this->center;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCenter($center) {
+        $this->center = $center;
         return $this;
     }
 

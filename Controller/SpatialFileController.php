@@ -23,14 +23,11 @@ use Symfony\Component\HttpFoundation\ResponseHeaderBag;
  */
 class SpatialFileController extends Controller {
 
-    private $params = null;
-    protected $entity = null;
-    protected $entityType = null;
+ 
 
     public function __construct() {
 
-        $this->entity = new SpatialFile();
-        $this->entityType = new SpatialFileType();
+    
     }
 
     /**
@@ -62,7 +59,8 @@ class SpatialFileController extends Controller {
         $spatialfile = null;
         $columns = array();
         if (isset($spatialfile_id) && $spatialfile_id !== null) {
-            $spatialfile = $em->getRepository($em->getClassMetadata(get_class($this->entity))->getName())->find($spatialfile_id);
+            $entity_classname = $em->getClassMetadata($this->getParameter('map2u.core.spatialfile.class'))->getName();
+            $spatialfile = $em->getRepository($entity_classname)->find($spatialfile_id);
         }
         if ($spatialfile) {
             $columns = unserialize($spatialfile->getFieldList());
@@ -92,7 +90,8 @@ class SpatialFileController extends Controller {
         $spatialfile = null;
         $columns = array();
         if (isset($spatialfile_id) && $spatialfile_id !== null) {
-            $spatialfile = $em->getRepository($em->getClassMetadata(get_class($this->entity))->getName())->find($spatialfile_id);
+            $entity_classname = $em->getClassMetadata($this->getParameter('map2u.core.spatialfile.class'))->getName();
+            $spatialfile = $em->getRepository($entity_classname)->find($spatialfile_id);
         }
         if ($spatialfile) {
             $columns = unserialize($spatialfile->getFieldList());
@@ -123,7 +122,8 @@ class SpatialFileController extends Controller {
             return new Response(\json_encode(array('success' => false, 'type' => '', 'data' => 'Only logged in user can show map with topojson file data')));
         }
         if (isset($spatialfile_id) && $spatialfile_id !== null) {
-            $spatialfile = $em->getRepository($em->getClassMetadata(get_class($this->entity))->getName())->find($spatialfile_id);
+            $entity_classname = $em->getClassMetadata($this->getParameter('map2u.core.spatialfile.class'))->getName();
+            $spatialfile = $em->getRepository($entity_classname)->find($spatialfile_id);
         }
         if ($spatialfile !== null) {
             return new Response(\json_encode(array('success' => true, 'spatialfile' => array('id' => $spatialfile->getId(), 'layerType' => 'spatialfile', 'datasource' => $spatialfile->getId(), 'filename' => $spatialfile->getFileName(), 'type' => 'topojson'))));
@@ -147,7 +147,8 @@ class SpatialFileController extends Controller {
         $layer = array();
         if (isset($spatialfile_id) && $spatialfile_id !== null) {
             $dir = $this->get('kernel')->getRootDir() . '/../Data/uploads/spatialfiles/spatial_' . str_replace('-', '_', $spatialfile_id);
-            $spatialfile = $em->getRepository($em->getClassMetadata(get_class($this->entity))->getName())->find($spatialfile_id);
+            $entity_classname = $em->getClassMetadata($this->getParameter('map2u.core.spatialfile.class'))->getName();
+            $spatialfile = $em->getRepository($entity_classname)->find($spatialfile_id);
             if ($spatialfile) {
                 $fileName = $spatialfile->getFileName();
             }
@@ -254,11 +255,10 @@ class SpatialFileController extends Controller {
         $dbparams = DefaultMethods::getDatabaseParams($this);
         $em = $this->getDoctrine()->getManager();
         $runResult = null;
-
-        $spatialfile = $em->getRepository($em->getClassMetadata(get_class($this->entity))->getName())->findOneBy(array("userId" => $this->getUser()->getId(), "fileName" => $spatialfilename, 'sheetName' => $sheetname));
+        $entity_classname = $em->getClassMetadata($this->getParameter('map2u.core.spatialfile.class'))->getName();
+        $spatialfile = $em->getRepository($entity_classname)->findOneBy(array("userId" => $this->getUser()->getId(), "fileName" => $spatialfilename, 'sheetName' => $sheetname));
         if ($spatialfile === null) {
-            $entityInfo = $em->getClassMetadata(get_class($this->entity));
-            $spatialfile = new $entityInfo->name;
+            $spatialfile = new $entity_classname;
             $spatialfile->setUserId($this->getUser()->getId());
             $spatialfile->setUser($this->getUser());
         }

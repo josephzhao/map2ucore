@@ -25,6 +25,12 @@ Map2u\CoreBundle\Entity\BaseUserGeometry:
             fixed: false
             nullable: true
             column: radius
+        center:
+            type: string
+            length: 250
+            fixed: false
+            nullable: true
+            column: center            
         buffer:
             type: string
             length: 250
@@ -37,6 +43,10 @@ Map2u\CoreBundle\Entity\BaseUserGeometry:
             fixed: false
             nullable: true
             column: marker_icon
+        style:
+            type: text
+            nullable: true
+            column: style            
         public:     
             type: boolean
             nullable: true

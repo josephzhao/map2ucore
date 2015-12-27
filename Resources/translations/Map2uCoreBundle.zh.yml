@@ -2,6 +2,10 @@ Draw a polyline: 画线
 motorway: 高速公路
 Legend: 图例
 Spatial File Upload: 上载数据文件
+Settings: 设置
+User Draw Geometry Feature: 用户自画图元
+Maps: 地图显示管理
+Layers: 创建地图图层
 key:
   table:
     entry:
