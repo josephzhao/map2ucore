@@ -12,6 +12,11 @@ Map2u\CoreBundle\Entity\BaseLayerGeom:
             unsigned: false
             nullable: true
             column: row_id
+        layerId:	        
+            type: guid
+            unsigned: false
+            nullable: false
+            column: layer_id
         name:     
             type: string
             length: 50

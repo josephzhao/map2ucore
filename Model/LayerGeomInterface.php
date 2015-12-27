@@ -29,6 +29,21 @@ interface LayerGeomInterface {
     public function setId($id);
 
     /**
+     * Get layerId
+     *
+     * @return guid 
+     */
+    public function getLayerId();
+
+    /**
+     * Set layerId
+     *
+     * @param guid $layerId
+     * @return mixed
+     */
+    public function setLayerId($layerId);
+
+    /**
      * Get style
      *
      * @return string
