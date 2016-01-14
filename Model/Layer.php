@@ -294,6 +294,22 @@ abstract class Layer implements LayerInterface {
     /**
      * {@inheritdoc}
      */
+    public function setUser(\Application\Sonata\UserBundle\Entity\User $user = null) {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getUser() {
+        return $this->user;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function setName($name) {
         $this->name = $name;
         return $this;
@@ -548,6 +564,21 @@ abstract class Layer implements LayerInterface {
      */
     public function removeMap(\Map2u\CoreBundle\Entity\Map $map = null) {
         $this->maps->removeElement($map);
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCategory($category) {
+        $this->category = $category;
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCategory() {
+        $this->category;
     }
 
     /**

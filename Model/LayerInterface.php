@@ -104,6 +104,21 @@ interface LayerInterface {
     public function getUserId();
 
     /**
+     * Set user
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $user
+     * @return mixed
+     */
+    public function setUser(\Application\Sonata\UserBundle\Entity\User $user = null);
+
+    /**
+     * Get user
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User 
+     */
+    public function getUser();
+
+    /**
      * Set name
      *
      * @param string $name
@@ -528,4 +543,19 @@ interface LayerInterface {
      * @return  mixed
      */
     //public function getProjects();
+
+    /**
+     * Set category
+     *
+     * @param \Map2u\CoreBundle\Entity\LayerCategory category
+     * @return mixed
+     */
+    public function setCategory($category);
+
+    /**
+     * Get category
+     *
+     * @return \Map2u\CoreBundle\Entity\LayerCategory
+     */
+    public function getCategory();
 }
