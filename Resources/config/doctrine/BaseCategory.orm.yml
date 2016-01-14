@@ -54,10 +54,6 @@ Map2u\CoreBundle\Entity\BaseCategory:
             gedmo:
                 timestampable:
                     on: update
-#        description:
-#            type: text
-#            nullable: true
-
     lifecycleCallbacks: 
         prePersist: [prePersist ]
         preUpdate: [preUpdate]
