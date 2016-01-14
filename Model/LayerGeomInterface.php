@@ -74,6 +74,21 @@ interface LayerGeomInterface {
     public function getTableId();
 
     /**
+     * Set tableName
+     *
+     * @param string $tableName
+     * @return mixed
+     */
+    public function setTableName($tableName);
+
+    /**
+     * Get tableName
+     *
+     * @return string 
+     */
+    public function getTableName();
+
+    /**
      * Set rowId
      *
      * @param guid $rowId

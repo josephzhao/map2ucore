@@ -1,0 +1,222 @@
+                     
+<div style="width:550px;margin-left: 10px;">
+    {% if user is defined %}
+        <div style="text-align:center; margin:5px auto;">
+            <h4>Account Personal Info:</h4>
+        </div>
+        <table class="showuserpersonalinfo" style="text-align:left;width:100%;">
+            <tbody>
+                <tr>
+                    <td class="fieldname">Email</td>
+                    <td>{{ user.email}}</td>
+                </tr>
+                <tr>
+                    <td class="fieldname">User Name</td>
+                    <td>{{ user.username}}</td>
+                </tr>
+                <tr>
+                    <td class="fieldname">First Name</td>
+                    <td>{{ user.firstname}}</td>
+                </tr>
+
+                <tr>
+                    <td class="fieldname">Last Name</td>
+                    <td>{{ user.lastname}}</td>
+                </tr>
+           {#     <tr>
+                    <td class="fieldname">Company</td>
+
+                    <td>{{ user.company }}</td>
+                </tr>
+                <tr>
+                    <td class="fieldname">Country</td>
+                    <td>{{ user.country }}</td>
+                </tr>
+                <tr>
+                    <td class="fieldname">Address</td>
+                    <td >{{ user.address1 }}</td>
+                </tr>
+                <tr>
+                    <td  class="fieldname"></td>
+
+                    <td >{{ user.address2 }}</td>
+                </tr>
+                <tr>
+                    <td class="fieldname">City</td>
+                    <td>{{user.city}}</td>
+                </tr>
+                <tr>
+                    <td class="fieldname">State</td>
+                    <td id="state">{{ user.state }}</td>
+                </tr>
+                <tr>
+                    <td class="fieldname">Postal Code</td>
+                    <td>{{ user.postalCode }}</td>
+                </tr>
+                <tr>
+                    <td class="fieldname">Phone</td>
+                    <td >{{ user.phone }} ext: {{ user.extension }}</td>
+                </tr>#}
+            </tbody>
+        </table> 
+    {% endif %}
+</div>
+{% if upgradeEntities is defined and upgradeEntities is not null %}
+    <div id="unpayed-membership-upgrade" style="width:550px;margin-left: 10px;">
+        <div style="text-align:center; margin:5px auto;">
+            <h4><b>Unpayed Membership Upgrade:</b></h4>
+        </div>
+        {% for upgradeEntity in upgradeEntities %}
+            <form id="useraccount_upgrademembership_{{upgradeEntity.getId()}}" class="useraccount_upgrademembership" action="https://esqa.moneris.com/HPPDP/index.php{#{path('useraccount_upgrademembership')}#}" method="POST">
+                {% set totalcost=0 %}
+
+                <table class="showusermembershipinfo" style="text-align:left;width:100%;">
+                    <tbody>
+
+                        <tr>
+                            <td class="fieldname" colspan="2">
+                                <h4>Selected subscription plan</h4>
+                                <div style="min-height: 30px;max-height: 200px; overflow: auto;padding:5px; border:1px solid gainsboro;border-radius: 3px;">
+                                    <ul style="list-style: none;">
+                                        {% if upgradeEntity.membership is defined and upgradeEntity.membership is not null %}
+                                            {% set totalcost=upgradeEntity.membership.price %}
+                                            <li>
+
+                                                <input id="usermembershiptype_membership_{{loop.index}}" type="radio" name="usermembershiptype[membership]" value="{{upgradeEntity.membership.id}}"  checked  style="margin-right: 8px;">{{upgradeEntity.membership.name}} <div class="pull-right" style="display:inline-block;">${{upgradeEntity.membership.price}}</div>
+                                                <INPUT TYPE="HIDDEN" NAME="id1" VALUE="{{upgradeEntity.membership.id}}">
+                                                <INPUT TYPE="HIDDEN" NAME="description1" VALUE="{{upgradeEntity.membership.name}}">
+                                                <INPUT TYPE="HIDDEN" NAME="quantity1" VALUE="1">
+                                                <INPUT TYPE="HIDDEN" NAME="price1" VALUE="{{upgradeEntity.membership.price}}">
+
+                                            </li>
+
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fieldname" colspan="2">
+                                <h4>Selected Addon Modules</h4>
+                                <div style="min-height: 30px;max-height: 200px; overflow: auto;padding:5px; border:1px solid gainsboro;border-radius: 3px;">
+                                    <ul style="list-style: decimal;">
+                                        {% if  upgradeEntity.addonmodules is defined and upgradeEntity.addonmodules | length > 0 %}
+                                            {% for addonmodule in upgradeEntity.addonmodules %}
+                                                {% set totalcost=  totalcost + addonmodule.price %}
+
+                                                <li>
+                                                    <input id="usermembershiptype_addonmodules_{{loop.index}}" type="hidden" name="usermembershiptype[addonmodules][]" value="{{addonmodule.id}}" >
+                                                    <INPUT TYPE="HIDDEN" NAME="id2{{addonmodule.id}}" VALUE="{{addonmodule.id}}">
+                                                    <INPUT TYPE="HIDDEN" NAME="description2{{addonmodule.id}}" VALUE="{{addonmodule.name}}">
+                                                    <INPUT TYPE="HIDDEN" NAME="quantity2{{addonmodule.id}}" VALUE="1">
+                                                    <INPUT TYPE="HIDDEN" NAME="price2{{addonmodule.id}}" VALUE="{{addonmodule.price}}">
+                                                    <INPUT TYPE="HIDDEN" NAME="subtotal2{{addonmodule.id}}" VALUE="{{addonmodule.name}}">
+                                                    {{addonmodule.name}} <div class="pull-right" style="display:inline-block;">${{addonmodule.price}}</div>
+                                                </li>
+                                            {% endfor %}
+                                        {% else %}
+                                            No selected addon modules
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td class="fieldname" colspan="2">
+                                <h4>Selected BBM Modules</h4>
+                                <div style="min-height: 30px;max-height: 200px; overflow: auto;padding:5px; border:1px solid gainsboro;border-radius: 3px;">
+                                    <ul style="list-style: decimal;">
+                                        {% if   upgradeEntity.bbmmodules is defined  and upgradeEntity.bbmmodules | length > 0 %}
+                                            <li>BBM associated membership fee: <div class="pull-right" style="display:inline-block;">$850</div>
+                                            </li>
+                                            {% set totalcost=  totalcost + 850 %}
+                                            {% for bbmmodule in upgradeEntity.bbmmodules %}
+                                                {% set totalcost=  totalcost + bbmmodule.price %}
+                                                <li>
+                                                    <INPUT TYPE="HIDDEN" NAME="id3{{bbmmodule.id}}" VALUE="{{bbmmodule.id}}">
+                                                    <INPUT TYPE="HIDDEN" NAME="description3{{bbmmodule.id}}" VALUE="{{bbmmodule.name}}">
+                                                    <INPUT TYPE="HIDDEN" NAME="quantity3{{bbmmodule.id}}" VALUE="1">
+                                                    <INPUT TYPE="HIDDEN" NAME="price3{{bbmmodule.id}}" VALUE="{{bbmmodule.price}}">
+                                                    <INPUT TYPE="HIDDEN" NAME="subtotal3{{bbmmodule.id}}" VALUE="{{bbmmodule.name}}">
+
+                                                    <input id="usermembershiptype_bbmmodules_{{loop.index}}" type="hidden" name="usermembershiptype[bbmmodules][]" value="{{bbmmodule.id}}" >
+                                                    {{bbmmodule.name}}  <div class="pull-right" style="display:inline-block;">${{bbmmodule.price}}</div>
+                                                </li>
+                                            {% endfor %}
+                                        {% else %}
+                                            No selected BBM modules
+                                        {% endif %}
+                                    </ul>
+                                </div>
+                            </td>
+                        </tr>
+                        <tr >
+                            <td  class="fieldname" colspan="2">
+                                <h4>Upgrade total cost</h4>
+                                * if the selected module you already have subscripted, the selected module will start from the already subscripted module expiered day;
+                                otherwise will start from approved date
+
+                                <div style="min-height: 30px;max-height: 200px; overflow: auto;padding:5px; border:1px solid gainsboro;border-radius: 3px;">
+                                    <input type="hidden" name="totalcost" value="{{totalcost*1.13}}" >
+                                    Total Cost: ${{totalcost*1.13}} = ${{totalcost}} + HST: ${{totalcost*0.13}}
+                                </div>
+
+                            </td>
+                        </tr>
+
+                        <tr >
+                            <td style="text-align:center;" colspan="2"><button type="button" data-id="{{upgradeEntity.getId()}}" value="delete"  class="btn btn-sm btn-primary" id="form_submit_button_id" style="margin: 15px 15px;">Delete</button><button type="submit" data-id="{{upgradeEntity.getId()}}" value="subscript"  class="btn btn-sm btn-primary" id="form_submit_button_id" style="margin: 15px 15px;">Pay now</button><!--<div class='system-map-icon pull-right'></div>--></td>
+                        </tr>
+                    <INPUT TYPE="HIDDEN" NAME="ps_store_id" VALUE="LQE5Atore3">
+                    <INPUT TYPE="HIDDEN" NAME="hpp_key" VALUE="hp3CC7I3AYVJ">
+                    <INPUT TYPE="HIDDEN" NAME="charge_total" VALUE="{{totalcost*1.13|number_format(2)}}">
+                    <INPUT TYPE="HIDDEN" NAME="rvar_transid" VALUE="{{upgradeEntity.getId()}}">
+                    <INPUT TYPE="HIDDEN" NAME="rvar_billtype" VALUE="membership upgrade">
+
+                    </tbody>
+                    {{ form_widget(form._token) }}
+                </table> 
+
+            </form>
+        {% endfor %}
+    </div>
+{% endif %}
+
+<script>
+    $(function () {
+        $("form.useraccount_upgrademembership button").unbind("click");
+        $("form.useraccount_upgrademembership button[value='subscript']").click(function () {
+            var membership = $(this).data("id");
+            $("form#useraccount_upgrademembership_" + membership + " button[value='subscript']").submit();
+        });
+        $("form.useraccount_upgrademembership button[type='button'][value='delete']").click(function () {
+            var bbm = [];
+
+            var membership = $(this).data("id");
+            var formData = new FormData();
+            formData.append('id', membership);
+
+            $.ajax({
+                url: Routing.generate('useraccount_upgrademembership_delete', {_locale: window.locale}),
+                type: 'POST',
+                data: formData,
+                complete: function () {
+                },
+                success: function (data) {
+                    alert(data.message);
+                    if (data.success === true) {
+                        $("form#useraccount_upgrademembership_" + membership).remove();
+                        if ($("form.useraccount_upgrademembership").length === 0) {
+                            $("div#unpayed-membership-upgrade").remove();
+                        }
+                    }
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+
+        });
+
+    });
+</script>

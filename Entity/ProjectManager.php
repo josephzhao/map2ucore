@@ -12,13 +12,13 @@
 namespace Map2u\CoreBundle\Entity;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
-use Map2u\CoreBundle\Model\CategoryInterface;
+use Map2u\CoreBundle\Model\ProjectInterface;
 use Map2u\CoreBundle\Model\ProjectInterface;
 use Map2u\CoreBundle\Model\ProjectManagerInterface;
 use Map2u\CoreBundle\Model\BaseEntityManager;
 use Symfony\Component\Security\Core\SecurityContext;
 
-class CategoryManager extends BaseEntityManager implements ProjectManagerInterface {
+class ProjectManager extends BaseEntityManager implements ProjectManagerInterface {
 
     /**
      * @var array
@@ -47,10 +47,10 @@ class CategoryManager extends BaseEntityManager implements ProjectManagerInterfa
      * @param 
      * @return ProjectInterface
      */
-    public function getProjects(CategoryInterface $category) {
+    public function getProjects(ProjectInterface $category) {
       
 
-        return $this->categories;
+        return $this->projects;
     }
 
     /**
@@ -77,16 +77,7 @@ class CategoryManager extends BaseEntityManager implements ProjectManagerInterfa
         return $rootCategories; //$categories;
     }
 
-    /**
-     * @param ContextInterface $context
-     *
-     * @return array
-     */
-    public function getCategories() {
-
-        return $this->categories;
-    }
-
+   
     /**
      * Load all categories from the database, the current method is very efficient for < 256 categories
      *

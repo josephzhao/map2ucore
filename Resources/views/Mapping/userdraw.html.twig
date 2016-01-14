@@ -119,25 +119,24 @@
                         console.log('center:' + event.feature.getGeometry().getCenter());
                     }
                     if (event.feature.getGeometry().getType() === 'Point') {
-                        var iconStyle = new ol.style.Style({
-                            image: new ol.style.Icon({
-                                src: '/images/markers/' + $("div.ol3map-sidebar-panel-content select.marker_image_type").val(),
-                                anchor: [.5, 1],
-                                anchorXUnits: 'fraction', anchorYUnits: 'fraction',
-                                opacity: .9
-                            })
-                        });
-                        event.feature.setStyle(iconStyle);
+                        var marker_image = $("div.ol3map-sidebar-panel-content select.marker_image_type").val();
+                        if (marker_image !== null && marker_image !== 'null' && marker_image !== undefined && marker_image.trim().length > 0) {
+                            var iconStyle = new ol.style.Style({
+                                image: new ol.style.Icon({
+                                    src: '/images/markers/' + marker_image,
+                                    anchor: [.5, 1],
+                                    anchorXUnits: 'fraction', anchorYUnits: 'fraction',
+                                    opacity: .9
+                                })
+                            });
+                            event.feature.setStyle(iconStyle);
+                        }
                     }
                     console.log(pp);
-
                     //    alert($("div.ol3map-sidebar-panel-content select.marker_image_type").val());
                 });
-
             }
         }
-
-
         /**
          * Let user change the geometry type.
          * @param {Event} e Change event.
@@ -151,11 +150,14 @@
         $("button[type='button'][value='Clear']").click(function () {
             source.clear();
         });
-
-
         $("div.ol3map-sidebar-panel-content select.marker_image_type").unbind("change");
         $("div.ol3map-sidebar-panel-content select.marker_image_type").change(function () {
-            $("div.ol3map-sidebar-panel-content select.marker_image_type").css("background-image", "url(/images/markers/" + $(this).val() + ")");
+            if ($(this).val() === null || $(this).val() === 'null') {
+                $("div.ol3map-sidebar-panel-content select.marker_image_type").css("background-image", '');
+            }
+            else {
+                $("div.ol3map-sidebar-panel-content select.marker_image_type").css("background-image", "url(/images/markers/" + $(this).val() + ")");
+            }
         });
         $("div.ol3map-sidebar-panel-content select.marker_image_type").trigger("change");
     });

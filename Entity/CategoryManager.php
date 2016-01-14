@@ -47,8 +47,6 @@ class CategoryManager extends BaseEntityManager implements CategoryManagerInterf
      */
     public function getRootCategory() {
         $this->loadCategories();
-        
-        
         return $this->categories;
     }
 
@@ -57,6 +55,7 @@ class CategoryManager extends BaseEntityManager implements CategoryManagerInterf
      */
     public function getRootCategories($loadChildren = true) {
         $class = $this->getClass();
+        var_dump($class);
         if ($this->user) {
             $rootCategories = $this->getObjectManager()->createQuery(sprintf('SELECT c FROM %s c WHERE c.parent IS NULL and (c.user=:user or c.public=true)', $class))
                     ->setParameter('user', $this->user)
@@ -106,6 +105,8 @@ class CategoryManager extends BaseEntityManager implements CategoryManagerInterf
             // no category, create one for the provided context
             $category = $this->create();
             $category->setName('default');
+            $category->setTitle('default');
+            
             $category->setEnabled(true);
             $category->setPublic(false);
             $category->setUser($this->user);

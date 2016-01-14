@@ -1,0 +1,39 @@
+Map2u\CoreBundle\Entity\City:
+    type: entity
+    table: map2u_core__city
+    gedmo:
+        translation:
+            locale: locale
+            # using specific personal translation class:
+            entity: Map2u\CoreBundle\Entity\CityTranslation     
+    fields:
+        id:
+            id: true
+            type: guid
+            nullable: false
+            generator:
+                strategy: UUID
+        countryId:
+            type: guid
+            unsigned: false
+            nullable: true
+            column: country_id                
+        stateId:
+            type: guid
+            unsigned: false
+            nullable: true
+            column: state_id                
+        lng:
+            type: float
+            nullable: false
+            column: lng            
+        lat:
+            type: float
+            nullable: false
+            column: lat
+        zoomLevel:
+            type: integer
+            unsigned: false
+            nullable: false
+            column: zoom_level
+    lifecycleCallbacks: {  }

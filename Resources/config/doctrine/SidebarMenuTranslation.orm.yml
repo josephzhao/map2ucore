@@ -1,0 +1,4 @@
+Map2u\CoreBundle\Entity\SidebarMenuTranslation:
+    type: entity
+    table: map2u_core__sidebar_menu_translation
+            

@@ -1,0 +1,87 @@
+
+<div style="width:550px;margin-left: 10px;">
+
+    <form id="useraccount_upgradecheckout" action="https://esqa.moneris.com/HPPDP/index.php" method="POST">
+
+        <div style="text-align:center; margin:5px auto;">
+            <h4>Membership Upgrade Checkout:</h4>
+            {#<FORM METHOD="POST" ACTION=https://esqa.moneris.com/HPPDP/index.php>
+             <INPUT TYPE="HIDDEN" NAME="ps_store_id" VALUE="AF4Fs1024">
+             <INPUT TYPE="HIDDEN" NAME="hpp_key" VALUE="Hsjh4GSr4g">
+             <INPUT TYPE="HIDDEN" NAME="charge_total" VALUE="1.00">
+             <!--MORE OPTIONAL VARIABLES CAN BE DEFINED HERE -->
+             <INPUT TYPE="SUBMIT" NAME="SUBMIT" VALUE="Click to proceed to Secure Page">
+            </FORM>#}
+        </div>
+        <table class="showusermembershipinfo" style="text-align:left;width:100%;">
+            <tbody>
+            <INPUT TYPE="HIDDEN" NAME="ps_store_id" VALUE="LQE5Atore3">
+            <INPUT TYPE="HIDDEN" NAME="hpp_key" VALUE="hp3CC7I3AYVJ">
+            <INPUT TYPE="HIDDEN" NAME="charge_total" VALUE="{{totalCost}}">
+            <tr>
+                <td style="text-align: right">Total cost:$</td><td><input type="text" name="totalcost" value="{{totalCost}}" readonly><td>
+
+            </tr>
+            <tr>
+                <td style="text-align: right">Credit Balance:$</td><td><input type="text" name="credit_balance" value="{{balance}}" ><td>
+
+            </tr>
+            <tr>
+                <td style="text-align: right"><input type="checkbox" name="use_credit_balance" ></td><td>Use Credit Balance<td>
+
+            </tr>
+            <tr>
+                <td style="text-align: right">Credit Card Info<td></td><td>
+            </tr>
+            <tr>
+                <td style="text-align: right">Credit Card Holder Name:</td><td><input type="text" name="credit_card_holder_name" ><td>
+            </tr>
+            <tr>
+                <td style="text-align: right">Credit Card Number:</td><td><input type="text" name="credit_card_number" ><td>
+            </tr>
+            </tr>
+            <tr>
+                <td style="text-align: right">Credit Card Verify Number:</td><td><input type="text" name="credit_card_verify_number" ><td>
+            </tr>
+            <tr >
+                <td style="text-align:center;" colspan="2"><button type="button"  value="subscript"  class="btn btn-sm btn-primary" id="form_submit_button_id" style="margin: 15px 0;">Upgrade Now</button><!--<div class='system-map-icon pull-right'></div>--></td>
+            </tr>
+            </tbody>
+            {{ form_widget(form._token) }}
+        </table> 
+
+    </form>
+</div>
+
+
+<script>
+    $(function () {
+        $("form#useraccount_upgradecheckout button").unbind("click");
+        $("form#useraccount_upgradecheckout button").click(function () {
+
+            var formData = new FormData($("form#useraccount_upgradecheckout")[0]);
+
+            $.ajax({
+                url: "https://esqa.moneris.com/HPPDP/index.php",
+                type: 'POST',
+                data: formData,
+                complete: function () {
+                },
+                success: function (data) {
+                    if (data.success === true) {
+
+
+                    }
+                    alert(data.message);
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+
+
+        });
+    });
+
+
+</script>

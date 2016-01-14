@@ -15,12 +15,14 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Map2u\CoreBundle\Model\CategoryInterface;
 use Application\Sonata\UserBundle\Entity\User;
 use Sonata\ClassificationBundle\Model\Tag;
-use Map2u\CoreBundle\Controller\DefaultMethods;
+use Symfony\Component\Locale as Locale;
 
 abstract class Category implements CategoryInterface {
 
     protected $id;
     protected $name;
+    protected $title;
+    protected $locale = 'en';
     protected $slug;
     protected $enabled;
     protected $public;
@@ -37,7 +39,7 @@ abstract class Category implements CategoryInterface {
      * Constructor
      */
     public function __construct() {
-        $this->id = DefaultMethods::gen_uuid();
+        
     }
 
     /**
@@ -61,8 +63,8 @@ abstract class Category implements CategoryInterface {
      */
     public function setName($name) {
         $this->name = $name;
-
         $this->setSlug($name);
+        return $this;
     }
 
     /**
@@ -70,6 +72,29 @@ abstract class Category implements CategoryInterface {
      */
     public function getName() {
         return $this->name;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTitle($title) {
+        $this->title = $title;
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTitle() {
+        $this->getLocale();
+        if (method_exists($this, "translate")) {
+            if (isset($this->locale) && $this->locale !== null && strlen(trim($this->locale)) > 1) {
+                $this->title = $this->translate($this->locale)->getTitle();
+            } else {
+                $this->title = $this->translate('en')->getTitle();
+            }
+        }
+        return $this->title;
     }
 
     /**
@@ -125,6 +150,14 @@ abstract class Category implements CategoryInterface {
      * {@inheritdoc}
      */
     public function getDescription() {
+        $this->getLocale();
+        if (method_exists($this, "translate")) {
+            if (isset($this->locale) && $this->locale !== null && strlen(trim($this->locale)) > 1) {
+                $this->description = $this->translate($this->locale)->getDescription();
+            } else {
+                $this->description = $this->translate('en')->getDescription();
+            }
+        }
         return $this->description;
     }
 
@@ -215,8 +248,6 @@ abstract class Category implements CategoryInterface {
     public function addChild(CategoryInterface $child, $nested = false) {
         $this->children[] = $child;
 
-
-
         if (!$nested) {
             $child->setParent($this, true);
         }
@@ -296,6 +327,11 @@ abstract class Category implements CategoryInterface {
      */
     public function getUser() {
         return $this->user;
+    }
+
+    public function getLocale() {
+
+        return $this->locale = locale_get_default();
     }
 
 }

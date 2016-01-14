@@ -358,8 +358,7 @@ zh-CN:
       map_image: 地图图像 (显示标准图层)
       embeddable_html: 可嵌入HTML
       licence: 许可协议
-      export_details: OpenStreetMap 数据采用<a href="http://opendatacommons.org/licenses/odbl/1.0/">开放数据共享开放数据库许可协议</a>
-        (ODbL)授权。
+      export_details: OpenStreetMap 数据采用<a href="http://opendatacommons.org/licenses/odbl/1.0/">开放数据共享开放数据库许可协议</a>(ODbL)授权。
       too_large:
         advice: 如果用上面的导出工具失败了，请考虑使用下面列出的来源来导出：
         body: 该区域过大，不能导出为 OpenStreetMap XML 数据。请放大地图或选择一个更小的区域，或使用以下大量数据下载来源之一：
@@ -395,14 +394,11 @@ zh-CN:
       title:
         latlon: 来自<a href="http://openstreetmap.org/">内部</a>的结果
         us_postcode: 来自 <a href="http://geocoder.us/">Geocoder.us</a> 的结果
-        uk_postcode: 来自 <a href="http://www.npemap.org.uk/">NPEMap / FreeThe Postcode</a>
-          的结果
+        uk_postcode: 来自 <a href="http://www.npemap.org.uk/">NPEMap / FreeThe Postcode</a> 的结果
         ca_postcode: 来自 <a href="http://geocoder.ca/">Geocoder.CA</a> 的结果
-        osm_nominatim: 来自 <a href="http://nominatim.openstreetmap.org/">OpenStreetMap
-          Nominatim</a> 的结果
+        osm_nominatim: 来自 <a href="http://nominatim.openstreetmap.org/">OpenStreetMap Nominatim</a> 的结果
         geonames: 来自 <a href="http://www.geonames.org/">GeoNames</a> 的结果
-        osm_nominatim_reverse: 来自 <a href="http://nominatim.openstreetmap.org/">OpenStreetMap
-          Nominatim</a> 的结果
+        osm_nominatim_reverse: 来自 <a href="http://nominatim.openstreetmap.org/">OpenStreetMap Nominatim</a> 的结果
         geonames_reverse: 来自 <a href="http://www.geonames.org/">GeoNames</a> 的结果
     search_osm_nominatim:
       prefix_format: '%{name}'
@@ -925,8 +921,7 @@ zh-CN:
         level10: 郊区界
     description:
       title:
-        osm_nominatim: <a href="http://nominatim.openstreetmap.org/">OpenStreetMap
-          Nominatim</a> 中的位置
+        osm_nominatim: <a href="http://nominatim.openstreetmap.org/">OpenStreetMap Nominatim</a> 中的位置
         geonames: <a href="http://www.geonames.org/">GeoNames</a> 中的位置
       types:
         cities: 城市
@@ -996,65 +991,37 @@ zh-CN:
       mapping_link: 开始绘制地图
     legal_babble:
       title_html: 著作权与许可
-      intro_1_html: |-
-        OpenStreetMap<sup><a href="#trademarks">&reg;</a></sup>是<i>开放数据</i>，由<a
-        href="http://osmfoundation.org/">OpenStreetMap基金会</a>（OSMF）采用<a
-        href="http://opendatacommons.org/licenses/odbl/">开放数据共享开放数据库许可协议</a>（ODbL）授权。
-      intro_2_html: 只要您表明来源为 OpenStreetMap 及其贡献者，您就可以自由地复制、分发、传送和改编我们的数据。如果您想转换或者以我们的数据为基础进行创作，您只能采用相同的许可协议发表您的作品。完整的<a
-        href="http://opendatacommons.org/licenses/odbl/1.0/">法律文本</a>阐明了您的权利和义务。
-      intro_3_html: 我们的地图图块中的绘图数据以及我们的文档采用<a href="http://creativecommons.org/licenses/by-sa/2.0/deed.zh">知识共享“署名-相同方式共享
-        2.0”</a>许可协议授权。
+      intro_1_html: |- OpenStreetMap<sup><a href="#trademarks">&reg;</a></sup>是<i>开放数据</i>，由<a href="http://osmfoundation.org/">OpenStreetMap基金会</a>（OSMF）采用<a href="http://opendatacommons.org/licenses/odbl/">开放数据共享开放数据库许可协议</a>（ODbL）授权。
+      intro_2_html: 只要您表明来源为 OpenStreetMap 及其贡献者，您就可以自由地复制、分发、传送和改编我们的数据。如果您想转换或者以我们的数据为基础进行创作，您只能采用相同的许可协议发表您的作品。完整的<a href="http://opendatacommons.org/licenses/odbl/1.0/">法律文本</a>阐明了您的权利和义务。
+      intro_3_html: 我们的地图图块中的绘图数据以及我们的文档采用<a href="http://creativecommons.org/licenses/by-sa/2.0/deed.zh">知识共享“署名-相同方式共享 2.0”</a>许可协议授权。
       credit_title_html: 如何表明作者是 OpenStreetMap
       credit_1_html: 我们需要您署名&ldquo;&copy; OpenStreetMap 贡献者&rdquo;。
-      credit_2_html: 您必须明确注明，我们的数据使用开放式数据库协议，若使用我们的地图图块，其协议须为 CC-BY-SA。您可以链接<a href="http://www.openstreetmap.org/copyright">此版权页</a>以注明。另外，若您要以数据形式发布
-        OSM，您可以属名并直接链接协议。若某些媒介无法进行链接(如印刷品)，我们建议您引导您的读者至 openstreetmap.org (或 OpenStreetMap
-        的完整网址)、opendatacommons.org，及可能相关的 creativecommons.org。
-      credit_3_html: |-
-        对于可浏览的电子地图，标记会出现在地图的右下角。
-        例如：
+      credit_2_html: 您必须明确注明，我们的数据使用开放式数据库协议，若使用我们的地图图块，其协议须为 CC-BY-SA。您可以链接<a href="http://www.openstreetmap.org/copyright">此版权页</a>以注明。另外，若您要以数据形式发布OSM，您可以属名并直接链接协议。若某些媒介无法进行链接(如印刷品)，我们建议您引导您的读者至 openstreetmap.org (或 OpenStreetMap的完整网址)、opendatacommons.org，及可能相关的 creativecommons.org。
+      credit_3_html: |- 对于可浏览的电子地图，标记会出现在地图的右下角。例如：
       attribution_example:
         alt: 如何在网页上署名 OpenStreetMap 的示例
         title: 署名示例
       more_title_html: 了解更多
-      more_1_html: |-
-        请在<a
-        href="http://osmfoundation.org/Licence">OSMF许可协议页面</a>和<a
-        href="http://wiki.openstreetmap.org/wiki/Legal_FAQ">法律常见问题</a>阅读更多关于使用我们的数据，以及如何表明我们是作者的信息。
-      more_2_html: 尽管 OpenStreetMap 开放数据，但是我们无法为第三方开发人员提供免费的地图 API。详见我们的 <a href="http://wiki.openstreetmap.org/wiki/API_usage_policy">API使用政策</a>、<a
-        href="http://wiki.openstreetmap.org/wiki/Tile_usage_policy">图块使用政策</a>及<a
-        href="http://wiki.openstreetmap.org/wiki/Nominatim#Usage_Policy">名称服务使用政策</a>。
+      more_1_html: |- 请在<a href="http://osmfoundation.org/Licence">OSMF许可协议页面</a>和<a href="http://wiki.openstreetmap.org/wiki/Legal_FAQ">法律常见问题</a>阅读更多关于使用我们的数据，以及如何表明我们是作者的信息。
+      more_2_html: 尽管 OpenStreetMap 开放数据，但是我们无法为第三方开发人员提供免费的地图 API。详见我们的 <a href="http://wiki.openstreetmap.org/wiki/API_usage_policy">API使用政策</a>、<a href="http://wiki.openstreetmap.org/wiki/Tile_usage_policy">图块使用政策</a>及<a href="http://wiki.openstreetmap.org/wiki/Nominatim#Usage_Policy">名称服务使用政策</a>。
       contributors_title_html: 我们的贡献者
       contributors_intro_html: 我们的数据来源于成千上万人的贡献。但我们也从国家测绘机构等处获取公共版权的数据，其中包括：
-      contributors_at_html: <strong>奥地利</strong>：包含来自 <a href="http://data.wien.gv.at/">Stadt
-        Wien</a>(<a href="http://creativecommons.org/licenses/by/3.0/at/deed.de">CC
-        BY</a>协议)、<a href="http://www.vorarlberg.at/vorarlberg/bauen_wohnen/bauen/vermessung_geoinformation/weitereinformationen/services/wmsdienste.htm">Land
-        Vorarlberg</a>及 Land Tirol (修订的 <a href="http://www.tirol.gv.at/applikationen/e-government/data/nutzungsbedingungen/">CC-BY
-        AT</a>协议)的数据。
-      contributors_ca_html: <strong>加拿大</strong>：含有来自 GeoBase&reg;，GeoGratis(&copy;
-        加拿大自然资源部)，CanVec (&copy; 加拿大自然资源部)和StatCan (加拿大统计局地理处)的数据。
-      contributors_fi_html: <strong>芬兰</strong>：包含来自芬兰国家测绘局地形数据库和其他测绘机构的数据，依据 <a href="http://www.maanmittauslaitos.fi/en/NLS_open_data_licence_version1_20120501">NLSFI
-        协议</a>授权。
-      contributors_fr_html: <strong>法国</strong>：含有来自 Direction Générale des Impôts
-        的数据。
+      contributors_at_html: <strong>奥地利</strong>：包含来自 <a href="http://data.wien.gv.at/">Stadt Wien</a>(<a href="http://creativecommons.org/licenses/by/3.0/at/deed.de">CC BY</a>协议)、<a href="http://www.vorarlberg.at/vorarlberg/bauen_wohnen/bauen/vermessung_geoinformation/weitereinformationen/services/wmsdienste.htm">Land Vorarlberg</a>及 Land Tirol (修订的 <a href="http://www.tirol.gv.at/applikationen/e-government/data/nutzungsbedingungen/">CC-BY AT</a>协议)的数据。
+      contributors_ca_html: <strong>加拿大</strong>：含有来自 GeoBase&reg;，GeoGratis(&copy; 加拿大自然资源部)，CanVec (&copy; 加拿大自然资源部)和StatCan (加拿大统计局地理处)的数据。
+      contributors_fi_html: <strong>芬兰</strong>：包含来自芬兰国家测绘局地形数据库和其他测绘机构的数据，依据 <a href="http://www.maanmittauslaitos.fi/en/NLS_open_data_licence_version1_20120501">NLSFI 协议</a>授权。
+      contributors_fr_html: <strong>法国</strong>：含有来自 Direction Générale des Impôts 的数据。
       contributors_nl_html: <strong>荷兰</strong>：含有&copy; AND data, 2007(<a href="http://www.and.com">www.and.com</a>)
       contributors_nz_html: <strong>新西兰</strong>：包含来自新西兰土地信息部的数据。Crown 版权所有。
-      contributors_si_html: |-
-        <strong>斯洛文尼亚</strong>：包含来自
-        <a href="http://www.gu.gov.si/en/">Surveying and Mapping Authority</a>和
-        <a href="http://www.mkgp.gov.si/en/">Ministry of Agriculture, Forestry and Food</a>（斯洛文尼亚公开信息）的数据。
+      contributors_si_html: |- <strong>斯洛文尼亚</strong>：包含来自 <a href="http://www.gu.gov.si/en/">Surveying and Mapping Authority</a>和 <a href="http://www.mkgp.gov.si/en/">Ministry of Agriculture, Forestry and Food</a>（斯洛文尼亚公开信息）的数据。
       contributors_za_html: <strong>南非</strong>：包含来自<a href="http://www.ngi.gov.za/">行政局：国家地球空间信息</a>，国家版权所有。
       contributors_gb_html: <strong>英国</strong>：包含来自 Ordnance 的调查数据，&copy; Crown 版权所有及数据库权利，2010-12。
-      contributors_footer_1_html: |-
-        关于其进一步的细节，及其他被用来帮助提升 OpenStreetMap 的来源，详见 OpenStreetMap Wiki 的<a
-        href="http://wiki.openstreetmap.org/wiki/Contributors">贡献者页面</a>。
+      contributors_footer_1_html: |- 关于其进一步的细节，及其他被用来帮助提升 OpenStreetMap 的来源，详见 OpenStreetMap Wiki 的<a href="http://wiki.openstreetmap.org/wiki/Contributors">贡献者页面</a>。
       contributors_footer_2_html: OpenStreetMap 纳入数据并不意味着原始数据提供者认可 OpenStreetMap、提供任何担保或担负任何法律责任。
       infringement_title_html: 著作权侵犯
       infringement_1_html: OSM 的贡献者会被提醒，绝不要在没有著作权人的明确许可时添加来自任何有著作权的来源的数据(如谷歌地图或印刷地图)。
-      infringement_2_html: 如果您认为版权的材料已被不恰当地添加的 OpenStreetMap 数据库或该网站，请参见我们的<a href="http://www.osmfoundation.org/wiki/License/Takedown_procedure">撤除程序</a>，或直接在我们的<a
-        href="http://dmca.openstreetmap.org/">在线申报页面</a>上提出。
+      infringement_2_html: 如果您认为版权的材料已被不恰当地添加的 OpenStreetMap 数据库或该网站，请参见我们的<a href="http://www.osmfoundation.org/wiki/License/Takedown_procedure">撤除程序</a>，或直接在我们的<a href="http://dmca.openstreetmap.org/">在线申报页面</a>上提出。
       trademarks_title_html: <span id="trademarks"></span>商标
-      trademarks_1_html: OpenStreetMap和放大镜标志是OpenStreetMap基金会的注册商标。如果您对使用这些标志有任何问题，请在<a
-        href="http://wiki.osmfoundation.org/wiki/Licensing_Working_Group">授权工作组</a>提出您的问题。
+      trademarks_1_html: OpenStreetMap和放大镜标志是OpenStreetMap基金会的注册商标。如果您对使用这些标志有任何问题，请在<a href="http://wiki.osmfoundation.org/wiki/Licensing_Working_Group">授权工作组</a>提出您的问题。
   welcome_page:
     title: 欢迎！
     introduction_html: 欢迎访问 OpenStreeMap，自由且可编辑的世界地图。您已经登录，可以开始绘制地图。这里是含有您需要知道的最重要的信息的快速指南。
@@ -1071,12 +1038,10 @@ zh-CN:
       tag_html: <strong>标签</strong>是关于节点或路径的简短数据，例如餐馆的名字或者道路的速度限制。
     rules:
       title: 规则！
-      paragraph_1_html: OpenStreetMap很少有正式规则，但我们期待所有参与者能合作，并与社区沟通。如果你在考虑任何除手工编辑的活动，请阅读并遵守<a
-        href='http://wiki.openstreetmap.org/wiki/Import/Guidelines'>导入</a>和<a href='http://wiki.openstreetmap.org/wiki/Automated_Edits_code_of_conduct'>自动编辑</a>的指导。
+      paragraph_1_html: OpenStreetMap很少有正式规则，但我们期待所有参与者能合作，并与社区沟通。如果你在考虑任何除手工编辑的活动，请阅读并遵守<a href='http://wiki.openstreetmap.org/wiki/Import/Guidelines'>导入</a>和<a href='http://wiki.openstreetmap.org/wiki/Automated_Edits_code_of_conduct'>自动编辑</a>的指导。
     questions:
       title: 还有疑问吗？
-      paragraph_1_html: OpenStreetMap 有若干资源用于学习该项目，提问和回答问题，以及讨论与制作地图相关的话题并且撰写相关文档。<a
-        href='%{help_url}'>点此获取帮助</a>。
+      paragraph_1_html: OpenStreetMap 有若干资源用于学习该项目，提问和回答问题，以及讨论与制作地图相关的话题并且撰写相关文档。<a href='%{help_url}'>点此获取帮助</a>。
     start_mapping: 开始绘制地图
     add_a_note:
       title: 没有时间编辑？添加笔记！
@@ -1088,14 +1053,12 @@ zh-CN:
       title: 如何帮助
       join_the_community:
         title: 加入社区
-        explanation_html: 如果您发现我们的地图数据有问题，例如缺少某条道路或者您的地址，最好的处理方法就是加入 OpenStreetMap
-          社区，然后您自己添加或者改进数据。
+        explanation_html: 如果您发现我们的地图数据有问题，例如缺少某条道路或者您的地址，最好的处理方法就是加入 OpenStreetMap社区，然后您自己添加或者改进数据。
       add_a_note:
         instructions_html: 只需点击<a class='icon note'></a>或地图上显示的相同图标。这将向地图加入书签，您也可以拖动移除它。加入您的信息，之后点击保存，其他映射也将用于研究。
     other_concerns:
       title: 其他问题
-      explanation_html: 如果您有关于如何使用我们的数据或内容的关心请查阅我们在<a href='/copyright'>版权页面</a>的更多法律信息，或联系
-        <a href='http://wiki.osmfoundation.org/wiki/Working_Groups'>OSMF 工作组</a>。
+      explanation_html: 如果您有关于如何使用我们的数据或内容的关心请查阅我们在<a href='/copyright'>版权页面</a>的更多法律信息，或联系<a href='http://wiki.osmfoundation.org/wiki/Working_Groups'>OSMF 工作组</a>。
   help_page:
     title: 获得帮助
     introduction: OpenStreetMap 有若干资源用于学习该项目，提问和回答问题，以及讨论与制作地图相关的话题并且撰写相关文档。
@@ -1133,21 +1096,13 @@ zh-CN:
     used_by: '%{name} 驱动了数以百计的网站，移动应用，以及硬件设备的地图数据。'
     lede_text: OpenStreetMap 是一个由地图制作爱好者组成的社区。这些爱好者提供并维护世界各地关于道路、小道、咖啡馆、铁路车站等各种各样的数据。
     local_knowledge_title: 本地知识库
-    local_knowledge_html: OpenStreetMap 强调使用本地知识。贡献者们使用航空图像、GPS 设备与传统的地区地图来确保 OSM
-      的精确性和时效性。
+    local_knowledge_html: OpenStreetMap 强调使用本地知识。贡献者们使用航空图像、GPS 设备与传统的地区地图来确保 OSM的精确性和时效性。
     community_driven_title: 社区驱动
-    community_driven_html: |-
-      OpenStreetMap 是一个多元化的社区，它充满激情，并且每天都在成长。我们的参与者包括地图制作爱好者，地理信息系统(GIS)从业人员，维护 OSM 服务器的工程师，标注灾害区域的人道主义自愿者，已经其他很多各界人士。
-      想更多的了解社区请参见<a href='%{diary_path}'>用户日记</a>,
-      <a href='http://blogs.openstreetmap.org/'>社区博客</a>，以及 <a href='http://www.osmfoundation.org/'>OSM 基金会</a> 网站。
+    community_driven_html: |- OpenStreetMap 是一个多元化的社区，它充满激情，并且每天都在成长。我们的参与者包括地图制作爱好者，地理信息系统(GIS)从业人员，维护 OSM 服务器的工程师，标注灾害区域的人道主义自愿者，已经其他很多各界人士。想更多的了解社区请参见<a href='%{diary_path}'>用户日记</a>, <a href='http://blogs.openstreetmap.org/'>社区博客</a>，以及 <a href='http://www.osmfoundation.org/'>OSM 基金会</a> 网站。
     open_data_title: 开放数据
-    open_data_html: OpenStreetMap 是<i>开源数据</i>:只要您表明使用了 OpenStreetMap 并承认其贡献者的工作，您就可以使用
-      OpenStreetMap。如果您改变或者使用这些数据，您必须按照相同的版权协议发布结果。详情请参见<a href='%{copyright_path}'>版权协议</a>。
+    open_data_html: OpenStreetMap 是<i>开源数据</i>:只要您表明使用了 OpenStreetMap 并承认其贡献者的工作，您就可以使用OpenStreetMap。如果您改变或者使用这些数据，您必须按照相同的版权协议发布结果。详情请参见<a href='%{copyright_path}'>版权协议</a>。
     legal_title: 法律
-    legal_html: |-
-      此网站和很多其他相关服务已由<a href='http://osmfoundation.org/'>OpenStreetMap基金会</a>（OSMF）正式代表社群运营。
-      <br>
-      如果您有许可协议、版权或其他法律问题，请<a href='http://osmfoundation.org/Contact'>联络OSMF</a>。
+    legal_html: |- 此网站和很多其他相关服务已由<a href='http://osmfoundation.org/'>OpenStreetMap基金会</a>（OSMF）正式代表社群运营。<br>如果您有许可协议、版权或其他法律问题，请<a href='http://osmfoundation.org/Contact'>联络OSMF</a>。
     partners_title: 合作伙伴
   notifier:
     diary_comment_notification:
@@ -1314,13 +1269,9 @@ zh-CN:
       user_page_link: 用户页面
       anon_edits: (%{link})
       anon_edits_link_text: 了解为什么这很重要。
-      flash_player_required: 您需要 Flash Player 来使用 OpenStreetMap Flash 编辑器 Potlatch。您可以<a
-        href="http://www.adobe.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">从
-        Adobe.com 下载 Flash Player</a>。<a href="http://wiki.openstreetmap.org/wiki/Editing">其他几种选择</a>也可以用来编辑
-        OpenStreetMap。
+      flash_player_required: 您需要 Flash Player 来使用 OpenStreetMap Flash 编辑器 Potlatch。您可以<a href="http://www.adobe.com/shockwave/download/index.cgi?P1_Prod_Version=ShockwaveFlash">从Adobe.com 下载 Flash Player</a>。<a href="http://wiki.openstreetmap.org/wiki/Editing">其他几种选择</a>也可以用来编辑OpenStreetMap。
       potlatch_unsaved_changes: 您有尚未保存的修改。(要在 Potlatch 中保存，如果在在线模式下编辑，您需要取消选择当前的路径或节点；或者点击保存，如果有保存按钮。)
-      potlatch2_not_configured: 尚未配置 Potlatch 2 - 请参阅 http://wiki.openstreetmap.org/wiki/The_Rails_Port#Potlatch_2
-        以获得更多信息
+      potlatch2_not_configured: 尚未配置 Potlatch 2 - 请参阅 http://wiki.openstreetmap.org/wiki/The_Rails_Port#Potlatch_2以获得更多信息
       potlatch2_unsaved_changes: 您有尚未保存的修改。(要在 Potlatch 2 中保存，您应该点击保存。)
       id_not_configured: iD 尚未配置
       no_iframe_support: 您的浏览器不支持 HTML 嵌入式框架，这是此功能所需要的。
@@ -1351,17 +1302,17 @@ zh-CN:
           rail: 铁路
           subway: 地铁
           tram:
-          - 轻轨
-          - 电车
+            - 轻轨
+            - 电车
           cable:
-          - 缆车
-          - 升降椅
+            - 缆车
+            - 升降椅
           runway:
-          - 机场跑道
-          - 滑行道
+            - 机场跑道
+            - 滑行道
           apron:
-          - 机场停机坪
-          - 航站楼
+            - 机场停机坪
+            - 航站楼
           admin: 行政区边界
           forest: 森林
           wood: 林
@@ -1369,15 +1320,15 @@ zh-CN:
           park: 公园
           resident: 住宅区
           common:
-          - 公地
-          - 草地
+            - 公地
+            - 草地
           retail: 零售区
           industrial: 工业区
           commercial: 商业区
           heathland: 荒坡
           lake:
-          - 湖
-          - 水库
+            - 湖
+            - 水库
           farm: 农场
           brownfield: 棕色地块
           cemetery: 坟场
@@ -1387,13 +1338,13 @@ zh-CN:
           reserve: 自然保护区
           military: 军事区
           school:
-          - 学校
-          - 大学
+            - 学校
+            - 大学
           building: 特殊建筑物
           station: 火车站
           summit:
-          - 山峰
-          - 高峰
+            - 山峰
+            - 高峰
           tunnel: 双虚线 = 隧道
           bridge: 双实线 = 桥
           private: 私人
@@ -1403,8 +1354,7 @@ zh-CN:
       edit: 编辑
       preview: 预览
     markdown_help:
-      title_html: 使用 <a href="http://daringfireball.net/projects/markdown/">Markdown</a>
-        解析
+      title_html: 使用 <a href="http://daringfireball.net/projects/markdown/">Markdown</a>解析
       headings: 标题
       heading: 标题
       subheading: 副标题
@@ -1507,8 +1457,7 @@ zh-CN:
       public_traces_from: 来自 %{user} 的公开 GPS 轨迹
       description: 浏览最近上传的 GPS 轨迹
       tagged_with: 以 %{tags} 标记
-      empty_html: 尚无轨迹。<a href='%{upload_link}'>上传新轨迹</a>或在<a href='http://wiki.openstreetmap.org/wiki/Beginners_Guide_1.2'>wiki页面</a>上了解
-        GPS 轨迹。
+      empty_html: 尚无轨迹。<a href='%{upload_link}'>上传新轨迹</a>或在<a href='http://wiki.openstreetmap.org/wiki/Beginners_Guide_1.2'>wiki页面</a>上了解 GPS 轨迹。
     delete:
       scheduled_for_deletion: 计划删除的轨迹
     make_public:
@@ -1681,18 +1630,14 @@ zh-CN:
     new:
       title: 注册
       no_auto_account_create: 很遗憾，我们目前无法为您自动创建一个帐户。
-      contact_webmaster: 请联系<a href="mailto:webmaster@openstreetmap.org">网站管理员</a>来安排创建一个账户
-        - 我们将尽快尝试处理您的请求。
+      contact_webmaster: 请联系<a href="mailto:webmaster@openstreetmap.org">网站管理员</a>来安排创建一个账户 - 我们将尽快尝试处理您的请求。
       about:
         header: 自由且可编辑
-        html: |-
-          <p>不同于其他地图，OpenStreetMap 是完全由像您一样的人创建的，并且免费提供给任何人用以修正、更新、下载和使用。</p>
-          <p>登录来贡献您的力量吧。我们将发送一份邮件来确认您的账号。</p>
+        html: |- <p>不同于其他地图，OpenStreetMap 是完全由像您一样的人创建的，并且免费提供给任何人用以修正、更新、下载和使用。</p> <p>登录来贡献您的力量吧。我们将发送一份邮件来确认您的账号。</p>
       license_agreement: 当您确认您的帐户时，您需要同意<a href="http://www.osmfoundation.org/wiki/License/Contributor_Terms">贡献者条款</a>。
       email address: 电子邮件地址：
       confirm email address: 确认电子邮件地址：
-      not displayed publicly: 不公开显示(参阅<a href="http://wiki.openstreetmap.org/wiki/Privacy_Policy"
-        title="wiki privacy policy including section on email addresses">隐私政策</a>)
+      not displayed publicly: 不公开显示(参阅<a href="http://wiki.openstreetmap.org/wiki/Privacy_Policy" title="wiki privacy policy including section on email addresses">隐私政策</a>)
       display name: 显示名称：
       display name description: 您公开显示的用户名。您可以稍后在首选项中进行修改。
       external auth: 第三方身份验证：
@@ -1822,8 +1767,7 @@ zh-CN:
         disabled link text: 我为什么不能编辑？
       public editing note:
         heading: 公开编辑
-        text: 目前您的编辑是匿名的，人们不能发送邮件给您或看到您的位置。为了显示您的编辑，让别人通过网站与您联系，请点击下面的按钮。<b>由于 0.6
-          API 的转换，只有公开的用户可以编辑地图数据</b>。(<a href="http://wiki.openstreetmap.org/wiki/Anonymous_edits">了解为什么</a>)。<ul><li>您的电子邮件地址将不会被因为成为公开用户而被透露。</li><li>此操作无法撤销，所有新用户现在都默认为公开的。</li></ul>
+        text:  目前您的编辑是匿名的，人们不能发送邮件给您或看到您的位置。为了显示您的编辑，让别人通过网站与您联系，请点击下面的按钮。<b>由于 0.6 API 的转换，只有公开的用户可以编辑地图数据</b>。(<a href="http://wiki.openstreetmap.org/wiki/Anonymous_edits">了解为什么</a>)。<ul><li>您的电子邮件地址将不会被因为成为公开用户而被透露。</li><li>此操作无法撤销，所有新用户现在都默认为公开的。</li></ul>
       contributor terms:
         heading: 贡献者条款：
         agreed: 您已同意新的贡献者条款。
@@ -1866,8 +1810,7 @@ zh-CN:
       unknown token: 确认码已经过期或不存在。
       reconfirm_html: 如果您需要我们重新发送确认邮件，<a href="%{reconfirm}">请点击这里</a>。
     confirm_resend:
-      success: 我们已经发送一封新的确认电子邮件到 %{email}，只要您确认您的帐户，您就可以开始制图了。<br /><br />如果您使用的反垃圾邮件系统发送确认请求，那么请确保您的白名单中有
-        webmaster@openstreetmap.org，因为我们无法回复任何确认请求。
+      success: 我们已经发送一封新的确认电子邮件到 %{email}，只要您确认您的帐户，您就可以开始制图了。<br /><br />如果您使用的反垃圾邮件系统发送确认请求，那么请确保您的白名单中有 webmaster@openstreetmap.org，因为我们无法回复任何确认请求。
       failure: 用户 %{name} 未找到。
     confirm_email:
       heading: 确认电子邮件地址修改
@@ -2046,7 +1989,8 @@ zh-CN:
       reopened_at_by_html: '%{user} 于 %{when} 前重新激活'
     rss:
       title: OpenStreetMap 笔记
-      description_area: 在您的区域 [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
+      description_area: |-
+        在您的区域 [(%{min_lat}|%{min_lon}) -- (%{max_lat}|%{max_lon})]
         报告、开放或关闭的笔记列表
       description_item: 笔记 %{id} 的 RSS feed
       opened: 新笔记(靠近 %{place})

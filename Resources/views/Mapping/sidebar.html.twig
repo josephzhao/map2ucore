@@ -4,6 +4,8 @@
         <li><a href="#home" role="tab"><i class="fa fa-bars"></i></a></li>
         <li><a href="#profile" role="tab"><i class="fa fa-user"></i></a></li>
         <li class="disabled"><a href="#messages" role="tab"><i class="fa fa-envelope"></i></a></li>
+        <li><a href="#mapping_spatialdataset" role="tab"><i class="fa fa-pencil-square-o"></i></a></li>
+        <li><a href="#mapping_createheatmap" role="tab"><i class="fa fa-pencil-square-o"></i></a></li>
         <li><a href="#mapping_userdraw" role="tab"><i class="fa fa-pencil-square-o"></i></a></li>
 
         <li><a href="#mapping_spatialfile_upload" role="tab"><i class="fa fa-upload"></i></a></li>
@@ -45,6 +47,16 @@
         <div class="ol3map-sidebar-panel-content">
         </div>
     </div>
+    <div class="ol3map-sidebar-pane" id="mapping_spatialdataset">
+        <h1 class="ol3map-sidebar-header">{{'Set dataset spatial info'|trans({},'Map2uCoreBundle')}}<div class="ol3map-sidebar-close"><i class="fa fa-caret-right"></i></div></h1>
+        <div class="ol3map-sidebar-panel-content">
+        </div>
+    </div>
+    <div class="ol3map-sidebar-pane" id="mapping_createheatmap">
+        <h1 class="ol3map-sidebar-header">{{'Create Heatmap'|trans({},'Map2uCoreBundle')}}<div class="ol3map-sidebar-close"><i class="fa fa-caret-right"></i></div></h1>
+        <div class="ol3map-sidebar-panel-content">
+        </div>
+    </div>
     <div class="ol3map-sidebar-pane" id="mapping_userdraw">
         <h1 class="ol3map-sidebar-header">{{'User Draw Geometry Feature'|trans({},'Map2uCoreBundle')}}<div class="ol3map-sidebar-close"><i class="fa fa-caret-right"></i></div></h1>
         <div class="ol3map-sidebar-panel-content">
@@ -64,7 +76,7 @@
     <div class="ol3map-sidebar-pane" id="mapping-settings">
         <h1 class="ol3map-sidebar-header">{{'Settings'|trans({},'Map2uCoreBundle')}}<div class="ol3map-sidebar-close"><i class="fa fa-caret-right"></i></div></h1>
         <div class="ol3map-sidebar-panel-content">
-           
+
         </div>
     </div>
 </div>
@@ -84,6 +96,7 @@
 
                 },
                 success: function (data) {
+
                     $(sidebar_href + ".ol3map-sidebar-pane").find(".ol3map-sidebar-panel-content").html(data);
                 },
                 cache: false,

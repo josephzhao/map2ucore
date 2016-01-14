@@ -41,4 +41,31 @@ services:
         arguments: [%fos_user.model.user.class%]
         tags:
             - { name: form.type, alias: map2u_user_registration }
-                        
+    map2u_core.admin.sidebar_menu:
+        class: Map2u\CoreBundle\Admin\SidebarMenuAdmin
+        arguments: [~, Map2u\CoreBundle\Entity\SidebarMenu, Map2uCoreBundle:SidebarMenuAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: SidebarMenu }
+    map2u_core.manager.category:
+        class: %map2u.core.manager.category.class%
+        arguments: [Map2u\CoreBundle\Entity\Category,@doctrine, @security.context]
+    
+    map2u_core.form.type.category_selector:  
+        class: Map2u\CoreBundle\Form\Type\CategorySelectorType
+        arguments: ["@map2u_core.manager.category"]
+        tags:
+            - { name: form.type, alias: map2u_core_category_selector }  
+            
+    map2u_core.manager.sidebarmenu:
+        class: %map2u.core.manager.sidebarmenu.class%
+        arguments: [Map2u\CoreBundle\Entity\SidebarMenu,@doctrine, @security.context,@service_container]
+    
+    map2u_core.form.type.sidebarmenu_selector:  
+        class: Map2u\CoreBundle\Form\Type\SidebarMenuSelectorType
+        arguments: ["@map2u_core.manager.sidebarmenu"]
+        tags:
+            - { name: form.type, alias: map2u_core_sidebarmenu_selector }                               
+    map2u_core.locale:
+        class:   Map2u\CoreBundle\Listener\LocaleListener
+        tags:
+            - {name: kernel.event_listener, event: kernel.request,  method: onKernelRequest }        

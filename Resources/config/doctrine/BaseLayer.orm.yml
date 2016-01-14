@@ -11,6 +11,12 @@ Map2u\CoreBundle\Entity\BaseLayer:
             unsigned: false
             nullable: true
             column: table_id
+        tableName:	        
+            type: string
+            length: 150
+            fixed: false
+            nullable: true
+            column: table_name            
         rowId:
             type: guid
             unsigned: false
@@ -39,6 +45,10 @@ Map2u\CoreBundle\Entity\BaseLayer:
             column: shared
             options:
                 default: false
+        layerProperty:	        
+            type: text
+            nullable: true
+            column: layer_property                 
         showLabel:	        
             type: boolean
             nullable: true
@@ -82,10 +92,7 @@ Map2u\CoreBundle\Entity\BaseLayer:
             fixed: false
             nullable: true
             column: name   
-        properties:     
-            type: text
-            nullable: true
-            column: properties   
+
         type:     
             type: string
             length: 50
@@ -100,15 +107,10 @@ Map2u\CoreBundle\Entity\BaseLayer:
             column: value_field     
         sld:	        
             type: text
-            length: 255
-            fixed: false
             nullable: true
             column: sld
-           
         sql:     
-            type: string
-            length: 1255
-            fixed: false
+            type: text
             nullable: true
             column: sql            
         sessionId:     

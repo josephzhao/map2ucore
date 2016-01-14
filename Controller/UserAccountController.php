@@ -3,20 +3,14 @@
 namespace Map2u\CoreBundle\Controller;
 
 use Symfony\Component\HttpFoundation\JsonResponse;
-use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Template;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
-use Map2u\Manifold\MapsBundle\Entity\UserBoundary;
-use Symfony\Component\Security\Core\Authentication\Token\UsernamePasswordToken;
 use Map2u\CoreBundle\Classes\Map2uPDF;
 use Application\Map2u\CoreBundle\Form\Type\UserprofileType;
 use Application\Map2u\CoreBundle\Form\Type\UserSecurityType;
-#use Map2u\CoreBundle\Controller\UserAccountController as baseController;
-//use Map2u\CoreBundle\Entity\UserPayment;
-
 
 /**
  * Default controller.
@@ -26,14 +20,15 @@ use Application\Map2u\CoreBundle\Form\Type\UserSecurityType;
 class UserAccountController extends Controller {
 
     /**
-     * Displays upload polygon page header.
+     * Displays  page header.
      *
-     * @Route("/", name="useraccount_index")
+     * @Route("/", name="useraccount_index", options={"expose"=true})
      * @Method("GET|POST")
      * @Template()
      */
     public function indexAction() {
         $user = $this->getUser();
+        $em = $this->getDoctrine()->getManager();
 
         $request = $this->get('request');
         $conn = $this->get('database_connection');
@@ -41,7 +36,6 @@ class UserAccountController extends Controller {
         if ($request->getMethod() == 'POST') {
             $form->bindRequest($request);
             if ($form->isValid()) {
-                $em = $this->get('doctrine')->getEntityManager();
                 $em->persist($user);
                 $em->flush();
                 $this->get('session')->setFlash('notice', 'You have successfully added '
@@ -49,14 +43,7 @@ class UserAccountController extends Controller {
 //return $this->redirect($this->generateUrl('walkthrough_add_user'));
             }
         }
-
-        $states = array();
-        if (isset($conn) && $conn != null) {
-
-            $sql = "select * from tab_states";
-            $states = $conn->fetchAll($sql);
-        }
-
+        $states = $em->getRepository("Map2uCoreBundle:State")->findAll();
         return array('user' => $this->getUser(), 'form' => $form->createView(), 'states' => $states);
     }
 
@@ -280,7 +267,7 @@ class UserAccountController extends Controller {
      */
     public function upgrademembership_deleteAction(Request $request) {
         $id = $request->get("id");
-        
+
         $user = $this->getUser();
         if ($user) {
             $em = $this->getDoctrine()->getManager();
@@ -291,7 +278,7 @@ class UserAccountController extends Controller {
 
                 return new JsonResponse(array('success' => true, 'message' => 'membership upgrade info successfully removed!', 'status' => 'ok'));
             } else {
-                return new JsonResponse(array('success' => false, 'message' => 'membership upgrade info not found!'.$user->getId(). ' : ' .$id, 'status' => 'ok'));
+                return new JsonResponse(array('success' => false, 'message' => 'membership upgrade info not found!' . $user->getId() . ' : ' . $id, 'status' => 'ok'));
             }
         }
         return new JsonResponse(array('success' => false, 'message' => 'membership upgrade info not able to remove!', 'status' => 'ok'));

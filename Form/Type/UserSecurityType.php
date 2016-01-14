@@ -25,14 +25,14 @@ class UserSecurityType extends AbstractType {
     public function buildForm(FormBuilderInterface $builder, array $options) {
         $countries = null;
         $countries_array = array();
-
-        if (isset($this->conn) && $this->conn != null) {
-            $sql = "select * from tab_country";
-            $countries = $this->conn->fetchAll($sql);
-            foreach ($countries as $country) {
-                $countries_array[$country['country_code']] = $country['country_name'];
-            }
-        }
+//
+//        if (isset($this->conn) && $this->conn != null) {
+//            $sql = "select * from tab_country";
+//            $countries = $this->conn->fetchAll($sql);
+//            foreach ($countries as $country) {
+//                $countries_array[$country['country_code']] = $country['country_name'];
+//            }
+//        }
         $builder
                 ->add('id', 'hidden')
                 ->add('currentPassword', "password", array("mapped" => false,'required'=>true))

@@ -1,0 +1,11 @@
+Map2u\CoreBundle\Entity\StateTranslation:
+    type: entity
+    table: map2u_core__state_translation
+    fields:
+        name:
+            type: string
+            length: 100
+            fixed: false
+            nullable: false
+            column: name            
+    lifecycleCallbacks: {  }

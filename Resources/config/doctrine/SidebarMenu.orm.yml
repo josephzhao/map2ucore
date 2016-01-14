@@ -1,0 +1,58 @@
+Map2u\CoreBundle\Entity\SidebarMenu:
+    type: entity
+    table: map2u_core__sidebar_menu
+    gedmo:
+        translation:
+            locale: locale
+            # using specific personal translation class:
+            entity: Map2u\CoreBundle\Entity\SidebarMenuTranslation           
+
+    fields:
+        id:
+            id: true
+            type: guid
+            nullable: false
+            generator:
+                strategy: UUID
+        routing:
+            type: string
+            length: 250
+            fixed: false
+            nullable: true
+            column: routing
+        expanded:
+            type: boolean
+            nullable: true
+            column: expanded     
+            options:
+                default: false
+        clickable:
+            type: boolean
+            nullable: true
+            column: clickable     
+            options:
+                default: false                
+    manyToOne:    
+        user:
+            targetEntity: Application\Sonata\UserBundle\Entity\User
+            inversedBy: {}
+            joinColumns:
+                user_id:
+                    referencedColumnName: id 
+        parent:
+            targetEntity: Map2u\CoreBundle\Entity\SidebarMenu
+            inversedBy: children
+            joinColumns:
+                parent_id:
+                    referencedColumnName: id 
+                
+    oneToMany:
+         children:
+            targetEntity: Map2u\CoreBundle\Entity\SidebarMenu
+            mappedBy: parent
+            orderBy: { 'position': 'ASC' }    
+            cascade: ["persist","remove"]
+#         maplayers:
+#            targetEntity: MapLayer
+#            cascade: ["persist","remove"]
+#            mappedBy: category                 

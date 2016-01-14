@@ -1,0 +1,128 @@
+
+<div style="width:550px;margin-left: 10px;">
+
+    <form id="updateuserpersonalinfo" action="{{path('useraccount_updatepersonalinfo')}}" method="POST">
+        <div style="text-align:center; margin:5px auto;">
+            <h4>Account Personal Info:</h4>
+            <div class="redstar">*</div> Required fields are marked with a red asterisk<br/>
+        </div>
+        <table class="updateuserpersonalinfo" style="text-align:left;width:100%;">
+            <tbody>
+                {{  form_widget(form.id)}}
+                <tr>
+                    <td class="fieldname">Email</td>
+                    <td>{{  form_widget(form.email)}}<div class="redstar">*</div></td>
+                </tr>
+                <tr>
+                    <td class="fieldname">User Name</td>
+                    <td>{{  form_widget(form.username)}}<div class="redstar">*</div></td>
+                </tr>
+                <tr>
+                    <td class="fieldname">First Name</td>
+                    <td>{{  form_widget(form.firstname)}}<div class="redstar">*</div></td>
+                </tr>
+
+                <tr>
+                    <td class="fieldname">Last Name</td>
+                    <td>{{  form_widget(form.lastname)}}<div class="redstar">*</div></td>
+                </tr>
+                <tr>
+                    <td class="fieldname">Company</td>
+
+                    <td>{{  form_widget(form.company) }}</td>
+                </tr>
+                <tr>
+                    <td class="fieldname">Country</td>
+                    <td>{{  form_widget(form.country) }}</td>
+                </tr>
+                <tr>
+                    <td class="fieldname">Address</td>
+                    <td >{{  form_widget(form.address1) }}<div class="redstar">*</div></td>
+                </tr>
+                <tr>
+                    <td  class="fieldname"></td>
+
+                    <td >{{  form_widget(form.address2) }}</td>
+                </tr>
+                <tr>
+                    <td class="fieldname">City</td>
+                    <td>{{ form_widget(form.city)}}<div class="redstar">*</div></td>
+                </tr>
+                <tr>
+                    <td class="fieldname">State</td>
+                    <td id="state">{{  form_widget(form.state )}}</td>
+                </tr>
+                <tr>
+                    <td class="fieldname">Postal Code</td>
+                    <td>{{  form_widget(form.postal_code) }}<div class="redstar">*</div></td>
+                </tr>
+                <tr>
+                    <td class="fieldname">Phone</td>
+                    <td >{{  form_widget(form.phone) }}<div class="redstar">*</div> ext: {{  form_widget(form.extension) }}</td>
+                </tr>
+                <tr >
+                    <td style="text-align:center;" colspan="2"><button type="button"  value="update"  class="btn btn-sm btn-primary" id="form_submit_button_id" style="margin: 15px 0;">Update</button><!--<div class='system-map-icon pull-right'></div>--></td>
+                </tr>
+            </tbody>
+        </table> 
+        {{ form_widget(form._token) }}
+    </form>
+</div>
+
+
+<script>
+    $(function () {
+        var states = {{ states|json_encode|raw }};
+                $("form#updateuserpersonalinfo select#userprofiletype_country").val("CA");
+
+        $("form#updateuserpersonalinfo select#userprofiletype_country").change(function () {
+            var country = $(this).val();
+            $("form#updateuserpersonalinfo td#state").html("");
+            var opt;
+            if (country === 'CA' || country === 'US') {
+                opt = '<select id="userprofiletype_state" name="userprofiletype[state]">';
+
+                $.map(states, function (data) {
+
+                    if (data["country"] === country) {
+
+                        opt = opt + "<option value=" + data["state_code"] + ">" + data["state_name"] + "</option>";
+                    }
+                });
+                opt = opt + "</select>";
+            }
+            else {
+                opt = '<input id="userprofiletype_state" name="userprofiletype[state]" maxlength="150" type="text">';
+            }
+            $(opt).appendTo($("form#updateuserpersonalinfo td#state"));
+        });
+        $("form#updateuserpersonalinfo select#userprofiletype_country").trigger("change");
+
+        $("form#updateuserpersonalinfo button").click(function () {
+
+            var formData = new FormData($("form#updateuserpersonalinfo")[0]);
+
+            $.ajax({
+                url: Routing.generate('useraccount_updatepersonalinfo', {_locale: window.locale}),
+                type: 'POST',
+                data: formData,
+                complete: function () {
+                },
+                success: function (data) {
+                    if (data.success === true) {
+
+
+                    }
+                    alert(data.message);
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+
+
+        });
+    });
+
+
+</script>

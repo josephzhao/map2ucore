@@ -12,12 +12,12 @@
 namespace Map2u\CoreBundle\Entity;
 
 use Map2u\CoreBundle\Entity\BaseCategory;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 class Category extends BaseCategory {
 
-   
-    protected $id;
+    use ORMBehaviors\Translatable\Translatable;
 
-  
+    protected $id;
 
 }

@@ -6,7 +6,12 @@ Map2u\CoreBundle\Entity\BaseLayerGeom:
             unsigned: false
             nullable: true
             column: table_id
-         
+        tableName:	        
+            type: string
+            length: 150
+            fixed: false
+            nullable: true
+            column: table_name            
         rowId:	        
             type: guid
             unsigned: false
@@ -36,6 +41,6 @@ Map2u\CoreBundle\Entity\BaseLayerGeom:
         theGeom:
             type: geometry
             nullable: true
-            requireSQLConversion: true
+     #       requireSQLConversion: true
             column: the_geom
     lifecycleCallbacks: {  }

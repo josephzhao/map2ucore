@@ -1,7 +1,11 @@
 Map2u\CoreBundle\Entity\Category:
     type: entity
     table: map2u_core__category
-
+    gedmo:
+        translation:
+            locale: locale
+            # using specific personal translation class:
+            entity: Map2u\CoreBundle\Entity\CategoryTranslation           
     fields:
         id:
             id: true

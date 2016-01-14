@@ -13,7 +13,6 @@ namespace Map2u\CoreBundle\Model;
 
 use Application\Sonata\UserBundle\Entity\User;
 
-
 interface CategoryInterface {
 
     /**
@@ -56,6 +55,20 @@ interface CategoryInterface {
     public function getName();
 
     /**
+     * @param $title
+     *
+     * @return mixed
+     */
+    public function setTitle($title);
+
+    /**
+     * Get title
+     *
+     * @return string $title
+     */
+    public function getTitle();
+
+    /**
      * Set enabled
      *
      * @param boolean $enabled
@@ -68,7 +81,8 @@ interface CategoryInterface {
      * @return boolean $enabled
      */
     public function getEnabled();
-   /**
+
+    /**
      * Set public
      *
      * @param boolean $public
@@ -81,6 +95,7 @@ interface CategoryInterface {
      * @return boolean $public
      */
     public function getPublic();
+
     /**
      * Set slug
      *

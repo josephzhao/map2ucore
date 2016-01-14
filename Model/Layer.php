@@ -20,6 +20,7 @@ abstract class Layer implements LayerInterface {
     protected $userId;
     protected $user;
     protected $tableId;
+    protected $tableName;
     protected $rowId;
     protected $category;
     protected $projectId;
@@ -45,7 +46,7 @@ abstract class Layer implements LayerInterface {
     protected $zoomLevel;
     protected $lat;
     protected $lng;
-    protected $projects;
+    protected $layerProperty;
     protected $sql;
     protected $sessionId;
 
@@ -91,6 +92,22 @@ abstract class Layer implements LayerInterface {
     /**
      * {@inheritdoc}
      */
+    public function setTableName($tableName) {
+        $this->tableName = $tableName;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTableName() {
+        return $this->tableName;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function setRowId($rowId) {
         $this->rowId = $rowId;
 
@@ -119,9 +136,7 @@ abstract class Layer implements LayerInterface {
         return $this;
     }
 
-    
-    
-      /**
+    /**
      * Set zoomLevel
      *
      * @param integer $zoomLevel
@@ -214,21 +229,23 @@ abstract class Layer implements LayerInterface {
 
         return $this->valueField;
     }
-   /**
+
+    /**
      * {@inheritdoc}
      */
-    public function setProperties($properties) {
-        $this->properties = $properties;
+    public function setLayerProperty($layerProperty) {
+        $this->layerProperty = $layerProperty;
         return $this;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function getProperties() {
+    public function getLayerProperty() {
 
-        return $this->properties;
+        return $this->layerProperty;
     }
+
     /**
      * {@inheritdoc}
      */

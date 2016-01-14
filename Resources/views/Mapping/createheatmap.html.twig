@@ -1,0 +1,270 @@
+<link href="/bundles/map2ucore/css/jquery.dataTables.css" type="text/css" rel="stylesheet" media="screen"/>
+<link href="/css/slider.css" rel="stylesheet"> 
+<div id="create_heatmap" style="padding:10px;">
+
+    {% if app.user %}
+        {% if spatialfiles|length > 0 %}
+            <div class='create_heatmap_from_spatialfile'>
+                <div style='display: inline-block;color:red'></div>Select saved heatmap:<button class="btn btn-sm btn-primary pull-right loadheatmap_on_map" style="cursor: pointer;padding:3px 6px;">Load Heat Map</button><br>
+                <select id='heatmap_select_list'  style="width:100%;">
+                    <option  value=null>
+                        Create New Heat Map
+                    </option>
+                    {% for heatmap in heatmaps %}
+                        <option  value="{{heatmap.getId()}}" {% if heatmap.getId() == settings.heatmap_id %} selected {% endif %}>
+                            {{heatmap.getName()}}  
+                        </option>
+                    {% endfor %}
+
+                </select><br>
+                <div style='display: inline-block;color:red'>1</div>: Select file:<button class="btn btn-sm btn-primary pull-right viewuploadfile_on_map" style="cursor: pointer;padding:3px 6px;">View Map</button><br>
+                <div id="initial_data" data-spatialfile-id="{{settings.spatialfile_id}}" data-keyfield="{{settings.keyfield}}" data-values="{{settings.values}}" style="display:none"></div>
+                <select id='spatialfile_select_list'  style="width:100%;">
+
+                    {% for spatialfile in spatialfiles %}
+                        <option  value="{{spatialfile.getId()}}" {% if spatialfile.getId() == settings.spatialfile_id %} selected {% endif %}>
+                            {{spatialfile.getFileName()}}  
+                        </option>
+                    {% endfor %}
+
+                </select><br>
+                <div style='display: inline-block;color:red'>2</div>: Select heatmap index name:<br>
+                <select id='spatialfile_keyfield_list'  style="width:100%;">
+                </select><br>
+                Default Index is 1
+                <div style="padding:10px;" id="heatmap_select_style" data-spatialfile-id="{#{spatialfile_id}#}" data-keyfield="{#{keyfield}#}" data-values="{#{values}#}" data-project-id="{#{project_id}#}" data-heatmap-id="{#{heatmap_id}#}" data-layer-id="{#{layer_id}#}">
+
+                    <div id="maptype" style=""><input type="radio"  value="heat_map" name="custom_maptype" style="display:inline-block;margin-left: 2px;margin-right: 5px;"/>Only heatmap<input type="radio" name="custom_maptype" checked value="pc_map" style="display:inline-block;margin-left: 5px;margin-right: 5px;"/>Show points on map
+                        <div style="padding:2px;display: inline-block;">Type:
+                            <select id="marker_image_type" class="marker_image_type" style="width:50px;background-image:url(/bundles/map2uleaflet/images/marker-icon-2x.png);">
+                                {% if marker_image_types is defined and marker_image_types|length>0 %}
+                                    {% for marker_image_type in marker_image_types %}
+                                        <option value="{{marker_image_type}}" style=" background-image:url(/images/markers/{{marker_image_type}});" {% if marker_image_type =='marker-icon.png' %} selected {% endif %}></option>
+                                    {% endfor %}
+                                {% endif %}
+                            </select>
+                        </div>
+                    </div>
+                    <div id="custom_heatmap" style="margin-top: 8px;width:350px;">
+                        <div class="heatmap_div">
+                            <div  class="heatmap_label" style="display:inline-block;width: 100px;">Radius Size</div>
+                            <div class="slider" id="radius-size" ><input type="text" style="display:none;width: 240px;" class="radius-size-slider" value="10" data-slider-min="5" data-slider-max="200" data-slider-step="1" data-slider-value="80" data-slider-orientation="horizontal" data-slider-selection="before" data-slider-tooltip="hidden" id="radius_size" value="80" onchangedd="heatmap_radiuschange();"></div>
+                        </div>
+                        <div class="heatmap_div">
+                            <div class="heatmap_label" style="display:inline-block;width: 100px;">Opacity</div>
+                            <div class="slider" id="opacity"><input type="text" style="display:none;width: 240px;" class="opacity-slider" value="80" data-slider-min="0" data-slider-max="100" data-slider-step="1" data-slider-value="80" data-slider-orientation="horizontal" data-slider-selection="before" data-slider-tooltip="hidden" onchange="heatmap_opacitychange();"></div>
+                        </div>
+                        <div style="width:100%">Heatmap Legend:<div class="pull-right"><input type="checkbox" name="reversed">Reversed</div></div>
+                        <div id="heatmap_legends" style="margin:5px 0px;width:350px;height:175px; overflow: auto;border:1px grey dotted;">
+                        </div>     
+                    </div>
+                    <div class="bottom-buttons" style="position: absolute;bottom: 20px;width:350px;border-top: 1px solid gainsboro;">
+                        <button  class="btn btn-sm btn-primary" style='display: inline-block;margin-top: 5px;margin-left: 15px; padding:3px 6px;' type="button" value="save-map">Save</button>
+                        <button  class="btn btn-sm btn-primary pull-right" style='display: inline-block;margin-top: 5px; margin-right: 3px;padding:3px 6px;' type="button" value="update-map-display">Update</button>
+                    </div>
+                </div>
+            </div>
+        {% else %}
+            <div style="margin: 20px;">
+                No Uploaded customer files
+            </div>
+        {% endif %}
+    {% else %}
+        <div style="padding:20px">
+            <p>
+                Only logged in user can use this function!
+            </p>
+        </div>
+    {% endif %}
+
+</div>
+<script src="/bundles/map2ucore/js/createheatmap.js" type="text/javascript"></script>
+<script src="/js/bootstrap-slider.js"></script>
+<script type="text/javascript">
+                                $(function () {
+
+                                    var heatmap_rawdata;
+    {#{% if data is defined %}
+            heatmap_rawdata = {{ data|serialize('json')|raw }};{% endif %}
+                    var heatmap_ids;
+        {% if values is defined %}
+                heatmap_ids = {{ values|serialize('json')|raw }};{% endif %}
+                        var min_data, max_data;
+                if (heatmap_rawdata) {
+                    for (var i = heatmap_rawdata.length - 1; i >= 0; i--) {
+                        if (typeof heatmap_rawdata[i].count === 'string')
+                        {
+                            heatmap_rawdata[i].count = parseFloat(heatmap_rawdata[i].count);
+                        }
+                        if (typeof heatmap_rawdata[i].lat === 'string')
+                        {
+                            heatmap_rawdata[i].lat = parseFloat(heatmap_rawdata[i].lat);
+                        }
+                        if (typeof heatmap_rawdata[i].lng === 'string')
+                        {
+                            heatmap_rawdata[i].lng = parseFloat(heatmap_rawdata[i].lng);
+                        }
+                        if (i === 0) {
+                            min_data = max_data = heatmap_rawdata[i].count;
+                        }
+                        else
+                        {
+                            if (min_data > heatmap_rawdata[i].count)
+                            {
+                                min_data = heatmap_rawdata[i].count;
+                            }
+                            if (max_data < heatmap_rawdata[i].count) {
+                                max_data = heatmap_rawdata[i].count;
+                            }
+                        }
+
+                    }
+                    if (max_data === min_data) {
+                        min_data = max_data - 1;
+                    }
+                    var heatmap_data = {max: max_data, min: min_data, data: heatmap_rawdata};
+                    window.heatmap_data = heatmap_data;#}
+               // }
+                
+                
+                $("div#create_heatmap div.bottom-buttons button[value='save-map']").unbind("click");
+                $("div#create_heatmap div.bottom-buttons button[value='save-map']").click(function () {
+                    var project_id = $("div.current_project_item").data("project-id");
+                    var spatialfile_id = $("div#create_heatmap select#spatialfile_select_list").val();
+                    var keyfield = $("div#create_heatmap select#spatialfile_keyfield_list").val();
+
+                    var layer_id = $("div#create_heatmap").data("layer-id");
+                    var reversed = $("div#custom_heatmap input[name='reversed']").is(":checked");
+                    var zoomlevel = window.map.getZoom();
+                    var lat = window.map.getCenter().lat;
+                    var lng = window.map.getCenter().lng;
+                    var gradient = $('div#create_heatmap #heatmap_gradient input:radio[name=legend_gradient]:checked').attr("data");
+                    var opacity = $("div#create_heatmap #custom_heatmap input.opacity-slider").data('slider').getValue();
+                    var radius = $('div#create_heatmap #custom_heatmap input.radius-size-slider').data('slider').getValue();
+                    var name = prompt("Please enter heatmap name", "");
+                    if (!name || name.trim() === '') {
+                        alert("Heatmap name can't be empty!");
+                        return;
+                    }
+                    var formData = new FormData();
+                    formData.append("project_id", project_id);
+                    formData.append("spatialfile_id", spatialfile_id);
+                    formData.append("keyfield", keyfield);
+                    formData.append("reversed", reversed);
+                    formData.append("zoomlevel", zoomlevel);
+                    formData.append("lat", lat);
+                    formData.append("lng", lng);
+                    formData.append("gradient", gradient);
+                    formData.append("opacity", opacity);
+                    formData.append("radius", radius);
+                    formData.append("layer_id", layer_id);
+                    formData.append("name", name);
+                    $.ajax({
+                        url: Routing.generate('mapping_saveheatmap', {_locale: window.locale}),
+                        type: 'POST',
+                        data: formData,
+                        complete: function () {
+                        },
+                        success: function (data) {
+                            if (data.success === true) {
+                                $("div.current_project_item").data("project-id", data.data.project_id);
+                               
+                                $("div#create_heatmap").data("layer-id", data.data.layer_id);
+                                if (parseInt(project_id) === -1) {
+                                    $("div.current_project_item").data("project-id", data.project_id);
+                                }
+
+                                var trs = $("div.current_project_item div#project-tab-content div#project_layers table#project_layers_table tbody tr");
+                                if ($(trs).length === 1 && $(trs).find("td").length === 1 && $($(trs).find("td")[0]).html() === 'No data available in table')
+                                {
+
+                                    $(trs).remove();
+                                }
+                                var table = $("div.current_project_item div#project-tab-content div#project_layers table#project_layers_table").DataTable();
+                                if ($("div.current_project_item div#project-tab-content div#project_layers table#project_layers_table tbody tr[data-id='" + data.data.layer_id + "']").length === 0) {
+                                    table.row.add(['<input data-index="' + data.data.layer_id + '" type="checkbox" style="width:25px;"><div style="display: inline-block" class="show-layer-on-map icon eye_close"></div>', '<div class="layer-name" style="display:inline-block;white-space:nowrap; overflow: hidden;">' + data.data.heatmap_name.toString().trim() + '</div><div class="layer-button pull-right hidden" style="display:inline-block"><i class="show-layer-on-map icon eye_open" style="margin-right: 3px;"></i><i  class="icon add-layer-to-comparasion compare-sm" style="width:14px;height:14px;margin-right: 3px;"></i></div>']).draw();
+                                    $("div.current_project_item div#project-tab-content div#project_layers table#project_layers_table tr td input[data-index='" + data.data.layer_id + "']").parents("tr").find("td").css({"padding": "2px", "margin": "1px", "width": "30px"});
+                                    $("div.current_project_item div#project-tab-content div#project_layers table#project_layers_table tr td input[data-index='" + data.data.layer_id + "']").parents("tr").attr('data-id', data.data.layer_id);
+                                }
+                                else {
+                                    $("div.current_project_item div#project-tab-content div#project_layers table#project_layers_table tbody tr[data-id='" + data.data.layer_id + "']").find("div.layer-name").html(data.data.heatmap_name.toString().trim());
+                                }
+
+                                $("div.current_project_item div#project-tab-content div#project_layers table#project_layers_table tbody tr[data-id='" + data.data.layer_id + "']").data("type", "layers");
+                                $("div.current_project_item div#project-tab-content  table tbody tr").unbind("hover");
+                                $("div.current_project_item div#project-tab-content  table tbody tr").hover(function () {
+                                    $(this).find("td div.layer-name").data("width", $(this).find("td div.layer-name").width());
+                                    $(this).find("td div.layer-name").width(70);
+                                    $(this).find("td div.layer-button").removeClass("hidden");
+                                    $(this).find("td div.layer-button").show();
+                                }, function () {
+                                    $(this).find("td div.layer-name").width($(this).find("td div.layer-name").data("width"));
+                                    $(this).find("td div.layer-button").addClass("hidden");
+                                    $(this).find("td div.layer-button").hide();
+                                });
+                                // show on map
+                                $("div.current_project_item div#project-tab-content div#project_layers table#project_layers_table tbody tr div.layer-button i.show-layer-on-map").click(function () {
+                                    var data_type = $(this).parents("tr").data("type");
+                                    var data_id = $(this).parents("tr").data("id");
+
+                                    //  alert(data_type + "   " + data_id);
+                                    var ids = [];
+                                    if ($(this).hasClass("eye_open")) {
+                                        $(this).removeClass("eye_open");
+                                        $(this).addClass("eye_close");
+                                        $(this).parents("tr").find("div.show-layer-on-map").addClass("eye_open");
+                                        $(this).parents("tr").find("div.show-layer-on-map").removeClass("eye_close");
+                                        ids.push(data_id);
+                                        window.addLayersToMap(data_type, ids);
+                                    }
+                                    else {
+                                        $(this).addClass("eye_open");
+                                        $(this).removeClass("eye_close");
+                                        $(this).parents("tr").find("div.show-layer-on-map").removeClass("eye_open");
+                                        $(this).parents("tr").find("div.show-layer-on-map").addClass("eye_close");
+                                        window.removeLayerFromMap(data_type, data_id);
+                                    }
+                                });
+                            }
+                            alert(data.message);
+                        },
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    });
+
+                });
+
+                $("div#create_heatmap div.bottom-buttons button[value='update-map-display']").unbind("click");
+                $("div#create_heatmap div.bottom-buttons button[value='update-map-display']").click(function () {
+                    var spatialfile_id = $("div#create_heatmap select#spatialfile_select_list").val();
+                    var keyfield = $("div#create_heatmap select#spatialfile_keyfield_list").val();
+                    var formData = new FormData();
+                    formData.append("id", spatialfile_id);
+                    formData.append("keyfield", keyfield);
+                    $.ajax({
+                        url: Routing.generate('mapping_updateheatmap', {_locale: window.locale}),
+                        type: 'POST',
+                        data: formData,
+                        complete: function () {
+                        },
+                        success: function (data) {
+                            alert(JSON.stringify(data));
+                        },
+                        cache: false,
+                        contentType: false,
+                        processData: false
+                    });
+                });
+
+
+
+                $("div#create_heatmap  div.create_heatmap_from_spatialfile  select#marker_image_type").unbind("change");
+                $("div#create_heatmap  div.create_heatmap_from_spatialfile  select#marker_image_type").change(function () {
+                    $("div#create_heatmap  div.create_heatmap_from_spatialfile  select#marker_image_type").css("background-image", "url(/images/markers/" + $(this).val() + ")");
+
+                });
+
+            });
+        </script>
+        <script src="/bundles/map2ucore/js/heatmapstyle.js" type="text/javascript"></script>

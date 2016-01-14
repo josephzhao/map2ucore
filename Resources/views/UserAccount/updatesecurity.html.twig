@@ -1,0 +1,66 @@
+<div style="width:550px;margin-left: 10px;">
+
+    <form id="updateusersecurity" action="{{path('useraccount_updatesecurity')}}" method="POST">
+        <div style="text-align:center; margin:5px auto;">
+            <h4>Update User Password:</h4>
+            <div class="redstar">*</div> Required fields are marked with a red asterisk<br/>
+        </div>
+        <table class="updateusersecurity" style="text-align:left;width:100%;">
+            <tbody>
+                {{  form_widget(form.id)}}
+                <tr>
+                    <td class="security_label" >Current Password:</td>
+                    <td>{{  form_widget(form.currentPassword)}}<div class="redstar">*</div></td>
+                </tr>
+                <tr>
+                    <td class="security_label" >New Password:</td>
+                    <td>{{  form_widget(form.plainPassword)}}<div class="redstar">*</div></td>
+                </tr>
+                <tr>
+                    <td class="security_label" >Password Confirmation:</td>
+                    <td >{{  form_widget(form.confirmationPassword)}}<div class="redstar">*</div></td>
+                </tr>
+
+
+                <tr >
+                    <td style="text-align:center;" colspan="2"><button type="button"  value="update"  class="btn btn-sm btn-primary" id="form_submit_button_id" style="margin: 15px 0;">Update</button><!--<div class='system-map-icon pull-right'></div>--></td>
+                </tr>
+            </tbody>
+        </table> 
+        {{ form_widget(form._token) }}
+    </form>
+</div>
+
+
+<script>
+    $(function () {
+        $("form#updateusersecurity button").unbind("click");
+        $("form#updateusersecurity button").click(function () {
+
+            var formData = new FormData($("form#updateusersecurity")[0]);
+
+            $.ajax({
+                url: Routing.generate('useraccount_updatesecurity', {_locale: window.locale}),
+                type: 'POST',
+                data: formData,
+                complete: function () {
+                },
+                success: function (data) {
+                    if (data.success === true) {
+
+
+                    }
+                    alert(data.message);
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+
+
+        });
+    });
+
+
+</script>
+{# empty Twig template #}

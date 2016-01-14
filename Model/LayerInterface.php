@@ -119,6 +119,21 @@ interface LayerInterface {
     public function getName();
 
     /**
+     * Set tableName
+     *
+     * @param string $tableName
+     * @return mixed
+     */
+    public function setTableName($tableName);
+
+    /**
+     * Get tableName
+     *
+     * @return string 
+     */
+    public function getTableName();
+
+    /**
      * Set shared
      *
      * @param boolean $shared
@@ -209,19 +224,19 @@ interface LayerInterface {
     public function getSld();
 
     /**
-     * Set properties
+     * Set layerProperty
      *
-     * @param string $properties
+     * @param string $layerProperty
      * @return mixed
      */
-    public function setProperties($properties);
+    public function setLayerProperty($layerProperty);
 
     /**
-     * Get properties
+     * Get layerProperty
      *
      * @return string 
      */
-    public function getProperties();
+    public function getLayerProperty();
 
     /**
      * Set valueField

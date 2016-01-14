@@ -1,0 +1,84 @@
+<div style="width:550px;margin-left: 10px;">
+
+
+
+    <div style="text-align:center; margin:5px auto;">
+        <h4>Account Membership Info:</h4>
+
+    </div>
+    <table class="showusermembershipinfo" style="text-align:left;width:100%;">
+        <tbody>
+            <tr>
+                <td class="fieldname" colspan="2">
+                    <h4>Your subscription plan:</h4> {{user.membership}}
+                </td>
+            </tr>
+            <tr>
+                <td class="fieldname" style="padding-left: 0px;">
+                    Membership Start Date:
+                </td>
+
+                <td class="fieldname" style="padding-left: 5px;">
+                    {{user.membershipStartDate}}
+                </td>
+            </tr>
+            <tr>
+                <td class="fieldname" style="padding-left: 0px;">
+                    Membership Expired Date:
+                </td>
+
+                <td class="fieldname" style="padding-left: 5px;">
+                    {{user.membershipExpiredDate}}
+                </td>
+            </tr>
+            <tr>
+                <td class="fieldname"  style="padding-left: 0px;">
+                    Membership Approved Date:
+                </td>
+
+                <td class="fieldname" style="padding-left: 5px;">
+                    {{user.membershipApprovedDate}}
+                </td>
+            </tr>
+            <tr>
+                <td class="fieldname" colspan="2">
+                    <h4>Subscripted Addon Modules</h4>
+                    <div style="min-height: 30px;max-height: 200px; overflow: auto;padding:5px; border:1px solid gainsboro;border-radius: 3px;">
+                        <ul style="list-style: decimal;">
+                            {% if user.bookedaddonmodules is defined and user.bookedaddonmodules | length > 0 %}
+                                {% for bookedaddonmodule in user.bookedaddonmodules %}
+                                    <li>
+                                        {{bookedaddonmodule.addonmodule.name}} {{bookedaddonmodule.startedAt|date("YYYY-dd-mm")}} - {{bookedaddonmodule.expiredAt|date("YYYY-dd-mm")}}
+                                    </li>
+                                {% endfor %}
+                            {% else %}
+                                No any subscripted addon modules
+                            {% endif %}
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td class="fieldname" colspan="2">
+                    <h4>Subscripted BBM Modules</h4>
+                    <div style="min-height: 30px;max-height: 200px; overflow: auto;padding:5px; border:1px solid gainsboro;border-radius: 3px;">
+                        <ul style="list-style: decimal;">
+                            {% if user.bookedbbmmodules is defined and user.bookedbbmmodules | length > 0 %}
+                                {% for bookedbbmmodule in user.bookedbbmmodules %}
+                                    <li>
+                                        {{bookedbbmmodule.bbmmodule.name}} {{bookedbbmmodule.startedAt|date("YYYY-dd-mm")}} - {{bookedbbmmodule.expiredAt|date("YYYY-dd-mm")}}
+                                    </li>
+                                {% endfor %}
+                            {% else %}
+                                No any subscripted BBM modules
+                            {% endif %}
+                        </ul>
+                    </div>
+                </td>
+            </tr>
+
+            </div>
+
+        </tbody>
+    </table> 
+</div>

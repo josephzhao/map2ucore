@@ -1,0 +1,11 @@
+Map2u\CoreBundle\Entity\RegionTranslation:
+    type: entity
+    table: map2u_core__region_translation
+    fields:
+        name:
+            type: string
+            length: 80
+            fixed: false
+            nullable: true
+            column: name
+    lifecycleCallbacks: {  }

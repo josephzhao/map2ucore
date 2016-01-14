@@ -11,21 +11,6 @@ use Doctrine\Common\Persistence\ObjectManager;
 
 class UserprofileType extends AbstractType {
 
-//    /**
-//     * @var ObjectManager
-//     */
-//    private $om;
-//
-//    /**
-//     * @param ObjectManager $om
-//     */
-//    public function __construct(ObjectManager $om)
-//    {
-//        $this->om = $om;
-//    }
-    //    /**
-//     * @var ObjectManager
-//     */
     private $conn;
 
     /**
@@ -39,25 +24,31 @@ class UserprofileType extends AbstractType {
         $countries = null;
         $countries_array = array();
 
-        if (isset($this->conn) && $this->conn != null) {
-            $sql = "select * from tab_country";
-            $countries = $this->conn->fetchAll($sql);
-            foreach ($countries as $country) {
-                $countries_array[$country['country_code']] = $country['country_name'];
-            }
-        }
+//        if (isset($this->conn) && $this->conn != null) {
+//            $sql = "select * from tab_country";
+//            $countries = $this->conn->fetchAll($sql);
+//            foreach ($countries as $country) {
+//                $countries_array[$country['country_code']] = $country['country_name'];
+//            }
+//        }
         $builder
                 ->add('id', 'hidden')
                 ->add('firstname')
                 ->add('lastname')
-//                ->add('address1')
-//                ->add('address2')
+                ->add('address1')
+                ->add('address2')
 //                ->add('city')
+                ->add('country', 'entity', array(
+                    'label' => 'Country:',
+                    'class' => 'Map2u\CoreBundle\Entity\Country',
+                    'multiple' => false,
+                    'property' => 'name'
+                ))
 //                ->add('country', "choice", array('choices' => $countries_array))
-//                ->add('postal_code')
+                ->add('postal_code')
                 ->add('phone')
-                
-                
+
+
 //                ->add('company')
 //                ->add('country', "choice", array('choices' => $countries_array))
 //                ->add('address1')

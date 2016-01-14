@@ -11,6 +11,7 @@ abstract class LayerGeom implements LayerGeomInterface {
 
     protected $id;
     protected $tableId;
+    protected $tableName;
     protected $rowId;
     protected $layerId;
     protected $name;
@@ -109,6 +110,22 @@ abstract class LayerGeom implements LayerGeomInterface {
      */
     public function getName() {
         return $this->name;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTableName($tableName) {
+        $this->tableName = $tableName;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTableName() {
+        return $this->tableName;
     }
 
     /**

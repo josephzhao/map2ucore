@@ -1,0 +1,184 @@
+
+<div style="width:550px;margin-left: 10px;">
+
+    <form id="useraccount_updatemembership" action="{{path('useraccount_updatemembership')}}" method="POST">
+
+        <div style="text-align:center; margin:5px auto;">
+            <h4>Account Membership Info:</h4>
+           user: {{app.user}}
+        </div>
+        <table class="showusermembershipinfo" style="text-align:left;width:100%;">
+            <tbody>
+                <tr>
+                    <td class="fieldname" colspan="2">
+                        <h4>Choose your subscription plan</h4>
+                        <div>
+                            <ul style="list-style: none;">
+                                {% if memberships is defined and memberships | length > 0 %}
+                                    {% for umembership in memberships %}
+                                        {% if loop.index == 2 %}
+                                            <li style="margin-top: 8px;">
+                                                <b>Basic Membership:</b> SuperDemographics and Lifestyle Cluster
+                                            </li>
+                                        {% endif %}
+                                        <li>
+                                            <input id="usermembershiptype_membership_{{loop.index}}" type="radio" name="usermembershiptype[membership]" value="{{umembership.id}}" {% if app.user and (app.user.membership == null and umembership.id == 1 and membership_data==null)  or app.user.membership.id==umembership.id or membership_data ==umembership.id %} checked {% endif %} style="margin-right: 8px;">{{umembership.name}} ( ${{umembership.price}} ) 
+                                        </li>
+                                    {% endfor %}
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fieldname" style="padding-left: 40px;">
+
+                        Membership Start Date:
+                    </td>
+
+                    <td class="fieldname" style="padding-left: 5px;">
+                        {% if app.user %}
+                            {{ app.user.membershipStartDate}}
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fieldname" style="padding-left: 40px;">
+
+                        Membership Expired Date:
+                    </td>
+
+                    <td class="fieldname" style="padding-left: 5px;">
+                        {% if app.user %}
+                            {{app.user.membershipExpiredDate}}
+                        {% endif %}
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fieldname"  style="padding-left: 40px;">
+                        Membership Approved Date:
+                    </td>
+
+                    <td class="fieldname" style="padding-left: 5px;">
+                        {% if app.user %}
+                            {{app.user.membershipApprovedDate}}
+                        {% endif %}
+                    </td>
+
+                </tr>
+                <tr>
+                    <td class="fieldname" colspan="2">
+                        <h4>Subscripted Addon Modules</h4>
+                        <div style="min-height: 30px;max-height: 200px; overflow: auto;padding:5px; border:1px solid gainsboro;border-radius: 3px;">
+                            <ul style="list-style: decimal;">
+                                {% if app.user and app.user.bookedaddonmodules is defined and app.user.bookedaddonmodules | length > 0 %}
+                                    {% for bookedaddonmodule in user.bookedaddonmodules %}
+                                        <li>
+                                            {{bookedaddonmodule.addonmodule.name}} {{bookedaddonmodule.startedAt|date("YYYY-dd-mm")}} - {{bookedaddonmodule.expiredAt|date("YYYY-dd-mm")}}
+                                        </li>
+                                    {% endfor %}
+                                {% else %}
+                                    No any subscripted addon modules
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fieldname" colspan="2">
+                        <h4>Subscripted BBM Modules</h4>
+                        <div style="min-height: 30px;max-height: 200px; overflow: auto;padding:5px; border:1px solid gainsboro;border-radius: 3px;">
+                            <ul style="list-style: decimal;">
+                                {% if  app.user and  app.user.bookedbbmmodules is defined and app.user.bookedbbmmodules | length > 0 %}
+                                    {% for bookedbbmmodule in user.bookedbbmmodules %}
+                                        <li>
+                                            {{bookedbbmmodule.bbmmodule.name}} {{bookedbbmmodule.startedAt|date("YYYY-dd-mm")}} - {{bookedbbmmodule.expiredAt|date("YYYY-dd-mm")}}
+                                        </li>
+                                    {% endfor %}
+                                {% else %}
+                                    No any subscripted BBM modules
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fieldname" colspan="2">
+                        <h4>Available Addon Modules</h4>
+
+                        {% set  addonmodules_array = addonmodules_data %}
+
+                        <div style="min-height: 30px;max-height: 210px; overflow: auto;padding:5px; border:1px solid gainsboro;border-radius: 3px;">
+                            <ul style="list-style: decimal;">
+                                {% if addonmodules is defined and addonmodules | length > 0 %}
+                                    {% for addonmodule in addonmodules %}
+
+
+                                        <li>
+
+                                            <input id="usermembershiptype_addonmodules_{{loop.index}}" type="checkbox" name="usermembershiptype[addonmodules][]" value="{{addonmodule.id}}" {% if addonmodules_array | length > 0 and addonmodule.id in addonmodules_array  %} checked="true" {% endif %} style="margin-right: 5px;">{{addonmodule.name}} ( ${{addonmodule.price}} ) <a class="pull-right" style="color:blue;margin-right: 5px;" href="{{addonmodule.reportUrl}}">Sample Report</a>
+                                        </li>
+                                    {% endfor %}
+
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="fieldname" colspan="2">
+                        <h4>Available BBM Modules</h4>
+                        {% set  bbmmodules_array = bbmmodules_data %}
+                        To access the following Modules of Consumer Behavioural Report, BBM associated membership fee (annual $850) will be added. 
+                        <div style="min-height: 30px;max-height: 200px; overflow: auto;padding:5px; border:1px solid gainsboro;border-radius: 3px;">
+                            <ul style="list-style: decimal;">
+                                {% if bbmmodules is defined and bbmmodules | length > 0 %}
+                                    {% for bbmmodule in bbmmodules %}
+                                        <li>
+                                            <input id="usermembershiptype_bbmmodules_{{loop.index}}" type="checkbox" name="usermembershiptype[bbmmodules][]" value="{{bbmmodule.id}}" {% if bbmmodules_array |length > 0 and bbmmodule.id in bbmmodules_array %} checked="true" {% endif %} style="margin-right: 5px;">{{bbmmodule.name}} ( ${{bbmmodule.price}} ) <a class="pull-right" style="color:blue;margin-right: 5px;" href="{{bbmmodule.reportUrl}}">Sample Report</a>
+                                        </li>
+                                    {% endfor %}
+
+                                {% endif %}
+                            </ul>
+                        </div>
+                    </td>
+                </tr>
+                <tr >
+                    <td style="text-align:center;" colspan="2"><button type="button"  value="upgrade_now"  class="btn btn-sm btn-primary" id="form_submit_button_id" style="margin: 15px 0;">Upgrade Now</button><!--<div class='system-map-icon pull-right'></div>--></td>
+                </tr>
+            </tbody>
+            {{ form_widget(form._token) }}
+        </table> 
+
+    </form>
+</div>
+
+
+<script>
+    $(function () {
+        $("form#useraccount_updatemembership button").unbind("click");
+        $("form#useraccount_updatemembership button[value='upgrade_now']").click(function () {
+
+            var formData = new FormData($("form#useraccount_updatemembership")[0]);
+
+            $.ajax({
+                url: Routing.generate('useraccount_updatemembership', {_locale: window.locale}),
+                type: 'POST',
+                data: formData,
+                complete: function () {
+                },
+                success: function (data) {
+                    $("div#useraccountinfo_details").html("");
+                    $("div#useraccountinfo_details").append(data);
+                },
+                cache: false,
+                contentType: false,
+                processData: false
+            });
+
+        });
+    });
+
+
+</script>

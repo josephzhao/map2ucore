@@ -1,0 +1,167 @@
+<?php
+
+namespace Map2u\CoreBundle\Entity;
+
+use Doctrine\ORM\Mapping as ORM;
+
+/**
+ * Region
+ */
+class Region
+{
+    /**
+     * @var guid
+     */
+    private $id;
+
+    /**
+     * @var guid
+     */
+    private $countryId;
+
+    /**
+     * @var float
+     */
+    private $x;
+
+    /**
+     * @var float
+     */
+    private $y;
+
+    /**
+     * @var integer
+     */
+    private $zoomLevel;
+
+    /**
+     * @var guid
+     */
+    private $cityId;
+
+
+    /**
+     * Get id
+     *
+     * @return guid 
+     */
+    public function getId()
+    {
+        return $this->id;
+    }
+
+    /**
+     * Set countryId
+     *
+     * @param guid $countryId
+     * @return Region
+     */
+    public function setCountryId($countryId)
+    {
+        $this->countryId = $countryId;
+
+        return $this;
+    }
+
+    /**
+     * Get countryId
+     *
+     * @return guid 
+     */
+    public function getCountryId()
+    {
+        return $this->countryId;
+    }
+
+    /**
+     * Set x
+     *
+     * @param float $x
+     * @return Region
+     */
+    public function setX($x)
+    {
+        $this->x = $x;
+
+        return $this;
+    }
+
+    /**
+     * Get x
+     *
+     * @return float 
+     */
+    public function getX()
+    {
+        return $this->x;
+    }
+
+    /**
+     * Set y
+     *
+     * @param float $y
+     * @return Region
+     */
+    public function setY($y)
+    {
+        $this->y = $y;
+
+        return $this;
+    }
+
+    /**
+     * Get y
+     *
+     * @return float 
+     */
+    public function getY()
+    {
+        return $this->y;
+    }
+
+    /**
+     * Set zoomLevel
+     *
+     * @param integer $zoomLevel
+     * @return Region
+     */
+    public function setZoomLevel($zoomLevel)
+    {
+        $this->zoomLevel = $zoomLevel;
+
+        return $this;
+    }
+
+    /**
+     * Get zoomLevel
+     *
+     * @return integer 
+     */
+    public function getZoomLevel()
+    {
+        return $this->zoomLevel;
+    }
+
+    /**
+     * Set cityId
+     *
+     * @param guid $cityId
+     * @return Region
+     */
+    public function setCityId($cityId)
+    {
+        $this->cityId = $cityId;
+
+        return $this;
+    }
+
+    /**
+     * Get cityId
+     *
+     * @return guid 
+     */
+    public function getCityId()
+    {
+        return $this->cityId;
+    }
+}

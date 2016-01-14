@@ -1,0 +1,3 @@
+Map2u\CoreBundle\Entity\CategoryTranslation:
+    type: entity
+    table: map2u_core__category_translation

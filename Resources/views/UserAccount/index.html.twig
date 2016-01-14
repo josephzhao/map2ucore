@@ -1,0 +1,153 @@
+{% extends '::base.html.twig' %}
+{% block page_stylesheets %}
+    <link rel="stylesheet" href="/bundles/map2uleaflet/css/leaflet.map2u.css" type="text/css" media="all" />
+    {{parent()}}
+    <link rel="stylesheet" href="/bundles/map2uleaflet/css/leaflet.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="/bundles/map2uleaflet/css/Control.MiniMap.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="/bundles/map2uleaflet/css/L.Control.MousePosition.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="/bundles/map2uleaflet/css/leaflet.locationfilter.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="/bundles/map2uleaflet/css/leaflet.draw.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="/bundles/map2uleaflet/css/leaflet.label.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="/bundles/map2uleaflet/css/L.Control.Sidebar.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="/bundles/map2uleaflet/css/gh-pages.css" type="text/css" media="all" />
+    <style>
+        #over_map_panel { position: absolute; top: 10px; left: 10px; z-index: 99; }
+        .leaflet-sidebar.left {
+            width: 250px;
+        }
+        div.leaflet-control-zoom.leaflet-bar.leaflet-control {
+            top:5px;
+        }
+        div.leaflet-draw.leaflet-control {
+            top:10px;
+        }
+        tbody tr.even.selected , tbody tr.odd.selected  {
+            background-color: #009900;
+        }
+        .editable-circleproperties {
+            display: block;
+            margin-bottom: 5px;  
+        }
+        .editable-circleproperties .input-small {
+            width: 100px; 
+        }
+        .editable-circleproperties span {
+            width: 60px;  
+            display: inline-block;
+        }
+    </style>
+{% endblock %}
+
+
+{% block page_container %}
+
+    {% block fixed_top_menu %}
+        {{ parent() }}
+    {% endblock %}
+    {% block maincontent_leftsidebar %}
+        {{ parent() }}
+    {% endblock %}
+    {% block maincontent %}
+
+      <div class='main_content profile'>
+            <div class="container-fluid">
+                <div class="row-fluid">
+                    <div class="col-lg-3 col-sm-3" style="min-width: 140px;padding:15px 35px;height:600px; border: 1px solid gainsboro;border-radius: 5px;">
+                        <div class="row useraccount-profile-title">
+                            <h4>User Account Info</h4>
+                        </div>
+                        <div class="row useraccount-profile">
+                           <a href="#" data-type="showpersonalinfo"><i class="fa fa-user"></i>Personal Info</a> 
+                        </div>
+                        <div class="row useraccount-profile">
+                            <a href="#" data-type="updatesecurity"><i class="fa fa-lock"></i>Account security</a>
+                        </div>
+                        <div class="row useraccount-profile">
+                            <a href="#" data-type="showrecentactivity"><i class="fa fa-clock-o"></i>Recent activity</a>
+                        </div>
+                      
+                    </div>
+                    <div class="col-lg-9 col-sm-9" id="useraccountinfo_details">
+                        {{ render(controller("ApplicationMap2uCoreBundle:UserAccount:showpersonalinfo")) }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+{% endblock %}
+{% block page_javascripts %}
+    {{parent()}}
+    <script>
+        $(function () {
+            var states = {{ states|json_encode|raw }};
+                    $("select#userprofiletype_country").val("CA");
+
+            $("select#userprofiletype_country").change(function () {
+                var country = $(this).val();
+                $("td#state").html("");
+                var opt;
+                if (country === 'CA' || country === 'US') {
+                    opt = '<select id="userprofiletype_state" name="userprofiletype[state]">';
+                    $.map(states, function (data) {
+                        if (data["country"] === country) {
+                            opt = opt + "<option value=" + data["state_code"] + ">" + data["state_name"] + "</option>";
+                        }
+                    });
+                    opt = opt + "</select>";
+                }
+                else {
+                    opt = '<input id="userprofiletype_state" name="userprofiletype[state]" maxlength="150" type="text">';
+                }
+                $(opt).appendTo($("td#state"));
+            });
+            $("select#userprofiletype_country").trigger("change");
+            $("div.row.useraccount-profile a").unbind("click");
+            $("div.row.useraccount-profile a").click(function () {
+                var url = 'useraccount_' + $(this).data("type");
+                $.ajax({
+                    type: "GET",
+                    url: Routing.generate(url, {_locale: window.locale}),
+                    cache: false,
+                    success: function (transport) {
+                        if (typeof transport === 'object' && transport.success === true)
+                        {
+                            alert(transport.message);
+                        }
+                        else
+                        {
+                            $("div#useraccountinfo_details").html('');
+                            $("div#useraccountinfo_details").append(transport);
+                        }
+
+                    }
+                });
+            });
+            $("div.row.useraccount-profile i.fa-pencil").unbind("click");
+            $("div.row.useraccount-profile i.fa-pencil").click(function () {
+               // alert($(this).data("type"));
+                var url = 'useraccount_' + $(this).data("type");
+                $.ajax({
+                    type: "GET",
+                    url: Routing.generate(url, {_locale: window.locale}),
+                    cache: false,
+                    success: function (transport) {
+                        if (typeof transport === 'object' && transport.success === true)
+                        {
+                            alert(transport.message);
+                        }
+                        else
+                        {
+                            $("div#useraccountinfo_details").html('');
+                            $("div#useraccountinfo_details").append(transport);
+                        }
+
+                    }
+                });
+
+            });
+        });
+
+
+    </script>
+{% endblock %}  
