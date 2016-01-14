@@ -34,7 +34,7 @@ Map2u\CoreBundle\Entity\Layer:
                 user_id:
                     referencedColumnName: id          
         category:
-            targetEntity: Map2u\CoreBundle\Entity\Category
+            targetEntity: Map2u\CoreBundle\Entity\LayerCategory
             inversedBy: {}
             joinColumns:
                 category_id:

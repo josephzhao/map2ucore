@@ -1,0 +1,4 @@
+Map2u\CoreBundle\Entity\LayerCategoryTranslation:
+    type: entity
+    table: map2u_core__layer_category_translation
+    fields:

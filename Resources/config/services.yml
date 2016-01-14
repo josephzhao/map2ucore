@@ -45,7 +45,7 @@ services:
         class: Map2u\CoreBundle\Admin\SidebarMenuAdmin
         arguments: [~, Map2u\CoreBundle\Entity\SidebarMenu, Map2uCoreBundle:SidebarMenuAdmin]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: admin, label: SidebarMenu }
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Sidebar Menu }
     map2u_core.manager.category:
         class: %map2u.core.manager.category.class%
         arguments: [Map2u\CoreBundle\Entity\Category,@doctrine, @security.context]
@@ -68,4 +68,65 @@ services:
     map2u_core.locale:
         class:   Map2u\CoreBundle\Listener\LocaleListener
         tags:
-            - {name: kernel.event_listener, event: kernel.request,  method: onKernelRequest }        
+            - {name: kernel.event_listener, event: kernel.request,  method: onKernelRequest }  
+            
+    map2u_core.admin.layer_category:
+        class: Map2u\CoreBundle\Admin\LayerCategoryAdmin
+        arguments: [~, Map2u\CoreBundle\Entity\LayerCategory, Map2uCoreBundle:LayerCategoryAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Map and Layer, label: Layer Category }
+    map2u_core.admin.map:
+        class: Map2u\CoreBundle\Admin\MapAdmin
+        arguments: [~, Map2u\CoreBundle\Entity\Map, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Map and Layer, label: Map }
+
+    map2u_core.admin.map_layer:
+        class: Map2u\CoreBundle\Admin\MapLayerAdmin
+        arguments: [~, Map2u\CoreBundle\Entity\MapLayer, Map2uCoreBundle:MapLayerAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Map and Layer, label: Map Layer }
+            
+    map2u_core.admin.layer:
+        class: Map2u\CoreBundle\Admin\LayerAdmin
+        arguments: [~, Map2u\CoreBundle\Entity\Layer, Map2uCoreBundle:LayerAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Map and Layer, label: Layer }
+
+
+    map2u_core.admin.country:
+        class: Map2u\CoreBundle\Admin\CountryAdmin
+        arguments: [~, Map2u\CoreBundle\Entity\Country, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Region, label: Country }
+
+    map2u_core.admin.state:
+        class: Map2u\CoreBundle\Admin\StateAdmin
+        arguments: [~, Map2u\CoreBundle\Entity\State, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Region, label: State }
+
+    map2u_core.admin.city:
+        class: Map2u\CoreBundle\Admin\CityAdmin
+        arguments: [~, Map2u\CoreBundle\Entity\City, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Region, label: City }
+
+    map2u_core.admin.region:
+        class: Map2u\CoreBundle\Admin\RegionAdmin
+        arguments: [~, Map2u\CoreBundle\Entity\Region, SonataAdminBundle:CRUD]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Region, label: Region }
+
+    map2u_core.admin.spatial_file:
+        class: Map2u\CoreBundle\Admin\SpatialFileAdmin
+        arguments: [~, Map2u\CoreBundle\Entity\SpatialFile, Map2uCoreBundle:SpatialFileAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Map and Layer, label: Spatial File }
+
+    map2u_core.admin.category:
+        class: Map2u\CoreBundle\Admin\CategoryAdmin
+        arguments: [~, Map2u\CoreBundle\Entity\Category, Map2uCoreBundle:CategoryAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: admin, label: Category }
+            

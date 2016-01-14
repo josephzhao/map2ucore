@@ -29,7 +29,7 @@
                             {% for subsidebarmenu in sidebarmenu.getChildren() %}
                                 {% if subsidebarmenu.enabled == true %}
                                     <li>
-                                        <a {% if sidebarmenu.clickable %} data-action="{{subsidebarmenu.routing}}" {% endif %} href="#">{{subsidebarmenu.getTitle()}}</a>
+                                        <a {% if sidebarmenu.clickable %} data-action="{{subsidebarmenu.routing}}" {% endif %} href="#"><i class="fa fa-angle-double-right"></i>{{subsidebarmenu.getTitle()}}</a>
                                     </li>
                                 {% endif %}
                             {% endfor %}
