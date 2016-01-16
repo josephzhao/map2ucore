@@ -294,7 +294,7 @@ interface SpatialFileInterface {
     /**
      * Set supportType
      *
-     * @param integer $supportType
+     * @param string $supportType
      * @return mixed
      */
     public function setSupportType($supportType);
@@ -302,7 +302,7 @@ interface SpatialFileInterface {
     /**
      * Get supportType
      *
-     * @return integer 
+     * @return string 
      */
     public function getSupportType();
 

@@ -84,7 +84,9 @@ Map2u\CoreBundle\Entity\BaseSpatialFile:
             nullable: true
             column: file_type
         supportType:
-            type: integer
+            type: string
+            length: 255
+            fixed: false
             nullable: true
             column: support_type
         fieldList:

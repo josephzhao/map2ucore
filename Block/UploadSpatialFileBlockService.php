@@ -82,7 +82,7 @@ class UploadSpatialFileBlockService extends BaseBlockService {
 
         $parameters = array('context' => $blockContext, 'form' => $form->createView(),
             'settings' => $blockContext->getSettings(),
-            'filetypes' => array('1' => array('type' => 'none', 'name' => 'Do not know yet'), '2' => array('type' => 'tradearea', 'name' => 'Trade Area'), '3' => array('type' => 'customer', 'name' => 'Customer'), '4' => array('type' => 'poi', 'name' => 'POI'), '5' => array('type' => 'maps', 'name' => 'Maps')),
+            'filetypes' => array('none' => array('type' => 'none', 'name' => 'Do not know yet'), 'pc' => array('type' => 'tradearea', 'name' => 'Trade Area'), 'cs' => array('type' => 'customer', 'name' => 'Customer'), 'poi' => array('type' => 'poi', 'name' => 'POI'), 'map' => array('type' => 'maps', 'name' => 'Maps')),
             'block' => $blockContext->getBlock()
         );
 
