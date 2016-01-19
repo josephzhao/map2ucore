@@ -47,7 +47,7 @@ class Country {
      * Set name
      *
      * @param string $name
-     * @return CountryTranslation
+     * @return mixed
      */
     public function setName($name) {
         $this->name = $name;

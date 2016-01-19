@@ -1,6 +1,11 @@
 Map2u\CoreBundle\Entity\SymbolizedLayer:
     type: entity
     table: map2u_core__symbolizedlayers    
+    gedmo:
+        translation:
+            locale: locale
+            # using specific personal translation class:
+            entity: Map2u\CoreBundle\Entity\SymbolizedLayerTranslation           
 
     manyToOne:    
         user:

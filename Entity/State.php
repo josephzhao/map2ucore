@@ -38,6 +38,35 @@ class State {
     private $code;
 
     /**
+     * Set name
+     *
+     * @param string $name
+     * @return mixed
+     */
+    public function setName($name) {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName() {
+        $this->getLocale();
+        if (method_exists($this, "translate")) {
+            if (isset($this->locale) && $this->locale !== null && strlen(trim($this->locale)) > 1) {
+                $this->name = $this->translate($this->locale)->getName();
+            } else {
+                $this->name = $this->translate('en')->getName();
+            }
+        }
+        return $this->name;
+    }
+
+    /**
      * Set code
      *
      * @param string $code
@@ -128,6 +157,11 @@ class State {
      */
     public function getZoomLevel() {
         return $this->zoomLevel;
+    }
+
+    public function getLocale() {
+
+        return $this->locale = locale_get_default();
     }
 
 }

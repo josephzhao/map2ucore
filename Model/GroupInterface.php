@@ -403,4 +403,34 @@ interface GroupInterface {
      * @return \DateTime 
      */
     public function getExpiredAt();
+
+    /**
+     * Set groupId
+     *
+     * @param guid $groupId
+     * @return mixed
+     */
+    public function setGroupId($groupId);
+
+    /**
+     * Get groupId
+     *
+     * @return guid 
+     */
+    public function getGroupId();
+
+    /**
+     * Set group
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $group
+     * @return mixed
+     */
+    public function setGroup($group);
+
+    /**
+     * Get expiredAt
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User
+     */
+    public function getGroup();
 }

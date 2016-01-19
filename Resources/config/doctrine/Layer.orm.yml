@@ -1,6 +1,11 @@
 Map2u\CoreBundle\Entity\Layer:
     type: entity
     table: map2u_core__layer
+    gedmo:
+        translation:
+            locale: locale
+            # using specific personal translation class:
+            entity: Map2u\CoreBundle\Entity\LayerTranslation           
     fields:
         id:
             id: true

@@ -1,0 +1,16 @@
+Map2u\CoreBundle\Entity\SymbolizedLayerTranslation:
+    type: entity
+    table: map2u_core__symbolizedlayer_translation    
+    fields:
+        name:     
+            type: string
+            length: 250
+            fixed: false
+            nullable: true
+            column: name   
+        description:
+            type: text
+            nullable: true
+            column: description
+
+ 

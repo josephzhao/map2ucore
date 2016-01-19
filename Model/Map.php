@@ -18,7 +18,6 @@ abstract class Map implements MapInterface {
 
     protected $id;
     protected $userId;
-   
     protected $user;
     protected $category;
     protected $layerSeq;
@@ -42,7 +41,7 @@ abstract class Map implements MapInterface {
     protected $projects;
 
     public function __construct() {
-     
+
         $this->layers = new ArrayCollection();
         $this->repors = new ArrayCollection();
         $this->groups = new ArrayCollection();
@@ -64,8 +63,6 @@ abstract class Map implements MapInterface {
         return $this;
     }
 
- 
-
     /**
      * {@inheritdoc}
      */
@@ -81,7 +78,6 @@ abstract class Map implements MapInterface {
         return $this->userId;
     }
 
-  
     /**
      * {@inheritdoc}
      */
@@ -139,6 +135,70 @@ abstract class Map implements MapInterface {
      */
     public function getMapTitle() {
         return $this->mapTitle;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTitlePosition($titlePosition) {
+
+        $this->titlePosition = $titlePosition;
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTitlePosition() {
+        return $this->titlePosition;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setMapCenter($mapCenter) {
+
+        $this->mapCenter = $mapCenter;
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getMapCenter() {
+        return $this->mapCenter;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setTitleStyle($titleStyle) {
+
+        $this->titleStyle = $titleStyle;
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getTitleStyle() {
+        return $this->titleStyle;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setType($type) {
+
+        $this->type = $type;
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getType() {
+        return $this->type;
     }
 
     /**
@@ -319,14 +379,17 @@ abstract class Map implements MapInterface {
         return $this->reports;
     }
 
- 
-
     public function prePersist() {
         
     }
 
     public function preUpdate() {
         
+    }
+
+    public function getLocale() {
+
+        return $this->locale = locale_get_default();
     }
 
 }

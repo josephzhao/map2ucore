@@ -70,11 +70,6 @@ services:
         tags:
             - {name: kernel.event_listener, event: kernel.request,  method: onKernelRequest }  
             
-    map2u_core.admin.layer_category:
-        class: Map2u\CoreBundle\Admin\LayerCategoryAdmin
-        arguments: [~, Map2u\CoreBundle\Entity\LayerCategory, Map2uCoreBundle:LayerCategoryAdmin]
-        tags:
-            - { name: sonata.admin, manager_type: orm, group: Map and Layer, label: Layer Category }
     map2u_core.admin.map:
         class: Map2u\CoreBundle\Admin\MapAdmin
         arguments: [~, Map2u\CoreBundle\Entity\Map, SonataAdminBundle:CRUD]
@@ -93,7 +88,12 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: Map and Layer, label: Layer }
 
-
+    map2u_core.admin.layer_category:
+        class: Map2u\CoreBundle\Admin\LayerCategoryAdmin
+        arguments: [~, Map2u\CoreBundle\Entity\LayerCategory, Map2uCoreBundle:LayerCategoryAdmin]
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: Map and Layer, label: Layer Category }
+  
     map2u_core.admin.country:
         class: Map2u\CoreBundle\Admin\CountryAdmin
         arguments: [~, Map2u\CoreBundle\Entity\Country, SonataAdminBundle:CRUD]

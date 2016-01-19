@@ -24,6 +24,8 @@ abstract class Group implements GroupInterface {
     protected $address;
     protected $phoneNumber;
     protected $faxNumber;
+    protected $groupId;
+    protected $group;
     protected $email;
     protected $wrongLoginTimes;
     protected $lastLoginIP;
@@ -448,6 +450,36 @@ abstract class Group implements GroupInterface {
 
     public function preUpdate() {
         
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setGroupId($groupId) {
+        $this->groupId = $groupId;
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getGroupId() {
+        return $this->groupId;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setGroup($group) {
+        $this->group = $group;
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getGroup() {
+        return $this->group;
     }
 
 }

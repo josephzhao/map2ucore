@@ -4,11 +4,14 @@ namespace Map2u\CoreBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use Map2u\CoreBundle\Entity\BaseLayer;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 /**
  * Layer
  */
 class Layer extends BaseLayer {
+
+    use ORMBehaviors\Translatable\Translatable;
 
     protected $symbolizedLayers;
 
@@ -20,7 +23,7 @@ class Layer extends BaseLayer {
         $this->symbolizedLayers = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
-        /**
+    /**
      * Add symbolizedLayers
      *
      * @param \Map2u\CoreBundle\Entity\SymbolizedLayer $symbolizedLayers
@@ -49,7 +52,7 @@ class Layer extends BaseLayer {
     public function getSymbolizedLayers() {
         return $this->symbolizedLayers;
     }
-    
+
 //    /**
 //     * @var integer
 //     */

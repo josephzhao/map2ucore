@@ -47,27 +47,7 @@ class Region {
      */
     private $name;
 
-    /**
-     * Set name
-     *
-     * @param string $name
-     * @return RegionTranslation
-     */
-    public function setName($name) {
-        $this->name = $name;
-
-        return $this;
-    }
-
-    /**
-     * Get name
-     *
-     * @return string 
-     */
-    public function getName() {
-        return $this->name;
-    }
-
+  
     /**
      * Get id
      *
@@ -96,6 +76,35 @@ class Region {
      */
     public function getCountryId() {
         return $this->countryId;
+    }
+
+    /**
+     * Set name
+     *
+     * @param string $name
+     * @return mixed
+     */
+    public function setName($name) {
+        $this->name = $name;
+
+        return $this;
+    }
+
+    /**
+     * Get name
+     *
+     * @return string 
+     */
+    public function getName() {
+        $this->getLocale();
+        if (method_exists($this, "translate")) {
+            if (isset($this->locale) && $this->locale !== null && strlen(trim($this->locale)) > 1) {
+                $this->name = $this->translate($this->locale)->getName();
+            } else {
+                $this->name = $this->translate('en')->getName();
+            }
+        }
+        return $this->name;
     }
 
     /**
@@ -180,6 +189,11 @@ class Region {
      */
     public function getCityId() {
         return $this->cityId;
+    }
+
+    public function getLocale() {
+
+        return $this->locale = locale_get_default();
     }
 
 }

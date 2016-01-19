@@ -8,120 +8,117 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class SymbolizedLayerAdmin extends Admin
-{
+class SymbolizedLayerAdmin extends Admin {
+
     /**
      * @param DatagridMapper $datagridMapper
      */
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper) {
         $datagridMapper
-            ->add('id')
-            ->add('seq')
-            ->add('minZoom')
-            ->add('maxZoom')
-            ->add('title')
-            ->add('name')
-            ->add('defaultSldName')
-            ->add('labelField')
-            ->add('tipField')
-            ->add('defaultShowOnMap')
-            ->add('published')
-            ->add('public')
-            ->add('topojsonOnly')
-            ->add('contentFields')
-            ->add('layerShowInSwitcher')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('description')
+                ->add('id')
+                ->add('seq')
+                ->add('minZoom')
+                ->add('maxZoom')
+                ->add('title')
+                ->add('name')
+                ->add('defaultSldName')
+                ->add('labelField')
+                ->add('tipField')
+                ->add('defaultShowOnMap')
+                ->add('published')
+                ->add('public')
+                ->add('topojsonOnly')
+                ->add('contentFields')
+                ->add('layerShowInSwitcher')
+                ->add('createdAt')
+                ->add('updatedAt')
+                ->add('description')
         ;
     }
 
     /**
      * @param ListMapper $listMapper
      */
-    protected function configureListFields(ListMapper $listMapper)
-    {
+    protected function configureListFields(ListMapper $listMapper) {
         $listMapper
-            ->add('id')
-            ->add('seq')
-            ->add('minZoom')
-            ->add('maxZoom')
-            ->add('title')
-            ->add('name')
-            ->add('defaultSldName')
-            ->add('labelField')
-            ->add('tipField')
-            ->add('defaultShowOnMap')
-            ->add('published')
-            ->add('public')
-            ->add('topojsonOnly')
-            ->add('contentFields')
-            ->add('layerShowInSwitcher')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('description')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                )
-            ))
+                ->add('id')
+                ->add('seq')
+                ->add('minZoom')
+                ->add('maxZoom')
+                ->add('title')
+                ->add('name')
+                ->add('defaultSldName')
+                ->add('labelField')
+                ->add('tipField')
+                ->add('defaultShowOnMap')
+                ->add('published')
+                ->add('public')
+                ->add('topojsonOnly')
+                ->add('contentFields')
+                ->add('layerShowInSwitcher')
+                ->add('createdAt')
+                ->add('updatedAt')
+                ->add('description')
+                ->add('_action', 'actions', array(
+                    'actions' => array(
+                        'show' => array(),
+                        'edit' => array(),
+                        'delete' => array(),
+                    )
+                ))
         ;
     }
 
     /**
      * @param FormMapper $formMapper
      */
-    protected function configureFormFields(FormMapper $formMapper)
-    {
+    protected function configureFormFields(FormMapper $formMapper) {
         $formMapper
-            ->add('id')
-            ->add('seq')
-            ->add('minZoom')
-            ->add('maxZoom')
-            ->add('title')
-            ->add('name')
-            ->add('defaultSldName')
-            ->add('labelField')
-            ->add('tipField')
-            ->add('defaultShowOnMap')
-            ->add('published')
-            ->add('public')
-            ->add('topojsonOnly')
-            ->add('contentFields')
-            ->add('layerShowInSwitcher')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('description')
+                ->with('Symbolized Layer', array('class' => 'col-md-6'))
+                ->add('id', 'hidden')
+                ->add('title')
+                ->add('name')
+                ->add('seq')
+                ->add('minZoom')
+                ->add('maxZoom')
+                ->add('published')
+                ->add('public')
+                ->add('defaultSldName')
+                ->add('labelField')
+                ->add('tipField')
+                ->add('defaultShowOnMap')
+                ->add('topojsonOnly')
+                ->add('contentFields')
+                ->add('layerShowInSwitcher')
+                ->add('description')
+                ->end()
         ;
     }
 
     /**
      * @param ShowMapper $showMapper
      */
-    protected function configureShowFields(ShowMapper $showMapper)
-    {
+    protected function configureShowFields(ShowMapper $showMapper) {
         $showMapper
-            ->add('id')
-            ->add('seq')
-            ->add('minZoom')
-            ->add('maxZoom')
-            ->add('title')
-            ->add('name')
-            ->add('defaultSldName')
-            ->add('labelField')
-            ->add('tipField')
-            ->add('defaultShowOnMap')
-            ->add('published')
-            ->add('public')
-            ->add('topojsonOnly')
-            ->add('contentFields')
-            ->add('layerShowInSwitcher')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('description')
+                ->add('id')
+                ->add('seq')
+                ->add('minZoom')
+                ->add('maxZoom')
+                ->add('title')
+                ->add('name')
+                ->add('defaultSldName')
+                ->add('labelField')
+                ->add('tipField')
+                ->add('defaultShowOnMap')
+                ->add('published')
+                ->add('public')
+                ->add('topojsonOnly')
+                ->add('contentFields')
+                ->add('layerShowInSwitcher')
+                ->add('createdAt')
+                ->add('updatedAt')
+                ->add('description')
         ;
     }
+
 }

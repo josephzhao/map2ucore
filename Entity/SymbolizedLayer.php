@@ -12,8 +12,11 @@
 namespace Map2u\CoreBundle\Entity;
 
 use Map2u\CoreBundle\Entity\BaseSymbolizedLayer;
+use Knp\DoctrineBehaviors\Model as ORMBehaviors;
 
 class SymbolizedLayer extends BaseSymbolizedLayer {
+
+    use ORMBehaviors\Translatable\Translatable;
 
     protected $map;
     protected $layer;

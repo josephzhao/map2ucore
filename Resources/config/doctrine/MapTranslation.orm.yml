@@ -1,0 +1,15 @@
+Map2u\CoreBundle\Entity\MapTranslation:
+    type: entity
+    table: map2u_core__map_translation   
+    fields:
+        mapTitle:
+            type: string
+            length: 250
+            fixed: false
+            nullable: false
+            column: map_title
+        description:
+            type: text
+            nullable: true
+            column: description
+

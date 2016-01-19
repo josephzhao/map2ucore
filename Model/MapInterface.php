@@ -28,8 +28,6 @@ interface MapInterface {
      */
     public function setId($id);
 
-  
-
     /**
      * Set userId
      *
@@ -44,8 +42,6 @@ interface MapInterface {
      * @return integer 
      */
     public function getUserId();
-
-   
 
     /**
      * Set zoomLevel
@@ -287,5 +283,63 @@ interface MapInterface {
      */
     public function getReports();
 
-  
+    /**
+     * Set titlePosition
+     *
+     * @param geometry $titlePosition
+     * @return mixed
+     */
+    public function setTitlePosition($titlePosition);
+
+    /**
+     * Get titlePosition
+     *
+     * @return geometry 
+     */
+    public function getTitlePosition();
+
+    /**
+     * Set mapCenter
+     *
+     * @param geometry $mapCenter
+     * @return mixed
+     */
+    public function setMapCenter($mapCenter);
+
+    /**
+     * Get mapCenter
+     *
+     * @return geometry 
+     */
+    public function getMapCenter();
+
+    /**
+     * Set titleStyle
+     *
+     * @param string $titleStyle
+     * @return mixed
+     */
+    public function setTitleStyle($titleStyle);
+
+    /**
+     * Get titleStyle
+     *
+     * @return string 
+     */
+    public function getTitleStyle();
+
+    /**
+     * Set type
+     *
+     * @param string $type
+     * @return mixed
+     */
+    public function setType($type);
+
+    /**
+     * Get type
+     *
+     * @return string 
+     */
+    public function getType();
 }

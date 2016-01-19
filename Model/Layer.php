@@ -24,6 +24,7 @@ abstract class Layer implements LayerInterface {
     protected $rowId;
     protected $category;
     protected $projectId;
+    protected $locale = 'en';
     protected $name;
     protected $sld;
     protected $enabled;
@@ -598,6 +599,11 @@ abstract class Layer implements LayerInterface {
 
     public function preUpdate() {
         
+    }
+
+    public function getLocale() {
+
+        return $this->locale = locale_get_default();
     }
 
 }

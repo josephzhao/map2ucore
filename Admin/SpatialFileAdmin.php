@@ -8,100 +8,95 @@ use Sonata\AdminBundle\Datagrid\ListMapper;
 use Sonata\AdminBundle\Form\FormMapper;
 use Sonata\AdminBundle\Show\ShowMapper;
 
-class SpatialFileAdmin extends Admin
-{
+class SpatialFileAdmin extends Admin {
+
     /**
      * @param DatagridMapper $datagridMapper
      */
-    protected function configureDatagridFilters(DatagridMapper $datagridMapper)
-    {
+    protected function configureDatagridFilters(DatagridMapper $datagridMapper) {
         $datagridMapper
-            ->add('userId')
-            ->add('sessionId')
-            ->add('fileName')
-            ->add('sheetName')
-            ->add('public')
-            ->add('fileType')
-            ->add('supportType')
-            ->add('fieldList')
-            ->add('selectedFields')
-            ->add('description')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('id')
+                ->add('userId')
+                ->add('sessionId')
+                ->add('fileName')
+                ->add('sheetName')
+                ->add('public')
+                ->add('fileType')
+                ->add('supportType')
+                ->add('fieldList')
+                ->add('selectedFields')
+                ->add('description')
+                ->add('createdAt')
+                ->add('updatedAt')
+                ->add('id')
         ;
     }
 
     /**
      * @param ListMapper $listMapper
      */
-    protected function configureListFields(ListMapper $listMapper)
-    {
+    protected function configureListFields(ListMapper $listMapper) {
         $listMapper
-            ->add('userId')
-            ->add('sessionId')
-            ->add('fileName')
-            ->add('sheetName')
-            ->add('public')
-            ->add('fileType')
-            ->add('supportType')
-            ->add('fieldList')
-            ->add('selectedFields')
-            ->add('description')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('id')
-            ->add('_action', 'actions', array(
-                'actions' => array(
-                    'show' => array(),
-                    'edit' => array(),
-                    'delete' => array(),
-                )
-            ))
+               
+                ->add('user')
+               
+                ->add('fileName')
+                ->add('sheetName')
+                ->add('public')
+                ->add('fileType')
+                ->add('supportType')
+               
+                ->add('selectedFields')
+               
+               
+                ->add('_action', 'actions', array(
+                    'actions' => array(
+                        'show' => array(),
+                        'edit' => array(),
+                        'delete' => array(),
+                    )
+                ))
         ;
     }
 
     /**
      * @param FormMapper $formMapper
      */
-    protected function configureFormFields(FormMapper $formMapper)
-    {
+    protected function configureFormFields(FormMapper $formMapper) {
         $formMapper
-            ->add('userId')
-            ->add('sessionId')
-            ->add('fileName')
-            ->add('sheetName')
-            ->add('public')
-            ->add('fileType')
-            ->add('supportType')
-            ->add('fieldList')
-            ->add('selectedFields')
-            ->add('description')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('id')
+                ->with('Spatial File', array('class' => 'col-md-6'))
+                ->add('id', 'hidden')
+                ->add('userId')
+                ->add('fileName')
+                ->add('sheetName')
+                ->add('public')
+                ->add('fileType')
+                ->add('supportType')
+                ->add('fieldList')
+                ->add('selectedFields')
+                ->add('description')
+                ->end()
         ;
     }
 
     /**
      * @param ShowMapper $showMapper
      */
-    protected function configureShowFields(ShowMapper $showMapper)
-    {
+    protected function configureShowFields(ShowMapper $showMapper) {
         $showMapper
-            ->add('userId')
-            ->add('sessionId')
-            ->add('fileName')
-            ->add('sheetName')
-            ->add('public')
-            ->add('fileType')
-            ->add('supportType')
-            ->add('fieldList')
-            ->add('selectedFields')
-            ->add('description')
-            ->add('createdAt')
-            ->add('updatedAt')
-            ->add('id')
+                ->add('userId')
+                ->add('sessionId')
+                ->add('fileName')
+                ->add('sheetName')
+                ->add('public')
+                ->add('fileType')
+                ->add('supportType')
+                ->add('fieldList')
+                ->add('selectedFields')
+                ->add('description')
+                ->add('createdAt')
+                ->add('updatedAt')
+                ->add('id')
         ;
     }
+
 }
