@@ -21,7 +21,7 @@ class LayerManager extends BaseEntityManager implements LayerManagerInterface {
     /**
      * @var array
      */
-    protected $maplayers;
+    protected $categories;
     protected $user;
 
     /**

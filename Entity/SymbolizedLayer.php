@@ -11,9 +11,9 @@
 
 namespace Map2u\CoreBundle\Entity;
 
-use Map2u\CoreBundle\Entity\BaseMapLayer;
+use Map2u\CoreBundle\Entity\BaseSymbolizedLayer;
 
-class MapLayer extends BaseMapLayer {
+class SymbolizedLayer extends BaseSymbolizedLayer {
 
     protected $map;
     protected $layer;

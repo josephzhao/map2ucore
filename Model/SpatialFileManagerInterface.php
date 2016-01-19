@@ -13,7 +13,7 @@ namespace Map2u\CoreBundle\Model;
 
 use Map2u\CoreBundle\Model\ManagerInterface;
 
-interface MapManagerInterface extends ManagerInterface
+interface SpatialFileManagerInterface extends ManagerInterface
 {
     
     public function getSpatialFileProperies();

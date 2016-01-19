@@ -52,7 +52,7 @@ Map2u\CoreBundle\Entity\SidebarMenu:
             mappedBy: parent
             orderBy: { 'position': 'ASC' }    
             cascade: ["persist","remove"]
-#         maplayers:
-#            targetEntity: MapLayer
+#         symbolizedlayers:
+#            targetEntity: SymbolizedLayer
 #            cascade: ["persist","remove"]
 #            mappedBy: category                 

@@ -21,7 +21,7 @@ class MapManager extends BaseEntityManager implements MapManagerInterface {
     /**
      * @var array
      */
-    protected $maplayers;
+    protected $symbolizedlayers;
     protected $user;
 
     /**

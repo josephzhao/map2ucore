@@ -15,35 +15,44 @@ use Map2u\CoreBundle\Entity\BaseMap;
 
 class Map extends BaseMap {
 
-    protected $mapLayers;
+    protected $symbolizedLayers;
 
     /**
      * Constructor
      */
     public function __construct() {
         parent::__construct();
-        $this->mapLayers = new \Doctrine\Common\Collections\ArrayCollection();
+        $this->symbolizedLayers = new \Doctrine\Common\Collections\ArrayCollection();
     }
 
     /**
-     * Add mapLayers
+     * Add symbolizedLayers
      *
-     * @param \Map2u\CoreBundle\Entity\MapLayer $mapLayers
+     * @param \Map2u\CoreBundle\Entity\SymbolizedLayer $symbolizedLayers
      * @return mixed
      */
-    public function addMapLayer(\Map2u\CoreBundle\Entity\MapLayer $mapLayers) {
-        $this->mapLayers[] = $mapLayers;
+    public function addSymbolizedLayer(\Map2u\CoreBundle\Entity\SymbolizedLayer $symbolizedLayers) {
+        $this->symbolizedLayers[] = $symbolizedLayers;
 
         return $this;
     }
 
     /**
-     * Remove mapLayers
+     * Remove symbolizedLayers
      *
-     * @param \Map2u\CoreBundle\Entity\MapLayer $mapLayers
+     * @param \Map2u\CoreBundle\Entity\SymbolizedLayer $symbolizedLayers
      */
-    public function removeProject(\Map2u\CoreBundle\Entity\MapLayer $mapLayers) {
-        $this->mapLayers->removeElement($mapLayers);
+    public function removeSymbolizedLayer(\Map2u\CoreBundle\Entity\SymbolizedLayer $symbolizedLayers) {
+        $this->symbolizedLayers->removeElement($symbolizedLayers);
+    }
+
+    /**
+     * Get symbolizedLayers
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getSymbolizedLayers() {
+        return $this->symbolizedLayers;
     }
 
 }

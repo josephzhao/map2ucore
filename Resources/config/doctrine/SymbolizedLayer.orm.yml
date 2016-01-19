@@ -1,6 +1,6 @@
-Map2u\CoreBundle\Entity\MapLayer:
+Map2u\CoreBundle\Entity\SymbolizedLayer:
     type: entity
-    table: map2u_core__maps_layers    
+    table: map2u_core__symbolizedlayers    
 
     manyToOne:    
         user:
@@ -17,13 +17,13 @@ Map2u\CoreBundle\Entity\MapLayer:
                     referencedColumnName: id               
         map:
             targetEntity: Map2u\CoreBundle\Entity\Map
-            inversedBy: {}
+            inversedBy: symbolizedLayers
             joinColumns:
                 map_id:
                     referencedColumnName: id          
         layer:
             targetEntity: Map2u\CoreBundle\Entity\Layer
-            inversedBy: {}
+            inversedBy: symbolizedLayers
             joinColumns:
                 layer_id:
                     referencedColumnName: id          

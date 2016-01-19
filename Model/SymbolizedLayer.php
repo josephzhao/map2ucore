@@ -12,9 +12,9 @@
 namespace Map2u\CoreBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Map2u\CoreBundle\Model\MapLayerInterface;
+use Map2u\CoreBundle\Model\SymbolizedLayerInterface;
 
-abstract class MapLayer implements MapLayerInterface {
+abstract class SymbolizedLayer implements SymbolizedLayerInterface {
 
     /**
      * @var guid

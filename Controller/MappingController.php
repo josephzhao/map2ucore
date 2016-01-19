@@ -31,7 +31,7 @@ class MappingController extends BaseMappingController {
 
     protected $map_class;
     protected $layer_class;
-    protected $maplayer_class;
+    protected $symbolizedlayer_class;
 
     public function __construct() {
         parent::__construct();

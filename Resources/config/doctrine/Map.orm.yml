@@ -10,6 +10,10 @@ Map2u\CoreBundle\Entity\Map:
             nullable: false
             generator:
                 strategy: UUID
+    oneToMany:    
+        symbolizedLayers:
+            targetEntity: Map2u\CoreBundle\Entity\SymbolizedLayer
+            mappedBy: map
     manyToMany:    
         groups:
             targetEntity: Map2u\CoreBundle\Entity\UserGroup

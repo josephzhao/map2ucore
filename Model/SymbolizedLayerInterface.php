@@ -11,7 +11,7 @@
 
 namespace Map2u\CoreBundle\Model;
 
-interface MapLayerInterface {
+interface SymbolizedLayerInterface {
 
     /**
      * Get id

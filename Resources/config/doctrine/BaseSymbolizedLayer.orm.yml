@@ -1,4 +1,4 @@
-Map2u\CoreBundle\Entity\BaseMapLayer:
+Map2u\CoreBundle\Entity\BaseSymbolizedLayer:
     type: mappedSuperclass
     fields:
         id:

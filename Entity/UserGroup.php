@@ -15,38 +15,38 @@ use Map2u\CoreBundle\Entity\BaseGroup;
 
 class UserGroup extends BaseGroup {
 
-    protected $maplayers;
+    protected $symbolizedlayers;
     protected $id;
     protected $groupAdmin;
-    
+
     /**
-     * Add maplayer
+     * Add symbolizedlayer
      *
-     * @param \Map2u\CoreBundle\Model\MapLayerInterface $maplayer
+     * @param \Map2u\CoreBundle\Model\MapLayerInterface $symbolizedlayer
      * @return mixed
      */
-    public function addMapLayer(\Map2u\CoreBundle\Model\MapLayerInterface $maplayer) {
-        $this->maplayers[] = $maplayer;
+    public function addSymbolizedLayer(\Map2u\CoreBundle\Model\SymbolizedLayerInterface $symbolizedlayer) {
+        $this->symbolizedlayers[] = $symbolizedlayer;
 
         return $this;
     }
 
     /**
-     * Remove maplayer
+     * Remove symbolizedlayer
      *
-     * @param \Map2u\CoreBundle\Model\MapLayerInterface $maplayer
+     * @param \Map2u\CoreBundle\Model\SymbolizedLayerInterface $symbolizedlayer
      */
-    public function removeMapLayer(\Map2u\CoreBundle\Model\MapLayerInterface $maplayer) {
-        $this->maplayers->removeElement($maplayer);
+    public function removeSymbolizedLayer(\Map2u\CoreBundle\Model\SymbolizedLayerInterface $symbolizedlayer) {
+        $this->symbolizedlayers->removeElement($symbolizedlayer);
     }
 
     /**
-     * Get maplayers
+     * Get symbolizedlayers
      *
      * @return \Doctrine\Common\Collections\Collection 
      */
-    public function getMapLayers() {
-        return $this->maplayers;
+    public function getSymbolizedLayers() {
+        return $this->symbolizedlayers;
     }
 
 }

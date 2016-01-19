@@ -11,9 +11,9 @@
 
 namespace Map2u\CoreBundle\Entity;
 
-use Map2u\CoreBundle\Model\MapLayer as ModelMapLayer;
+use Map2u\CoreBundle\Model\SymbolizedLayer as ModelSymbolizedLayer;
 
-abstract class BaseMapLayer extends ModelMapLayer
+abstract class BaseSymbolizedLayer extends ModelSymbolizedLayer
 {
    
     public function disableChildrenLazyLoading()

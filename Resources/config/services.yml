@@ -81,9 +81,9 @@ services:
         tags:
             - { name: sonata.admin, manager_type: orm, group: Map and Layer, label: Map }
 
-    map2u_core.admin.map_layer:
-        class: Map2u\CoreBundle\Admin\MapLayerAdmin
-        arguments: [~, Map2u\CoreBundle\Entity\MapLayer, Map2uCoreBundle:MapLayerAdmin]
+    map2u_core.admin.symbolized_layer:
+        class: Map2u\CoreBundle\Admin\SymbolizedLayerAdmin
+        arguments: [~, Map2u\CoreBundle\Entity\SymbolizedLayer, Map2uCoreBundle:SymbolizedLayerAdmin]
         tags:
             - { name: sonata.admin, manager_type: orm, group: Map and Layer, label: Map Layer }
             

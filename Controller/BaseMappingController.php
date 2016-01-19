@@ -30,12 +30,12 @@ class BaseMappingController extends Controller {
 
     protected $map_class;
     protected $layer_class;
-    protected $maplayer_class;
+    protected $symbolizedlayer_class;
 
     public function __construct() {
         $this->map_class = "Map2uCoreBundle:Map";
         $this->layer_class = "Map2uCoreBundle:Layer";
-        $this->maplayer_class = "Map2uCoreBundle:MapLayer";
+        $this->symbolizedlayer_class = "Map2uCoreBundle:SymbolizedLayer";
     }
 
     //put your code here

@@ -14,6 +14,10 @@ Map2u\CoreBundle\Entity\Layer:
         layergeoms:
             targetEntity: Map2u\CoreBundle\Entity\LayerGeom
             mappedBy: layer
+        symbolizedLayers:
+            targetEntity: Map2u\CoreBundle\Entity\SymbolizedLayer
+            mappedBy: layer
+            
     manyToMany:    
         groups:
             targetEntity: Map2u\CoreBundle\Entity\UserGroup

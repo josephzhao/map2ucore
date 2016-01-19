@@ -13,15 +13,15 @@ namespace Map2u\CoreBundle\Entity;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
 use Map2u\CoreBundle\Model\CategoryInterface;
-use Map2u\CoreBundle\Model\MapLayerManagerInterface;
+use Map2u\CoreBundle\Model\ManagerInterface;
 use Sonata\CoreBundle\Model\BaseEntityManager;
 
-class MapLayerManager extends BaseEntityManager implements MapLayerManagerInterface {
+class SymbolizedLayerManager extends BaseEntityManager implements ManagerInterface {
 
     /**
      * @var array
      */
-    protected $maplayers;
+    protected $symbolizedlayers;
     protected $user;
 
     /**
