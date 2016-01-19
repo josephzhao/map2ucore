@@ -85,7 +85,7 @@ services:
         class: Map2u\CoreBundle\Admin\SymbolizedLayerAdmin
         arguments: [~, Map2u\CoreBundle\Entity\SymbolizedLayer, Map2uCoreBundle:SymbolizedLayerAdmin]
         tags:
-            - { name: sonata.admin, manager_type: orm, group: Map and Layer, label: Map Layer }
+            - { name: sonata.admin, manager_type: orm, group: Map and Layer, label: Symbolized Layer }
             
     map2u_core.admin.layer:
         class: Map2u\CoreBundle\Admin\LayerAdmin
