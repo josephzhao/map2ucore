@@ -55,6 +55,7 @@ class CategoryAdmin extends Admin {
      * @param FormMapper $formMapper
      */
     protected function configureFormFields(FormMapper $formMapper) {
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
         $formMapper
                 ->with('Category', array('class' => 'col-md-6'))
                 ->add('id', 'hidden')
@@ -63,6 +64,13 @@ class CategoryAdmin extends Admin {
                 ->add('enabled')
                 ->add('public')
                 ->add('slug')
+                ->add('parent', 'map2u_core_category_selector', array(
+                    'user' => $user,
+                    'category' => $this->getSubject() ? : null,
+                    'model_manager' => $this->getModelManager(),
+                    'class' => $this->getClass(),
+                    'required' => false
+                ))
                 ->end()
                 ->with('Category Translation', array('class' => 'col-md-6'))
                 ->add('translations', 'a2lix_translations', array(

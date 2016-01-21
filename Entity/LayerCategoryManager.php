@@ -17,7 +17,7 @@ use Map2u\CoreBundle\Model\CategoryManagerInterface;
 use Map2u\CoreBundle\Model\BaseEntityManager;
 use Symfony\Component\Security\Core\SecurityContext;
 
-class CategoryManager extends BaseEntityManager implements CategoryManagerInterface {
+class LayerCategoryManager extends BaseEntityManager implements CategoryManagerInterface {
 
     /**
      * @var array
@@ -55,9 +55,9 @@ class CategoryManager extends BaseEntityManager implements CategoryManagerInterf
      */
     public function getRootCategories($loadChildren = true) {
         $class = $this->getClass();
-      
+     
         if ($this->user) {
-            $rootCategories = $this->getObjectManager()->createQuery(sprintf('SELECT c FROM %s c WHERE c.parent IS NULL and (c.user=:user or c.public=true)', $class))
+            $rootCategories = $this->getObjectManager()->createQuery(sprintf('SELECT c FROM %s c WHERE c.parent IS NULL and (c.user=:user or c.user is null or c.public=true)', $class))
                     ->setParameter('user', $this->user)
                     ->execute();
         } else {

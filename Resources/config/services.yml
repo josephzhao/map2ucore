@@ -49,12 +49,22 @@ services:
     map2u_core.manager.category:
         class: %map2u.core.manager.category.class%
         arguments: [Map2u\CoreBundle\Entity\Category,@doctrine, @security.context]
+
+    map2u_core.manager.layercategory:
+        class: %map2u.core.manager.layercategory.class%
+        arguments: [Map2u\CoreBundle\Entity\LayerCategory,@doctrine, @security.context]
     
     map2u_core.form.type.category_selector:  
         class: Map2u\CoreBundle\Form\Type\CategorySelectorType
         arguments: ["@map2u_core.manager.category"]
         tags:
             - { name: form.type, alias: map2u_core_category_selector }  
+
+    map2u_core.form.type.layer_category_selector:  
+        class: Map2u\CoreBundle\Form\Type\LayerCategorySelectorType
+        arguments: ["@map2u_core.manager.layercategory"]
+        tags:
+            - { name: form.type, alias: map2u_core_layer_category_selector }  
             
     map2u_core.manager.sidebarmenu:
         class: %map2u.core.manager.sidebarmenu.class%

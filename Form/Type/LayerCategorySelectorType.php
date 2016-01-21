@@ -23,7 +23,7 @@ use Symfony\Component\Form\Extension\Core\ChoiceList\SimpleChoiceList;
  *
  * @author Thomas Rabaix <thomas.rabaix@sonata-project.org>
  */
-class CategorySelectorType extends AbstractType {
+class LayerCategorySelectorType extends AbstractType {
 
     protected $manager;
 
@@ -125,7 +125,7 @@ class CategorySelectorType extends AbstractType {
      * {@inheritDoc}
      */
     public function getName() {
-        return 'map2u_core_category_selector';
+        return 'map2u_core_layer_category_selector';
     }
 
 }

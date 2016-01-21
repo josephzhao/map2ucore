@@ -32,15 +32,13 @@ class LayerCategoryAdmin extends Admin {
      */
     protected function configureListFields(ListMapper $listMapper) {
         $listMapper
-                ->add('position')
                 ->add('name')
-                ->add('slug')
+                ->add('parent')
                 ->add('enabled')
                 ->add('public')
                 ->add('multiple')
-                ->add('createdAt')
-                ->add('updatedAt')
-                ->add('id')
+                ->add('position')
+                ->add('slug')
                 ->add('_action', 'actions', array(
                     'actions' => array(
                         'show' => array(),
@@ -55,6 +53,8 @@ class LayerCategoryAdmin extends Admin {
      * @param FormMapper $formMapper
      */
     protected function configureFormFields(FormMapper $formMapper) {
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+
         $formMapper
                 ->with('Layer Category', array('class' => 'col-md-6'))
                 ->add('id', 'hidden')
@@ -64,6 +64,13 @@ class LayerCategoryAdmin extends Admin {
                 ->add('enabled')
                 ->add('public')
                 ->add('multiple')
+                ->add('parent', 'map2u_core_layer_category_selector', array(
+                    'user' => $user,
+                    'category' => $this->getSubject() ? : null,
+                    'model_manager' => $this->getModelManager(),
+                    'class' => $this->getClass(),
+                    'required' => false
+                ))
                 ->end()
                 ->with('Layer Category Translation', array('class' => 'col-md-6'))
                 ->add('translations', 'a2lix_translations', array(
