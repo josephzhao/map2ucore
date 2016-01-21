@@ -13,6 +13,7 @@ namespace Map2u\CoreBundle\Entity;
 
 use Map2u\CoreBundle\Entity\BaseSymbolizedLayer;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
+use Map2u\CoreBundle\Controller\DefaultMethods;
 
 class SymbolizedLayer extends BaseSymbolizedLayer {
 
