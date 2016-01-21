@@ -79,10 +79,18 @@ class SymbolizedLayerAdmin extends Admin {
                 ->add('title')
                 ->add('name')
                 ->add('seq')
-                ->add('minZoom')
-                ->add('maxZoom')
+                ->add('layer', 'entity', array(
+                    'class' => "Map2u\CoreBundle\Entity\Layer",
+                    'required' => true,
+                    'multiple' => false,
+                    'expanded' => false
+                ))
                 ->add('published')
                 ->add('public')
+                ->add('minZoom')
+                ->add('maxZoom')
+                ->end()
+                ->with('Symbolized Layer Settings', array('class' => 'col-md-6'))
                 ->add('defaultSldName')
                 ->add('labelField')
                 ->add('tipField')
