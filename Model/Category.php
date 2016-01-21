@@ -35,11 +35,11 @@ abstract class Category implements CategoryInterface {
     protected $multiple;
     protected $user;
 
-    /**
+     /**
      * Constructor
      */
     public function __construct() {
-        
+        $this->id = DefaultMethods::gen_uuid();
     }
 
     /**
