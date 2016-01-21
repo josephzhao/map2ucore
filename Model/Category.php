@@ -16,6 +16,7 @@ use Map2u\CoreBundle\Model\CategoryInterface;
 use Application\Sonata\UserBundle\Entity\User;
 use Sonata\ClassificationBundle\Model\Tag;
 use Symfony\Component\Locale as Locale;
+use Map2u\CoreBundle\Controller\DefaultMethods;
 
 abstract class Category implements CategoryInterface {
 
