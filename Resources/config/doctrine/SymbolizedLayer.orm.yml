@@ -14,6 +14,12 @@ Map2u\CoreBundle\Entity\SymbolizedLayer:
             joinColumns:
                 user_id:
                     referencedColumnName: id          
+        layerCategory:
+            targetEntity: Map2u\CoreBundle\Entity\LayerCategory
+            inversedBy: {}
+            joinColumns:
+                layercategory_id:
+                    referencedColumnName: id               
         category:
             targetEntity: Map2u\CoreBundle\Entity\Category
             inversedBy: {}
