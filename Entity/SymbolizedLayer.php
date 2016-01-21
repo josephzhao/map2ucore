@@ -13,7 +13,6 @@ namespace Map2u\CoreBundle\Entity;
 
 use Map2u\CoreBundle\Entity\BaseSymbolizedLayer;
 use Knp\DoctrineBehaviors\Model as ORMBehaviors;
-use Map2u\CoreBundle\Controller\DefaultMethods;
 
 class SymbolizedLayer extends BaseSymbolizedLayer {
 
@@ -24,13 +23,7 @@ class SymbolizedLayer extends BaseSymbolizedLayer {
     protected $layer;
     protected $layerCategory;
 
-    /**
-     * Constructor
-     */
-    public function __construct() {
-        $this->id = DefaultMethods::gen_uuid();
-    }
-
+  
     /**
      * Set map
      *

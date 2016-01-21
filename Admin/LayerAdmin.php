@@ -49,7 +49,7 @@ class LayerAdmin extends Admin {
      */
     protected function configureListFields(ListMapper $listMapper) {
         $listMapper
-                ->add('userId')
+                ->add('user')
                 ->add('tableId')
                 ->add('tableName')
                 ->add('rowId')
@@ -64,16 +64,13 @@ class LayerAdmin extends Admin {
                 ->add('zoomLevel')
                 ->add('lat')
                 ->add('lng')
-                ->add('projectId')
+           
                 ->add('name')
                 ->add('type')
                 ->add('valueField')
                 ->add('sld')
                 ->add('sql')
-                ->add('sessionId')
-                ->add('createdAt')
-                ->add('updatedAt')
-                ->add('description')
+         
                 ->add('id')
                 ->add('_action', 'actions', array(
                     'actions' => array(
@@ -107,7 +104,7 @@ class LayerAdmin extends Admin {
                 ->add('zoomLevel')
                 ->add('lat')
                 ->add('lng')
-                ->add('projectId')
+     //           ->add('projectId')
                 ->add('type')
                 ->add('valueField')
                 ->add('sld')
@@ -142,7 +139,7 @@ class LayerAdmin extends Admin {
                 ->add('zoomLevel')
                 ->add('lat')
                 ->add('lng')
-                ->add('projectId')
+     //           ->add('projectId')
                 ->add('name')
                 ->add('type')
                 ->add('valueField')
