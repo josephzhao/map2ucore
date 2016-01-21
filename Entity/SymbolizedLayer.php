@@ -18,10 +18,18 @@ class SymbolizedLayer extends BaseSymbolizedLayer {
 
     use ORMBehaviors\Translatable\Translatable;
 
+    protected $id;
     protected $map;
     protected $layer;
-   protected $layerCategory;
- 
+    protected $layerCategory;
+
+    /**
+     * Constructor
+     */
+    public function __construct() {
+        $this->id = DefaultMethods::gen_uuid();
+    }
+
     /**
      * Set map
      *
