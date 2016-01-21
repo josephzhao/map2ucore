@@ -23,6 +23,7 @@ abstract class Layer implements LayerInterface {
     protected $tableName;
     protected $rowId;
     protected $category;
+    protected $layerCategory;
     protected $projectId;
     protected $locale = 'en';
     protected $name;
@@ -580,6 +581,21 @@ abstract class Layer implements LayerInterface {
      */
     public function getCategory() {
         $this->category;
+    }
+    
+    /**
+     * {@inheritdoc}
+     */
+    public function setLayerCategory($layerCategory) {
+        $this->layerCategory = $layerCategory;
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLayerCategory() {
+        $this->layerCategory;
     }
 
     /**

@@ -20,7 +20,8 @@ class SymbolizedLayer extends BaseSymbolizedLayer {
 
     protected $map;
     protected $layer;
-
+   protected $layerCategory;
+ 
     /**
      * Set map
      *

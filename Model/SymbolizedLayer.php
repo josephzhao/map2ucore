@@ -581,6 +581,21 @@ abstract class SymbolizedLayer implements SymbolizedLayerInterface {
         return $this->category;
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function setLayerCategory($layerCategory) {
+        $this->layerCategory = $layerCategory;
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLayerCategory() {
+        $this->layerCategory;
+    }
+
     public function prePersist() {
         
     }
