@@ -85,6 +85,13 @@ class SymbolizedLayerAdmin extends Admin {
                     'multiple' => false,
                     'expanded' => false
                 ))
+                ->add('category', 'entity', array(
+                    'class' => "Map2u\CoreBundle\Entity\LayerCategory",
+                    'required' => false,
+                    'multiple' => false,
+                    'expanded' => false
+                ))
+                ->add('published')
                 ->add('published')
                 ->add('public')
                 ->add('minZoom')
