@@ -10,7 +10,7 @@ Map2u\CoreBundle\Entity\SymbolizedLayer:
     manyToOne:    
         user:
             targetEntity: Application\Sonata\UserBundle\Entity\User
-            inversedBy: {}
+            inversedBy: symbolizedLayers
             joinColumns:
                 user_id:
                     referencedColumnName: id          

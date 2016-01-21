@@ -18,7 +18,7 @@ class UserGroup extends BaseGroup {
     protected $symbolizedlayers;
     protected $id;
     protected $groupAdmin;
-
+    protected $user;
     /**
      * Add symbolizedlayer
      *

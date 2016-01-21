@@ -1,0 +1,43 @@
+Map2u\CoreBundle\Entity\Membership:
+    type: entity
+    table: map2u_core__membership
+    fields:
+        id:
+            id: true
+            type: guid
+            unsigned: false
+            nullable: false
+            column: id
+            generator:
+                strategy: UUID
+        name:     
+            type: string
+            length: 50
+            fixed: false
+            nullable: false
+            column: name
+        price:     
+            type: float
+            nullable: false
+            column: price                
+        createdAt:
+            type: datetime
+            nullable: true
+            column: created_at
+            gedmo:
+              timestampable:
+                on: create
+        
+        updatedAt:
+            type: datetime
+            nullable: true
+            column: updated_at
+            gedmo:
+              timestampable:
+                on: update
+        description:
+            type: text
+            nullable: true
+            column: description
+
+    lifecycleCallbacks: {  }
