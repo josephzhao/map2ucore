@@ -49,7 +49,7 @@ Map2u\CoreBundle\Entity\SystemSettings:
             cascade: {  }
             mappedBy: null
             joinColumns:
-                user_id:
+                user_uuid:
                     referencedColumnName: id
             orphanRemoval: true        
     lifecycleCallbacks: {  }

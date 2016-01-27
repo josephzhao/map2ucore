@@ -8,7 +8,7 @@ Map2u\CoreBundle\Entity\Report:
             cascade: {  }
             inversedBy: {}
             joinColumns:
-                user_id:
+                user_uuid:
                     referencedColumnName: id
             orphanRemoval: false
         project:
@@ -16,7 +16,7 @@ Map2u\CoreBundle\Entity\Report:
             cascade: {  }
             inversedBy: reports
             joinColumns:
-                project_id:
+                project_uuid:
                     referencedColumnName: id
             orphanRemoval: false    
 #    manyToMany:

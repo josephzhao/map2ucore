@@ -75,7 +75,7 @@ Map2u\CoreBundle\Entity\MapBookmark:
             cascade: {  }
             mappedBy: null
             joinColumns:
-                user_id:
+                user_uuid:
                     referencedColumnName: id
             orphanRemoval: true            
     lifecycleCallbacks: {  }

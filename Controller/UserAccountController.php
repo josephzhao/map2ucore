@@ -232,9 +232,9 @@ class UserAccountController extends Controller {
                 $upgradeEntity->setTotalCost($totalCost);
                 $em->persist($upgradeEntity);
                 $em->flush();
-                $sql = "select sum(amount) as amount from manifold_billings where user_id=" . $user->getId() . " limit 1";
+                $sql = "select sum(amount) as amount from manifold_billings where user_uuid=" . $user->getId() . " limit 1";
                 $billings = $conn->fetchAll($sql);
-                $sql = "select sum(charge_total) as amount from manifold_payments where user_id=" . $user->getId() . " limit 1";
+                $sql = "select sum(charge_total) as amount from manifold_payments where user_uuid=" . $user->getId() . " limit 1";
                 $payments = $conn->fetchAll($sql);
 
                 $balance = floatval($billings[0]['amount']) - floatval($payments[0]['amount']);
