@@ -342,4 +342,34 @@ interface MapInterface {
      * @return string 
      */
     public function getType();
+
+    /**
+     * Set category
+     *
+     * @param \Map2u\CoreBundle\Entity\Category category
+     * @return mixed
+     */
+    public function setCategory($category);
+
+    /**
+     * Get category
+     *
+     * @return \Map2u\CoreBundle\Entity\Category
+     */
+    public function getCategory();
+
+    /**
+     * Set layerCategory
+     *
+     * @param \Map2u\CoreBundle\Entity\LayerCategory layerCategory
+     * @return mixed
+     */
+    public function setLayerCategory($layerCategory);
+
+    /**
+     * Get layerCategory
+     *
+     * @return \Map2u\CoreBundle\Entity\LayerCategory
+     */
+    public function getLayerCategory();
 }

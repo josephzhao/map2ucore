@@ -15,7 +15,7 @@ Map2u\CoreBundle\Entity\UserGeometry:
             cascade: {  }
             mappedBy: null
             joinColumns:
-                user_id:
+                user_uuid:
                     referencedColumnName: id
             orphanRemoval: true      
 

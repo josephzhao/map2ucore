@@ -17,12 +17,12 @@ Map2u\CoreBundle\Entity\City:
             type: guid
             unsigned: false
             nullable: true
-            column: country_id                
+            column: country_uuid                
         stateId:
             type: guid
             unsigned: false
             nullable: true
-            column: state_id                
+            column: state_uuid                
         lng:
             type: float
             nullable: false

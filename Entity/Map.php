@@ -19,7 +19,6 @@ class Map extends BaseMap {
     use ORMBehaviors\Translatable\Translatable;
 
     protected $symbolizedLayers;
-
     /**
      * Constructor
      */

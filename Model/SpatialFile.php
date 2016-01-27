@@ -450,4 +450,8 @@ abstract class SpatialFile implements SpatialFileInterface {
         
     }
 
+    public function __toString() {
+        return $this->fileName;
+    }
+
 }

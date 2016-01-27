@@ -21,7 +21,7 @@ Map2u\CoreBundle\Entity\Project:
             cascade: {  }
             inversedBy: {}
             joinColumns:
-                user_id:
+                user_uuid:
                     referencedColumnName: id
             orphanRemoval: false
 #    manyToMany:

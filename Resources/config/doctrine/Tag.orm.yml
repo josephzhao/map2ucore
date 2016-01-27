@@ -16,5 +16,5 @@ Map2u\CoreBundle\Entity\Tag:
             targetEntity: Application\Sonata\UserBundle\Entity\User
             inversedBy: {}
             joinColumns:
-                user_id:
+                user_uuid:
                     referencedColumnName: id          

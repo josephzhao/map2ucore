@@ -24,6 +24,7 @@ abstract class Layer implements LayerInterface {
     protected $rowId;
     protected $category;
     protected $layerCategory;
+    protected $spatialfile;
     protected $projectId;
     protected $locale = 'en';
     protected $name;
@@ -230,6 +231,21 @@ abstract class Layer implements LayerInterface {
     public function getValueField() {
 
         return $this->valueField;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setSpatialfile($spatialfile) {
+        $this->spatialfile = $spatialfile;
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getSpatialfile() {
+        return $this->spatialfile;
     }
 
     /**
@@ -582,7 +598,7 @@ abstract class Layer implements LayerInterface {
     public function getCategory() {
         $this->category;
     }
-    
+
     /**
      * {@inheritdoc}
      */

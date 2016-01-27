@@ -39,6 +39,7 @@ abstract class Map implements MapInterface {
     protected $description;
     protected $reports;
     protected $projects;
+    protected $layerCategory;
 
     public function __construct() {
 
@@ -76,6 +77,36 @@ abstract class Map implements MapInterface {
      */
     public function getUserId() {
         return $this->userId;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCategory($category) {
+        $this->category = $category;
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCategory() {
+        $this->category;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setLayerCategory($layerCategory) {
+        $this->layerCategory = $layerCategory;
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLayerCategory() {
+        $this->layerCategory;
     }
 
     /**

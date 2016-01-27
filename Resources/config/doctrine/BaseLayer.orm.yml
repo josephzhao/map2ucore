@@ -5,12 +5,12 @@ Map2u\CoreBundle\Entity\BaseLayer:
             type: guid
             unsigned: false
             nullable: true
-            column: user_id
+            column: user_uuid
         tableId:
             type: guid
             unsigned: false
             nullable: true
-            column: table_id
+            column: table_uuid
         tableName:	        
             type: string
             length: 150
@@ -21,7 +21,7 @@ Map2u\CoreBundle\Entity\BaseLayer:
             type: guid
             unsigned: false
             nullable: true
-            column: row_id            
+            column: row_uuid            
         enabled:	        
             type: boolean
             nullable: true
@@ -85,7 +85,7 @@ Map2u\CoreBundle\Entity\BaseLayer:
             type: guid
             unsigned: false
             nullable: true
-            column: project_id
+            column: project_uuid
         name:     
             type: string
             length: 250

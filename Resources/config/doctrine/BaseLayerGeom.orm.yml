@@ -5,7 +5,7 @@ Map2u\CoreBundle\Entity\BaseLayerGeom:
             type: guid
             unsigned: false
             nullable: true
-            column: table_id
+            column: table_uuid
         tableName:	        
             type: string
             length: 150
@@ -16,12 +16,12 @@ Map2u\CoreBundle\Entity\BaseLayerGeom:
             type: guid
             unsigned: false
             nullable: true
-            column: row_id
+            column: row_uuid
         layerId:	        
             type: guid
             unsigned: false
             nullable: false
-            column: layer_id
+            column: layer_uuid
         name:     
             type: string
             length: 50

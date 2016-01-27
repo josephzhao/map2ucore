@@ -29,10 +29,10 @@ Map2u\CoreBundle\Entity\Layer:
             joinTable:
                    name: map2u_core__layers_groups
                    joinColumns:
-                     group_id:
+                     group_uuid:
                        referencedColumnName: id
                    inverseJoinColumns:
-                     layer_id:
+                     layer_uuid:
                        referencedColumnName: id           
 
     manyToOne:    
@@ -43,8 +43,15 @@ Map2u\CoreBundle\Entity\Layer:
                 user_id:
                     referencedColumnName: id          
         category:
+            targetEntity: Map2u\CoreBundle\Entity\Category
+            inversedBy: {}
+            joinColumns:
+                category_id:
+                    referencedColumnName: id      
+        category:
             targetEntity: Map2u\CoreBundle\Entity\LayerCategory
             inversedBy: {}
             joinColumns:
                 category_id:
                     referencedColumnName: id               
+                    

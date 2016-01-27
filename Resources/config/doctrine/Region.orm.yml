@@ -12,7 +12,7 @@ Map2u\CoreBundle\Entity\Region:
             type: guid
             unsigned: false
             nullable: true
-            column: country_id
+            column: country_uuid
         lng:
             type: float
             nullable: false
@@ -30,5 +30,5 @@ Map2u\CoreBundle\Entity\Region:
             type: guid
             unsigned: false
             nullable: true
-            column: city_id
+            column: city_uuid
     lifecycleCallbacks: {  }

@@ -28,7 +28,7 @@ Map2u\CoreBundle\Entity\MapBookmark:
             type: guid
             unsigned: false
             nullable: false
-            column: user_id
+            column: user_uuid
         seq:     
             type: integer
             unsigned: false

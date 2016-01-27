@@ -40,7 +40,7 @@ class MapAdmin extends Admin {
      */
     protected function configureListFields(ListMapper $listMapper) {
         $listMapper
-                ->add('userId')
+                ->add('user')
                 ->add('zoomLevel')
                 ->add('mapTitle')
                 ->add('name')
@@ -53,10 +53,6 @@ class MapAdmin extends Admin {
                 ->add('shared')
                 ->add('enabled')
                 ->add('public')
-                ->add('createdAt')
-                ->add('updatedAt')
-                ->add('description')
-                ->add('id')
                 ->add('_action', 'actions', array(
                     'actions' => array(
                         'show' => array(),
@@ -72,13 +68,33 @@ class MapAdmin extends Admin {
      */
     protected function configureFormFields(FormMapper $formMapper) {
         $formMapper
-                ->with('Map', array('class' => 'col-md-6'))
+                ->with('Map', array('class' => 'col-md-4'))
                 ->add('id', 'hidden')
                 ->add('userId')
                 ->add('zoomLevel')
                 ->add('name')
                 ->add('layerSeq')
                 ->add('titlePosition')
+                ->add('symbolizedLayers', 'entity', array(
+                    'class' => "Map2u\CoreBundle\Entity\SymbolizedLayer",
+                    'required' => true,
+                    'multiple' => true,
+                    'expanded' => false
+                ))
+                ->add('layerCategory', 'entity', array(
+                    'class' => "Map2u\CoreBundle\Entity\LayerCategory",
+                    'required' => false,
+                    'multiple' => false,
+                    'expanded' => false
+                ))
+                ->add('category', 'entity', array(
+                    'class' => "Map2u\CoreBundle\Entity\Category",
+                    'required' => false,
+                    'multiple' => false,
+                    'expanded' => false
+                ))
+                ->end()
+                ->with('Map Settings', array('class' => 'col-md-4'))
                 ->add('mapCenter')
                 ->add('titleStyle')
                 ->add('type')
@@ -87,7 +103,7 @@ class MapAdmin extends Admin {
                 ->add('enabled')
                 ->add('public')
                 ->end()
-                ->with('Map Translation', array('class' => 'col-md-6'))
+                ->with('Map Translation', array('class' => 'col-md-4'))
                 ->add('translations', 'a2lix_translations', array(
                     'by_reference' => false,
                     'required' => false))

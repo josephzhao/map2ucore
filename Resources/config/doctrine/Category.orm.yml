@@ -19,7 +19,7 @@ Map2u\CoreBundle\Entity\Category:
             targetEntity: Application\Sonata\UserBundle\Entity\User
             inversedBy: {}
             joinColumns:
-                user_id:
+                user_uuid:
                     referencedColumnName: id 
         parent:
             targetEntity: Map2u\CoreBundle\Entity\Category

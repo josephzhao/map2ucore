@@ -5,7 +5,7 @@ Map2u\CoreBundle\Entity\BaseSpatialFile:
             type: guid
             unsigned: false
             nullable: false
-            column: user_id
+            column: user_uuid
         sessionId:     
             type: string
             length: 50

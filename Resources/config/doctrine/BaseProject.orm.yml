@@ -5,7 +5,7 @@ Map2u\CoreBundle\Entity\BaseProject:
             type: guid
             unsigned: false
             nullable: true
-            column: user_id
+            column: user_uuid
         name:     
             type: string
             length: 50

@@ -5,7 +5,7 @@ Map2u\CoreBundle\Entity\BaseTag:
             type: guid
             unsigned: false
             nullable: true
-            column: user_id
+            column: user_uuid
         public:	        
             type: boolean
             nullable: true

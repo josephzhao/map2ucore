@@ -88,13 +88,13 @@ services:
 
     map2u_core.admin.symbolized_layer:
         class: Map2u\CoreBundle\Admin\SymbolizedLayerAdmin
-        arguments: [~, Map2u\CoreBundle\Entity\SymbolizedLayer, Map2uCoreBundle:SymbolizedLayerAdmin]
+        arguments: [~, Map2u\CoreBundle\Entity\SymbolizedLayer, Map2uCoreBundle:SymbolizedLayerAdmin,@service_container]
         tags:
             - { name: sonata.admin, manager_type: orm, group: Map and Layer, label: Symbolized Layer }
             
     map2u_core.admin.layer:
         class: Map2u\CoreBundle\Admin\LayerAdmin
-        arguments: [~, Map2u\CoreBundle\Entity\Layer, Map2uCoreBundle:LayerAdmin]
+        arguments: [~, Map2u\CoreBundle\Entity\Layer, Map2uCoreBundle:LayerAdmin,@service_container]
         tags:
             - { name: sonata.admin, manager_type: orm, group: Map and Layer, label: Layer }
 

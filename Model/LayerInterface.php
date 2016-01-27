@@ -547,7 +547,7 @@ interface LayerInterface {
     /**
      * Set category
      *
-     * @param \Map2u\CoreBundle\Entity\Category category
+     * @param \Map2u\CoreBundle\Entity\Category $category
      * @return mixed
      */
     public function setCategory($category);
@@ -559,10 +559,24 @@ interface LayerInterface {
      */
     public function getCategory();
 
+     /**
+     * Set spatialfile
+     *
+     * @param \Map2u\CoreBundle\Entity\SpatialFile $spatialfile
+     * @return mixed
+     */
+    public function setSpatialfile($spatialfile);
+
+    /**
+     * Get spatialfile
+     *
+     * @return \Map2u\CoreBundle\Entity\SpatialFile
+     */
+    public function getSpatialfile();
     /**
      * Set layerCategory
      *
-     * @param \Map2u\CoreBundle\Entity\LayerCategory layerCategory
+     * @param \Map2u\CoreBundle\Entity\LayerCategory $layerCategory
      * @return mixed
      */
     public function setLayerCategory($layerCategory);

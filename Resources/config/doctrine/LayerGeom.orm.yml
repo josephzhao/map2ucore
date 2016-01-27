@@ -15,7 +15,7 @@ Map2u\CoreBundle\Entity\LayerGeom:
             targetEntity: Layer
             inversedBy: layergeoms
             joinColumns:
-                layer_id:
+                layer_uuid:
                     referencedColumnName: id
             orphanRemoval: true              
           

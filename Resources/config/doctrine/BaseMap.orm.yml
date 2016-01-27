@@ -5,7 +5,7 @@ Map2u\CoreBundle\Entity\BaseMap:
             type: guid
             unsigned: false
             nullable: true
-            column: user_id            
+            column: user_uuid            
         zoomLevel:     
             type: integer
             unsigned: false

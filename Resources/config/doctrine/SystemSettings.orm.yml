@@ -13,7 +13,7 @@ Map2u\CoreBundle\Entity\SystemSettings:
             type: guid
             unsigned: false
             nullable: false
-            column: user_id
+            column: user_uuid
         name:
             type: string
             length: 250

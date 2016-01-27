@@ -10,9 +10,16 @@ use Sonata\AdminBundle\Show\ShowMapper;
 
 class LayerAdmin extends Admin {
 
+    protected $container;
+
     /**
      * @param DatagridMapper $datagridMapper
      */
+    public function __construct($code, $class, $baseControllerName, $container = null) {
+        parent::__construct($code, $class, $baseControllerName);
+        $this->container = $container;
+    }
+
     protected function configureDatagridFilters(DatagridMapper $datagridMapper) {
         $datagridMapper
                 ->add('userId')
@@ -64,13 +71,11 @@ class LayerAdmin extends Admin {
                 ->add('zoomLevel')
                 ->add('lat')
                 ->add('lng')
-           
                 ->add('name')
                 ->add('type')
                 ->add('valueField')
                 ->add('sld')
                 ->add('sql')
-         
                 ->add('id')
                 ->add('_action', 'actions', array(
                     'actions' => array(
@@ -86,35 +91,85 @@ class LayerAdmin extends Admin {
      * @param FormMapper $formMapper
      */
     protected function configureFormFields(FormMapper $formMapper) {
+        $sldFiles = array();
+        $path = $this->container->get('kernel')->getRootDir() . '/../Data';
+        $user = $this->container->get('security.context')->getToken()->getUser();
+
+        if (file_exists($path . '/sld/' . $user->getId())) {
+            foreach (glob($path . '/sld/' . $user->getId() . '/*.sld') as $file) {
+                $file1 = substr($file, 0, strrpos($file, '/', -1));
+                $file2 = substr($file, 0, strrpos($file1, '/', -1));
+                $sldFiles[substr($file, strlen($file2) + 1)] = substr($file, strlen($file2) + 1);
+            }
+        }
+        foreach (glob($path . '/sld/*.sld') as $file) {
+            $sldFiles[substr($file, strrpos($file, '/', -1) + 1)] = substr($file, strrpos($file, '/', -1) + 1);
+        }
+
+        $spatialfile_class = $this->getConfigurationPool()->getContainer()->getParameter('map2u.core.spatialfile.class');
         $formMapper
+                ->tab('General')
                 ->with('Layer', array('class' => 'col-md-6'))
                 ->add('id', 'hidden')
-                ->add('userId')
-                ->add('tableId')
-                ->add('tableName')
-                ->add('rowId')
+                ->add('user')
+                ->add('spatialfile', 'entity', array(
+                    'class' => $spatialfile_class,
+                    'required' => false,
+                    'multiple' => false,
+                    'expanded' => false
+                ))
+                ->add('layerCategory', 'entity', array(
+                    'class' => "Map2u\CoreBundle\Entity\LayerCategory",
+                    'required' => false,
+                    'multiple' => false,
+                    'expanded' => false
+                ))
+                ->add('category', 'entity', array(
+                    'class' => "Map2u\CoreBundle\Entity\Category",
+                    'required' => false,
+                    'multiple' => false,
+                    'expanded' => false
+                ))
                 ->add('enabled')
                 ->add('public')
                 ->add('position')
-                ->add('shared')
-                ->add('layerProperty')
-                ->add('showLabel')
-                ->add('defaultShowOnMap')
-                ->add('layerShowInSwitcher')
-                ->add('zoomLevel')
-                ->add('lat')
-                ->add('lng')
-     //           ->add('projectId')
-                ->add('type')
-                ->add('valueField')
-                ->add('sld')
-                ->add('sql')
                 ->end()
                 ->with('Layer Translation', array('class' => 'col-md-6'))
                 ->add('translations', 'a2lix_translations', array(
                     'by_reference' => false,
                     'required' => false))
                 ->end()
+                ->end()
+                ->tab('WMS and WFS Layer')
+                ->with('WMS and WFS Layer Settings', array('class' => 'col-md-6'))
+                ->add('hostName', 'text', array('mapped' => false, 'required' => false))
+                ->add('layerName', 'text', array('mapped' => false, 'required' => false))
+                ->add('srs', 'text', array('mapped' => false, 'required' => false))
+                ->add('layerType', 'choice', array('mapped' => false, 'choices' => array('wms' => 'WMS', 'wfs' => 'WFS')))
+                ->end()
+                ->end()
+                ->tab('Style and Settings')
+                ->with('Layer Style', array('class' => 'col-md-6'))
+                ->add('shared')
+                ->add('layerProperty')
+                ->add('showLabel')
+                ->add('defaultShowOnMap')
+                ->add('layerShowInSwitcher')
+                ->add('zoomLevel')
+                ->add('defaultSldName', 'choice', array('mapped' => false, 'choices' => $sldFiles, 'label' => 'Default SLD File'))
+                ->add('uploadSldName', 'file', array('mapped' => false, 'required' => false, 'label' => 'Upload SLD File', 'attr' => array('style' => 'border: none')))
+                ->end()
+                ->with('Layer Settings', array('class' => 'col-md-6'))
+                ->add('lat')
+                ->add('lng')
+                //           ->add('projectId')
+                ->add('type')
+                ->add('valueField')
+                ->add('sld')
+                ->add('sql')
+                ->end()
+                ->end()
+
 
         ;
     }
@@ -139,7 +194,7 @@ class LayerAdmin extends Admin {
                 ->add('zoomLevel')
                 ->add('lat')
                 ->add('lng')
-     //           ->add('projectId')
+                //           ->add('projectId')
                 ->add('name')
                 ->add('type')
                 ->add('valueField')
