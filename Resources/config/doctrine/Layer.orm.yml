@@ -54,10 +54,10 @@ Map2u\CoreBundle\Entity\Layer:
             joinColumns:
                 category_uuid:
                     referencedColumnName: id      
-        category:
+        layerCategory:
             targetEntity: Map2u\CoreBundle\Entity\LayerCategory
             inversedBy: {}
             joinColumns:
-                category_uuid:
+                layercategory_uuid:
                     referencedColumnName: id               
                     
