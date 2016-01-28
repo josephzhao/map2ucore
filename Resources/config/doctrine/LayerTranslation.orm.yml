@@ -2,12 +2,12 @@ Map2u\CoreBundle\Entity\LayerTranslation:
     type: entity
     table: map2u_core__layer_translation
     fields:
-        name:     
+        title:     
             type: string
             length: 250
             fixed: false
             nullable: true
-            column: name   
+            column: title   
         description:
             type: text
             nullable: true

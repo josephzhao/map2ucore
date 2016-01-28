@@ -7,17 +7,17 @@ Map2u\CoreBundle\Entity\SpatialFile:
             type: guid
             unsigned: false
             nullable: false
-            columnDefinition: uuid NOT NULL DEFAULT uuid_generate_v4()
+#            columnDefinition: uuid NOT NULL DEFAULT uuid_generate_v4()
             generator:
                 strategy: UUID   
   
-#    manyToOne:    
-#        user:
-#            targetEntity: Application\Sonata\UserBundle\Entity\User
-#            inversedBy: categories
-#            joinColumns:
-#                user_id:
-#                    referencedColumnName: id 
+    manyToOne:    
+        user:
+            targetEntity: Application\Sonata\UserBundle\Entity\User
+            inversedBy: categories
+            joinColumns:
+                user_uuid:
+                    referencedColumnName: id 
 #        parent:
 #            targetEntity: Map2u\CoreBundle\Entity\Category
 #            inversedBy: children

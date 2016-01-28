@@ -15,7 +15,7 @@ class LayerTranslation {
     /**
      * @var string
      */
-    private $name;
+    private $title;
 
     /**
      * @var string
@@ -23,24 +23,24 @@ class LayerTranslation {
     private $description;
 
     /**
-     * Set name
+     * Set title
      *
-     * @param string $name
+     * @param string $title
      * @return LayerTranslation
      */
-    public function setName($name) {
-        $this->name = $name;
+    public function setTitle($title) {
+        $this->title = $title;
 
         return $this;
     }
 
     /**
-     * Get name
+     * Get title
      *
      * @return string 
      */
-    public function getName() {
-        return $this->name;
+    public function getTitle() {
+        return $this->title;
     }
 
     /**

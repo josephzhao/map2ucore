@@ -42,6 +42,12 @@ Map2u\CoreBundle\Entity\Layer:
             joinColumns:
                 user_uuid:
                     referencedColumnName: id          
+        spatialfile:
+            targetEntity: Map2u\CoreBundle\Entity\SpatialFile
+            inversedBy: {}
+            joinColumns:
+                spatialfile_uuid:
+                    referencedColumnName: id          
         category:
             targetEntity: Map2u\CoreBundle\Entity\Category
             inversedBy: {}

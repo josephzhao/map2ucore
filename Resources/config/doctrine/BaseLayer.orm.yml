@@ -92,7 +92,6 @@ Map2u\CoreBundle\Entity\BaseLayer:
             fixed: false
             nullable: true
             column: name   
-
         type:     
             type: string
             length: 50
