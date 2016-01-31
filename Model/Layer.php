@@ -24,6 +24,8 @@ abstract class Layer implements LayerInterface {
     protected $rowId;
     protected $category;
     protected $layerCategory;
+    protected $categoryId;
+    protected $layerCategoryId;
     protected $spatialfile;
     protected $projectId;
     protected $locale = 'en';
@@ -50,7 +52,7 @@ abstract class Layer implements LayerInterface {
     protected $lat;
     protected $lng;
     protected $layerProperty;
-    protected $sql;
+    protected $sqltext;
     protected $sessionId;
 
     public function __construct() {
@@ -205,15 +207,15 @@ abstract class Layer implements LayerInterface {
     /**
      * {@inheritdoc}
      */
-    public function getSql() {
-        return $this->sql;
+    public function getSqltext() {
+        return $this->sqltext;
     }
 
     /**
      * {@inheritdoc}
      */
-    public function setSql($sql) {
-        $this->sql = $sql;
+    public function setSqltext($sqltext) {
+        $this->sqltext = $sqltext;
         return $this;
     }
 
@@ -587,7 +589,7 @@ abstract class Layer implements LayerInterface {
     /**
      * {@inheritdoc}
      */
-    public function setCategory($category) {
+    public function setCategory(\Map2u\CoreBundle\Entity\Category $category) {
         $this->category = $category;
         return $this;
     }
@@ -597,6 +599,21 @@ abstract class Layer implements LayerInterface {
      */
     public function getCategory() {
         $this->category;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function setCategoryId($categoryId) {
+        $this->categoryId = $categoryId;
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getCategoryId() {
+        $this->categoryId;
     }
 
     /**
@@ -617,6 +634,21 @@ abstract class Layer implements LayerInterface {
     /**
      * {@inheritdoc}
      */
+    public function setLayerCategoryId($layerCategoryId) {
+        $this->layerCategoryId = $layerCategoryId;
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getLayerCategoryId() {
+        $this->layerCategoryId;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
     public function getMaps() {
         return $this->maps;
     }
@@ -626,11 +658,12 @@ abstract class Layer implements LayerInterface {
     }
 
     public function prePersist() {
-        
+        $this->setCreatedAt(new \DateTime);
+        $this->setUpdatedAt(new \DateTime);
     }
 
     public function preUpdate() {
-        
+        $this->setUpdatedAt(new \DateTime);
     }
 
     public function getLocale() {

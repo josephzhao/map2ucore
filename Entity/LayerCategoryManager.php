@@ -12,12 +12,12 @@
 namespace Map2u\CoreBundle\Entity;
 
 use Doctrine\Common\Persistence\ManagerRegistry;
-use Map2u\CoreBundle\Model\CategoryInterface;
-use Map2u\CoreBundle\Model\CategoryManagerInterface;
+use Map2u\CoreBundle\Model\LayerCategoryInterface;
+use Map2u\CoreBundle\Model\LayerCategoryManagerInterface;
 use Map2u\CoreBundle\Model\BaseEntityManager;
 use Symfony\Component\Security\Core\SecurityContext;
 
-class LayerCategoryManager extends BaseEntityManager implements CategoryManagerInterface {
+class LayerCategoryManager extends BaseEntityManager implements LayerCategoryManagerInterface {
 
     /**
      * @var array
@@ -43,7 +43,7 @@ class LayerCategoryManager extends BaseEntityManager implements CategoryManagerI
     }
 
     /**
-     * @return CategoryInterface
+     * @return LayerCategoryInterface
      */
     public function getRootCategory() {
         $this->loadCategories();
@@ -51,11 +51,11 @@ class LayerCategoryManager extends BaseEntityManager implements CategoryManagerI
     }
 
     /**
-     * @return CategoryInterface[]
+     * @return LayerCategoryInterface[]
      */
     public function getRootCategories($loadChildren = true) {
         $class = $this->getClass();
-     
+     var_dump($class);
         if ($this->user) {
             $rootCategories = $this->getObjectManager()->createQuery(sprintf('SELECT c FROM %s c WHERE c.parent IS NULL and (c.user=:user or c.user is null or c.public=true)', $class))
                     ->setParameter('user', $this->user)

@@ -11,13 +11,18 @@
 
 namespace Map2u\CoreBundle\Entity;
 
-use Map2u\CoreBundle\Entity\BaseLayerCategory;
-use Knp\DoctrineBehaviors\Model as ORMBehaviors;
+use Map2u\CoreBundle\Model\LayerCategory as ModelLayerCategory;
 
-class LayerCategory extends BaseLayerCategory {
+abstract class BaseLayerCategory extends ModelLayerCategory {
 
-   // use ORMBehaviors\Translatable\Translatable;
+   
 
-    protected $id;
-    
+    public function disableChildrenLazyLoading() {
+        if (is_object($this->children)) {
+            $this->children->setInitialized(true);
+        }
+    }
+
+ 
+
 }

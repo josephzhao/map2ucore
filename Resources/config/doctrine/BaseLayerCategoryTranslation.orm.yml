@@ -1,0 +1,13 @@
+Map2u\CoreBundle\Entity\BaseLayerCategoryTranslation:
+    type: mappedSuperclass
+    fields:
+        title:
+            type: string
+            length: 250
+            fixed: false
+            nullable: false
+            column: title
+        description:
+            type: text
+            nullable: true
+

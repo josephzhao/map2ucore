@@ -6,6 +6,16 @@ Map2u\CoreBundle\Entity\BaseLayer:
             unsigned: false
             nullable: true
             column: user_uuid
+        categoryId:	        
+            type: guid
+            unsigned: false
+            nullable: true
+            column: category_uuid
+        layerCategoryId:	        
+            type: guid
+            unsigned: false
+            nullable: true
+            column: layercategory_uuid
         tableId:
             type: guid
             unsigned: false
@@ -108,10 +118,10 @@ Map2u\CoreBundle\Entity\BaseLayer:
             type: text
             nullable: true
             column: sld
-        sql:     
+        sqltext:     
             type: text
             nullable: true
-            column: sql            
+            column: sqltext            
         sessionId:     
             type: string
             length: 255

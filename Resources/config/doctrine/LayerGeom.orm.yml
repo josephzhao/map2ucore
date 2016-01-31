@@ -7,7 +7,6 @@ Map2u\CoreBundle\Entity\LayerGeom:
             type: guid
             unsigned: false
             nullable: false
-            columnDefinition: uuid NOT NULL DEFAULT uuid_generate_v4()
             generator:
                 strategy: UUID
     manyToOne:

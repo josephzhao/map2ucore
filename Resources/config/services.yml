@@ -82,7 +82,7 @@ services:
             
     map2u_core.admin.map:
         class: Map2u\CoreBundle\Admin\MapAdmin
-        arguments: [~, Map2u\CoreBundle\Entity\Map, SonataAdminBundle:CRUD]
+        arguments: [~, Map2u\CoreBundle\Entity\Map, Map2uCoreBundle:MapAdmin,@service_container]
         tags:
             - { name: sonata.admin, manager_type: orm, group: Map and Layer, label: Map }
 

@@ -269,19 +269,19 @@ interface LayerInterface {
     public function getValueField();
 
     /**
-     * Set sql
+     * Set sqltext
      *
-     * @param string $sql
+     * @param string $sqltext
      * @return mixed
      */
-    public function setSql($sql);
+    public function setSqltext($sqltext);
 
     /**
-     * Get sql
+     * Get sqltext
      *
      * @return string 
      */
-    public function getSql();
+    public function getSqltext();
 
     /**
      * Set sessionId
@@ -550,7 +550,7 @@ interface LayerInterface {
      * @param \Map2u\CoreBundle\Entity\Category $category
      * @return mixed
      */
-    public function setCategory($category);
+    public function setCategory(\Map2u\CoreBundle\Entity\Category $category);
 
     /**
      * Get category
@@ -558,6 +558,21 @@ interface LayerInterface {
      * @return \Map2u\CoreBundle\Entity\Category
      */
     public function getCategory();
+
+      /**
+     * Set categoryId
+     *
+     * @param guid $categoryId
+     * @return mixed
+     */
+    public function setCategoryId( $categoryId);
+
+    /**
+     * Get categoryId
+     *
+     * @return guid
+     */
+    public function getCategoryId();
 
      /**
      * Set spatialfile
@@ -587,4 +602,19 @@ interface LayerInterface {
      * @return \Map2u\CoreBundle\Entity\LayerCategory
      */
     public function getLayerCategory();
+    
+     /**
+     * Set layerCategoryId
+     *
+     * @param guid $layerCategoryId
+     * @return mixed
+     */
+    public function setLayerCategoryId($layerCategoryId);
+
+    /**
+     * Get layerCategoryId
+     *
+     * @return guid
+     */
+    public function getLayerCategoryId();
 }

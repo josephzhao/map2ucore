@@ -42,7 +42,7 @@ class LayerAdmin extends Admin {
                 ->add('type')
                 ->add('valueField')
                 ->add('sld')
-                ->add('sql')
+                ->add('sqltext')
                 ->add('sessionId')
                 ->add('createdAt')
                 ->add('updatedAt')
@@ -58,23 +58,16 @@ class LayerAdmin extends Admin {
         $listMapper
                 ->add('user')
                 ->add('name')
+                
+                ->add('spatialfile')
+                ->add('layerCategory')
                 ->add('enabled')
                 ->add('public')
                 ->add('position')
                 ->add('shared')
                 ->add('layerProperty')
                 ->add('showLabel')
-                ->add('defaultShowOnMap')
-                ->add('layerShowInSwitcher')
-                ->add('zoomLevel')
-                ->add('lat')
-                ->add('lng')
-              
-                ->add('type')
-                ->add('valueField')
-                ->add('sld')
-                ->add('sql')
-                ->add('id')
+            
                 ->add('_action', 'actions', array(
                     'actions' => array(
                         'show' => array(),
@@ -89,6 +82,14 @@ class LayerAdmin extends Admin {
      * @param FormMapper $formMapper
      */
     protected function configureFormFields(FormMapper $formMapper) {
+         $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $conn = $this->getConfigurationPool()->getContainer()->get('database_connection');
+        $cates = $conn->fetchAll("select id, name from map2u_core__layer_category where user_uuid='" . $user->getId() . "'");
+
+        $categorylist = array();
+        foreach ($cates as $cate) {
+            $categorylist[$cate['id']] = $cate['name'];
+        }
         $sldFiles = array();
         $path = $this->container->get('kernel')->getRootDir() . '/../Data';
         $user = $this->container->get('security.context')->getToken()->getUser();
@@ -105,6 +106,9 @@ class LayerAdmin extends Admin {
         }
 
         $spatialfile_class = $this->getConfigurationPool()->getContainer()->getParameter('map2u.core.spatialfile.class');
+        $layercategory_class = $this->getConfigurationPool()->getContainer()->getParameter('map2u.core.layercategory.class');
+        $category_class = $this->getConfigurationPool()->getContainer()->getParameter('map2u.core.category.class');
+    
         $formMapper
                 ->tab('General')
                 ->with('Layer', array('class' => 'col-md-6'))
@@ -118,6 +122,7 @@ class LayerAdmin extends Admin {
                     'expanded' => false
                 ))
                 ->add('layerCategory', 'entity', array(
+           //         'choices'=>$categorylist,
                     'class' => "Map2u\CoreBundle\Entity\LayerCategory",
                     'required' => false,
                     'multiple' => false,
@@ -126,6 +131,7 @@ class LayerAdmin extends Admin {
                 ->add('category', 'entity', array(
                     'class' => "Map2u\CoreBundle\Entity\Category",
                     'required' => false,
+                  
                     'multiple' => false,
                     'expanded' => false
                 ))
@@ -149,25 +155,25 @@ class LayerAdmin extends Admin {
                 ->end()
                 ->tab('Heat Map Layer')
                 ->with('Heat Map Layer Settings', array('class' => 'col-md-6'))
-                ->add('fieldname','text',array('mapped' => false, 'required' => false))
-                ->add('radius','text',array('mapped' => false, 'required' => false))
-                ->add('opacity','number',array('mapped' => false, 'required' => false))
-                ->add('gradient','text',array('mapped' => false, 'required' => false))
+                ->add('fieldname', 'text', array('mapped' => false, 'required' => false))
+                ->add('radius', 'text', array('mapped' => false, 'required' => false))
+                ->add('opacity', 'number', array('mapped' => false, 'required' => false))
+                ->add('gradient', 'text', array('mapped' => false, 'required' => false))
                 ->end()
                 ->end()
                 ->tab('Cluster Layer')
                 ->with('Cluster Settings', array('class' => 'col-md-6'))
-                ->add('showCoverageOnHover', 'checkbox', array('mapped' => false, 'required' => false,'data' => true))
-                ->add('zoomToBoundsOnClick',  'checkbox', array('mapped' => false, 'required' => false,'data' => true))
-                ->add('spiderfyOnMaxZoom',  'checkbox', array('mapped' => false, 'required' => false,'data' => true))
-                ->add('removeOutsideVisibleBounds',  'checkbox', array('mapped' => false, 'required' => false,'data' => true))
-                ->add('animateAddingMarkers',  'checkbox', array('mapped' => false, 'required' => false,'data' => true))
-                ->add('disableClusteringAtZoom','integer',array('mapped' => false, 'required' => false))
-                ->add('maxClusterRadius', 'number', array('mapped' => false, 'required' => false,'data' => 80))
-                ->add('polygonOptions','text',array('mapped' => false, 'required' => false))
-                ->add('singleMarkerMode',  'checkbox', array('mapped' => false, 'required' => false,'data' => true))
-                ->add('spiderfyDistanceMultiplier', 'integer', array('mapped' => false, 'required' => false,'data' => 1))
-                ->add('iconCreateFunction','text',array('mapped' => false, 'required' => false))
+                ->add('showCoverageOnHover', 'checkbox', array('mapped' => false, 'required' => false, 'data' => true))
+                ->add('zoomToBoundsOnClick', 'checkbox', array('mapped' => false, 'required' => false, 'data' => true))
+                ->add('spiderfyOnMaxZoom', 'checkbox', array('mapped' => false, 'required' => false, 'data' => true))
+                ->add('removeOutsideVisibleBounds', 'checkbox', array('mapped' => false, 'required' => false, 'data' => true))
+                ->add('animateAddingMarkers', 'checkbox', array('mapped' => false, 'required' => false, 'data' => true))
+                ->add('disableClusteringAtZoom', 'integer', array('mapped' => false, 'required' => false))
+                ->add('maxClusterRadius', 'number', array('mapped' => false, 'required' => false, 'data' => 80))
+                ->add('polygonOptions', 'text', array('mapped' => false, 'required' => false))
+                ->add('singleMarkerMode', 'checkbox', array('mapped' => false, 'required' => false, 'data' => true))
+                ->add('spiderfyDistanceMultiplier', 'integer', array('mapped' => false, 'required' => false, 'data' => 1))
+                ->add('iconCreateFunction', 'text', array('mapped' => false, 'required' => false))
                 ->end()
                 ->end()
                 ->tab('Style and Settings')
@@ -187,7 +193,7 @@ class LayerAdmin extends Admin {
                 ->add('type')
                 ->add('valueField')
                 ->add('sld')
-                ->add('sql')
+                ->add('sqltext')
                 ->end()
                 ->end()
 
@@ -220,7 +226,7 @@ class LayerAdmin extends Admin {
                 ->add('type')
                 ->add('valueField')
                 ->add('sld')
-                ->add('sql')
+                ->add('sqltext')
                 ->add('sessionId')
                 ->add('createdAt')
                 ->add('updatedAt')

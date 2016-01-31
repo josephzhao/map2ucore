@@ -65,7 +65,7 @@ class SpatialFileAdmin extends Admin {
         $formMapper
                 ->with('Spatial File', array('class' => 'col-md-6'))
                 ->add('id', 'hidden')
-                ->add('userId')
+                ->add('user')
                 ->add('fileName')
                 ->add('sheetName')
                 ->add('public')

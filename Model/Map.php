@@ -423,4 +423,20 @@ abstract class Map implements MapInterface {
         return $this->locale = locale_get_default();
     }
 
+    /**
+     * {@inheritdoc}
+     */
+    public function setUser(\Application\Sonata\UserBundle\Entity\User $user = null) {
+        $this->user = $user;
+
+        return $this;
+    }
+
+    /**
+     * {@inheritdoc}
+     */
+    public function getUser() {
+        return $this->user;
+    }
+
 }

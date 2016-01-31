@@ -32,15 +32,13 @@ class CategoryAdmin extends Admin {
      */
     protected function configureListFields(ListMapper $listMapper) {
         $listMapper
-                ->add('position')
+                ->add('user')
                 ->add('name')
+                ->add('position')
                 ->add('slug')
                 ->add('enabled')
                 ->add('public')
                 ->add('multiple')
-                ->add('createdAt')
-                ->add('updatedAt')
-                ->add('id')
                 ->add('_action', 'actions', array(
                     'actions' => array(
                         'show' => array(),
@@ -59,6 +57,8 @@ class CategoryAdmin extends Admin {
         $formMapper
                 ->with('Category', array('class' => 'col-md-6'))
                 ->add('id', 'hidden')
+                ->add('user')
+                ->add('name')
                 ->add('multiple')
                 ->add('position')
                 ->add('enabled')

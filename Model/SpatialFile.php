@@ -432,18 +432,13 @@ abstract class SpatialFile implements SpatialFileInterface {
         return $this->updatedAt;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function prePersist() {
-        // Add your code here
+        $this->setCreatedAt(new \DateTime);
+        $this->setUpdatedAt(new \DateTime);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function preUpdate() {
-        // Add your code here
+        $this->setUpdatedAt(new \DateTime);
     }
 
     public function saveUploadSpatialFiles() {

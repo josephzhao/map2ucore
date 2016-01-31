@@ -1,18 +1,17 @@
 Map2u\CoreBundle\Entity\LayerCategory:
     type: entity
     table: map2u_core__layer_category
-    gedmo:
-        translation:
-            locale: locale
-            # using specific personal translation class:
-            entity: Map2u\CoreBundle\Entity\LayerCategoryTranslation           
+#    gedmo:
+#        translation:
+#            locale: locale
+#            # using specific personal translation class:
+#            entity: Map2u\CoreBundle\Entity\LayerCategoryTranslation           
     fields:
         id:
             id: true
             type: guid
             unsigned: false
             nullable: false
-#            columnDefinition: uuid NOT NULL DEFAULT uuid_generate_v4()
             generator:
                 strategy: UUID           
     manyToOne:    
@@ -33,3 +32,4 @@ Map2u\CoreBundle\Entity\LayerCategory:
             targetEntity: Map2u\CoreBundle\Entity\LayerCategory
             mappedBy: parent
             cascade: ["persist","remove"]
+        

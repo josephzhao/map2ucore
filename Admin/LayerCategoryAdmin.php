@@ -32,6 +32,7 @@ class LayerCategoryAdmin extends Admin {
      */
     protected function configureListFields(ListMapper $listMapper) {
         $listMapper
+                ->add('user')
                 ->add('name')
                 ->add('parent')
                 ->add('enabled')
@@ -54,12 +55,13 @@ class LayerCategoryAdmin extends Admin {
      */
     protected function configureFormFields(FormMapper $formMapper) {
         $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
-
+    
         $formMapper
                 ->with('Layer Category', array('class' => 'col-md-6'))
                 ->add('id', 'hidden')
-                ->add('position')
+                ->add('user')
                 ->add('name')
+                ->add('position')
                 ->add('slug')
                 ->add('enabled')
                 ->add('public')

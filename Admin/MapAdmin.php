@@ -41,9 +41,9 @@ class MapAdmin extends Admin {
     protected function configureListFields(ListMapper $listMapper) {
         $listMapper
                 ->add('user')
-                ->add('zoomLevel')
                 ->add('mapTitle')
                 ->add('name')
+                ->add('zoomLevel')
                 ->add('layerSeq')
                 ->add('titlePosition')
                 ->add('mapCenter')
@@ -67,22 +67,32 @@ class MapAdmin extends Admin {
      * @param FormMapper $formMapper
      */
     protected function configureFormFields(FormMapper $formMapper) {
+        $user = $this->getConfigurationPool()->getContainer()->get('security.context')->getToken()->getUser();
+        $conn = $this->getConfigurationPool()->getContainer()->get('database_connection');
+        $cates = $conn->fetchAll("select id, name from map2u_core__layer_category where user_uuid='" . $user->getId() . "'");
+
+        $categorylist = array();
+        foreach ($cates as $cate) {
+            $categorylist[$cate['id']] = $cate['name'];
+        }
         $formMapper
                 ->with('Map', array('class' => 'col-md-4'))
                 ->add('id', 'hidden')
-                ->add('userId')
-                ->add('zoomLevel')
                 ->add('name')
+                ->add('mapTitle')
+                ->add('user')
+                ->add('zoomLevel')
                 ->add('layerSeq')
                 ->add('titlePosition')
-                ->add('symbolizedLayers', 'entity', array(
-                    'class' => "Map2u\CoreBundle\Entity\SymbolizedLayer",
+                ->add('layers', 'entity', array(
+                    'class' => "Map2u\CoreBundle\Entity\Layer",
                     'required' => true,
                     'multiple' => true,
                     'expanded' => false
                 ))
                 ->add('layerCategory', 'entity', array(
-                    'class' => "Map2u\CoreBundle\Entity\LayerCategory",
+                 //   'choices' => $categorylist,
+                         'class' => "Map2u\CoreBundle\Entity\LayerCategory",
                     'required' => false,
                     'multiple' => false,
                     'expanded' => false
@@ -95,7 +105,7 @@ class MapAdmin extends Admin {
                 ))
                 ->end()
                 ->with('Map Settings', array('class' => 'col-md-4'))
-                ->add('mapCenter')
+                #   ->add('mapCenter')
                 ->add('titleStyle')
                 ->add('type')
                 ->add('showScale')

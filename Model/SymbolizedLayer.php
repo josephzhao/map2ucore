@@ -604,4 +604,8 @@ abstract class SymbolizedLayer implements SymbolizedLayerInterface {
         
     }
 
+    public function __toString() {
+        return $this->name;
+    }
+
 }

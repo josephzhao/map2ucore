@@ -372,4 +372,19 @@ interface MapInterface {
      * @return \Map2u\CoreBundle\Entity\LayerCategory
      */
     public function getLayerCategory();
+
+    /**
+     * Set user
+     *
+     * @param \Application\Sonata\UserBundle\Entity\User $user
+     * @return mixed
+     */
+    public function setUser(\Application\Sonata\UserBundle\Entity\User $user = null);
+
+    /**
+     * Get user
+     *
+     * @return \Application\Sonata\UserBundle\Entity\User 
+     */
+    public function getUser();
 }

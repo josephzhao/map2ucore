@@ -28,7 +28,8 @@ Map2u\CoreBundle\Entity\Category:
                 parent_id:
                     referencedColumnName: id 
     oneToMany:
-         children:
+        children:
             targetEntity: Map2u\CoreBundle\Entity\Category
             mappedBy: parent
             cascade: ["persist","remove"]
+ 

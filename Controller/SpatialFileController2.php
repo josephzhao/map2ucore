@@ -23,8 +23,11 @@ use Symfony\Component\HttpFoundation\ResponseHeaderBag;
  */
 class SpatialFileController extends Controller {
 
+ 
+
     public function __construct() {
-        
+
+    
     }
 
     /**
@@ -53,33 +56,21 @@ class SpatialFileController extends Controller {
 
         $spatialfile_id = $request->get("spatialfile_id");
         $em = $this->getDoctrine()->getManager();
-        $conn = $this->get("database_connection");
         $spatialfile = null;
         $columns = array();
-        if (isset($spatialfile_id) && $spatialfile_id !== null && strlen($spatialfile_id) === 36) {
+        if (isset($spatialfile_id) && $spatialfile_id !== null) {
             $entity_classname = $em->getClassMetadata($this->getParameter('map2u.core.spatialfile.class'))->getName();
             $spatialfile = $em->getRepository($entity_classname)->find($spatialfile_id);
         }
         if ($spatialfile) {
             $columns = unserialize($spatialfile->getFieldList());
         }
-        $columnnames = array();
-        foreach ($columns as $column) {
-            if (strlen($column['column_name']) > 0) {
-                array_push($columnnames, $column['column_name']);
-            }
-        }
-        $properties = array();
-        $geo_data = array();
-        if (count($columnnames) > 0) {
-            $properties = $conn->fetchAll("select id,ogc_fid," . implode(",", $columnnames) . " from spatial_" . str_replace("-", "_", $spatialfile_id));
-        }
         if ($request->isXmlHttpRequest()) {
-            $response = new JsonResponse(array('columns' => $columns, 'properties' => $properties, "data" => $geo_data));
+            $response = new JsonResponse(array('columns' => $columns));
             $response->headers->set('Content-Type', 'application/json');
             return $response;
         }
-        return array('columns' => $columns, 'properties' => $properties, "data" => $geo_data);
+        return array('columns' => $columns);
     }
 
     /**
@@ -98,7 +89,7 @@ class SpatialFileController extends Controller {
         $em = $this->getDoctrine()->getManager();
         $spatialfile = null;
         $columns = array();
-        if (isset($spatialfile_id) && $spatialfile_id !== null) {
+        if (isset($spatialfile_id) && $spatialfile_id !== null&&strlen($spatialfile_id)===36) {
             $entity_classname = $em->getClassMetadata($this->getParameter('map2u.core.spatialfile.class'))->getName();
             $spatialfile = $em->getRepository($entity_classname)->find($spatialfile_id);
         }
@@ -312,7 +303,6 @@ class SpatialFileController extends Controller {
                 $columns = DefaultMethods::getTableColumns($this, "spatial_" . $id);
                 $geo_type = DefaultMethods::getGeometryType($this->get("database_connection"), "spatial_" . $id, 'the_geom');
                 $spatialfile->setFieldList(serialize($columns));
-                $spatialfile->setSelectedFields(serialize($this->params));
                 SpatialFileMethods::ogr2ogrDatabaseToGeoJSON($dir, $spatialfile, $dbparams, $geo_type);
                 $em->persist($spatialfile);
             } else {
@@ -325,7 +315,6 @@ class SpatialFileController extends Controller {
                 DefaultMethods::setDatabaseTableUUID($this, "spatial_" . $id);
                 $columns = DefaultMethods::getTableColumns($this, "spatial_" . $id);
                 $spatialfile->setFieldList(serialize($columns));
-                $spatialfile->setSelectedFields(serialize($this->params));
                 $geo_type = DefaultMethods::getGeometryType($this->get("database_connection"), "spatial_" . $id, 'the_geom');
                 SpatialFileMethods::ogr2ogrDatabaseToGeoJSON($dir, $spatialfile, $dbparams, $geo_type);
                 $em->persist($spatialfile);

@@ -11,15 +11,23 @@ Map2u\CoreBundle\Entity\Map:
             id: true
             type: guid
             unsigned: false
-            columnDefinition: uuid NOT NULL DEFAULT uuid_generate_v4()
+ #           columnDefinition: uuid NOT NULL DEFAULT uuid_generate_v4()
             nullable: false
             generator:
                 strategy: UUID
-    oneToMany:    
-        symbolizedLayers:
-            targetEntity: Map2u\CoreBundle\Entity\SymbolizedLayer
-            mappedBy: map
+ 
     manyToMany:    
+        layers:
+            targetEntity: Map2u\CoreBundle\Entity\Layer
+            mappedBy: maps
+#            joinTable:
+#               name: map2u_core__maps_layers
+#               joinColumns:
+#                 layer_uuid:
+#                   referencedColumnName: id
+#               inverseJoinColumns:
+#                 map_uuid:
+#                   referencedColumnName: id   
         groups:
             targetEntity: Map2u\CoreBundle\Entity\UserGroup
             joinTable:
@@ -38,6 +46,7 @@ Map2u\CoreBundle\Entity\Map:
             joinColumns:
                 user_uuid:
                     referencedColumnName: id          
+            
         category:
             targetEntity: Map2u\CoreBundle\Entity\Category
             inversedBy: {}

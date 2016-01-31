@@ -29,13 +29,13 @@ Map2u\CoreBundle\Entity\BaseMap:
             nullable: true
             column: layer_seq
         titlePosition:     
-            type: geometry
+            type: string
             length: 250
             fixed: false
             nullable: true
             column: title_position
         mapCenter:     
-            type: geometry
+            type: string
             length: 250
             fixed: false
             nullable: true

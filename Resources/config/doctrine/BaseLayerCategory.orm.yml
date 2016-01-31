@@ -1,0 +1,60 @@
+Map2u\CoreBundle\Entity\BaseLayerCategory:
+    type: mappedSuperclass
+    fields:
+        position:     
+            type: integer
+            unsigned: false
+            nullable: true
+            column: position  
+            options:
+                default: 0
+        name:
+            type: string
+            length: 250
+            fixed: false
+            nullable: false
+            column: name
+        slug:
+            type: string
+            length: 250
+            fixed: false
+            nullable: true
+            column: slug        
+        enabled:
+            type: boolean
+            nullable: false
+            column: enabled
+            options: 
+                default: false
+        public:
+            type: boolean
+            nullable: false
+            column: public
+            options: 
+                default: false                    
+        multiple:
+            type: boolean
+            nullable: true
+            column: multiple
+            options:
+                default: true
+        createdAt:
+            type: datetime
+            nullable: true
+            comment: ''
+            column: created_at
+            gedmo:
+              timestampable:
+                on: create
+        updatedAt:
+            type: datetime
+            nullable: true
+            comment: ''
+            column: updated_at
+            gedmo:
+                timestampable:
+                    on: update
+    lifecycleCallbacks: 
+        prePersist: [prePersist ]
+        preUpdate: [preUpdate]
+        

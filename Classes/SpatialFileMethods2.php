@@ -171,12 +171,9 @@ class SpatialFileMethods {
             $field1 = str_replace("%", "per", strtolower(trim($field)));
             $field2 = str_replace("#", "num", strtolower(trim($field1)));
             $field3 = str_replace(".", "_", strtolower(trim($field2)));
-            $field4 = str_replace("-", "_", strtolower(trim($field3)));
-            if (strlen(trim($field4)) > 0) {
-                $field_names[$i]['column_name'] = str_replace(" ", "_", strtolower(trim($field4)));
-                $field_names[$i]['data_type'] = "numeric";
-                $i +=1;
-            }
+            $field_names[$i]['column_name'] = str_replace(" ", "_", strtolower(trim($field3)));
+            $field_names[$i]['data_type'] = "numeric";
+            $i +=1;
         }
         return $field_names;
     }
@@ -204,15 +201,11 @@ class SpatialFileMethods {
         }
         if (is_array($field_names) && isset($field_names[0]['column_name'])) {
             $str = implode(",", array_map(function($data) {
-                        if (isset($data['column_name']) && strlen($data['column_name']) > 0) {
-                            return $data['column_name'] . ' ' . $data['data_type'];
-                        }
+                        return $data['column_name'] . ' ' . $data['data_type'];
                     }, $field_names));
         } else {
-
             $str = $field_names['column_name'] . ' ' . $field_names['data_type'];
         }
-        $str = trim($str, ',');
         $sql = "CREATE TABLE $shpTablename (id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),ogc_fid integer, $str );";
         $conn->query($sql);
         $sql = "SELECT AddGeometryColumn('" . $shpTablename . "','the_geom',4326, 'GEOMETRY', 2)";
@@ -222,21 +215,16 @@ class SpatialFileMethods {
 
     private static function insertTextDataToTable($textData, $field_names, $conn, $shpTablename) {
         $str = implode(",", array_map(function($data) {
-
-                    if (isset($data['column_name']) && strlen(trim($data['column_name'])) > 0) {
-                        return $data['column_name'];
-                    }
+                    return $data['column_name'];
                 }, $field_names));
         $i = 0;
-        $fieldnum = count(explode(",", $str));
         $count = 0;
         foreach ($textData as $row_data) {
-            if ($i > 0 ) {
+            if ($i > 0) {
                 try {
-                    $str = trim($str, ',');
                     $sql = "insert into " . $shpTablename . " (" . $str . ") values(";
                     $sql = $sql . SpatialFileMethods::getTextRowdataValues($field_names, $row_data);
-                    $sql = trim($sql, ',') . ")";
+                    $sql = $sql . ")";
                     $conn->query($sql);
                     $count +=1;
                 } catch (Doctrine\DBAL\DBALException $e) {
@@ -262,23 +250,16 @@ class SpatialFileMethods {
 
     private static function insertExcelDataToTable($excelData, $field_names, $conn, $shpTablename) {
         $str = implode(",", array_map(function($data) {
-                    if (isset($data['column_name']) && strlen($data['column_name']) > 0) {
-                        return $data['column_name'];
-                    }
+                    return $data['column_name'];
                 }, $field_names));
         $i = 0;
         $count = 0;
-        $fieldnum = count(explode(",", $str));
-      
-        
         foreach ($excelData as $row_data) {
             if ($i > 0) {
                 try {
-                    $str = trim($str, ',');
                     $sql = "insert into " . $shpTablename . " (" . $str . ") values(";
-                    
                     $sql = $sql . SpatialFileMethods::getExcelRowdataValues($field_names, $row_data[0]);
-                    $sql = trim($sql, ',') . ")";
+                    $sql = $sql . ")";
                     $conn->query($sql);
                     $count +=1;
                 } catch (Doctrine\DBAL\DBALException $e) {
@@ -293,16 +274,15 @@ class SpatialFileMethods {
     private static function getExcelRowdataValues($field_names, $row_data) {
 
         return implode(",", array_map(function($data, $field_name) {
-                    if (isset($field_name['data_type'])) {
-                        if ($field_name['data_type'] === 'numeric') {
-                            if (strlen(trim($data)) === 0) {
-                                return 'NULL';
-                            } else
-                                return trim($data);
-                        } else {
-                            $data_raw = trim(preg_replace('/\xc2\xa0/', '', $data));
-                            return "'" . $data_raw . "'";
-                        }
+
+                    if ($field_name['data_type'] === 'numeric') {
+                        if (strlen(trim($data)) === 0) {
+                            return 'NULL';
+                        } else
+                            return trim($data);
+                    } else {
+                        $data_raw = trim(preg_replace('/\xc2\xa0/', '', $data));
+                        return "'" . $data_raw . "'";
                     }
                 }, $row_data, $field_names));
     }
@@ -372,7 +352,6 @@ class SpatialFileMethods {
             }
             $i = $i + 1;
         }
-        
         return $field_names;
     }
 
@@ -384,9 +363,8 @@ class SpatialFileMethods {
             $field1 = str_replace("%", "per", strtolower(trim($field)));
             $field2 = str_replace("#", "num", strtolower(trim($field1)));
             $field3 = str_replace(".", "_", strtolower(trim($field2)));
-            $field4 = str_replace("-", "_", strtolower(trim($field3)));
-            if (strlen(trim($field4)) > 0) {
-                $field_names[$i]['column_name'] = str_replace(" ", "_", strtolower(trim($field4)));
+            if (strlen(trim($field3)) > 0) {
+                $field_names[$i]['column_name'] = str_replace(" ", "_", strtolower(trim($field3)));
                 $field_names[$i]['data_type'] = "numeric";
                 $i +=1;
             }
@@ -410,9 +388,7 @@ class SpatialFileMethods {
         $column_name_array = array();
         array_push($column_name_array, 'id');
         foreach ($columns as $column) {
-            if (strlen($column['column_name']) > 0) {
-                array_push($column_name_array, $column['column_name']);
-            }
+            array_push($column_name_array, $column['column_name']);
         }
         $filename = 'spatial_' . str_replace('-', '_', $spatialfile->getId());
 
@@ -676,14 +652,11 @@ class SpatialFileMethods {
                 $noupdatesql = "select " . $params['spatial_loc_pc'] . " from " . $shpTablename . " where the_geom is null";
             } else {
                 if (intval($params['spatial_loc_lon']) !== -1 && intval($params['spatial_loc_lat']) !== -1) {
-                    //      update spatial_0e78d41c_ed06_444f_aa3d_21726f701c51 set  the_geom=st_setsrid(st_point(longitude,latitude), 4326)
-                    $sql = "update " . $shpTablename . " set  the_geom=st_setsrid(st_point(" . $params['spatial_loc_lon'] . "," . $params['spatial_loc_lat'] . "), 4326)";
-                    //       $sql = "update " . $shpTablename . " set  the_geom=ST_GeomFromText('POINT("."convert(varchar(20)," . $params['spatial_loc_lon'] . ") convert(varchar(20)," . $params['spatial_loc_lat'] . "))', 4326)";
+                    $sql = "update " . $shpTablename . " set  the_geom=ST_GeomFromText('POINT('+convert(varchar(20)," . $params['spatial_loc_lon'] . ")+ ' '+ " . "+convert(varchar(20)," . $params['spatial_loc_lat'] . "))', 4326)";
                     $noupdatesql = "select " . $params['spatial_loc_lon'] . "," . $params['spatial_loc_lat'] . " from " . $shpTablename . " where the_geom is null";
                 }
             }
         }
-      
         if ($sql === null) {
             return [0, 'No spatial info updated!'];
         }

@@ -14,7 +14,7 @@ Map2u\CoreBundle\Entity\SpatialFile:
     manyToOne:    
         user:
             targetEntity: Application\Sonata\UserBundle\Entity\User
-            inversedBy: categories
+            inversedBy: {}
             joinColumns:
                 user_uuid:
                     referencedColumnName: id 

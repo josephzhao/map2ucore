@@ -381,13 +381,5 @@ interface SpatialFileInterface {
      */
     public function getUpdatedAt();
 
-    /**
-     * @ORM\PrePersist
-     */
-    public function prePersist();
-
-    /**
-     * @ORM\PreUpdate
-     */
-    public function preUpdate();
+   
 }

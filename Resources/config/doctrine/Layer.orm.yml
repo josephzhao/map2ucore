@@ -12,7 +12,6 @@ Map2u\CoreBundle\Entity\Layer:
             type: guid
             unsigned: false
             nullable: false
-            columnDefinition: uuid NOT NULL DEFAULT uuid_generate_v4()
             generator:
                 strategy: UUID           
     oneToMany:    
@@ -24,6 +23,17 @@ Map2u\CoreBundle\Entity\Layer:
             mappedBy: layer
             
     manyToMany:    
+        maps:
+            targetEntity: Map2u\CoreBundle\Entity\Map
+            inversedBy: layers            
+            joinTable:
+               name: map2u_core__maps_layers
+               joinColumns:
+                 layer_uuid:
+                   referencedColumnName: id
+               inverseJoinColumns:
+                 map_uuid:
+                   referencedColumnName: id    
         groups:
             targetEntity: Map2u\CoreBundle\Entity\UserGroup
             joinTable:
@@ -34,7 +44,6 @@ Map2u\CoreBundle\Entity\Layer:
                    inverseJoinColumns:
                      layer_uuid:
                        referencedColumnName: id           
-
     manyToOne:    
         user:
             targetEntity: Application\Sonata\UserBundle\Entity\User
@@ -59,5 +68,5 @@ Map2u\CoreBundle\Entity\Layer:
             inversedBy: {}
             joinColumns:
                 layercategory_uuid:
-                    referencedColumnName: id               
-                    
+                    referencedColumnName: id   
+    

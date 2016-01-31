@@ -12,13 +12,13 @@
 namespace Map2u\CoreBundle\Model;
 
 use Doctrine\Common\Collections\ArrayCollection;
-use Map2u\CoreBundle\Model\CategoryInterface;
+use Map2u\CoreBundle\Model\LayerCategoryInterface;
 use Application\Sonata\UserBundle\Entity\User;
 use Sonata\ClassificationBundle\Model\Tag;
 use Symfony\Component\Locale as Locale;
 use Map2u\CoreBundle\Controller\DefaultMethods;
 
-abstract class Category implements CategoryInterface {
+abstract class LayerCategory implements LayerCategoryInterface {
 
     protected $id;
     protected $name;
@@ -236,18 +236,18 @@ abstract class Category implements CategoryInterface {
     }
 
     /**
-     * @param CategoryInterface $child
+     * @param LayerCategoryInterface $child
      *
      * @deprecated only used by the AdminHelper
      */
-    public function addChildren(CategoryInterface $child) {
+    public function addChildren(LayerCategoryInterface $child) {
         $this->addChild($child, true);
     }
 
     /**
      * {@inheritdoc}
      */
-    public function addChild(CategoryInterface $child, $nested = false) {
+    public function addChild(LayerCategoryInterface $child, $nested = false) {
         $this->children[] = $child;
 
         if (!$nested) {
@@ -258,7 +258,7 @@ abstract class Category implements CategoryInterface {
     /**
      * {@inheritdoc}
      */
-    public function removeChild(CategoryInterface $childToDelete) {
+    public function removeChild(LayerCategoryInterface $childToDelete) {
         foreach ($this->getChildren() as $pos => $child) {
             if ($childToDelete->getId() && $child->getId() === $childToDelete->getId()) {
                 unset($this->children[$pos]);
@@ -302,7 +302,7 @@ abstract class Category implements CategoryInterface {
     /**
      * {@inheritdoc}
      */
-    public function setParent(CategoryInterface $parent = null, $nested = false) {
+    public function setParent(LayerCategoryInterface $parent = null, $nested = false) {
         $this->parent = $parent;
 
         if (!$nested && $parent) {
@@ -359,5 +359,4 @@ abstract class Category implements CategoryInterface {
         return $this->layers;
     }
 
-    
 }

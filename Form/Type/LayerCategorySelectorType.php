@@ -11,7 +11,7 @@
 
 namespace Map2u\CoreBundle\Form\Type;
 
-use Map2u\CoreBundle\Model\CategoryInterface;
+use Map2u\CoreBundle\Model\LayerCategoryInterface;
 use Map2u\CoreBundle\Model\ManagerInterface;
 use Symfony\Component\OptionsResolver\Options;
 use Symfony\Component\OptionsResolver\OptionsResolverInterface;
@@ -56,7 +56,7 @@ class LayerCategorySelectorType extends AbstractType {
      * @return array
      */
     public function getChoices(Options $options) {
-        if (!($options['category'] instanceof CategoryInterface||$options['category'] instanceof LayerCategory)) {
+        if (!($options['category'] instanceof LayerCategoryInterface||$options['category'] instanceof LayerCategory)) {
             return array();
         }
 
@@ -93,12 +93,12 @@ class LayerCategorySelectorType extends AbstractType {
     }
 
     /**
-     * @param CategoryInterface $category
+     * @param LayerCategoryInterface $category
      * @param Options           $options
      * @param array             $choices
      * @param int               $level
      */
-    private function childWalker(CategoryInterface $category, Options $options, array &$choices, $level = 2) {
+    private function childWalker(LayerCategoryInterface $category, Options $options, array &$choices, $level = 2) {
         if ($category->getChildren() === null) {
             return;
         }

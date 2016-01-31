@@ -26,12 +26,12 @@ Map2u\CoreBundle\Entity\SymbolizedLayer:
             joinColumns:
                 category_uuid:
                     referencedColumnName: id               
-        map:
-            targetEntity: Map2u\CoreBundle\Entity\Map
-            inversedBy: symbolizedLayers
-            joinColumns:
-                map_uuid:
-                    referencedColumnName: id          
+#        map:
+#            targetEntity: Map2u\CoreBundle\Entity\Map
+#            inversedBy: symbolizedLayers
+#            joinColumns:
+#                map_uuid:
+#                    referencedColumnName: id          
         layer:
             targetEntity: Map2u\CoreBundle\Entity\Layer
             inversedBy: symbolizedLayers
